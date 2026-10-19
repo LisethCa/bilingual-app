@@ -1,4 +1,5 @@
 import { CompletionMessage } from "@/components/ui/CompletionMessage";
+import { feedbackCorrect, feedbackWrong } from "@/lib/answerFeedback";
 import React, { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
@@ -163,6 +164,13 @@ export default function MemoryGame({
       flippedCards.length >= 2
     ) {
       return;
+    }
+
+    // Segunda carta: avisar acierto/error durante el toque (Safari iOS
+    // bloquea el sonido si se reproduce después, desde un efecto)
+    if (flippedCards.length === 1) {
+      if (cards[flippedCards[0]].pairId === cards[index].pairId) feedbackCorrect();
+      else feedbackWrong();
     }
 
     const newCards = [...cards];

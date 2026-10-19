@@ -22,8 +22,10 @@ export const NEXT_LEVEL_HINT_AT = 0.8;
 
 export const LEVELS: LevelId[] = ["A1", "A2", "B1"];
 
+export const isFinalExam = (lessonId: string) => FINAL_EXAMS.has(lessonId);
+
 export const lessonXp = (lessonId: string): number =>
-  FINAL_EXAMS.has(lessonId) ? XP.finalExam : XP.lesson;
+  isFinalExam(lessonId) ? XP.finalExam : XP.lesson;
 
 export type ProgressStats = {
   xp: number;

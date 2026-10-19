@@ -10,9 +10,6 @@ buildscript {
     classpath('com.facebook.react:react-native-gradle-plugin')
     classpath('org.jetbrains.kotlin:kotlin-gradle-plugin')
   }
-  ext {
-        stripeReactNativeVersion = "0.28.0" // Usa la última versión
-    }
 }
 
 def reactNativeAndroidDir = new File(

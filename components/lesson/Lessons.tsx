@@ -101,7 +101,7 @@ export default function LessonScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: { flex: 1 },
   card: {
     backgroundColor: "white",
     borderRadius: 10,

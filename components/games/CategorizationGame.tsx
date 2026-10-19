@@ -1,4 +1,5 @@
 import { CompletionMessage } from "@/components/ui/CompletionMessage";
+import { useAnswerFeedback } from "@/lib/answerFeedback";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
@@ -35,6 +36,7 @@ const CategorizationGame = ({
   onComplete,
   isCompleted, // <-- Desestructuración
 }: CategorizationGameProps) => {
+  const { feedbackCorrect, feedbackWrong } = useAnswerFeedback();
   // Sincronizamos el estado local con la prop inicial
   const [currentSelections, setCurrentSelections] = useState<{
     [itemId: string]: string;
@@ -43,6 +45,11 @@ const CategorizationGame = ({
   // Usamos la prop isCompleted para inicializar o bloquear
   const [gameCompleted, setGameCompleted] = useState(isCompleted);
   const [showCompletion, setShowCompletion] = useState(false);
+  // Elección incorrecta: se marca en rojo un instante y no se guarda
+  const [wrongPick, setWrongPick] = useState<{
+    itemId: string;
+    categoryId: string;
+  } | null>(null);
   const [completedSelections, setCompletedSelections] = useState<{
     [itemId: string]: string;
   }>({});
@@ -62,6 +69,18 @@ const CategorizationGame = ({
   const handleCategorySelect = (itemId: string, categoryId: string) => {
     // Si ya está completado o la prop isCompleted es true, ignoramos clics
     if (gameCompleted || isCompleted) return;
+
+    // Un elemento ya ubicado correctamente no se puede cambiar
+    if (currentSelections[itemId]) return;
+
+    const item = items.find((it) => it.id === itemId);
+    if (item && item.category !== categoryId) {
+      feedbackWrong();
+      setWrongPick({ itemId, categoryId });
+      setTimeout(() => setWrongPick(null), 700);
+      return;
+    }
+    feedbackCorrect();
 
     const newSelections = {
       ...currentSelections,
@@ -132,6 +151,9 @@ const CategorizationGame = ({
                           backgroundColor: cat.color || "#3498db",
                           borderColor: cat.color || "#3498db",
                         },
+                        wrongPick?.itemId === item.id &&
+                          wrongPick.categoryId === cat.id &&
+                          styles.wrongButton,
                         // Estilo visual si ya está completado (opcional)
                         isCompleted &&
                           isCategorySelected &&
@@ -285,6 +307,10 @@ const styles = StyleSheet.create({
   completedButton: {
     opacity: 0.8,
     transform: [{ scale: 0.95 }],
+  },
+  wrongButton: {
+    backgroundColor: "#FFEBEE",
+    borderColor: "#F44336",
   },
   successBadge: {
     flexDirection: "row",

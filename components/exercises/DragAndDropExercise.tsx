@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useAnswerFeedback } from "@/lib/answerFeedback";
 import { Dimensions, StyleSheet, Text, View, ViewStyle } from "react-native";
 import { PanGestureHandler } from "react-native-gesture-handler";
 import Animated, {
@@ -116,6 +117,7 @@ const DragDropExercise: React.FC<DragDropExerciseProps> = ({
   onComplete,
   isCompleted = false,
 }) => {
+  const { feedbackCorrect, feedbackWrong } = useAnswerFeedback();
   const [matches, setMatches] = useState<Record<string, string>>({});
   const [activeDrag, setActiveDrag] = useState<string | null>(null);
   const [feedback, setFeedback] = useState<string | null>(null);
@@ -197,11 +199,13 @@ const DragDropExercise: React.FC<DragDropExerciseProps> = ({
         (zone) => newMatches[zone.correctMatch] === zone.id
       );
       console.log("allCorrect", allCorrect);
+      feedbackCorrect();
       if (allCorrect) {
         runOnJS(setIsExerciseCompleted)(true);
         runOnJS(onComplete)();
       }
     } else {
+      feedbackWrong();
       setFeedback("Incorrecto, intenta de nuevo");
       setTimeout(() => resetPosition(dragItemId), 300);
     }

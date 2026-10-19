@@ -29,6 +29,7 @@ import LessonContent from "../lesson/LessonContent";
     return (
       <View style={{ flex: 1 }}>
         <LessonContent
+          key={lessons[currentIndex].id}
           lesson={lessons[currentIndex]}
           onComplete={() => {
             if (currentIndex < lessons.length - 1) {

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useAnswerFeedback } from "@/lib/answerFeedback";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 type MatchingPair = {
@@ -40,6 +41,7 @@ const MatchingExercise: React.FC<MatchingExerciseProps> = ({
   title = "Empareja los elementos correspondientes",
   isCompleted = false,
 }) => {
+  const { feedbackCorrect, feedbackWrong } = useAnswerFeedback();
   const [selected, setSelected] = useState<string | null>(null);
   const [matchedPairs, setMatchedPairs] = useState<string[]>([]);
   const [leftItems, setLeftItems] = useState<MatchingPair[]>([]);
@@ -132,7 +134,10 @@ const MatchingExercise: React.FC<MatchingExerciseProps> = ({
       }
 
       // Verificar si el ID base (p0, p1, etc) coincide
-      if (selectedBaseId === currentBaseId) {
+      if (selectedBaseId !== currentBaseId) {
+        feedbackWrong();
+      } else {
+        feedbackCorrect();
         setMatchedPairs((prev) => [...prev, id, selected]);
 
         // Verificar victoria (multiplicamos por 2 porque hay dos IDs por par)

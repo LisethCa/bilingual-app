@@ -1,11 +1,9 @@
 import { useAuth } from "@/contexts/AuthContext";
-import { useNavigation } from "@react-navigation/native";
 import { useLocalSearchParams } from "expo-router";
 import Lottie from "lottie-react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   ActivityIndicator,
-  Image,
   ScrollView,
   StyleSheet,
   Text,
@@ -13,10 +11,30 @@ import {
   View,
 } from "react-native";
 import { ExerciseComponentRenderer } from "./ExerciseComponentRenderer";
-import type { Exercise } from "./exerciseConfig";
 import { normalizeExerciseConfig } from "./exerciseConfig";
 import { useExerciseCompletion, useLessonCompletion } from "./useLessonHooks";
 import { lessonXp } from "@/services/xpService";
+import { stopSpeaking } from "@/lib/speech";
+import {
+  ExerciseAttemptContext,
+  preloadAnswerSounds,
+} from "@/lib/answerFeedback";
+import { ExamIntro, ExamResultCard } from "@/components/lesson/ExamPanels";
+import Flashcards from "@/components/lesson/Flashcards";
+import {
+  buildLessonSteps,
+  GrammarCard,
+  LessonStep,
+  StepProgress,
+  VocabularyCards,
+} from "@/components/lesson/LessonSteps";
+import {
+  computeExamResult,
+  getExamConfig,
+  getStoredExamResult,
+  saveExamAttempt,
+  StoredExamResult,
+} from "@/services/examService";
 
 const LessonContent = ({
   lesson,
@@ -26,9 +44,22 @@ const LessonContent = ({
   onComplete?: (xpGained: number) => void;
 }) => {
   const { unitId } = useLocalSearchParams();
-  const navigation = useNavigation();
   const { user } = useAuth();
-  const [loading, setLoading] = useState(true);
+
+  const allExercises = useMemo(
+    () => [
+      ...(lesson?.content?.exercises || []),
+      ...(lesson?.content?.game
+        ? [
+            {
+              ...lesson.content.game,
+              id: "game-" + (lesson.content.game.id || "0"),
+            },
+          ]
+        : []),
+    ],
+    [lesson],
+  );
 
   const {
     completedExercises,
@@ -36,9 +67,8 @@ const LessonContent = ({
     handleExerciseComplete,
     handleExerciseData,
     allCompleted,
-  } = useExerciseCompletion(
-    (lesson?.content?.exercises?.length || 0) + (lesson?.content?.game ? 1 : 0),
-  );
+    resetCompletion,
+  } = useExerciseCompletion(allExercises.length);
 
   const {
     isAlreadyCompleted,
@@ -48,194 +78,371 @@ const LessonContent = ({
     setShowXpReward,
   } = useLessonCompletion(lesson, onComplete);
 
-  // Inicializar cuando la lección carga
+  // ===== Pasos =====
+  const steps = useMemo(
+    () => buildLessonSteps(lesson, allExercises.length),
+    [lesson, allExercises.length],
+  );
+  const [stepIndex, setStepIndex] = useState(0);
+  const [vocabAsList, setVocabAsList] = useState(false);
+  const step: LessonStep = steps[Math.min(stepIndex, steps.length - 1)];
+  const firstExerciseStep = steps.findIndex((s) => s.kind === "exercise");
+
+  const goTo = (index: number) => {
+    stopSpeaking();
+    setStepIndex(Math.max(0, Math.min(index, steps.length - 1)));
+  };
+
+  // Precargar sonidos de acierto/error y cortar cualquier pronunciación al salir
   useEffect(() => {
-    if (lesson) {
-      setLoading(false);
-    }
-  }, [lesson]);
+    preloadAnswerSounds();
+    return () => stopSpeaking();
+  }, []);
 
   const xpReward = lesson ? lessonXp(lesson.id) : 0;
+
+  // ===== Examen final con nota =====
+  const exam = getExamConfig(lesson);
+  const [attempt, setAttempt] = useState(0); // al repetir, los ejercicios se vuelven a montar
+  const [mistakes, setMistakes] = useState<Record<number, number>>({});
+  const [storedExam, setStoredExam] = useState<StoredExamResult | null>(null);
+  const savedAttempt = useRef(-1);
+
+  // Los errores en un ejercicio ya terminado (al volver a verlo) no cuentan
+  const completedRef = useRef(completedExercises);
+  completedRef.current = completedExercises;
+
+  // Una función por ejercicio para sumar sus errores
+  const mistakeHandlers = useMemo(
+    () =>
+      allExercises.map((_, i) => () => {
+        if (completedRef.current[i]) return;
+        setMistakes((prev) => ({ ...prev, [i]: (prev[i] || 0) + 1 }));
+      }),
+    [allExercises],
+  );
+
+  const examResult = useMemo(
+    () =>
+      exam && allCompleted
+        ? computeExamResult(allExercises, mistakes, exam.passingScore)
+        : null,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [allCompleted, mistakes, allExercises, exam?.passingScore],
+  );
+
+  useEffect(() => {
+    if (exam && user && lesson) {
+      getStoredExamResult(user.uid, lesson.id)
+        .then(setStoredExam)
+        .catch(() => {});
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user?.uid, lesson?.id]);
+
+  // Al terminar un intento: guardar la nota
+  useEffect(() => {
+    if (!examResult || !user || !lesson || savedAttempt.current === attempt) {
+      return;
+    }
+    savedAttempt.current = attempt;
+    const previous = storedExam;
+    setStoredExam({
+      bestScore: Math.max(examResult.percent, previous?.bestScore ?? 0),
+      lastScore: examResult.percent,
+      passed: examResult.passed || !!previous?.passed,
+      attempts: (previous?.attempts ?? 0) + 1,
+    });
+    saveExamAttempt(user.uid, lesson.id, examResult, previous).catch((e) =>
+      console.error("Error guardando el examen:", e),
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [examResult]);
+
+  const retryExam = () => {
+    setMistakes({});
+    resetCompletion();
+    setAttempt((a) => a + 1);
+    goTo(firstExerciseStep > -1 ? firstExerciseStep : 0);
+  };
+
+  const completedCount = completedExercises.filter(Boolean).length;
+  const pending = allExercises
+    .map((_, i) => i)
+    .filter((i) => !completedExercises[i]);
 
   const handleCompleteLesson = async () => {
     await executeCompleteLesson(unitId, allCompleted, xpReward);
   };
 
-  // Renderizar ejercicios con el componente centralizado
-  const renderExercise = (exercise: Exercise, index: number) => {
-    if (!exercise) return null;
-
-    const normalizedExercise = normalizeExerciseConfig(
-      exercise,
-      lesson?.content,
-    );
-
-    return (
-      <View key={`ex-container-${index}`} style={styles.exerciseContainer}>
-        <ExerciseComponentRenderer
-          exercise={normalizedExercise}
-          index={index}
-          lessonContent={lesson?.content}
-          exerciseData={exerciseData}
-          onExerciseData={handleExerciseData}
-          onComplete={() => handleExerciseComplete(index)}
-          isCompleted={completedExercises[index] || false}
-          key={`ex-${exercise.id || index}`}
-        />
-      </View>
-    );
-  };
-
-  if (loading) {
-    return <ActivityIndicator size="large" style={styles.loader} />;
-  }
-
   if (!lesson) {
-    return (
+    return lesson === undefined ? (
+      <ActivityIndicator size="large" style={styles.loader} />
+    ) : (
       <View style={styles.notFoundContainer}>
         <Text>No se encontró la lección</Text>
       </View>
     );
   }
 
-  return (
-    <View style={{ flex: 1 }}>
-      <View style={{ flex: 1 }}>
-        <ScrollView contentContainerStyle={styles.container}>
-          {/* Encabezado */}
-          <Text style={styles.title}>{lesson.title}</Text>
+  // ===== Contenido de cada paso =====
+  const stepLabel = (() => {
+    switch (step.kind) {
+      case "intro":
+        return exam ? "Examen final" : "Introducción";
+      case "vocabulary":
+        return `Vocabulario · ${step.items.length} palabras`;
+      case "grammar":
+        return `Gramática${step.parts > 1 ? ` ${step.part}/${step.parts}` : ""}`;
+      case "exercise": {
+        const n = `Ejercicio ${step.index + 1} de ${allExercises.length}`;
+        const section = exam && allExercises[step.index]?.section;
+        return section ? `${section} · ${n}` : n;
+      }
+      case "finish":
+        return exam ? "Resultado" : "¡Último paso!";
+    }
+  })();
 
-          {/* Objetivos */}
-          {lesson.objectives?.length > 0 && (
-            <View style={styles.section}>
-              <Text style={styles.sectionTitle}>Objetivos</Text>
-              {lesson.objectives.map((obj: string, i: number) => (
-                <Text key={i} style={styles.objective}>
-                  • {obj}
-                </Text>
-              ))}
-            </View>
-          )}
+  const renderExercise = (index: number) => {
+    const exercise = allExercises[index];
+    if (!exercise) return null;
+    const normalizedExercise = normalizeExerciseConfig(
+      exercise,
+      lesson?.content,
+    );
 
-          {/* Vocabulario */}
-          {lesson.content.vocabulary?.length > 0 && (
-            <View style={styles.section}>
-              <Text style={styles.sectionTitle}>Vocabulario</Text>
-              {lesson.content.vocabulary.map((item: any, index: number) => {
-                const imageUrl = item.image || item.media?.image;
+    return (
+      <View style={styles.exerciseContainer}>
+        <ExerciseAttemptContext.Provider
+          value={{ onMistake: exam ? mistakeHandlers[index] : undefined }}
+        >
+          <ExerciseComponentRenderer
+            exercise={normalizedExercise}
+            index={index}
+            lessonContent={lesson?.content}
+            exerciseData={exerciseData}
+            onExerciseData={handleExerciseData}
+            onComplete={() => handleExerciseComplete(index)}
+            isCompleted={completedExercises[index] || false}
+            key={`ex-${attempt}-${exercise.id || index}`}
+          />
+        </ExerciseAttemptContext.Provider>
+      </View>
+    );
+  };
 
-                return (
-                  <View key={index} style={styles.vocabularyItem}>
-                    <View style={styles.wordRow}>
-                      <Text style={styles.word}>{item.word}</Text>
-                      <Text style={styles.translation}>{item.translation}</Text>
-                    </View>
+  const renderPending = () =>
+    pending.length > 0 && (
+      <View style={styles.pendingBox}>
+        <Text style={styles.pendingTitle}>
+          Te{" "}
+          {pending.length === 1
+            ? "falta 1 ejercicio"
+            : `faltan ${pending.length} ejercicios`}
+        </Text>
+        <View style={styles.pendingList}>
+          {pending.map((i) => (
+            <TouchableOpacity
+              key={i}
+              style={styles.pendingChip}
+              onPress={() => goTo(firstExerciseStep + i)}
+            >
+              <Text style={styles.pendingChipText}>Ejercicio {i + 1}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </View>
+    );
 
-                    {imageUrl && (
-                      <Image
-                        source={{
-                          uri: imageUrl,
-                          headers: {
-                            Accept: "image/webp,image/png,image/jpeg",
-                          },
-                          cache: "force-cache",
-                        }}
-                        style={styles.vocabularyImage}
-                        resizeMode="contain"
-                        onError={(e) =>
-                          console.log(
-                            "Error loading image:",
-                            e.nativeEvent.error,
-                          )
-                        }
-                      />
-                    )}
-
-                    {item.examples?.length > 0 && (
-                      <View style={styles.examplesContainer}>
-                        {item.examples.map((ex: string, i: number) => (
-                          <Text key={i} style={styles.example}>
-                            "{ex}"
-                          </Text>
-                        ))}
-                      </View>
-                    )}
-                  </View>
-                );
-              })}
-            </View>
-          )}
-
-          {/* Gramática */}
-          {lesson.content.grammar && (
-            <View style={styles.section}>
-              <Text style={styles.sectionTitle}>Gramática</Text>
-              <View style={styles.grammarCard}>
-                <Text style={styles.grammarTitle}>
-                  {lesson.content.grammar.title}
-                </Text>
-                {!!lesson.content.grammar.explanation && (
-                  <Text style={styles.grammarExplanation}>
-                    {lesson.content.grammar.explanation}
+  const renderStep = () => {
+    switch (step.kind) {
+      case "intro":
+        return (
+          <>
+            <Text style={styles.title}>{lesson.title}</Text>
+            {exam && (
+              <ExamIntro
+                total={allExercises.length}
+                passingScore={exam.passingScore}
+                stored={storedExam}
+              />
+            )}
+            {lesson.objectives?.length > 0 && (
+              <View style={styles.card}>
+                <Text style={styles.cardTitle}>🎯 En esta lección vas a</Text>
+                {lesson.objectives.map((obj: string, i: number) => (
+                  <Text key={i} style={styles.objective}>
+                    • {obj}
                   </Text>
-                )}
-                {lesson.content.grammar.rules?.map((item: any, i: number) => (
-                  <View key={i} style={styles.grammarRule}>
-                    <Text style={styles.grammarRuleText}>{item.rule}</Text>
-                    {item.examples?.map((ex: string, j: number) => (
-                      <Text key={j} style={styles.example}>
-                        {ex}
-                      </Text>
-                    ))}
-                  </View>
                 ))}
               </View>
+            )}
+            <Text style={styles.introHint}>
+              {steps.length - 2} pasos · toca «Continuar» para empezar
+            </Text>
+          </>
+        );
+
+      case "vocabulary":
+        return (
+          <>
+            <View style={styles.vocabHeader}>
+              <Text style={styles.stepTitle}>📚 Vocabulario</Text>
+              <TouchableOpacity
+                onPress={() => setVocabAsList((v) => !v)}
+                style={styles.viewToggle}
+              >
+                <Text style={styles.viewToggleText}>
+                  {vocabAsList ? "🃏 Ver tarjetas" : "☰ Ver como lista"}
+                </Text>
+              </TouchableOpacity>
             </View>
-          )}
+            <Text style={styles.stepHint}>
+              {vocabAsList
+                ? "Toca 🔊 para escuchar cada palabra."
+                : "Toca la tarjeta para darla vuelta. Desliza o usa las flechas para pasar."}
+            </Text>
+            {vocabAsList ? (
+              <VocabularyCards items={step.items} />
+            ) : (
+              <Flashcards items={step.items} />
+            )}
+          </>
+        );
 
-          {/* Ejercicios */}
-          {lesson.content.exercises?.map((exercise: Exercise, index: number) =>
-            renderExercise(exercise, index),
-          )}
+      case "grammar":
+        return (
+          <>
+            <Text style={styles.stepTitle}>✏️ Gramática</Text>
+            <GrammarCard
+              grammar={lesson.content.grammar}
+              rules={step.rules}
+              showExplanation={step.showExplanation}
+            />
+          </>
+        );
 
-          {/* Juego final */}
-          {lesson.content?.game && (
-            <View style={styles.gameContainer}>
-              {renderExercise(
-                {
-                  ...lesson.content.game,
-                  id: "game-" + (lesson.content.game.id || "0"),
-                },
-                lesson?.content?.exercises?.length || 0,
+      case "exercise":
+        return renderExercise(step.index);
+
+      case "finish":
+        if (exam) {
+          return (
+            <>
+              <Text style={styles.stepTitle}>📝 {lesson.title}</Text>
+              {examResult ? (
+                <ExamResultCard
+                  result={examResult}
+                  passingScore={exam.passingScore}
+                />
+              ) : (
+                <Text style={styles.stepHint}>
+                  Respondiste {completedCount} de {allExercises.length}{" "}
+                  ejercicios. Completa todos para ver tu nota.
+                </Text>
               )}
-            </View>
-          )}
-        </ScrollView>
-      </View>
+              {renderPending()}
+            </>
+          );
+        }
+        return (
+          <>
+            <Text style={styles.finishEmoji}>{allCompleted ? "🎉" : "💪"}</Text>
+            <Text style={styles.finishTitle}>
+              {allCompleted ? "¡Terminaste la lección!" : "¡Casi terminas!"}
+            </Text>
+            <Text style={styles.finishText}>
+              {completedCount} de {allExercises.length} ejercicios completados
+            </Text>
+            {renderPending()}
+            {completionMessage ? (
+              <View
+                style={[
+                  styles.messageContainer,
+                  isAlreadyCompleted
+                    ? styles.infoMessage
+                    : styles.successMessage,
+                ]}
+              >
+                <Text style={styles.messageText}>{completionMessage}</Text>
+              </View>
+            ) : null}
+          </>
+        );
+    }
+  };
 
-      {/* Mensaje de completitud */}
-      {completionMessage && (
-        <View
+  // ===== Botones de abajo =====
+  const isLast = step.kind === "finish";
+  const exerciseDone =
+    step.kind === "exercise" && completedExercises[step.index];
+
+  const renderPrimaryButton = () => {
+    if (!isLast) {
+      const skipping = step.kind === "exercise" && !exerciseDone;
+      return (
+        <TouchableOpacity
+          onPress={() => goTo(stepIndex + 1)}
           style={[
-            styles.messageContainer,
-            isAlreadyCompleted ? styles.infoMessage : styles.successMessage,
+            styles.navButton,
+            skipping ? styles.skipButton : styles.nextButton,
           ]}
         >
-          <Text style={styles.messageText}>{completionMessage}</Text>
-        </View>
-      )}
+          <Text style={skipping ? styles.skipText : styles.navText}>
+            {skipping
+              ? "Saltar por ahora"
+              : exerciseDone
+                ? "Continuar ✓"
+                : "Continuar"}
+          </Text>
+        </TouchableOpacity>
+      );
+    }
 
-      {/* Botón de completar */}
+    if (exam) {
+      if (examResult && (!examResult.passed || isAlreadyCompleted)) {
+        return (
+          <TouchableOpacity
+            onPress={retryExam}
+            style={[styles.navButton, styles.nextButton]}
+          >
+            <Text style={styles.navText}>🔁 Repetir examen</Text>
+          </TouchableOpacity>
+        );
+      }
+      return (
+        <TouchableOpacity
+          onPress={handleCompleteLesson}
+          disabled={!examResult}
+          style={[
+            styles.navButton,
+            examResult ? styles.finishButton : styles.disabledButton,
+          ]}
+        >
+          <Text style={styles.navText}>
+            {examResult
+              ? `Finalizar examen (+${xpReward} XP)`
+              : `Faltan ejercicios (${completedCount}/${allExercises.length})`}
+          </Text>
+        </TouchableOpacity>
+      );
+    }
+
+    return (
       <TouchableOpacity
         onPress={handleCompleteLesson}
         disabled={!allCompleted || isAlreadyCompleted}
         style={[
-          styles.completeButton,
-          !allCompleted && styles.disabledButton,
-          isAlreadyCompleted && styles.completedButton,
+          styles.navButton,
+          isAlreadyCompleted
+            ? styles.completedButton
+            : allCompleted
+              ? styles.finishButton
+              : styles.disabledButton,
         ]}
       >
-        <Text style={styles.buttonText}>
+        <Text style={styles.navText}>
           {isAlreadyCompleted
             ? "Lección completada"
             : allCompleted
@@ -243,6 +450,35 @@ const LessonContent = ({
               : "Completa todos los ejercicios"}
         </Text>
       </TouchableOpacity>
+    );
+  };
+
+  return (
+    <View style={styles.screen}>
+      <StepProgress
+        current={stepIndex}
+        total={steps.length}
+        label={stepLabel}
+      />
+
+      <ScrollView
+        key={`step-${stepIndex}-${attempt}`}
+        contentContainerStyle={styles.container}
+      >
+        {renderStep()}
+      </ScrollView>
+
+      <View style={styles.navBar}>
+        {stepIndex > 0 && (
+          <TouchableOpacity
+            onPress={() => goTo(stepIndex - 1)}
+            style={[styles.navButton, styles.backButton]}
+          >
+            <Text style={styles.backText}>← Atrás</Text>
+          </TouchableOpacity>
+        )}
+        <View style={{ flex: 1 }}>{renderPrimaryButton()}</View>
+      </View>
 
       {/* Animación de XP */}
       {showXpReward && (
@@ -265,6 +501,10 @@ const LessonContent = ({
 };
 
 const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    backgroundColor: "#FAF8FF",
+  },
   container: {
     padding: 16,
     paddingBottom: 32,
@@ -272,115 +512,169 @@ const styles = StyleSheet.create({
   loader: {
     marginTop: 20,
   },
-  gameContainer: {
-    marginVertical: 20,
-    padding: 15,
-    backgroundColor: "#f5f5f5",
-    borderRadius: 10,
-  },
   notFoundContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
   title: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: "bold",
     marginBottom: 16,
     color: "#333",
   },
-  section: {
-    marginBottom: 24,
+  card: {
+    backgroundColor: "#FFFFFF",
+    borderRadius: 12,
+    padding: 16,
+    borderWidth: 1,
+    borderColor: "#EEE8FF",
   },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: "600",
+  cardTitle: {
+    fontSize: 16,
+    fontWeight: "700",
+    color: "#4C1D95",
     marginBottom: 8,
-    color: "#444",
   },
   objective: {
-    marginLeft: 8,
     color: "#555",
-  },
-  vocabularyItem: {
-    marginBottom: 16,
-    padding: 12,
-    backgroundColor: "#f9f9f9",
-    borderRadius: 8,
-  },
-  wordRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 8,
-  },
-  word: {
-    fontWeight: "bold",
-    fontSize: 16,
-  },
-  translation: {
-    color: "#666",
-  },
-  vocabularyImage: {
-    width: "100%",
-    height: 150,
-    marginVertical: 8,
-  },
-  examplesContainer: {
-    marginTop: 8,
-    paddingLeft: 8,
-  },
-  example: {
-    fontStyle: "italic",
-    color: "#666",
+    fontSize: 15,
     marginBottom: 4,
   },
-  grammarCard: {
-    padding: 12,
-    backgroundColor: "#F3EFFF",
-    borderRadius: 8,
-    borderLeftWidth: 4,
-    borderLeftColor: "#9365FF",
+  introHint: {
+    textAlign: "center",
+    color: "#888",
+    marginTop: 20,
   },
-  grammarTitle: {
+  stepTitle: {
+    fontSize: 22,
     fontWeight: "bold",
-    fontSize: 16,
     color: "#333",
     marginBottom: 6,
   },
-  grammarExplanation: {
-    color: "#555",
-    marginBottom: 8,
+  vocabHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 8,
   },
-  grammarRule: {
-    marginTop: 8,
+  viewToggle: {
+    backgroundColor: "#F1EBFF",
+    borderRadius: 16,
+    paddingVertical: 6,
+    paddingHorizontal: 12,
   },
-  grammarRuleText: {
+  viewToggleText: {
+    color: "#4C1D95",
     fontWeight: "600",
-    color: "#444",
-    marginBottom: 4,
+    fontSize: 13,
+  },
+  stepHint: {
+    color: "#777",
+    marginBottom: 14,
   },
   exerciseContainer: {
-    marginVertical: 16,
     padding: 12,
-    backgroundColor: "#f0f0f0",
-    borderRadius: 8,
+    backgroundColor: "#FFFFFF",
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "#EEE8FF",
   },
-  completeButton: {
-    backgroundColor: "#4CAF50",
-    padding: 16,
-    borderRadius: 8,
-    alignItems: "center",
+  finishEmoji: {
+    fontSize: 56,
+    textAlign: "center",
     marginTop: 24,
+  },
+  finishTitle: {
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "#333",
+    marginTop: 8,
+  },
+  finishText: {
+    textAlign: "center",
+    color: "#666",
+    marginTop: 6,
+    marginBottom: 16,
+  },
+  pendingBox: {
+    backgroundColor: "#FFF3E0",
+    borderRadius: 12,
+    padding: 14,
+    marginTop: 8,
+  },
+  pendingTitle: {
+    fontWeight: "700",
+    color: "#8A5A00",
+    marginBottom: 10,
+  },
+  pendingList: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8,
+  },
+  pendingChip: {
+    backgroundColor: "#FFFFFF",
+    borderWidth: 1,
+    borderColor: "#FF9800",
+    borderRadius: 16,
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+  },
+  pendingChipText: {
+    color: "#8A5A00",
+    fontWeight: "600",
+  },
+  navBar: {
+    flexDirection: "row",
+    gap: 10,
+    padding: 12,
+    backgroundColor: "#FFFFFF",
+    borderTopWidth: 1,
+    borderTopColor: "#EEE",
+  },
+  navButton: {
+    paddingVertical: 14,
+    paddingHorizontal: 18,
+    borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  nextButton: {
+    backgroundColor: "#9365FF",
+  },
+  finishButton: {
+    backgroundColor: "#4CAF50",
+  },
+  skipButton: {
+    backgroundColor: "#FFFFFF",
+    borderWidth: 1,
+    borderColor: "#CCC",
+  },
+  backButton: {
+    backgroundColor: "#F1EBFF",
   },
   disabledButton: {
     backgroundColor: "#cccccc",
   },
   completedButton: {
-    backgroundColor: "#E0E0E0",
+    backgroundColor: "#BDBDBD",
   },
-  buttonText: {
+  navText: {
     color: "white",
     fontWeight: "bold",
+    fontSize: 16,
+  },
+  skipText: {
+    color: "#777",
+    fontWeight: "600",
+    fontSize: 15,
+  },
+  backText: {
+    color: "#4C1D95",
+    fontWeight: "600",
+    fontSize: 15,
   },
   messageContainer: {
     padding: 12,

@@ -35,12 +35,19 @@ export const useExerciseCompletion = (totalExercises: number) => {
     completedExercises.length > 0 &&
     completedExercises.every((completed) => completed);
 
+  // Volver a empezar (repetir un examen)
+  const resetCompletion = () => {
+    setCompletedExercises(Array(totalExercises).fill(false));
+    setExerciseData({});
+  };
+
   return {
     completedExercises,
     exerciseData,
     handleExerciseComplete,
     handleExerciseData,
     allCompleted,
+    resetCompletion,
   };
 };
 

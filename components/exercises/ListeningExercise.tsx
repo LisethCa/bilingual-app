@@ -1,6 +1,8 @@
 import { CompletionMessage } from "@/components/ui/CompletionMessage";
+import { useAnswerFeedback } from "@/lib/answerFeedback";
 import { Ionicons } from "@expo/vector-icons";
 import { Audio } from "expo-av";
+import * as Speech from "expo-speech";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
@@ -11,6 +13,7 @@ export default function ListeningExercise({
   config: any;
   onComplete: () => void;
 }) {
+  const { feedbackCorrect, feedbackWrong } = useAnswerFeedback();
   const [selectedWords, setSelectedWords] = useState<string[]>([]);
   const [shuffledBank, setShuffledBank] = useState<string[]>([]);
   const [sound, setSound] = useState<Audio.Sound | null>(null);
@@ -23,7 +26,20 @@ export default function ListeningExercise({
     };
   }, [config]);
 
+  // Sin audio grabado se usa la voz del dispositivo con la oración correcta
+  const useVoice = !config.audioUrl;
+
   async function playAudio(isSlow = false) {
+    if (useVoice) {
+      // sin await antes de hablar: Safari de iOS exige que ocurra durante el toque
+      Speech.stop();
+      Speech.speak(config.correctSentence, {
+        language: "en-US",
+        rate: isSlow ? 0.55 : 0.85,
+      });
+      return;
+    }
+
     if (sound) await sound.unloadAsync();
     const { sound: newSound } = await Audio.Sound.createAsync({
       uri: isSlow ? config.slowAudioUrl || config.audioUrl : config.audioUrl,
@@ -34,6 +50,10 @@ export default function ListeningExercise({
     setSound(newSound);
     await newSound.playAsync();
   }
+
+  useEffect(() => () => {
+    Speech.stop();
+  }, []);
 
   const toggleWord = (word: string, index: number, isFromBank: boolean) => {
     if (isFromBank) {
@@ -46,12 +66,17 @@ export default function ListeningExercise({
   };
 
   const checkAnswer = () => {
-    if (selectedWords.join(" ") === config.correctSentence) {
+    // ignorar mayúsculas y puntuación ("It is 8." == "it is 8")
+    const normalize = (s: string) =>
+      s.toLowerCase().replace(/[.,!?;:]/g, "").replace(/\s+/g, " ").trim();
+    if (normalize(selectedWords.join(" ")) === normalize(config.correctSentence)) {
+      feedbackCorrect();
       setShowCompletion(true);
       setTimeout(() => {
         onComplete();
       }, 1500);
     } else {
+      feedbackWrong();
       alert("Inténtalo de nuevo");
     }
   };
@@ -68,12 +93,12 @@ export default function ListeningExercise({
         >
           <Ionicons name="volume-high" size={32} color="white" />
         </TouchableOpacity>
-        {config.slowAudioUrl && (
+        {(config.slowAudioUrl || useVoice) && (
           <TouchableOpacity
             style={[styles.audioBtn, styles.slowBtn]}
             onPress={() => playAudio(true)}
           >
-            <Ionicons name="turtle" size={24} color="white" />
+            <Text style={styles.slowIcon}>🐢</Text>
           </TouchableOpacity>
         )}
       </View>
@@ -130,6 +155,7 @@ const styles = StyleSheet.create({
   instruction: { fontSize: 18, fontWeight: "bold", marginBottom: 20 },
   audioRow: { flexDirection: "row", gap: 15, marginBottom: 30 },
   audioBtn: { backgroundColor: "#1CB0F6", padding: 15, borderRadius: 50 },
+  slowIcon: { fontSize: 24 },
   slowBtn: { backgroundColor: "#FFC800", padding: 15 },
   sentenceArea: {
     width: "100%",

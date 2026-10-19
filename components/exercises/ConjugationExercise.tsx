@@ -1,4 +1,5 @@
 import { CompletionMessage } from "@/components/ui/CompletionMessage";
+import { useAnswerFeedback } from "@/lib/answerFeedback";
 import React, { useEffect, useState } from "react";
 import {
   Modal,
@@ -36,6 +37,7 @@ const ConjugationExercise: React.FC<ConjugationExerciseProps> = ({
   onComplete,
   isCompleted,
 }) => {
+  const { feedbackCorrect, feedbackWrong } = useAnswerFeedback();
   const getCorrectAnswer = (tense: string, pronoun: string): string => {
     const answer = config.correct?.[tense]?.[pronoun];
     return typeof answer === "string" ? answer : "";
@@ -110,6 +112,8 @@ const ConjugationExercise: React.FC<ConjugationExerciseProps> = ({
 
     setShowFeedback(true);
     setIsCorrect(allCorrect);
+    if (allCorrect) feedbackCorrect();
+    else feedbackWrong();
 
     if (allCorrect) {
       setShowCompletion(true);
