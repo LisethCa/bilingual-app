@@ -1,16 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useAnswerFeedback } from "@/lib/answerFeedback";
-import { Dimensions, StyleSheet, Text, View, ViewStyle } from "react-native";
-import { PanGestureHandler } from "react-native-gesture-handler";
+import { Platform, Pressable, StyleSheet, Text, View, ViewStyle } from "react-native";
+import {
+  Gesture,
+  GestureDetector,
+  GestureHandlerRootView,
+} from "react-native-gesture-handler";
 import Animated, {
   runOnJS,
-  useAnimatedGestureHandler,
   useAnimatedStyle,
   useSharedValue,
   withSpring,
 } from "react-native-reanimated";
-
-const { width, height } = Dimensions.get("window");
 
 interface DragItem {
   id: string;
@@ -32,8 +33,12 @@ interface DragDropExerciseProps {
   isCompleted?: boolean;
 }
 
-interface DropZoneLayout {
-  id: string;
+// Cursor de "agarrar" y sin selección de texto al arrastrar en web
+const webGrabStyle = (
+  Platform.OS === "web" ? { cursor: "grab", userSelect: "none" } : {}
+) as ViewStyle;
+
+interface ZoneRect {
   x: number;
   y: number;
   width: number;
@@ -43,69 +48,82 @@ interface DropZoneLayout {
 interface DragItemViewProps {
   itemId: string;
   content: string;
-  positions: ReturnType<typeof useSharedValue<Record<string, { x: number; y: number }>>>;
-  activeDrag: string | null;
-  matches: Record<string, string>;
-  gestureHandler: ReturnType<typeof useAnimatedGestureHandler>;
-  isExerciseCompleted: boolean;
-  setActiveDrag: (id: string) => void;
-  onLayout: (id: string, x: number, y: number) => void;
+  disabled: boolean;
+  isSelected: boolean;
+  onDragStart: (id: string) => void;
+  onDragMove: (absoluteX: number, absoluteY: number) => void;
+  onDragEnd: (id: string, absoluteX: number, absoluteY: number) => void;
+  onTap: (id: string) => void;
 }
 
+// Cada ítem tiene su propio gesto: se puede arrastrar desde el primer toque,
+// o tocar para seleccionarlo y luego tocar la zona destino.
 const DragItemView: React.FC<DragItemViewProps> = ({
   itemId,
   content,
-  positions,
-  activeDrag,
-  matches,
-  gestureHandler,
-  isExerciseCompleted,
-  setActiveDrag,
-  onLayout,
+  disabled,
+  isSelected,
+  onDragStart,
+  onDragMove,
+  onDragEnd,
+  onTap,
 }) => {
-  const animatedStyle = useAnimatedStyle(() => {
-    const isActive = activeDrag === itemId;
-    const isMatched = matches[itemId];
-    return {
-      position: "absolute" as const,
-      left: 0,
-      top: 0,
-      zIndex: isActive ? 1000 : isMatched ? 1 : 100,
-      opacity: isMatched ? 0.9 : 1,
-      transform: [
-        { translateX: positions.value[itemId]?.x || 0 },
-        { translateY: positions.value[itemId]?.y || 0 },
-        { scale: withSpring(isActive ? 1.1 : 1) },
-      ],
-      backgroundColor: isMatched ? "#4CAF50" : isActive ? "#7E57C2" : "#9365FF",
-      shadowColor: "#000",
-      shadowOffset: { width: 0, height: isActive ? 5 : 2 },
-      shadowOpacity: isActive ? 0.3 : 0.2,
-      shadowRadius: isActive ? 10 : 5,
-      elevation: isActive ? 10 : 3,
-    };
-  });
+  const translateX = useSharedValue(0);
+  const translateY = useSharedValue(0);
+  const dragging = useSharedValue(false);
+
+  const pan = Gesture.Pan()
+    .enabled(!disabled)
+    .minDistance(4)
+    .onStart(() => {
+      dragging.value = true;
+      runOnJS(onDragStart)(itemId);
+    })
+    .onUpdate((event) => {
+      translateX.value = event.translationX;
+      translateY.value = event.translationY;
+      runOnJS(onDragMove)(event.absoluteX, event.absoluteY);
+    })
+    .onEnd((event) => {
+      runOnJS(onDragEnd)(itemId, event.absoluteX, event.absoluteY);
+    })
+    .onFinalize(() => {
+      dragging.value = false;
+      // Si quedó bien ubicado el ítem se desmonta; si no, vuelve a su lugar
+      translateX.value = withSpring(0);
+      translateY.value = withSpring(0);
+    });
+
+  const tap = Gesture.Tap()
+    .enabled(!disabled)
+    .onEnd(() => {
+      runOnJS(onTap)(itemId);
+    });
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    zIndex: dragging.value ? 1000 : 1,
+    transform: [
+      { translateX: translateX.value },
+      { translateY: translateY.value },
+      { scale: withSpring(dragging.value ? 1.08 : 1) },
+    ],
+    shadowOpacity: dragging.value ? 0.3 : 0.2,
+    elevation: dragging.value ? 10 : 3,
+  }));
 
   return (
-    <PanGestureHandler
-      onGestureEvent={gestureHandler}
-      onHandlerStateChange={gestureHandler}
-      onBegan={() => {
-        if (!isExerciseCompleted) {
-          runOnJS(setActiveDrag)(itemId);
-        }
-      }}
-    >
+    <GestureDetector gesture={Gesture.Race(pan, tap)}>
       <Animated.View
-        style={[styles.dragItem as ViewStyle, animatedStyle as Animated.AnimateStyle<ViewStyle>]}
-        onLayout={(e) => {
-          const { x, y } = e.nativeEvent.layout;
-          onLayout(itemId, x, y);
-        }}
+        style={[
+          styles.dragItem,
+          webGrabStyle,
+          isSelected && styles.dragItemSelected,
+          animatedStyle,
+        ]}
       >
         <Text style={styles.dragText}>{content}</Text>
       </Animated.View>
-    </PanGestureHandler>
+    </GestureDetector>
   );
 };
 
@@ -119,32 +137,19 @@ const DragDropExercise: React.FC<DragDropExerciseProps> = ({
 }) => {
   const { feedbackCorrect, feedbackWrong } = useAnswerFeedback();
   const [matches, setMatches] = useState<Record<string, string>>({});
-  const [activeDrag, setActiveDrag] = useState<string | null>(null);
+  const [selectedItem, setSelectedItem] = useState<string | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
   const [feedback, setFeedback] = useState<string | null>(null);
   const [highlightedZone, setHighlightedZone] = useState<string | null>(null);
   const [isExerciseCompleted, setIsExerciseCompleted] = useState(isCompleted);
   const [shuffledDropZones, setShuffledDropZones] = useState<DropZone[]>([]);
   const hasInitialized = useRef(false);
-  const dropZoneLayouts = useRef<Record<string, DropZoneLayout>>({}).current;
-  const dragItemLayouts = useRef<Record<string, { x: number; y: number }>>(
-    {}
-  ).current;
-
-  const positions = useSharedValue(
-    dragItems.reduce((acc, item) => {
-      acc[item.id] = { x: 0, y: 0 };
-      return acc;
-    }, {} as Record<string, { x: number; y: number }>)
-  );
-
-  useEffect(() => {
-    dragItems.forEach((item, index) => {
-      // Solo inicializar posiciones si el item no está ya colocado
-      if (!matches[item.id]) {
-        positions.value[item.id] = { x: 0, y: index * 70 };
-      }
-    });
-  }, [dragItems, matches]);
+  const zoneRefs = useRef<Record<string, View | null>>({});
+  // Posición de cada zona en la ventana, medida al empezar cada arrastre
+  // (así sigue siendo correcta aunque el usuario haya hecho scroll)
+  const zoneRects = useRef<Record<string, ZoneRect>>({});
+  const highlightedRef = useRef<string | null>(null);
+  const feedbackTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Sincronizar estado completado
   useEffect(() => {
@@ -160,133 +165,114 @@ const DragDropExercise: React.FC<DragDropExerciseProps> = ({
     }
   }, [dropZones.length]);
 
-  const resetPosition = (dragItemId: string) => {
-    const originalY =
-      dragItems.findIndex((item) => item.id === dragItemId) * 70;
-    positions.value = {
-      ...positions.value,
-      [dragItemId]: { x: 0, y: originalY },
-    };
+  useEffect(
+    () => () => {
+      if (feedbackTimer.current) clearTimeout(feedbackTimer.current);
+    },
+    [],
+  );
+
+  const showFeedback = (message: string) => {
+    setFeedback(message);
+    if (feedbackTimer.current) clearTimeout(feedbackTimer.current);
+    feedbackTimer.current = setTimeout(() => setFeedback(null), 2000);
   };
 
-  const handleDrop = (dragItemId: string, dropZoneId: string | null) => {
-    setHighlightedZone(null);
+  const updateHighlight = (zoneId: string | null) => {
+    if (highlightedRef.current === zoneId) return;
+    highlightedRef.current = zoneId;
+    setHighlightedZone(zoneId);
+  };
 
-    if (!dropZoneId) {
-      resetPosition(dragItemId);
-      setActiveDrag(null);
-      return;
+  const zoneAt = (absoluteX: number, absoluteY: number): string | null => {
+    for (const [zoneId, rect] of Object.entries(zoneRects.current)) {
+      if (
+        absoluteX >= rect.x &&
+        absoluteX <= rect.x + rect.width &&
+        absoluteY >= rect.y &&
+        absoluteY <= rect.y + rect.height
+      ) {
+        return zoneId;
+      }
     }
+    return null;
+  };
+
+  const tryMatch = (dragItemId: string, dropZoneId: string) => {
+    if (isExerciseCompleted) return;
+    // Zona ya resuelta: no cuenta como error
+    if (Object.values(matches).includes(dropZoneId)) return;
 
     const isCorrect =
       dropZones.find((zone) => zone.id === dropZoneId)?.correctMatch ===
       dragItemId;
 
-    if (isCorrect) {
-      const newMatches = { ...matches, [dragItemId]: dropZoneId };
-      setMatches(newMatches);
-      setFeedback("¡Correcto!");
-
-      const zone = dropZoneLayouts[dropZoneId];
-      positions.value = {
-        ...positions.value,
-        [dragItemId]: {
-          x: zone.x - width * 0.45 + 15,
-          y: zone.y + 5,
-        },
-      };
-      const allCorrect = dropZones.every(
-        (zone) => newMatches[zone.correctMatch] === zone.id
-      );
-      console.log("allCorrect", allCorrect);
-      feedbackCorrect();
-      if (allCorrect) {
-        runOnJS(setIsExerciseCompleted)(true);
-        runOnJS(onComplete)();
-      }
-    } else {
+    if (!isCorrect) {
       feedbackWrong();
-      setFeedback("Incorrecto, intenta de nuevo");
-      setTimeout(() => resetPosition(dragItemId), 300);
+      showFeedback("Incorrecto, intenta de nuevo");
+      return;
     }
 
-    setActiveDrag(null);
-    setTimeout(() => setFeedback(null), 2000);
+    const newMatches = { ...matches, [dragItemId]: dropZoneId };
+    setMatches(newMatches);
+    setSelectedItem(null);
+    feedbackCorrect();
+    showFeedback("¡Correcto!");
+
+    const allCorrect = dropZones.every(
+      (zone) => newMatches[zone.correctMatch] === zone.id,
+    );
+    if (allCorrect) {
+      setIsExerciseCompleted(true);
+      onComplete();
+    }
   };
 
-  const saveDropZoneLayout = (id: string, layout: DropZoneLayout) => {
-    dropZoneLayouts[id] = layout;
+  const handleDragStart = useCallback((dragItemId: string) => {
+    setIsDragging(true);
+    setSelectedItem(dragItemId);
+    zoneRects.current = {};
+    Object.entries(zoneRefs.current).forEach(([zoneId, node]) => {
+      node?.measureInWindow((x, y, width, height) => {
+        zoneRects.current[zoneId] = { x, y, width, height };
+      });
+    });
+  }, []);
+
+  const handleDragMove = (absoluteX: number, absoluteY: number) => {
+    updateHighlight(zoneAt(absoluteX, absoluteY));
   };
 
-  const saveDragItemLayout = (id: string, x: number, y: number) => {
-    dragItemLayouts[id] = { x, y };
+  const handleDragEnd = (
+    dragItemId: string,
+    absoluteX: number,
+    absoluteY: number,
+  ) => {
+    setIsDragging(false);
+    updateHighlight(null);
+    const zoneId = zoneAt(absoluteX, absoluteY);
+    if (zoneId) {
+      tryMatch(dragItemId, zoneId);
+    } else {
+      setSelectedItem(null);
+    }
   };
 
-  const gestureHandler = useAnimatedGestureHandler({
-    onStart: (_, ctx: { startX: number; startY: number }) => {
-      if (!activeDrag || isExerciseCompleted) return;
-      const currentPosition = positions.value[activeDrag];
-      if (!currentPosition) return;
-      ctx.startX = currentPosition.x;
-      ctx.startY = currentPosition.y;
-      runOnJS(setHighlightedZone)(null);
-    },
-    onActive: (event, ctx) => {
-      if (!activeDrag || isExerciseCompleted) return;
+  const handleItemTap = (dragItemId: string) => {
+    setSelectedItem((current) => (current === dragItemId ? null : dragItemId));
+  };
 
-      positions.value = {
-        ...positions.value,
-        [activeDrag]: {
-          x: ctx.startX + event.translationX,
-          y: ctx.startY + event.translationY,
-        },
-      };
-
-      const activeItem = positions.value[activeDrag];
-      let hoveredZone: string | null = null;
-
-      for (const zoneId in dropZoneLayouts) {
-        const zone = dropZoneLayouts[zoneId];
-        if (
-          activeItem.x + width * 0.45 > zone.x &&
-          activeItem.x < zone.x + zone.width &&
-          activeItem.y > zone.y - 30 &&
-          activeItem.y < zone.y + zone.height + 30
-        ) {
-          hoveredZone = zoneId;
-          break;
-        }
-      }
-
-      runOnJS(setHighlightedZone)(hoveredZone);
-    },
-    onEnd: (event) => {
-      if (!activeDrag || isExerciseCompleted) return;
-      const activeItem = positions.value[activeDrag];
-
-      let matchedZoneId: string | null = null;
-
-      for (const zoneId in dropZoneLayouts) {
-        const zone = dropZoneLayouts[zoneId];
-        if (
-          activeItem.x + width * 0.45 > zone.x &&
-          activeItem.x < zone.x + zone.width &&
-          activeItem.y > zone.y - 30 &&
-          activeItem.y < zone.y + zone.height + 30
-        ) {
-          matchedZoneId = zoneId;
-          break;
-        }
-      }
-
-      runOnJS(handleDrop)(activeDrag, matchedZoneId);
-    },
-  });
+  const handleZonePress = (zoneId: string) => {
+    if (selectedItem) tryMatch(selectedItem, zoneId);
+  };
 
   return (
-    <View style={styles.container}>
+    <GestureHandlerRootView style={styles.container}>
       <Text style={styles.question}>{question}</Text>
       <Text style={styles.instructions}>{instructions}</Text>
+      <Text style={styles.hint}>
+        Arrastra cada elemento, o tócalo y luego toca su pareja.
+      </Text>
 
       {feedback && (
         <View
@@ -303,7 +289,7 @@ const DragDropExercise: React.FC<DragDropExerciseProps> = ({
 
       <View style={styles.columnsContainer}>
         {/* Columna de elementos arrastrables */}
-        <View style={styles.dragColumn}>
+        <View style={[styles.dragColumn, isDragging && styles.columnOnTop]}>
           {dragItems.map(
             (item) =>
               !matches[item.id] && (
@@ -311,50 +297,44 @@ const DragDropExercise: React.FC<DragDropExerciseProps> = ({
                   key={`drag-${item.id}`}
                   itemId={item.id}
                   content={item.content}
-                  positions={positions}
-                  activeDrag={activeDrag}
-                  matches={matches}
-                  gestureHandler={gestureHandler}
-                  isExerciseCompleted={isExerciseCompleted}
-                  setActiveDrag={setActiveDrag}
-                  onLayout={saveDragItemLayout}
+                  disabled={isExerciseCompleted}
+                  isSelected={selectedItem === item.id}
+                  onDragStart={handleDragStart}
+                  onDragMove={handleDragMove}
+                  onDragEnd={handleDragEnd}
+                  onTap={handleItemTap}
                 />
-              )
+              ),
           )}
         </View>
 
         {/* Columna de zonas de destino */}
         <View style={styles.dropColumn}>
-          {shuffledDropZones.map((zone) => (
-            <View
-              key={`zone-${zone.id}`}
-              style={[
-                styles.dropZone,
-                matches[zone.correctMatch] === zone.id &&
-                  styles.dropZoneCorrect,
-                highlightedZone === zone.id && styles.dropZoneHighlighted,
-              ]}
-              onLayout={(event) => {
-                const { x, y, width, height } = event.nativeEvent.layout;
-                saveDropZoneLayout(zone.id, {
-                  id: zone.id,
-                  x,
-                  y,
-                  width,
-                  height,
-                });
-              }}
-            >
-              <Text style={styles.dropText}>
-                {matches[zone.correctMatch] === zone.id
-                  ? `${zone.content} ✓`
-                  : zone.content}
-              </Text>
-              {highlightedZone === zone.id && !matches[zone.correctMatch] && (
-                <View style={styles.dropZoneHoverIndicator} />
-              )}
-            </View>
-          ))}
+          {shuffledDropZones.map((zone) => {
+            const isMatched = matches[zone.correctMatch] === zone.id;
+            return (
+              <Pressable
+                key={`zone-${zone.id}`}
+                ref={(node) => {
+                  zoneRefs.current[zone.id] = node;
+                }}
+                onPress={() => handleZonePress(zone.id)}
+                disabled={isMatched || isExerciseCompleted}
+                style={[
+                  styles.dropZone,
+                  isMatched && styles.dropZoneCorrect,
+                  !isMatched &&
+                    (highlightedZone === zone.id ||
+                      (selectedItem && !isDragging)) &&
+                    styles.dropZoneHighlighted,
+                ]}
+              >
+                <Text style={styles.dropText}>
+                  {isMatched ? `${zone.content} ✓` : zone.content}
+                </Text>
+              </Pressable>
+            );
+          })}
         </View>
       </View>
 
@@ -375,7 +355,7 @@ const DragDropExercise: React.FC<DragDropExerciseProps> = ({
           })}
         </View>
       )}
-    </View>
+    </GestureHandlerRootView>
   );
 };
 
@@ -394,9 +374,15 @@ const styles = StyleSheet.create({
   },
   instructions: {
     fontSize: 16,
-    marginBottom: 20,
+    marginBottom: 6,
     textAlign: "center",
     color: "#666",
+  },
+  hint: {
+    fontSize: 13,
+    marginBottom: 20,
+    textAlign: "center",
+    color: "#9CA3AF",
   },
   feedbackContainer: {
     padding: 10,
@@ -420,7 +406,6 @@ const styles = StyleSheet.create({
   columnsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    minHeight: height * 0.5,
     marginBottom: 20,
   },
   dragColumn: {
@@ -428,6 +413,12 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: "#f9f9f9",
     borderRadius: 10,
+    zIndex: 1,
+  },
+  // El ítem arrastrado debe pintarse por encima de la columna de zonas
+  columnOnTop: {
+    zIndex: 10,
+    elevation: 10,
   },
   dropColumn: {
     width: "45%",
@@ -441,6 +432,15 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#9365FF",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 5,
+  },
+  dragItemSelected: {
+    backgroundColor: "#7E57C2",
+    borderWidth: 2,
+    borderColor: "#4C1D95",
   },
   dragText: {
     color: "white",
@@ -457,8 +457,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#ddd",
     justifyContent: "center",
-    position: "relative",
-    overflow: "hidden",
   },
   dropZoneCorrect: {
     backgroundColor: "#e8f5e9",
@@ -468,21 +466,10 @@ const styles = StyleSheet.create({
     borderColor: "#9365FF",
     backgroundColor: "#f3e5ff",
   },
-  dropZoneHoverIndicator: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    borderWidth: 2,
-    borderColor: "#9365FF",
-    borderRadius: 8,
-  },
   dropText: {
     textAlign: "center",
     color: "#333",
     fontSize: 16,
-    zIndex: 1,
   },
   matchesContainer: {
     marginTop: "auto",
