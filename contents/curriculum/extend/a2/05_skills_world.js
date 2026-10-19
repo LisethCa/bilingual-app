@@ -23,9 +23,9 @@ module.exports = {
   A2_changes_transformations: [
     fill("Practica: cambios en progreso", [
       "My English ___ better and better. | is getting | gets, get",
-      "Water ___ at 100°C. | boils | is boiling, boil",
+      "Ice ___ when it gets warm. | melts | is melting, melt",
       "Look! It ___ dark. Let's go home. | is getting | gets, get",
-      "She ___ a doctor in 2020. | became | is becoming, becomes",
+      "He ___ a father last year. | became | is becoming, becomes",
       "Technology ___ very fast nowadays. | is changing | change, are changing",
     ]),
     fill("Practica: transformaciones", [
@@ -41,7 +41,7 @@ module.exports = {
   A2_multiple_choice: [
     fill("Practica: comparativos y superlativos", [
       "Which is ___, a cat or a dog? | bigger | biggest, more big",
-      "Mount Everest is the ___ mountain in the world. | highest | higher, most high",
+      "The Nile is the ___ river in Africa. | longest | longer, most long",
       "This book is ___ than the movie. | more interesting | interestinger, most interesting",
       "My cold is ___ today than yesterday. | worse | badder, worst",
       "It's the ___ expensive hotel in the city. | most | more, much",
@@ -91,7 +91,7 @@ module.exports = {
       "She ___ a cake for my birthday. | made | maked, make",
       "We ___ a great time at the party. | had | haved, have",
       "I ___ a letter from my friend. | got | getted, get",
-      "Did you ___ the new movie? | see | saw, seen",
+      "Did you ___ the news yesterday? | hear | heard, hears",
     ]),
     build("Practica: en negativo", "🍕 No comimos pizza anoche", "We didn't eat pizza last night", ["ate", "weren't"]),
   ],
@@ -138,7 +138,7 @@ module.exports = {
       "You ___ throw garbage in the river. | mustn't | must, have to",
       "She ___ to take the bus. Her car is broken. | has | have, must",
       "You ___ bring bags. The store gives them for free. | don't have to | must, mustn't",
-      "We have ___ save water. | to | for, at",
+      "We have ___ turn off the lights when we leave. | to | for, at",
     ]),
     fill("Practica: medio ambiente", [
       "Air ___ is a big problem in big cities. | pollution | recycling, planet",
@@ -170,7 +170,7 @@ module.exports = {
 
   A2_environment_sustainability: [
     fill("Practica: hábitos sostenibles", [
-      "We ___ use renewable energy. | should | shouldn't, should to",
+      "We ___ take shorter showers. | should | shouldn't, should to",
       "You ought to ___ your bags. | reuse | reusing, reused",
       "People ___ waste so much food. | shouldn't | should, ought",
       "___ we install solar panels? | Should | Ought, Do should",

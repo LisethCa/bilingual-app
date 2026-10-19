@@ -5,7 +5,7 @@ module.exports = {
   A2_business_meetings: [
     fill("Practica: proponer ideas", [
       "___ start the meeting now. | Let's | Why don't, How about",
-      "Why don't we ___ a break? | take | taking, to take",
+      "Why don't we ___ the client tomorrow? | call | calling, to call",
       "How about ___ the meeting to Friday? | moving | move, to move",
       "What about ___ a new supplier? | finding | find, found",
       "I ___ with you. It's a good idea. | agree | am agree, agreeing",
@@ -35,7 +35,7 @@ module.exports = {
       "It's a good ___: two for the price of one. | deal | client, contract",
       "Call ___ if you have a problem with your order. | customer service | contract, deal",
     ]),
-    build("Practica: shall I", "📞 ¿Quiere que le envíe la cotización?", "Shall I send you the quote?", ["Will", "sending"]),
+    build("Practica: shall I", "📄 ¿Quiere que le prepare el contrato?", "Shall I prepare the contract?", ["Will", "preparing"]),
   ],
 
   A2_professional_presentations: [
@@ -59,7 +59,7 @@ module.exports = {
   A2_remote_work_skills: [
     fill("Practica: tendencias y pedidos", [
       "Nowadays more people ___ from home. | are working | is working, works",
-      "Can you ___ your screen, please? | share | sharing, to share",
+      "Can you ___ the meeting link in the chat? | send | sending, to send",
       "Please ___ your microphone. There is noise. | mute | muting, to mute",
       "Right now I ___ a video call. | am hosting | host, hosts",
       "These days companies ___ more virtual teams. | are using | is using, uses",
@@ -159,14 +159,14 @@ module.exports = {
       "Have you seen any good movies ___? | recently | last week, ago",
       "I've known her ___ we were children. | since | for, ago",
       "She went to Paris two years ___. | ago | since, for",
-      "Have you ___ been to Japan? | ever | since, ago",
+      "Has she ___ tried sushi? | ever | since, ago",
     ]),
     build("Practica: ya lo leí", "📖 Ya he leído ese libro", "I have already read that book", ["yet", "did"]),
   ],
 
   A2_abilities_skills: [
     fill("Practica: can, could, be able to", [
-      "I ___ swim when I was five. | could | can, will be able to",
+      "My grandpa ___ run very fast when he was young. | could | can, will be able to",
       "Next year I ___ speak English well. | will be able to | can, could",
       "She ___ play the piano now. | can | could, will able to",
       "He ___ come to the party yesterday. He was sick. | couldn't | can't, won't be able to",

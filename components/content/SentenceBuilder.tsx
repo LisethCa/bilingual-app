@@ -33,6 +33,29 @@ const normalizeSentence = (sentence: string) =>
     .replace(/\s+/g, " ")
     .trim();
 
+const toWords = (sentence: string) => normalizeSentence(sentence).split(" ").filter(Boolean);
+const sameWords = (a: string[], b: string[]) =>
+  a.length === b.length && [...a].sort().join(" ") === [...b].sort().join(" ");
+
+// Intentos fallidos antes de ofrecer "Ver respuesta"
+const ATTEMPTS_BEFORE_REVEAL = 3;
+
+// Pista según en qué se diferencia el intento de la respuesta más parecida
+const getHint = (userSentence: string, correctAnswers: string[]) => {
+  const user = toWords(userSentence);
+  const answers = correctAnswers.map(toWords);
+  if (answers.some((a) => sameWords(a, user))) return "Las palabras son correctas, revisa el orden.";
+  const closest = answers.reduce((best, a) =>
+    Math.abs(a.length - user.length) < Math.abs(best.length - user.length) ? a : best,
+  );
+  const diff = closest.length - user.length;
+  if (diff === 1) return "Te falta una palabra.";
+  if (diff > 1) return `Te faltan ${diff} palabras.`;
+  if (diff === -1) return "Te sobra una palabra.";
+  if (diff < -1) return `Te sobran ${-diff} palabras.`;
+  return "Hay alguna palabra que no va. Prueba cambiar alguna.";
+};
+
 const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
   config,
   onComplete,
@@ -73,6 +96,9 @@ const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
   const [showCompletion, setShowCompletion] = useState(false);
   const [isExerciseCompleted, setIsExerciseCompleted] = useState(isCompleted);
   const [completedSentence, setCompletedSentence] = useState<string>("");
+  const [hint, setHint] = useState<string | null>(null);
+  const [failedAttempts, setFailedAttempts] = useState(0);
+  const [showAnswer, setShowAnswer] = useState(false);
 
   // Inicializar palabras
   useEffect(() => {
@@ -122,6 +148,7 @@ const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
 
   const handleSelectWord = (word: string, index: number) => {
     if (isExerciseCompleted) return;
+    setHint(null);
     const newRemaining = [...remainingWords];
     newRemaining.splice(index, 1);
     setRemainingWords(newRemaining);
@@ -131,6 +158,7 @@ const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
 
   const handleDeselectWord = (word: string, index: number) => {
     if (isExerciseCompleted) return;
+    setHint(null);
     const newSelected = [...selectedWords];
     newSelected.splice(index, 1);
     setSelectedWords(newSelected);
@@ -147,6 +175,7 @@ const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
     );
 
     if (isCorrect) {
+      setHint(null);
       feedbackCorrect();
       setShowSuccess(true);
       setIsExerciseCompleted(true);
@@ -164,6 +193,8 @@ const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
       onComplete();
     } else {
       feedbackWrong();
+      setHint(getHint(userSentence, safeConfig.correctAnswers));
+      setFailedAttempts((n) => n + 1);
       // Animación de error
       Animated.sequence([
         Animated.timing(shakeAnim, {
@@ -271,6 +302,12 @@ const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
         )}
       </Animated.View>
 
+      {hint && !isExerciseCompleted && (
+        <View style={styles.hintBox}>
+          <Text style={styles.hintText}>💡 {hint}</Text>
+        </View>
+      )}
+
       <View style={styles.wordBankContainer}>
         <Text style={styles.wordBankTitle}>Palabras disponibles:</Text>
         <View style={[styles.wordBank, !hasStarted && styles.disabledArea]}>
@@ -312,6 +349,20 @@ const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
               </Text>
             </TouchableOpacity>
           )}
+
+          {!isExerciseCompleted &&
+            !isTimeUp &&
+            failedAttempts >= ATTEMPTS_BEFORE_REVEAL &&
+            (showAnswer ? (
+              <View style={styles.solution}>
+                <Text>Respuesta:</Text>
+                <Text style={styles.solutionText}>{safeConfig.correctAnswers[0]}</Text>
+              </View>
+            ) : (
+              <TouchableOpacity style={styles.revealButton} onPress={() => setShowAnswer(true)}>
+                <Text style={styles.revealText}>Ver respuesta</Text>
+              </TouchableOpacity>
+            ))}
 
           {isExerciseCompleted && (
             <View style={styles.completionBanner}>
@@ -424,6 +475,30 @@ const styles = StyleSheet.create({
   solutionText: {
     marginTop: 5,
     fontStyle: "italic",
+  },
+  hintBox: {
+    backgroundColor: "#FFF8E1",
+    borderColor: "#FFE082",
+    borderWidth: 1,
+    borderRadius: 8,
+    padding: 12,
+    marginTop: -8,
+    marginBottom: 16,
+  },
+  hintText: {
+    color: "#6D4C00",
+    fontSize: 15,
+  },
+  revealButton: {
+    marginTop: 12,
+    padding: 12,
+    alignItems: "center",
+  },
+  revealText: {
+    color: "#4C1D95",
+    fontSize: 15,
+    fontWeight: "600",
+    textDecorationLine: "underline",
   },
 
   instructions: {
