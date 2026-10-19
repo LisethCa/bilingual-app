@@ -3,6 +3,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import * as WebBrowser from "expo-web-browser";
 import React, { useEffect, useState } from "react";
 import { Alert, Button, Platform, Text, View } from "react-native";
+import PurchaseResultModal, { PurchaseResult } from "./PurchaseResultModal";
 
 type LevelId = "A1" | "A2" | "B1";
 
@@ -16,15 +17,6 @@ const formatUsd = (amount: number) => `USD ${amount}`;
 
 const formatCop = (amount: number) =>
   `$${new Intl.NumberFormat("es-CO", { maximumFractionDigits: 0 }).format(amount)} COP`;
-
-// Alert.alert no hace nada en react-native-web
-const notify = (title: string, message: string) => {
-  if (Platform.OS === "web") {
-    window.alert(`${title}\n${message}`);
-  } else {
-    Alert.alert(title, message);
-  }
-};
 
 interface LevelPrice {
   usd: number;
@@ -40,6 +32,9 @@ export default function PurchaseLevel({
   const [price, setPrice] = useState<LevelPrice | null>(null);
   // El backend decide si se muestra el pago simulado (ENABLE_SIMULATED_PAYMENTS)
   const [canSimulate, setCanSimulate] = useState(false);
+  const [simulateResult, setSimulateResult] = useState<PurchaseResult | null>(
+    null,
+  );
   const { user } = useAuth();
 
   // Trae el precio desde el backend (también lo despierta si está dormido en Render)
@@ -149,14 +144,25 @@ export default function PurchaseLevel({
         throw new Error(errorData.error || "No se pudo simular el pago");
       }
 
-      notify("Pago simulado", `Nivel ${levelId} desbloqueado.`);
-      onPurchased?.(levelId);
-      onClose();
+      setSimulateResult({ type: "success", levelId });
     } catch (error: any) {
-      notify("Error", error.message || "No se pudo simular el pago.");
+      setSimulateResult({
+        type: "error",
+        message: error.message || "No se pudo simular el pago.",
+      });
       console.error("Simulated payment error:", error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  // El nivel se marca comprado al cerrar el modal, para que se vea la animación
+  const handleResultDismiss = () => {
+    const succeeded = simulateResult?.type === "success";
+    setSimulateResult(null);
+    if (succeeded) {
+      onPurchased?.(levelId);
+      onClose();
     }
   };
 
@@ -208,6 +214,11 @@ export default function PurchaseLevel({
       <View style={{ marginTop: 10 }}>
         <Button title="Cancelar" onPress={onClose} color="red" />
       </View>
+
+      <PurchaseResultModal
+        result={simulateResult}
+        onDismiss={handleResultDismiss}
+      />
     </View>
   );
 }
