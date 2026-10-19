@@ -1,0 +1,21 @@
+# Netlify: web export estático de Expo (equivalente a firebase.json hosting)
+[build]
+  command = "npx expo export -p web"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # Las EXPO_PUBLIC_* se cargan en Netlify > Site configuration > Environment variables
+  # (EXPO_PUBLIC_BACKEND_URL, EXPO_PUBLIC_WEB_CLIENT_ID, EXPO_PUBLIC_ANDROID_CLIENT_ID, EXPO_PUBLIC_PLATFORM)
+
+# Bundles con hash: cache largo
+[[headers]]
+  for = "/_expo/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Fallback SPA: rutas sin HTML generado van a index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

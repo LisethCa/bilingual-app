@@ -8,49 +8,39 @@ import {
   View,
 } from "react-native";
 
-import { useAuth } from "@/contexts/AuthContext";
-
-import { db } from "@/lib/firebaseConfig";
-import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { API_ENDPOINTS } from "@/constants/api";
 
 export default function PaymentSuccess() {
-  const { session_id, levelId, userId } = useLocalSearchParams();
+  // Mercado Pago agrega payment_id, status, external_reference, etc. a la back_url
+  const { payment_id } = useLocalSearchParams<{ payment_id?: string }>();
   const router = useRouter();
-  const { user } = useAuth();
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("Verificando pago...");
 
   useEffect(() => {
     const verifyPayment = async () => {
       try {
-        if (!session_id || !levelId || !userId) {
+        if (!payment_id || payment_id === "null") {
           throw new Error("Parámetros de pago incompletos");
         }
 
-        // Verificar con el backend
-        const response = await fetch(
-          `https://billingual-app-back.onrender.com/verify-payment/${session_id}`
-        );
+        // El backend consulta el pago a Mercado Pago y desbloquea el nivel
+        const response = await fetch(API_ENDPOINTS.VERIFY_PAYMENT(payment_id));
 
         if (!response.ok) {
           throw new Error("No se pudo verificar el pago");
         }
 
-        const paymentData = await response.json();
+        const { status, levelId } = await response.json();
 
-        if (paymentData.status === "paid") {
-          // Actualizar Firebase
-          if (user && user.uid === userId) {
-            await updateDoc(doc(db, "userProgress", user.uid), {
-              [`purchasedLevels.${levelId}`]: true,
-              unlockedLevels: arrayUnion(levelId),
-              lastPurchase: new Date(),
-            });
-          }
-
+        if (status === "approved") {
           setMessage(`¡Pago exitoso! Nivel ${levelId} desbloqueado.`);
+        } else if (status === "pending" || status === "in_process") {
+          setMessage(
+            "Tu pago está pendiente de acreditación. El nivel se desbloqueará automáticamente cuando se confirme.",
+          );
         } else {
-          setMessage("Pago aún no confirmado. Espere unos momentos...");
+          setMessage("El pago no fue aprobado. Contacte soporte si se le cobró.");
         }
       } catch (error) {
         console.error("Error verifying payment:", error);
@@ -61,7 +51,7 @@ export default function PaymentSuccess() {
     };
 
     verifyPayment();
-  }, [session_id, levelId, userId, user]);
+  }, [payment_id]);
 
   return (
     <View
@@ -73,7 +63,7 @@ export default function PaymentSuccess() {
       }}
     >
       <Text style={{ fontSize: 24, fontWeight: "bold", marginBottom: 20 }}>
-        ✅ Pago Exitoso
+        Estado del pago
       </Text>
 
       {loading ? (

@@ -1,4 +1,5 @@
 import { CompletionMessage } from "@/components/ui/CompletionMessage";
+import { useAnswerFeedback } from "@/lib/answerFeedback";
 import { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
@@ -9,6 +10,7 @@ export default function FillBlankExercise({
   questions: any[];
   onComplete: () => void;
 }) {
+  const { feedbackCorrect, feedbackWrong } = useAnswerFeedback();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [correctCount, setCorrectCount] = useState(0);
@@ -39,6 +41,8 @@ export default function FillBlankExercise({
     setSelectedOption(option);
 
     const isCorrect = option === correctAnswer;
+    if (isCorrect) feedbackCorrect();
+    else feedbackWrong();
 
     setTimeout(() => {
       const newCorrectCount = isCorrect ? correctCount + 1 : correctCount;

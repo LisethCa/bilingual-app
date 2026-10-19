@@ -1,4 +1,5 @@
 import { CompletionMessage } from "@/components/ui/CompletionMessage";
+import { useAnswerFeedback } from "@/lib/answerFeedback";
 import { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
@@ -29,6 +30,7 @@ export default function ImageSelectionExercise({
   isCompleted = false,
   completedIndex = null,
 }: ImageSelectionExerciseProps) {
+  const { feedbackCorrect, feedbackWrong } = useAnswerFeedback();
   const [selected, setSelected] = useState<number | null>(null);
   const [completed, setCompleted] = useState(isCompleted);
   const [showCompletion, setShowCompletion] = useState(false);
@@ -52,7 +54,10 @@ export default function ImageSelectionExercise({
 
     setSelected(index);
 
-    if (safeOptions[index]?.correct) {
+    if (!safeOptions[index]?.correct) {
+      feedbackWrong();
+    } else {
+      feedbackCorrect();
       setCompleted(true);
       setShowCompletion(true);
       // Mantener la selección y notificar al padre después de la animación

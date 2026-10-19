@@ -12,8 +12,6 @@ import {
   summarizeXp,
   XP,
 } from "@/services/xpService";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 import { useRouter } from "expo-router";
 import { signOut } from "firebase/auth";
 import {
@@ -49,10 +47,11 @@ interface Level {
   missions: any[];
 }
 
-const availableLevels: { id: LevelId; name: string }[] = [
+// comingSoon: nivel sin contenido todavía. Se muestra con candado y no se puede comprar.
+const availableLevels: { id: LevelId; name: string; comingSoon?: boolean }[] = [
   { id: "A1", name: "A1 - Principiante" },
   { id: "A2", name: "A2 - Básico" },
-  { id: "B1", name: "B1 - Intermedio" },
+  { id: "B1", name: "B1 - Intermedio", comingSoon: true },
 ];
 
 interface ProgressData {
@@ -81,15 +80,6 @@ interface ProgressData {
 }
 
 type LevelId = "A1" | "A2" | "B1";
-
-const LEVEL_PRICES: Record<LevelId, number> = {
-  A1: 100,
-  A2: 150,
-  B1: 200,
-};
-
-const STRIPE_PUBLIC_KEY = process.env.EXPO_PUBLIC_STRIPE_PUBLIC_KEY;
-const stripePromise = loadStripe(STRIPE_PUBLIC_KEY ? STRIPE_PUBLIC_KEY : "");
 
 export default function Dashboard() {
   const router = useRouter();
@@ -591,6 +581,26 @@ export default function Dashboard() {
           </Text>
         </View>
         {availableLevels.map((level, i) => {
+          if (level.comingSoon) {
+            return (
+              <View
+                key={level.id}
+                style={[styles.levelCard, styles.comingSoonCard]}
+              >
+                <View style={styles.levelHeader}>
+                  <Text style={styles.levelTitle}>Nivel {level.name}</Text>
+                  <Text style={styles.comingSoonBadge}>🔒 Próximamente</Text>
+                </View>
+                <Text style={styles.comingSoonText}>
+                  Estamos preparando este nivel. ¡Muy pronto disponible!
+                </Text>
+                <View style={[styles.levelButton, styles.comingSoonButton]}>
+                  <Text style={styles.comingSoonButtonText}>Próximamente</Text>
+                </View>
+              </View>
+            );
+          }
+
           const stats = xp.byLevel[level.id];
           const completedCount = stats.lessonsDone + stats.readingsDone;
 
@@ -670,17 +680,39 @@ export default function Dashboard() {
 
               {/* Modal de pago */}
               {selectedLevel === level.id && (
-                <Elements stripe={stripePromise}>
-                  <PurchaseLevel
-                    levelId={selectedLevel}
-                    onClose={() => setSelectedLevel(null)}
-                    levelPrices={LEVEL_PRICES}
-                  />
-                </Elements>
+                <PurchaseLevel
+                  levelId={selectedLevel}
+                  onClose={() => setSelectedLevel(null)}
+                  onPurchased={(purchasedId) =>
+                    setProgress((prev) => ({
+                      ...prev,
+                      purchasedLevels: {
+                        ...prev.purchasedLevels,
+                        [purchasedId]: true,
+                      },
+                    }))
+                  }
+                />
               )}
             </View>
           );
         })}
+
+        {user && (
+          <View style={styles.levelCard}>
+            <Text style={styles.levelTitle}>💬 ¿Qué te parece la app?</Text>
+            <Text style={styles.feedbackText}>
+              Tu opinión nos ayuda a decidir qué mejorar y qué contenido
+              agregar.
+            </Text>
+            <TouchableOpacity
+              onPress={() => router.push("/feedback")}
+              style={styles.levelButton}
+            >
+              <Text style={styles.buttonText}>Dejar mi opinión</Text>
+            </TouchableOpacity>
+          </View>
+        )}
 
         {user && (
           <Button
@@ -1181,6 +1213,34 @@ const styles = StyleSheet.create({
   },
   buyButton: {
     backgroundColor: "#FF9500", // Color naranja para comprar
+  },
+  feedbackText: {
+    color: "#666",
+    marginTop: 6,
+  },
+  comingSoonCard: {
+    opacity: 0.85,
+  },
+  comingSoonBadge: {
+    color: "#777",
+    fontWeight: "bold",
+    fontSize: 12,
+    backgroundColor: "#EEEEEE",
+    paddingVertical: 4,
+    paddingHorizontal: 8,
+    borderRadius: 4,
+  },
+  comingSoonText: {
+    color: "#666",
+  },
+  comingSoonButton: {
+    backgroundColor: "#BDBDBD",
+    shadowOpacity: 0,
+    elevation: 0,
+  },
+  comingSoonButtonText: {
+    color: "#FFFFFF",
+    fontWeight: "600",
   },
   nextLevelHint: {
     color: "#D82989",

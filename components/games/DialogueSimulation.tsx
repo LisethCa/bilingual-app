@@ -1,5 +1,6 @@
 // components/Games/DialogueSimulation.tsx
 import { CompletionMessage } from "@/components/ui/CompletionMessage";
+import { useAnswerFeedback } from "@/lib/answerFeedback";
 import React, { useEffect, useState } from "react";
 import {
   ScrollView,
@@ -36,6 +37,7 @@ const DialogueSimulation: React.FC<DialogueSimulationProps> = ({
   onComplete,
   isCompleted = false,
 }) => {
+  const { feedbackCorrect, feedbackWrong } = useAnswerFeedback();
   const [currentStep, setCurrentStep] = useState(0);
   const [isExerciseCompleted, setIsExerciseCompleted] = useState(isCompleted);
   const [showCompletion, setShowCompletion] = useState(false);
@@ -105,6 +107,7 @@ const DialogueSimulation: React.FC<DialogueSimulationProps> = ({
         (o) => typeof o !== "string" && o.correct,
       );
       if (hasCorrectOption && (typeof option === "string" || !option.correct)) {
+        feedbackWrong();
         setWrongFeedback(
           (typeof option !== "string" && option.feedback) ||
             "Esa respuesta no encaja. Intenta de nuevo.",
@@ -112,6 +115,7 @@ const DialogueSimulation: React.FC<DialogueSimulationProps> = ({
         return;
       }
       setWrongFeedback(null);
+      if (hasCorrectOption) feedbackCorrect();
 
       const optionText = getOptionText(option);
       const userEntry = { speaker: "Tú", text: optionText };

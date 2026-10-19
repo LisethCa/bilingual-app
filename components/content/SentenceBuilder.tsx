@@ -1,4 +1,5 @@
 import { CompletionMessage } from "@/components/ui/CompletionMessage";
+import { useAnswerFeedback } from "@/lib/answerFeedback";
 import React, { useEffect, useState } from "react";
 import {
   Animated,
@@ -40,6 +41,7 @@ const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
   onExerciseData,
   question, // <--- Debemos extraerlo de las props aquí
 }) => {
+  const { feedbackCorrect, feedbackWrong } = useAnswerFeedback();
   // Valores por defecto seguros
   const safeConfig = {
     wordBank: config?.wordBank || [],
@@ -145,6 +147,7 @@ const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
     );
 
     if (isCorrect) {
+      feedbackCorrect();
       setShowSuccess(true);
       setIsExerciseCompleted(true);
       setCompletedSentence(userSentence);
@@ -160,6 +163,7 @@ const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
       // Esto es importante para mantener el estado completado cuando el componente se re-renderiza
       onComplete();
     } else {
+      feedbackWrong();
       // Animación de error
       Animated.sequence([
         Animated.timing(shakeAnim, {

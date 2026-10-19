@@ -29,6 +29,7 @@ export default function RootLayout() {
           <Stack.Screen name="lesson/[id]" options={{ title: "Lección" }} />
           <Stack.Screen name="readings/[level]" options={{ title: "Lecturas" }} />
           <Stack.Screen name="reading/[id]" options={{ title: "Lectura" }} />
+          <Stack.Screen name="feedback" options={{ title: "Tu opinión" }} />
           <Stack.Screen
             name="payment-success"
             options={{
