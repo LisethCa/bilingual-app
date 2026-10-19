@@ -1,0 +1,3139 @@
+{
+ "lessons": {
+  "A1_daily_routine": {
+   "title": "Daily Routine",
+   "metadata": {
+    "estimatedDuration": 30,
+    "level": "A1",
+    "module": "basics",
+    "tags": [
+     "daily_routines",
+     "present_simple",
+     "habits",
+     "actions",
+     "verbs"
+    ],
+    "xpReward": 120,
+    "unit": "unitA1_daily_lifestyle"
+   },
+   "objectives": [
+    "Describe daily activities using present simple",
+    "Use frequency adverbs (always, usually, sometimes, never)",
+    "Talk about habits and routines in first person",
+    "Sequence daily activities in chronological order"
+   ],
+   "content": {
+    "exercises": [
+     {
+      "title": "Complete the Daily Actions",
+      "id": "ex1_daily_actions",
+      "instructions": "Select the correct verb phrase to complete each sentence.",
+      "feedback": {},
+      "config": {
+       "questions": [
+        {
+         "sentence": "In the morning, I ___ at 7am.",
+         "options": [
+          "wake up",
+          "go to bed",
+          "have dinner"
+         ],
+         "answer": "wake up"
+        },
+        {
+         "options": [
+          "brush",
+          "wash",
+          "clean"
+         ],
+         "answer": "brush",
+         "sentence": "Before breakfast, I ___ my teeth."
+        },
+        {
+         "answer": "take",
+         "options": [
+          "make",
+          "take",
+          "do"
+         ],
+         "sentence": "I usually ___ a shower before work."
+        },
+        {
+         "sentence": "At 1pm, I ___ lunch.",
+         "options": [
+          "make",
+          "have",
+          "take"
+         ],
+         "answer": "have"
+        },
+        {
+         "options": [
+          "see",
+          "watch",
+          "look"
+         ],
+         "answer": "watch",
+         "sentence": "After work, I like to ___ TV."
+        },
+        {
+         "sentence": "I ___ to bed at 11pm.",
+         "options": [
+          "go",
+          "get",
+          "make"
+         ],
+         "answer": "go"
+        }
+       ]
+      },
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "type": "fill_in_blank",
+      "question": ""
+     },
+     {
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "type": "sentence_formation",
+      "question": "",
+      "title": "Build Your Morning Routine",
+      "id": "ex2_sentence_formation_1",
+      "instructions": "Order the words to make a correct sentence about waking up.",
+      "config": {
+       "correctAnswers": [
+        "I wake up at 7am every day"
+       ],
+       "timeLimit": 45,
+       "question": "🌅 Make a sentence about your wake-up time",
+       "showStartButton": true,
+       "title": "Form the sentence",
+       "requiredWords": [
+        "wake up",
+        "every",
+        "day"
+       ],
+       "wordBank": [
+        "I",
+        "wake up",
+        "at",
+        "7am",
+        "every",
+        "day"
+       ]
+      },
+      "feedback": {}
+     },
+     {
+      "type": "sentence_formation",
+      "question": "",
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "config": {
+       "correctAnswers": [
+        "I have breakfast with my family"
+       ],
+       "timeLimit": 45,
+       "question": "🍳 Make a sentence about breakfast with family",
+       "showStartButton": true,
+       "title": "Form the sentence",
+       "requiredWords": [
+        "have",
+        "breakfast",
+        "family"
+       ],
+       "wordBank": [
+        "I",
+        "have",
+        "breakfast",
+        "with",
+        "my",
+        "family"
+       ]
+      },
+      "feedback": {},
+      "instructions": "Order the words to make a correct sentence about breakfast.",
+      "id": "ex3_sentence_formation_2",
+      "title": "Build Your Breakfast Routine"
+     },
+     {
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "type": "sentence_formation",
+      "question": "",
+      "title": "Build Your Evening Routine",
+      "id": "ex4_sentence_formation_3",
+      "instructions": "Order the words to make a correct sentence about dinner.",
+      "feedback": {},
+      "config": {
+       "wordBank": [
+        "I",
+        "usually",
+        "have",
+        "dinner",
+        "at",
+        "8pm"
+       ],
+       "requiredWords": [
+        "dinner",
+        "usually"
+       ],
+       "title": "Form the sentence",
+       "showStartButton": true,
+       "question": "🍽️ Make a sentence about your dinner time",
+       "correctAnswers": [
+        "I usually have dinner at 8pm"
+       ],
+       "timeLimit": 45
+      }
+     },
+     {
+      "feedback": {},
+      "config": {
+       "questions": [
+        {
+         "options": [
+          "always",
+          "sometimes",
+          "never"
+         ],
+         "answer": "always",
+         "sentence": "I ___ wake up at 7am. (100%)"
+        },
+        {
+         "sentence": "I ___ have coffee in the morning. (80%)",
+         "options": [
+          "never",
+          "usually",
+          "sometimes"
+         ],
+         "answer": "usually"
+        },
+        {
+         "sentence": "I ___ exercise on weekends. (50%)",
+         "answer": "sometimes",
+         "options": [
+          "always",
+          "usually",
+          "sometimes"
+         ]
+        },
+        {
+         "sentence": "I ___ go to bed late. (0%)",
+         "options": [
+          "usually",
+          "sometimes",
+          "never"
+         ],
+         "answer": "never"
+        }
+       ]
+      },
+      "instructions": "Select the correct frequency adverb (always, usually, sometimes, never).",
+      "id": "ex5_frequency_adverbs",
+      "title": "Frequency Adverbs",
+      "type": "fill_in_blank",
+      "question": "",
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     },
+     {
+      "instructions": "Listen and type what you hear.",
+      "config": {
+       "slowAudioUrl": "https://res.cloudinary.com/ddowwkgy0/video/upload/v1779889471/I_wake_up_take_a_shower_and_have_breakfast_slow_e62gv4.mp3",
+       "audioUrl": "https://res.cloudinary.com/ddowwkgy0/video/upload/v1779889394/I_wake_up_take_a_shower_and_have_breakfast_lmguhm.mp3",
+       "wordBank": [
+        "I",
+        "wake up",
+        "at",
+        "7am",
+        "then",
+        "take",
+        "a",
+        "shower",
+        "and",
+        "have",
+        "breakfast",
+        "I"
+       ],
+       "correctSentence": "I wake up at 7am, then I take a shower and have breakfast"
+      },
+      "feedback": {},
+      "title": "Listening: Daily Routine",
+      "id": "ex6_listening_routine",
+      "question": "",
+      "type": "listening_transcription",
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     },
+     {
+      "instructions": "Listen and repeat the sentence about your daily routine.",
+      "feedback": {},
+      "config": {
+       "audioUrl": "https://res.cloudinary.com/ddowwkgy0/video/upload/v1779889394/I_wake_up_take_a_shower_and_have_breakfast_lmguhm.mp3",
+       "phrase": "I wake up, take a shower, and have breakfast",
+       "language": "en-US",
+       "translation": "Me despierto, me ducho y desayuno"
+      },
+      "id": "ex7_pronunciation_routine",
+      "title": "Pronunciation: Daily Actions",
+      "question": "",
+      "type": "pronunciation",
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     },
+     {
+      "id": "ex8_dialogue_routine",
+      "type": "dialogue_simulation",
+      "title": "Dialogue: Talking About Your Day",
+      "instructions": "Elige la respuesta correcta para continuar la conversación.",
+      "question": "",
+      "config": {
+       "scenario": "Dos amigos hablan de sus rutinas",
+       "dialogues": [
+        {
+         "character": "Friend",
+         "text": "What time do you wake up?",
+         "options": [
+          {
+           "text": "I wake up at 7am.",
+           "correct": true,
+           "feedback": "✅ ¡Correcto!"
+          },
+          {
+           "text": "I waking up at 7am.",
+           "correct": false,
+           "feedback": "❌ Presente simple: 'I wake up'."
+          }
+         ]
+        },
+        {
+         "character": "Friend",
+         "text": "Do you exercise every day?",
+         "options": [
+          {
+           "text": "No, I exercise usually three times a week.",
+           "correct": false,
+           "feedback": "❌ El adverbio va antes del verbo."
+          },
+          {
+           "text": "No, I usually exercise three times a week.",
+           "correct": true,
+           "feedback": "✅ ¡Correcto!"
+          }
+         ]
+        },
+        {
+         "character": "Friend",
+         "text": "What do you do after work?",
+         "options": [
+          {
+           "text": "I have dinner and then watch TV.",
+           "correct": true,
+           "feedback": "✅ ¡Correcto!"
+          },
+          {
+           "text": "I having dinner and watching TV.",
+           "correct": false,
+           "feedback": "❌ Presente simple: 'have' y 'watch'."
+          }
+         ]
+        }
+       ]
+      },
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     },
+     {
+      "title": "Sequence Your Routine (First, Then, After that)",
+      "id": "ex9_sequence_words",
+      "config": {
+       "title": "Form the sequence",
+       "requiredWords": [
+        "First",
+        "then",
+        "wake up",
+        "shower"
+       ],
+       "wordBank": [
+        "First",
+        "I",
+        "wake up",
+        "then",
+        "I",
+        "take a shower"
+       ],
+       "question": "📋 Use 'First... then...' to sequence your morning",
+       "showStartButton": true,
+       "correctAnswers": [
+        "First I wake up, then I take a shower",
+        "First I wake up then I take a shower"
+       ],
+       "timeLimit": 60
+      },
+      "feedback": {},
+      "instructions": "Order the words to make a sentence using sequence words.",
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "type": "sentence_formation",
+      "question": ""
+     },
+     {
+      "type": "drag_drop",
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "feedback": {},
+      "dragItems": [],
+      "title": "Order the Daily Routine",
+      "dropZones": [],
+      "question": "",
+      "config": {
+       "question": "Ordena las palabras para formar la rutina diaria correcta",
+       "sentenceTemplates": [
+        "__, __",
+        "__, __",
+        "__, __",
+        "__, __",
+        "__, __"
+       ],
+       "pairs": [
+        {
+         "id": "pair1",
+         "from": "First",
+         "to": "I wake up"
+        },
+        {
+         "id": "pair2",
+         "from": "Then",
+         "to": "I take a shower"
+        },
+        {
+         "to": "I have breakfast",
+         "id": "pair3",
+         "from": "After that"
+        },
+        {
+         "from": "Next",
+         "to": "I go to work",
+         "id": "pair4"
+        },
+        {
+         "id": "pair5",
+         "from": "Finally",
+         "to": "I go to bed"
+        }
+       ]
+      },
+      "instructions": "Drag and drop to complete the daily routine in order.",
+      "id": "ex10_drag_drop_routine"
+     },
+     {
+      "id": "x1_fill_in_blank",
+      "type": "fill_in_blank",
+      "title": "Practica: rutina con he / she",
+      "instructions": "Elige la opción correcta para completar cada oración.",
+      "question": "",
+      "config": {
+       "questions": [
+        {
+         "sentence": "She ___ up at seven every day.",
+         "options": [
+          "wakes",
+          "wake",
+          "waking"
+         ],
+         "answer": "wakes"
+        },
+        {
+         "sentence": "My brother ___ a shower in the morning.",
+         "options": [
+          "take",
+          "takes",
+          "taking"
+         ],
+         "answer": "takes"
+        },
+        {
+         "sentence": "We ___ breakfast at eight.",
+         "options": [
+          "has",
+          "having",
+          "have"
+         ],
+         "answer": "have"
+        },
+        {
+         "sentence": "He ___ to bed at eleven.",
+         "options": [
+          "goes",
+          "go",
+          "going"
+         ],
+         "answer": "goes"
+        },
+        {
+         "sentence": "They ___ work at five.",
+         "options": [
+          "finishes",
+          "finish",
+          "finishing"
+         ],
+         "answer": "finish"
+        }
+       ]
+      },
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     },
+     {
+      "id": "x2_fill_in_blank",
+      "type": "fill_in_blank",
+      "title": "Practica: preguntas y negativos",
+      "instructions": "Elige la opción correcta para completar cada oración.",
+      "question": "",
+      "config": {
+       "questions": [
+        {
+         "sentence": "___ you watch TV at night?",
+         "options": [
+          "Do",
+          "Does",
+          "Are"
+         ],
+         "answer": "Do"
+        },
+        {
+         "sentence": "___ she have lunch at home?",
+         "options": [
+          "Do",
+          "Does",
+          "Is"
+         ],
+         "answer": "Does"
+        },
+        {
+         "sentence": "What time ___ they go to work?",
+         "options": [
+          "does",
+          "are",
+          "do"
+         ],
+         "answer": "do"
+        },
+        {
+         "sentence": "He ___ exercise on Sundays.",
+         "options": [
+          "doesn't",
+          "don't",
+          "isn't"
+         ],
+         "answer": "doesn't"
+        },
+        {
+         "sentence": "I ___ have breakfast on weekdays.",
+         "options": [
+          "doesn't",
+          "don't",
+          "am not"
+         ],
+         "answer": "don't"
+        }
+       ]
+      },
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     },
+     {
+      "id": "x3_sentence_formation",
+      "type": "sentence_formation",
+      "title": "Practica: frecuencia",
+      "instructions": "Ordena las palabras para formar la oración.",
+      "question": "🛏️ Ella nunca se va a dormir tarde",
+      "config": {
+       "wordBank": [
+        "She",
+        "never",
+        "goes",
+        "to",
+        "bed",
+        "late",
+        "go",
+        "always"
+       ],
+       "correctAnswers": [
+        "She never goes to bed late"
+       ],
+       "requiredWords": [],
+       "timeLimit": 0,
+       "showStartButton": false,
+       "title": "Practica: frecuencia",
+       "question": "🛏️ Ella nunca se va a dormir tarde"
+      },
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     }
+    ],
+    "grammar": {
+     "title": "Presente simple y adverbios de frecuencia",
+     "explanation": "El presente simple se usa para rutinas y hábitos. Los adverbios de frecuencia dicen cada cuánto haces algo.",
+     "rules": [
+      {
+       "rule": "Rutinas: sujeto + verbo",
+       "examples": [
+        "I wake up at 7am.",
+        "I have breakfast with my family."
+       ]
+      },
+      {
+       "rule": "Con he / she / it el verbo lleva -s",
+       "examples": [
+        "She wakes up early.",
+        "He goes to work by bus."
+       ]
+      },
+      {
+       "rule": "Frecuencia: always (100%), usually (80%), sometimes (50%), never (0%)",
+       "examples": [
+        "I always brush my teeth.",
+        "I never go to bed late."
+       ]
+      },
+      {
+       "rule": "El adverbio va antes del verbo (pero después de 'to be')",
+       "examples": [
+        "✅ I usually have dinner at 8.",
+        "✅ I am always tired.",
+        "❌ I have usually dinner."
+       ]
+      },
+      {
+       "rule": "Preguntas de sí / no: Do / Does + sujeto + verbo?",
+       "examples": [
+        "Do you exercise every day? — Yes, I do. / No, I don't.",
+        "Does she work on Sundays?"
+       ]
+      }
+     ]
+    },
+    "vocabulary": [
+     {
+      "media": null,
+      "examples": [
+       "I wake up at 7am",
+       "She wakes up early"
+      ],
+      "id": "voc_wake_up",
+      "conjugations": null,
+      "translation": "Despertarse",
+      "word": "Wake up",
+      "tags": [],
+      "emoji": "⏰"
+     },
+     {
+      "examples": [
+       "I get dressed after breakfast"
+      ],
+      "media": null,
+      "id": "voc_get_dressed",
+      "conjugations": null,
+      "word": "Get dressed",
+      "translation": "Vestirse",
+      "tags": [],
+      "emoji": "👕"
+     },
+     {
+      "media": null,
+      "examples": [
+       "I brush my teeth twice a day"
+      ],
+      "id": "voc_brush_teeth",
+      "conjugations": null,
+      "word": "Brush my teeth",
+      "translation": "Cepillarse los dientes",
+      "tags": [],
+      "emoji": "🪥"
+     },
+     {
+      "word": "Take a shower",
+      "translation": "Tomar una ducha",
+      "tags": [],
+      "id": "voc_take_shower",
+      "examples": [
+       "I take a shower in the morning"
+      ],
+      "media": null,
+      "conjugations": null,
+      "emoji": "🚿"
+     },
+     {
+      "id": "voc_have_breakfast",
+      "examples": [
+       "I have breakfast at 8am"
+      ],
+      "media": null,
+      "conjugations": null,
+      "word": "Have breakfast",
+      "translation": "Desayunar",
+      "tags": [],
+      "emoji": "🍳"
+     },
+     {
+      "word": "Go to work",
+      "translation": "Ir al trabajo",
+      "tags": [],
+      "media": null,
+      "examples": [
+       "I go to work by bus"
+      ],
+      "id": "voc_go_to_work",
+      "conjugations": null,
+      "emoji": "🏢"
+     },
+     {
+      "conjugations": null,
+      "media": null,
+      "examples": [
+       "I have lunch at 1pm"
+      ],
+      "id": "voc_have_lunch",
+      "tags": [],
+      "word": "Have lunch",
+      "translation": "Almorzar",
+      "emoji": "🍱"
+     },
+     {
+      "tags": [],
+      "translation": "Terminar el trabajo",
+      "word": "Finish work",
+      "conjugations": null,
+      "id": "voc_finish_work",
+      "examples": [
+       "I finish work at 6pm"
+      ],
+      "media": null,
+      "emoji": "🏁"
+     },
+     {
+      "tags": [],
+      "translation": "Cenar",
+      "word": "Have dinner",
+      "conjugations": null,
+      "id": "voc_have_dinner",
+      "examples": [
+       "I have dinner with my family"
+      ],
+      "media": null,
+      "emoji": "🍽️"
+     },
+     {
+      "translation": "Ver televisión",
+      "word": "Watch TV",
+      "tags": [],
+      "id": "voc_watch_tv",
+      "media": null,
+      "examples": [
+       "I watch TV before bed"
+      ],
+      "conjugations": null,
+      "emoji": "📺"
+     },
+     {
+      "conjugations": null,
+      "examples": [
+       "I go to bed at 11pm"
+      ],
+      "media": null,
+      "id": "voc_go_to_bed",
+      "tags": [],
+      "word": "Go to bed",
+      "translation": "Acostarse / Ir a la cama",
+      "emoji": "🛏️"
+     },
+     {
+      "conjugations": null,
+      "examples": [
+       "I exercise three times a week"
+      ],
+      "media": null,
+      "id": "voc_exercise",
+      "tags": [],
+      "translation": "Hacer ejercicio",
+      "word": "Exercise",
+      "emoji": "🏃"
+     }
+    ]
+   }
+  },
+  "A1_likes_dislikes": {
+   "title": "Likes and Dislikes",
+   "metadata": {
+    "level": "A1",
+    "module": "vocabulary",
+    "xpReward": 70,
+    "estimatedDuration": 35,
+    "tags": [
+     "likes",
+     "dislikes",
+     "preferences",
+     "basic_verbs",
+     "hobbies"
+    ],
+    "unit": "unitA1_daily_lifestyle"
+   },
+   "objectives": [
+    "Expresar gustos y preferencias",
+    "Usar el verbo 'like' en presente simple",
+    "Preguntar sobre intereses personales",
+    "Hablar de actividades de ocio"
+   ],
+   "content": {
+    "vocabulary": [
+     {
+      "image": "https://res.cloudinary.com/ddowwkgy0/image/upload/v1790867521/ChatGPT_Image_29_jul_2025_01_06_57_p.m._jmtnhj_ulxrf9.png",
+      "translation": "Gustar",
+      "tags": [],
+      "id": "voc_like",
+      "examples": [
+       "I like music",
+       "She likes sports"
+      ],
+      "word": "Like",
+      "conjugations": null
+     },
+     {
+      "examples": [
+       "I don't like vegetables",
+       "They don't like homework"
+      ],
+      "tags": [],
+      "word": "Don't like",
+      "id": "voc_dont_like",
+      "conjugations": null,
+      "translation": "No gustar",
+      "image": "https://res.cloudinary.com/ddowwkgy0/image/upload/v1768944651/I_don_t_like_vegetables_u8ogod.png"
+     },
+     {
+      "word": "Love",
+      "id": "voc_love",
+      "examples": [
+       "I love chocolate",
+       "He loves football"
+      ],
+      "image": "https://res.cloudinary.com/ddowwkgy0/image/upload/v1768944685/I_love_chocolate_c9qiqa.png",
+      "tags": [],
+      "conjugations": null,
+      "translation": "Amar/Encantar"
+     },
+     {
+      "image": "https://res.cloudinary.com/ddowwkgy0/image/upload/v1768944925/She_hates_spiders_uwxdze.png",
+      "translation": "Odiar",
+      "conjugations": null,
+      "examples": [
+       "She hates spiders",
+       "We hate cold weather"
+      ],
+      "tags": [],
+      "word": "Hate",
+      "id": "voc_hate"
+     },
+     {
+      "id": "voc_enjoy",
+      "translation": "Disfrutar",
+      "image": "https://res.cloudinary.com/ddowwkgy0/image/upload/v1768944977/I_enjoy_reading_rhxmib.png",
+      "conjugations": null,
+      "word": "Enjoy",
+      "tags": [],
+      "examples": [
+       "I enjoy reading",
+       "They enjoy swimming"
+      ]
+     },
+     {
+      "word": "Music",
+      "examples": [
+       "I listen to music",
+       "What music do you like?"
+      ],
+      "translation": "Música",
+      "conjugations": null,
+      "id": "voc_music",
+      "image": "https://res.cloudinary.com/ddowwkgy0/image/upload/v1790867521/ChatGPT_Image_29_jul_2025_01_06_57_p.m._jmtnhj_ulxrf9.png",
+      "tags": []
+     },
+     {
+      "translation": "Deportes",
+      "image": "https://res.cloudinary.com/ddowwkgy0/image/upload/v1790867519/ChatGPT_Image_28_jul_2025_03_17_31_p.m._avlvcq_zta7d0.png",
+      "tags": [],
+      "examples": [
+       "He plays sports",
+       "Do you like sports?"
+      ],
+      "conjugations": null,
+      "id": "voc_sports",
+      "word": "Sports"
+     },
+     {
+      "image": "https://res.cloudinary.com/ddowwkgy0/image/upload/v1768945129/Watchingamovie_k2fgmm.png",
+      "conjugations": null,
+      "examples": [
+       "We watch movies",
+       "She likes horror movies"
+      ],
+      "tags": [],
+      "word": "Movies",
+      "id": "voc_movies",
+      "translation": "Películas"
+     },
+     {
+      "conjugations": null,
+      "id": "voc_reading",
+      "word": "Reading",
+      "translation": "Leer",
+      "tags": [],
+      "image": "https://res.cloudinary.com/ddowwkgy0/image/upload/v1768945066/reading_a_novel_pyukkf.png",
+      "examples": [
+       "I enjoy reading books",
+       "Reading is fun"
+      ]
+     },
+     {
+      "word": "Cooking",
+      "conjugations": null,
+      "image": "https://res.cloudinary.com/ddowwkgy0/image/upload/v1768945057/cooking_a_pasta_lo5nay.png",
+      "tags": [],
+      "id": "voc_cooking",
+      "translation": "Cocinar",
+      "examples": [
+       "My mother likes cooking",
+       "Do you cook?"
+      ]
+     },
+     {
+      "examples": [
+       "They love dancing",
+       "I dance every weekend"
+      ],
+      "tags": [],
+      "conjugations": null,
+      "translation": "Bailar",
+      "image": "https://res.cloudinary.com/ddowwkgy0/image/upload/v1768945256/They_love_dancing_dnkopu.png",
+      "id": "voc_dancing",
+      "word": "Dancing"
+     }
+    ],
+    "exercises": [
+     {
+      "config": {
+       "pairs": [
+        {
+         "to": "Me gusta",
+         "from": "I like"
+        },
+        {
+         "from": "You like",
+         "to": "Te gusta"
+        },
+        {
+         "from": "He/She likes",
+         "to": "Le gusta"
+        },
+        {
+         "from": "Don't like",
+         "to": "No gustar"
+        },
+        {
+         "from": "Music",
+         "to": "Música"
+        },
+        {
+         "from": "Sports",
+         "to": "Deportes"
+        },
+        {
+         "from": "Movies",
+         "to": "Películas"
+        },
+        {
+         "from": "Reading",
+         "to": "Leer"
+        }
+       ]
+      },
+      "feedback": {},
+      "type": "matching",
+      "instructions": "",
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "id": "ex1_likes_vocabulary",
+      "title": "Match words",
+      "question": ""
+     },
+     {
+      "type": "image_selection",
+      "feedback": {},
+      "id": "ex2_likes_images",
+      "question": "",
+      "config": {
+       "question": "Which image shows someone who likes music?",
+       "options": [
+        {
+         "image": "https://res.cloudinary.com/ddowwkgy0/image/upload/v1790867521/ChatGPT_Image_29_jul_2025_01_06_57_p.m._jmtnhj_ulxrf9.png",
+         "feedback": "¡Correcto! Esta persona está escuchando música con audífonos.",
+         "correct": true
+        },
+        {
+         "image": "https://res.cloudinary.com/ddowwkgy0/image/upload/v1790867519/ChatGPT_Image_28_jul_2025_03_17_31_p.m._avlvcq_zta7d0.png",
+         "feedback": "No, esta persona está practicando deportes.",
+         "correct": false
+        },
+        {
+         "image": "https://res.cloudinary.com/tu-usuario/image/upload/v.../reading.png",
+         "correct": false,
+         "feedback": "Esta persona está leyendo, no escuchando música."
+        },
+        {
+         "correct": false,
+         "image": "https://res.cloudinary.com/tu-usuario/image/upload/v.../cooking.png",
+         "feedback": "Esta persona está cocinando."
+        }
+       ]
+      },
+      "instructions": "",
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "title": "Select the correct image"
+     },
+     {
+      "config": {
+       "slowAudioUrl": "https://res.cloudinary.com/tu-usuario/audio/upload/v.../likes_slow.mp3",
+       "language": "en-US",
+       "phrase": "I like music and sports but I don't like cooking",
+       "translation": "Me gusta la música y los deportes pero no me gusta cocinar"
+      },
+      "instructions": "",
+      "feedback": {},
+      "audioUrl": "https://res.cloudinary.com/ddowwkgy0/video/upload/v1768944431/I_like_music_and_sports_but_I_don_t_like_cooking_w9yklw.mp3",
+      "id": "ex3_likes_pronunciation",
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "question": "",
+      "type": "pronunciation",
+      "title": "Pronunciación: Expressing Likes"
+     },
+     {
+      "instructions": "",
+      "feedback": {},
+      "question": "",
+      "type": "sentence_formation",
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "config": {
+       "correctAnswers": [
+        "I like music",
+        "She loves dancing",
+        "You don't like cooking",
+        "We enjoy watching movies"
+       ],
+       "requiredWords": [],
+       "timeLimit": 90,
+       "wordBank": [
+        "I",
+        "like",
+        "music",
+        "sports",
+        "movies",
+        "You",
+        "don't",
+        "like",
+        "reading",
+        "cooking",
+        "She",
+        "loves",
+        "dancing",
+        "He",
+        "hates",
+        "We",
+        "enjoy",
+        "watching",
+        "playing",
+        "listening"
+       ]
+      },
+      "title": "Forma Frases sobre Gustos",
+      "id": "ex4_likes_sentences"
+     },
+     {
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "instructions": "",
+      "question": "",
+      "pairs": [
+       {
+        "back": "Gustar",
+        "front": "Like"
+       },
+       {
+        "back": "Amar",
+        "front": "Love"
+       },
+       {
+        "front": "Hate",
+        "back": "Odiar"
+       },
+       {
+        "front": "Enjoy",
+        "back": "Disfrutar"
+       },
+       {
+        "front": "Music",
+        "back": "Música"
+       },
+       {
+        "front": "Sports",
+        "back": "Deportes"
+       },
+       {
+        "front": "Reading",
+        "back": "Leer"
+       },
+       {
+        "back": "Cocinar",
+        "front": "Cooking"
+       }
+      ],
+      "feedback": {},
+      "title": "Memory: Gustos y Actividades",
+      "config": {
+       "pairs": [
+        {
+         "front": "Like",
+         "back": "Gustar"
+        },
+        {
+         "back": "Amar",
+         "front": "Love"
+        },
+        {
+         "front": "Hate",
+         "back": "Odiar"
+        },
+        {
+         "front": "Enjoy",
+         "back": "Disfrutar"
+        },
+        {
+         "front": "Music",
+         "back": "Música"
+        },
+        {
+         "back": "Deportes",
+         "front": "Sports"
+        },
+        {
+         "front": "Reading",
+         "back": "Leer"
+        },
+        {
+         "front": "Cooking",
+         "back": "Cocinar"
+        }
+       ]
+      },
+      "type": "memory_game",
+      "id": "ex5_likes_vocabulary_memory"
+     },
+     {
+      "question": "",
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "feedback": {},
+      "instructions": "",
+      "title": "Categoría: Actividades",
+      "id": "ex6_categorize_likes",
+      "type": "vocabulary",
+      "config": {
+       "categories": [
+        {
+         "name": "Actividades en Interior",
+         "color": "#2196F3",
+         "id": "indoor_activities"
+        },
+        {
+         "name": "Actividades en Exterior",
+         "id": "outdoor_activities",
+         "color": "#4CAF50"
+        },
+        {
+         "id": "artistic_activities",
+         "color": "#FF9800",
+         "name": "Actividades Artísticas"
+        }
+       ],
+       "items": [
+        {
+         "text": "Reading",
+         "id": "item1",
+         "category": "indoor_activities"
+        },
+        {
+         "text": "Playing soccer",
+         "id": "item2",
+         "category": "outdoor_activities"
+        },
+        {
+         "id": "item3",
+         "category": "artistic_activities",
+         "text": "Listening to music"
+        },
+        {
+         "text": "Cooking",
+         "id": "item4",
+         "category": "indoor_activities"
+        },
+        {
+         "id": "item5",
+         "category": "outdoor_activities",
+         "text": "Running in the park"
+        },
+        {
+         "text": "Dancing",
+         "category": "artistic_activities",
+         "id": "item6"
+        },
+        {
+         "id": "item7",
+         "category": "indoor_activities",
+         "text": "Watching movies"
+        },
+        {
+         "id": "item8",
+         "category": "outdoor_activities",
+         "text": "Swimming"
+        }
+       ]
+      }
+     },
+     {
+      "id": "ex7_talking_about_hobbies",
+      "type": "dialogue_simulation",
+      "title": "Simulación: Hablando de Gustos",
+      "instructions": "Elige la respuesta correcta para continuar la conversación.",
+      "question": "",
+      "config": {
+       "scenario": "Hablas de pasatiempos con un amigo nuevo",
+       "dialogues": [
+        {
+         "character": "Friend",
+         "text": "What do you like to do in your free time?",
+         "options": [
+          {
+           "text": "I like listening to music.",
+           "correct": true,
+           "feedback": "✅ ¡Correcto!"
+          },
+          {
+           "text": "I like listen to music.",
+           "correct": false,
+           "feedback": "❌ Después de 'like' la actividad va en -ing."
+          }
+         ]
+        },
+        {
+         "character": "Friend",
+         "text": "Do you like reading books?",
+         "options": [
+          {
+           "text": "Yes, I loves reading.",
+           "correct": false,
+           "feedback": "❌ Con 'I' el verbo no lleva -s."
+          },
+          {
+           "text": "Yes, I love reading.",
+           "correct": true,
+           "feedback": "✅ ¡Correcto!"
+          }
+         ]
+        },
+        {
+         "character": "Friend",
+         "text": "What about cooking?",
+         "options": [
+          {
+           "text": "I don't like cooking very much.",
+           "correct": true,
+           "feedback": "✅ ¡Correcto!"
+          },
+          {
+           "text": "I doesn't like cooking very much.",
+           "correct": false,
+           "feedback": "❌ Con 'I' se usa 'don't'."
+          }
+         ]
+        }
+       ]
+      },
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     },
+     {
+      "type": "listening_transcription",
+      "title": "Escucha: Conversación sobre Gustos",
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "config": {
+       "slowAudioUrl": "https://res.cloudinary.com/ddowwkgy0/video/upload/v1768945317/i_like_music_but_my_friend_prefers_sports_slow_vwixc4.mp3",
+       "correctSentence": "I like music but my friend prefers sports",
+       "audioUrl": "https://res.cloudinary.com/ddowwkgy0/video/upload/v1768944573/I_like_music_but_my_friend_prefers_sports_k3culw.mp3",
+       "wordBank": [
+        "I",
+        "like",
+        "music",
+        "but",
+        "my",
+        "friend",
+        "prefers",
+        "sports",
+        "movies",
+        "reading"
+       ]
+      },
+      "instructions": "",
+      "id": "ex8_likes_conversation",
+      "feedback": {},
+      "question": ""
+     },
+     {
+      "id": "ex9_complete_sentences",
+      "type": "drag_drop",
+      "title": "Completa las Oraciones",
+      "instructions": "Arrastra cada sujeto hasta el final que le corresponde.",
+      "question": "",
+      "config": {
+       "pairs": [
+        {
+         "id": "p1",
+         "from": "She",
+         "to": "likes dancing"
+        },
+        {
+         "id": "p2",
+         "from": "I",
+         "to": "am a music fan"
+        },
+        {
+         "id": "p3",
+         "from": "They",
+         "to": "are sports fans"
+        },
+        {
+         "id": "p4",
+         "from": "He doesn't",
+         "to": "like cooking"
+        }
+       ],
+       "question": "Arrastra cada sujeto hasta el final que le corresponde."
+      },
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "dragItems": [],
+      "dropZones": []
+     },
+     {
+      "id": "add1_fill_in_blank",
+      "type": "fill_in_blank",
+      "title": "Gustos",
+      "instructions": "Elige la opción correcta para completar cada oración.",
+      "question": "",
+      "config": {
+       "questions": [
+        {
+         "sentence": "I like ___ books.",
+         "options": [
+          "reading",
+          "read",
+          "reads"
+         ],
+         "answer": "reading"
+        },
+        {
+         "sentence": "She ___ music.",
+         "options": [
+          "like",
+          "likes",
+          "liking"
+         ],
+         "answer": "likes"
+        },
+        {
+         "sentence": "They ___ like vegetables.",
+         "options": [
+          "doesn't",
+          "not",
+          "don't"
+         ],
+         "answer": "don't"
+        },
+        {
+         "sentence": "He ___ like horror movies.",
+         "options": [
+          "doesn't",
+          "don't",
+          "isn't"
+         ],
+         "answer": "doesn't"
+        },
+        {
+         "sentence": "Do you ___ sports?",
+         "options": [
+          "likes",
+          "like",
+          "liking"
+         ],
+         "answer": "like"
+        }
+       ]
+      },
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     },
+     {
+      "id": "add1_fill_in_blank",
+      "type": "fill_in_blank",
+      "title": "Gustos",
+      "instructions": "Elige la opción correcta para completar cada oración.",
+      "question": "",
+      "config": {
+       "questions": [
+        {
+         "sentence": "I like ___ books.",
+         "options": [
+          "reading",
+          "read",
+          "reads"
+         ],
+         "answer": "reading"
+        },
+        {
+         "sentence": "She ___ music.",
+         "options": [
+          "like",
+          "likes",
+          "liking"
+         ],
+         "answer": "likes"
+        },
+        {
+         "sentence": "They ___ like vegetables.",
+         "options": [
+          "doesn't",
+          "not",
+          "don't"
+         ],
+         "answer": "don't"
+        },
+        {
+         "sentence": "He ___ like horror movies.",
+         "options": [
+          "doesn't",
+          "don't",
+          "isn't"
+         ],
+         "answer": "doesn't"
+        },
+        {
+         "sentence": "Do you ___ sports?",
+         "options": [
+          "likes",
+          "like",
+          "liking"
+         ],
+         "answer": "like"
+        }
+       ]
+      },
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     },
+     {
+      "id": "x1_fill_in_blank",
+      "type": "fill_in_blank",
+      "title": "Practica: like + -ing",
+      "instructions": "Elige la opción correcta para completar cada oración.",
+      "question": "",
+      "config": {
+       "questions": [
+        {
+         "sentence": "I love ___ in the kitchen.",
+         "options": [
+          "cooking",
+          "cook",
+          "cooks"
+         ],
+         "answer": "cooking"
+        },
+        {
+         "sentence": "She ___ like horror movies.",
+         "options": [
+          "don't",
+          "doesn't",
+          "isn't"
+         ],
+         "answer": "doesn't"
+        },
+        {
+         "sentence": "___ you like dancing?",
+         "options": [
+          "Does",
+          "Are",
+          "Do"
+         ],
+         "answer": "Do"
+        },
+        {
+         "sentence": "My dad enjoys ___ the newspaper.",
+         "options": [
+          "reading",
+          "read",
+          "reads"
+         ],
+         "answer": "reading"
+        },
+        {
+         "sentence": "They hate ___ early.",
+         "options": [
+          "get up",
+          "getting up",
+          "gets up"
+         ],
+         "answer": "getting up"
+        }
+       ]
+      },
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     },
+     {
+      "id": "x2_sentence_formation",
+      "type": "sentence_formation",
+      "title": "Practica: gustos",
+      "instructions": "Ordena las palabras para formar la oración.",
+      "question": "🎵 A mi hermana le encanta escuchar música",
+      "config": {
+       "wordBank": [
+        "My",
+        "sister",
+        "loves",
+        "listening",
+        "to",
+        "music",
+        "love",
+        "likes"
+       ],
+       "correctAnswers": [
+        "My sister loves listening to music"
+       ],
+       "requiredWords": [],
+       "timeLimit": 0,
+       "showStartButton": false,
+       "title": "Practica: gustos",
+       "question": "🎵 A mi hermana le encanta escuchar música"
+      },
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     }
+    ],
+    "grammar": {
+     "title": "Like, love, hate + sustantivo o verbo en -ing",
+     "explanation": "Para hablar de gustos se usan like, love, enjoy, hate. Detrás puede ir una cosa o una actividad terminada en -ing.",
+     "rules": [
+      {
+       "rule": "Verbo + sustantivo",
+       "examples": [
+        "I like music.",
+        "She loves chocolate."
+       ]
+      },
+      {
+       "rule": "Verbo + actividad en -ing",
+       "examples": [
+        "I like reading.",
+        "They enjoy swimming."
+       ]
+      },
+      {
+       "rule": "Con he / she lleva -s",
+       "examples": [
+        "He likes sports.",
+        "She hates spiders."
+       ]
+      },
+      {
+       "rule": "Negativo: don't / doesn't like",
+       "examples": [
+        "I don't like cooking.",
+        "He doesn't like horror movies."
+       ]
+      },
+      {
+       "rule": "Pregunta: Do you like...?",
+       "examples": [
+        "Do you like sports? — Yes, I do. / No, I don't."
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "A1_family_2": {
+   "title": "Extended Family and Reflexive Pronouns",
+   "metadata": {
+    "tags": [
+     "family",
+     "in_laws",
+     "step_family",
+     "reflexive_pronouns",
+     "relationships"
+    ],
+    "module": "vocabulary",
+    "level": "A1",
+    "xpReward": 100,
+    "estimatedDuration": 25,
+    "unit": "unitA1_my_environment"
+   },
+   "objectives": [
+    "Identify extended family members (in-laws, step-family)",
+    "Use possessive pronouns correctly (my, your, his, her, our, their)",
+    "Use reflexive pronouns (myself, yourself, himself, herself, itself, ourselves, yourselves, themselves)",
+    "Describe family relationships using 'in-law' and 'step-' prefixes"
+   ],
+   "content": {
+    "exercises": [
+     {
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "question": "",
+      "type": "matching",
+      "id": "ex1_in_laws_matching",
+      "title": "In-Laws Family",
+      "instructions": "Match each family member with the correct translation.",
+      "config": {
+       "pairs": [
+        {
+         "to": "Suegra",
+         "from": "Mother-in-law"
+        },
+        {
+         "to": "Suegro",
+         "from": "Father-in-law"
+        },
+        {
+         "from": "Sister-in-law",
+         "to": "Cuñada"
+        },
+        {
+         "to": "Cuñado",
+         "from": "Brother-in-law"
+        }
+       ],
+       "title": "Match In-Laws",
+       "vocabulary": []
+      },
+      "feedback": {}
+     },
+     {
+      "id": "ex2_step_family_matching",
+      "title": "Step Family",
+      "config": {
+       "vocabulary": [],
+       "pairs": [
+        {
+         "from": "Stepbrother",
+         "to": "Hermanastro"
+        },
+        {
+         "to": "Hermanastra",
+         "from": "Stepsister"
+        },
+        {
+         "from": "Stepmother",
+         "to": "Madrastra"
+        },
+        {
+         "from": "Stepfather",
+         "to": "Padrastro"
+        }
+       ],
+       "title": "Match Step Family"
+      },
+      "feedback": {},
+      "instructions": "Match each family member with the correct translation.",
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "type": "matching",
+      "question": ""
+     },
+     {
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "question": "",
+      "type": "matching",
+      "title": "Extended Family",
+      "id": "ex3_extended_family",
+      "instructions": "Match each family member with the correct translation.",
+      "feedback": {},
+      "config": {
+       "vocabulary": [],
+       "title": "Match Extended Family",
+       "pairs": [
+        {
+         "to": "Sobrino",
+         "from": "Nephew"
+        },
+        {
+         "from": "Niece",
+         "to": "Sobrina"
+        },
+        {
+         "from": "Cousin",
+         "to": "Primo/a"
+        },
+        {
+         "from": "Husband",
+         "to": "Esposo"
+        },
+        {
+         "from": "Wife",
+         "to": "Esposa"
+        }
+       ]
+      }
+     },
+     {
+      "question": "",
+      "type": "fill_in_blank",
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "instructions": "Select the correct reflexive pronoun for each subject.",
+      "config": {
+       "questions": [
+        {
+         "options": [
+          "myself",
+          "yourself",
+          "himself"
+         ],
+         "answer": "myself",
+         "sentence": "I did it by ___."
+        },
+        {
+         "answer": "herself",
+         "options": [
+          "myself",
+          "herself",
+          "itself"
+         ],
+         "sentence": "She made this dress ___."
+        },
+        {
+         "answer": "themselves",
+         "options": [
+          "ourselves",
+          "yourselves",
+          "themselves"
+         ],
+         "sentence": "They built the house ___."
+        },
+        {
+         "sentence": "He fixed the car ___.",
+         "answer": "himself",
+         "options": [
+          "himself",
+          "herself",
+          "itself"
+         ]
+        },
+        {
+         "options": [
+          "ourselves",
+          "themselves",
+          "yourselves"
+         ],
+         "answer": "ourselves",
+         "sentence": "We enjoyed ___ at the party."
+        }
+       ]
+      },
+      "feedback": {},
+      "title": "Reflexive Pronouns",
+      "id": "ex4_reflexive_pronouns"
+     },
+     {
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "type": "sentence_formation",
+      "question": "",
+      "title": "Reflexive Pronouns in Action",
+      "id": "ex5_reflexive_sentences",
+      "feedback": {},
+      "config": {
+       "requiredWords": [
+        "I",
+        "myself"
+       ],
+       "wordBank": [
+        "I",
+        "did",
+        "it",
+        "myself"
+       ],
+       "title": "Form the sentence",
+       "showStartButton": true,
+       "question": "🪞 Say: I did it alone, without help",
+       "timeLimit": 45,
+       "correctAnswers": [
+        "I did it myself"
+       ]
+      },
+      "instructions": "Order the words to make a correct sentence with a reflexive pronoun."
+     },
+     {
+      "question": "",
+      "type": "sentence_formation",
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "instructions": "Order the words to make a correct sentence.",
+      "config": {
+       "title": "Form the sentence",
+       "wordBank": [
+        "He",
+        "hurt",
+        "himself",
+        "playing",
+        "soccer"
+       ],
+       "requiredWords": [
+        "He",
+        "himself"
+       ],
+       "question": "⚽ He got injured playing soccer",
+       "showStartButton": true,
+       "correctAnswers": [
+        "He hurt himself playing soccer"
+       ],
+       "timeLimit": 45
+      },
+      "feedback": {},
+      "title": "Reflexive Pronouns - He/Himself",
+      "id": "ex6_reflexive_sentences_2"
+     },
+     {
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "type": "fill_in_blank",
+      "question": "",
+      "id": "ex7_fill_blank_reflexives",
+      "title": "Complete with Reflexive Pronouns",
+      "config": {
+       "questions": [
+        {
+         "answer": "myself",
+         "options": [
+          "myself",
+          "yourself",
+          "himself"
+         ],
+         "sentence": "I made this cake ___."
+        },
+        {
+         "sentence": "She looked at ___ in the mirror.",
+         "options": [
+          "myself",
+          "herself",
+          "itself"
+         ],
+         "answer": "herself"
+        },
+        {
+         "answer": "themselves",
+         "options": [
+          "ourselves",
+          "yourselves",
+          "themselves"
+         ],
+         "sentence": "They enjoyed ___ at the party."
+        },
+        {
+         "answer": "himself",
+         "options": [
+          "himself",
+          "herself",
+          "itself"
+         ],
+         "sentence": "He taught ___ to play guitar."
+        }
+       ]
+      },
+      "instructions": "Select the correct reflexive pronoun for each sentence.",
+      "feedback": {}
+     },
+     {
+      "feedback": {},
+      "config": {
+       "vocabulary": [],
+       "pairs": [
+        {
+         "to": "Possessive pronoun",
+         "from": "This is MY book."
+        },
+        {
+         "to": "Reflexive pronoun",
+         "from": "I did it MYSELF."
+        },
+        {
+         "from": "Is that YOUR car?",
+         "to": "Possessive pronoun"
+        },
+        {
+         "from": "She made it HERSELF.",
+         "to": "Reflexive pronoun"
+        }
+       ],
+       "title": "Possessive vs Reflexive"
+      },
+      "instructions": "Match each sentence with the correct pronoun type.",
+      "title": "Possessive vs Reflexive Pronouns",
+      "id": "ex8_possessive_vs_reflexive",
+      "type": "matching",
+      "question": "",
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     },
+     {
+      "instructions": "Listen and type what you hear.",
+      "config": {
+       "wordBank": [
+        "My",
+        "mother-in-law",
+        "is",
+        "visiting",
+        "us",
+        "next",
+        "week"
+       ],
+       "correctSentence": "My mother-in-law is visiting us next week",
+       "audioUrl": "https://res.cloudinary.com/ddowwkgy0/video/upload/v1779888368/My_mother-in-law_is_visiting_us_next_week_gheck6.mp3",
+       "slowAudioUrl": "https://res.cloudinary.com/ddowwkgy0/video/upload/v1779888418/My_mother-in-law_is_visiting_us_next_week_slow_iesqd9.mp3"
+      },
+      "feedback": {},
+      "id": "ex9_listening_family",
+      "title": "Listening: Family Description",
+      "type": "listening_transcription",
+      "question": "",
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     },
+     {
+      "id": "add1_sentence_formation",
+      "type": "sentence_formation",
+      "title": "La edad de mi sobrino",
+      "instructions": "Ordena las palabras para formar la oración.",
+      "question": "🧒 Mi sobrino tiene diez años",
+      "config": {
+       "wordBank": [
+        "My",
+        "nephew",
+        "is",
+        "ten",
+        "years",
+        "old",
+        "niece",
+        "are"
+       ],
+       "correctAnswers": [
+        "My nephew is ten years old"
+       ],
+       "requiredWords": [],
+       "timeLimit": 0,
+       "showStartButton": false,
+       "title": "La edad de mi sobrino",
+       "question": "🧒 Mi sobrino tiene diez años"
+      },
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     },
+     {
+      "id": "add1_sentence_formation",
+      "type": "sentence_formation",
+      "title": "La edad de mi sobrino",
+      "instructions": "Ordena las palabras para formar la oración.",
+      "question": "🧒 Mi sobrino tiene diez años",
+      "config": {
+       "wordBank": [
+        "My",
+        "nephew",
+        "is",
+        "ten",
+        "years",
+        "old",
+        "niece",
+        "are"
+       ],
+       "correctAnswers": [
+        "My nephew is ten years old"
+       ],
+       "requiredWords": [],
+       "timeLimit": 0,
+       "showStartButton": false,
+       "title": "La edad de mi sobrino",
+       "question": "🧒 Mi sobrino tiene diez años"
+      },
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     },
+     {
+      "id": "x1_fill_in_blank",
+      "type": "fill_in_blank",
+      "title": "Practica: pronombres reflexivos",
+      "instructions": "Elige la opción correcta para completar cada oración.",
+      "question": "",
+      "config": {
+       "questions": [
+        {
+         "sentence": "She looked at ___ in the mirror.",
+         "options": [
+          "herself",
+          "himself",
+          "myself"
+         ],
+         "answer": "herself"
+        },
+        {
+         "sentence": "I made this cake ___.",
+         "options": [
+          "yourself",
+          "myself",
+          "itself"
+         ],
+         "answer": "myself"
+        },
+        {
+         "sentence": "The children enjoyed ___ at the party.",
+         "options": [
+          "ourselves",
+          "himself",
+          "themselves"
+         ],
+         "answer": "themselves"
+        },
+        {
+         "sentence": "We painted the house ___.",
+         "options": [
+          "ourselves",
+          "themselves",
+          "yourselves"
+         ],
+         "answer": "ourselves"
+        },
+        {
+         "sentence": "Did you hurt ___?",
+         "options": [
+          "himself",
+          "yourself",
+          "itself"
+         ],
+         "answer": "yourself"
+        }
+       ]
+      },
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     },
+     {
+      "id": "x2_drag_drop",
+      "type": "drag_drop",
+      "title": "Practica: ¿quién es?",
+      "instructions": "Arrastra cada palabra hasta su definición.",
+      "question": "",
+      "config": {
+       "pairs": [
+        {
+         "id": "p1",
+         "from": "Nephew",
+         "to": "The son of my brother"
+        },
+        {
+         "id": "p2",
+         "from": "Niece",
+         "to": "The daughter of my sister"
+        },
+        {
+         "id": "p3",
+         "from": "Mother-in-law",
+         "to": "The mother of my wife"
+        },
+        {
+         "id": "p4",
+         "from": "Stepsister",
+         "to": "The daughter of my stepfather"
+        }
+       ],
+       "question": "Arrastra cada palabra hasta su definición."
+      },
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "dragItems": [],
+      "dropZones": []
+     }
+    ],
+    "grammar": {
+     "title": "Pronombres reflexivos",
+     "explanation": "Se usan cuando la persona que hace la acción es la misma que la recibe, o para decir que alguien hizo algo solo, sin ayuda.",
+     "rules": [
+      {
+       "rule": "Singular: myself, yourself, himself, herself, itself",
+       "examples": [
+        "I made this cake myself.",
+        "She looked at herself in the mirror."
+       ]
+      },
+      {
+       "rule": "Plural: ourselves, yourselves, themselves",
+       "examples": [
+        "We enjoyed ourselves.",
+        "They built the house themselves."
+       ]
+      },
+      {
+       "rule": "Cada sujeto tiene el suyo",
+       "examples": [
+        "I → myself",
+        "he → himself",
+        "they → themselves"
+       ]
+      },
+      {
+       "rule": "No confundir con los posesivos",
+       "examples": [
+        "my book (posesivo) ≠ I did it myself (reflexivo)"
+       ]
+      },
+      {
+       "rule": "Familia política y ensamblada",
+       "examples": [
+        "mother-in-law = suegra",
+        "stepbrother = hermanastro"
+       ]
+      }
+     ]
+    },
+    "vocabulary": [
+     {
+      "word": "Mother-in-law",
+      "translation": "Suegra",
+      "tags": [],
+      "id": "voc_mother_in_law",
+      "examples": [
+       "My mother-in-law lives in another city"
+      ],
+      "media": null,
+      "conjugations": null,
+      "emoji": "👵"
+     },
+     {
+      "word": "Father-in-law",
+      "translation": "Suegro",
+      "tags": [],
+      "examples": [
+       "My father-in-law is a doctor"
+      ],
+      "media": null,
+      "id": "voc_father_in_law",
+      "conjugations": null,
+      "emoji": "👴"
+     },
+     {
+      "word": "Stepbrother",
+      "translation": "Hermanastro",
+      "tags": [],
+      "id": "voc_stepbrother",
+      "media": null,
+      "examples": [
+       "I have a stepbrother from my mother's new marriage"
+      ],
+      "conjugations": null,
+      "emoji": "👦"
+     },
+     {
+      "id": "voc_stepsister",
+      "examples": [
+       "My stepsister is 15 years old"
+      ],
+      "media": null,
+      "conjugations": null,
+      "word": "Stepsister",
+      "translation": "Hermanastra",
+      "tags": [],
+      "emoji": "👧"
+     },
+     {
+      "tags": [],
+      "word": "Nephew",
+      "translation": "Sobrino",
+      "conjugations": null,
+      "media": null,
+      "examples": [
+       "My nephew is 10 years old"
+      ],
+      "id": "voc_nephew",
+      "emoji": "👦"
+     },
+     {
+      "id": "voc_niece",
+      "media": null,
+      "examples": [
+       "My niece loves to play with dolls"
+      ],
+      "conjugations": null,
+      "translation": "Sobrina",
+      "word": "Niece",
+      "tags": [],
+      "emoji": "👧"
+     },
+     {
+      "tags": [],
+      "translation": "Primo/a",
+      "word": "Cousin",
+      "conjugations": null,
+      "id": "voc_cousin",
+      "media": null,
+      "examples": [
+       "My cousin lives in Madrid"
+      ],
+      "emoji": "🧑"
+     },
+     {
+      "conjugations": null,
+      "media": null,
+      "examples": [
+       "My husband works as an engineer"
+      ],
+      "id": "voc_husband",
+      "tags": [],
+      "word": "Husband",
+      "translation": "Esposo / Marido",
+      "emoji": "🤵"
+     },
+     {
+      "word": "Wife",
+      "translation": "Esposa / Mujer",
+      "tags": [],
+      "examples": [
+       "His wife is a teacher"
+      ],
+      "media": null,
+      "id": "voc_wife",
+      "conjugations": null,
+      "emoji": "👰"
+     }
+    ]
+   }
+  },
+  "A1_weather_and_seasons": {
+   "title": "Weather and Seasons",
+   "metadata": {
+    "level": "A1",
+    "module": "daily_life",
+    "xpReward": 130,
+    "estimatedDuration": 30,
+    "tags": [
+     "weather",
+     "seasons",
+     "temperature",
+     "clothes",
+     "activities"
+    ],
+    "unit": "unitA1_travel_city"
+   },
+   "objectives": [
+    "Describe weather conditions using adjectives (sunny, rainy, cloudy, etc.)",
+    "Identify and name the four seasons in English",
+    "Talk about temperature using 'hot', 'warm', 'cool', 'cold'",
+    "Discuss appropriate clothing for different weather conditions",
+    "Ask and answer 'What's the weather like?'"
+   ],
+   "content": {
+    "exercises": [
+     {
+      "question": "",
+      "id": "weather_ex1_memory",
+      "title": "Weather Vocabulary",
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "pairs": [
+       {
+        "front": "Sunny",
+        "back": "Soleado"
+       },
+       {
+        "back": "Lluvioso",
+        "front": "Rainy"
+       },
+       {
+        "back": "Nublado",
+        "front": "Cloudy"
+       },
+       {
+        "front": "Windy",
+        "back": "Ventoso"
+       },
+       {
+        "back": "Nevado",
+        "front": "Snowy"
+       },
+       {
+        "front": "Hot",
+        "back": "Caliente"
+       },
+       {
+        "front": "Cold",
+        "back": "Frío"
+       },
+       {
+        "back": "Paraguas",
+        "front": "Umbrella"
+       }
+      ],
+      "instructions": "Match the English weather word with its Spanish translation.",
+      "config": {
+       "pairs": [
+        {
+         "back": "Soleado",
+         "front": "Sunny"
+        },
+        {
+         "front": "Rainy",
+         "back": "Lluvioso"
+        },
+        {
+         "front": "Cloudy",
+         "back": "Nublado"
+        },
+        {
+         "front": "Windy",
+         "back": "Ventoso"
+        },
+        {
+         "front": "Snowy",
+         "back": "Nevado"
+        },
+        {
+         "front": "Hot",
+         "back": "Caliente"
+        },
+        {
+         "back": "Frío",
+         "front": "Cold"
+        },
+        {
+         "front": "Umbrella",
+         "back": "Paraguas"
+        }
+       ]
+      },
+      "type": "memory_game",
+      "feedback": {}
+     },
+     {
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "feedback": {},
+      "type": "matching",
+      "title": "The Four Seasons",
+      "config": {
+       "pairs": [
+        {
+         "to": "Flowers bloom",
+         "from": "🌸 Spring"
+        },
+        {
+         "from": "☀️ Summer",
+         "to": "Very hot, go to the beach"
+        },
+        {
+         "from": "🍂 Autumn/Fall",
+         "to": "Leaves fall from trees"
+        },
+        {
+         "to": "Cold, snow, Christmas",
+         "from": "❄️ Winter"
+        },
+        {
+         "from": "🌧️ Rainy season",
+         "to": "Use an umbrella"
+        },
+        {
+         "to": "Hot weather",
+         "from": "🌡️ 30°C"
+        }
+       ],
+       "title": "Match season with description",
+       "vocabulary": []
+      },
+      "instructions": "Match each season with its characteristic.",
+      "id": "weather_ex2_seasons_match",
+      "question": ""
+     },
+     {
+      "question": "",
+      "id": "weather_ex4_sentence_formation",
+      "config": {
+       "title": "Forma la oración",
+       "showStartButton": true,
+       "requiredWords": [
+        "It",
+        "is",
+        "sunny",
+        "today"
+       ],
+       "timeLimit": 60,
+       "question": "☀️ Describe a bright, sunny day",
+       "wordBank": [
+        "It",
+        "is",
+        "sunny",
+        "today",
+        "."
+       ],
+       "correctAnswers": [
+        "It is sunny today."
+       ]
+      },
+      "instructions": "Order the words to make correct weather sentences.",
+      "type": "sentence_formation",
+      "title": "Describe the Weather",
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "feedback": {}
+     },
+     {
+      "config": {
+       "correctAnswers": [
+        "What is the weather like?"
+       ],
+       "question": "❓ How do you ask about today's weather?",
+       "wordBank": [
+        "What",
+        "is",
+        "the",
+        "weather",
+        "like",
+        "?"
+       ],
+       "title": "Forma la pregunta",
+       "showStartButton": true,
+       "timeLimit": 60,
+       "requiredWords": [
+        "What",
+        "is",
+        "the",
+        "weather",
+        "like"
+       ]
+      },
+      "instructions": "Order the words to ask about the weather.",
+      "question": "",
+      "id": "weather_ex5_sentence_formation_2",
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "type": "sentence_formation",
+      "title": "Ask About Weather"
+     },
+     {
+      "type": "sentence_formation",
+      "title": "Talk About Temperature",
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "question": "",
+      "id": "weather_ex6_sentence_formation_3",
+      "instructions": "Order the words to talk about temperature.",
+      "config": {
+       "requiredWords": [
+        "It",
+        "is",
+        "cold",
+        "winter"
+       ],
+       "timeLimit": 60,
+       "title": "Forma la oración",
+       "showStartButton": true,
+       "correctAnswers": [
+        "It is very cold in winter."
+       ],
+       "wordBank": [
+        "It",
+        "is",
+        "very",
+        "cold",
+        "in",
+        "winter",
+        "."
+       ],
+       "question": "❄️ Describe winter temperature"
+      }
+     },
+     {
+      "type": "listening_transcription",
+      "title": "Listening: Weather Report",
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "id": "weather_ex7_listening",
+      "question": "",
+      "instructions": "Listen to the weather forecast and type what you hear.",
+      "config": {
+       "correctSentence": "Today will be sunny and warm",
+       "audioUrl": "https://res.cloudinary.com/ddowwkgy0/video/upload/v1777392432/Today_will_be_sunny_and_warm_ppeim2.mp3",
+       "slowAudioUrl": "https://res.cloudinary.com/ddowwkgy0/video/upload/v1777392431/Today_will_be_sunny_and_warm_slow_dqcmbw.mp3",
+       "wordBank": [
+        "Today",
+        "will",
+        "be",
+        "sunny",
+        "and",
+        "warm",
+        "cold",
+        "rainy",
+        "cloudy"
+       ]
+      }
+     },
+     {
+      "type": "matching",
+      "title": "Weather & Clothing",
+      "scoring": {
+       "pointsPerCorrect": 1
+      },
+      "feedback": {},
+      "id": "weather_ex8_clothing_match",
+      "question": "",
+      "config": {
+       "vocabulary": [],
+       "title": "Match weather with clothing",
+       "pairs": [
+        {
+         "from": "☀️ Hot and sunny",
+         "to": "👕 T-shirt and shorts"
+        },
+        {
+         "to": "🧥 Jacket and boots",
+         "from": "❄️ Cold and snowy"
+        },
+        {
+         "from": "🌧️ Rainy",
+         "to": "☂️ Umbrella and raincoat"
+        },
+        {
+         "from": "🌬️ Windy",
+         "to": "🧣 Scarf and hat"
+        },
+        {
+         "from": "🌸 Spring",
+         "to": "👖 Jeans and sweater"
+        },
+        {
+         "from": "🍂 Autumn",
+         "to": "🧥 Light jacket"
+        }
+       ]
+      },
+      "instructions": "Match the weather with the appropriate clothing."
+     },
+     {
+      "id": "weather_ex10_comparatives",
+      "question": "",
+      "instructions": "Match the sentence with the correct comparative form.",
+      "config": {
+       "vocabulary": [],
+       "title": "Comparatives: hot → hotter, cold → colder",
+       "pairs": [
+        {
+         "from": "Summer is ______ than spring.",
+         "to": "hotter"
+        },
+        {
+         "to": "colder",
+         "from": "Winter is ______ than autumn."
+        },
+        {
+         "from": "Today is ______ than yesterday (more sun).",
+         "to": "sunnier"
+        },
+        {
+         "from": "The wind is ______ today than yesterday (more wind).",
+         "to": "windier"
+        }
+       ]
+      },
+      "title": "Comparing Weather",
+      "type": "matching",
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     },
+     {
+      "id": "add1_fill_in_blank",
+      "type": "fill_in_blank",
+      "title": "Comparativos",
+      "instructions": "Elige la opción correcta para completar cada oración.",
+      "question": "",
+      "config": {
+       "questions": [
+        {
+         "sentence": "Winter is ___ than summer.",
+         "options": [
+          "colder",
+          "cold",
+          "more cold"
+         ],
+         "answer": "colder"
+        },
+        {
+         "sentence": "Today is ___ than yesterday.",
+         "options": [
+          "hot",
+          "hotter",
+          "more hot"
+         ],
+         "answer": "hotter"
+        },
+        {
+         "sentence": "Spring is ___ than winter.",
+         "options": [
+          "warm",
+          "more warm",
+          "warmer"
+         ],
+         "answer": "warmer"
+        },
+        {
+         "sentence": "This umbrella is ___ than that one.",
+         "options": [
+          "bigger",
+          "big",
+          "more big"
+         ],
+         "answer": "bigger"
+        },
+        {
+         "sentence": "Rainy days are ___ than sunny days. (malo)",
+         "options": [
+          "badder",
+          "worse",
+          "more bad"
+         ],
+         "answer": "worse"
+        }
+       ]
+      },
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     },
+     {
+      "id": "add2_sentence_formation",
+      "type": "sentence_formation",
+      "title": "Compara estaciones",
+      "instructions": "Ordena las palabras para formar la oración.",
+      "question": "☀️ El verano es más caluroso que el invierno",
+      "config": {
+       "wordBank": [
+        "Summer",
+        "is",
+        "hotter",
+        "than",
+        "winter",
+        "hot",
+        "more"
+       ],
+       "correctAnswers": [
+        "Summer is hotter than winter"
+       ],
+       "requiredWords": [],
+       "timeLimit": 0,
+       "showStartButton": false,
+       "title": "Compara estaciones",
+       "question": "☀️ El verano es más caluroso que el invierno"
+      },
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     },
+     {
+      "id": "add1_fill_in_blank",
+      "type": "fill_in_blank",
+      "title": "Comparativos",
+      "instructions": "Elige la opción correcta para completar cada oración.",
+      "question": "",
+      "config": {
+       "questions": [
+        {
+         "sentence": "Winter is ___ than summer.",
+         "options": [
+          "colder",
+          "cold",
+          "more cold"
+         ],
+         "answer": "colder"
+        },
+        {
+         "sentence": "Today is ___ than yesterday.",
+         "options": [
+          "hot",
+          "hotter",
+          "more hot"
+         ],
+         "answer": "hotter"
+        },
+        {
+         "sentence": "Spring is ___ than winter.",
+         "options": [
+          "warm",
+          "more warm",
+          "warmer"
+         ],
+         "answer": "warmer"
+        },
+        {
+         "sentence": "This umbrella is ___ than that one.",
+         "options": [
+          "bigger",
+          "big",
+          "more big"
+         ],
+         "answer": "bigger"
+        },
+        {
+         "sentence": "Rainy days are ___ than sunny days. (malo)",
+         "options": [
+          "badder",
+          "worse",
+          "more bad"
+         ],
+         "answer": "worse"
+        }
+       ]
+      },
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     },
+     {
+      "id": "add2_sentence_formation",
+      "type": "sentence_formation",
+      "title": "Compara estaciones",
+      "instructions": "Ordena las palabras para formar la oración.",
+      "question": "☀️ El verano es más caluroso que el invierno",
+      "config": {
+       "wordBank": [
+        "Summer",
+        "is",
+        "hotter",
+        "than",
+        "winter",
+        "hot",
+        "more"
+       ],
+       "correctAnswers": [
+        "Summer is hotter than winter"
+       ],
+       "requiredWords": [],
+       "timeLimit": 0,
+       "showStartButton": false,
+       "title": "Compara estaciones",
+       "question": "☀️ El verano es más caluroso que el invierno"
+      },
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     },
+     {
+      "id": "x1_fill_in_blank",
+      "type": "fill_in_blank",
+      "title": "Practica: el clima y los comparativos",
+      "instructions": "Elige la opción correcta para completar cada oración.",
+      "question": "",
+      "config": {
+       "questions": [
+        {
+         "sentence": "Take an umbrella. It's ___ today.",
+         "options": [
+          "rainy",
+          "sunny",
+          "hot"
+         ],
+         "answer": "rainy"
+        },
+        {
+         "sentence": "Summer is ___ than winter.",
+         "options": [
+          "hoter",
+          "hotter",
+          "more hot"
+         ],
+         "answer": "hotter"
+        },
+        {
+         "sentence": "Today is ___ than yesterday.",
+         "options": [
+          "windyer",
+          "more windy",
+          "windier"
+         ],
+         "answer": "windier"
+        },
+        {
+         "sentence": "In ___, the leaves fall from the trees.",
+         "options": [
+          "autumn",
+          "summer",
+          "spring"
+         ],
+         "answer": "autumn"
+        },
+        {
+         "sentence": "It's ___ and I can't see the sun.",
+         "options": [
+          "sunny",
+          "cloudy",
+          "hot"
+         ],
+         "answer": "cloudy"
+        },
+        {
+         "sentence": "Spring is ___ than winter.",
+         "options": [
+          "more warm",
+          "warmest",
+          "warmer"
+         ],
+         "answer": "warmer"
+        }
+       ]
+      },
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     },
+     {
+      "id": "x2_sentence_formation",
+      "type": "sentence_formation",
+      "title": "Practica: comparar el clima",
+      "instructions": "Ordena las palabras para formar la oración.",
+      "question": "☀️ Hoy está más soleado que ayer",
+      "config": {
+       "wordBank": [
+        "Today",
+        "is",
+        "sunnier",
+        "than",
+        "yesterday",
+        "more",
+        "sunny"
+       ],
+       "correctAnswers": [
+        "Today is sunnier than yesterday"
+       ],
+       "requiredWords": [],
+       "timeLimit": 0,
+       "showStartButton": false,
+       "title": "Practica: comparar el clima",
+       "question": "☀️ Hoy está más soleado que ayer"
+      },
+      "feedback": {},
+      "scoring": {
+       "pointsPerCorrect": 1
+      }
+     }
+    ],
+    "grammar": {
+     "title": "Adjetivos comparativos",
+     "explanation": "Sirven para comparar dos cosas. La forma depende del largo del adjetivo, y siempre va seguida de 'than'.",
+     "rules": [
+      {
+       "rule": "Adjetivos cortos: + er + than",
+       "examples": [
+        "cold → colder than",
+        "warm → warmer than"
+       ]
+      },
+      {
+       "rule": "Consonante-vocal-consonante: se duplica la última",
+       "examples": [
+        "hot → hotter",
+        "big → bigger"
+       ]
+      },
+      {
+       "rule": "Terminados en -y: -ier",
+       "examples": [
+        "sunny → sunnier",
+        "windy → windier"
+       ]
+      },
+      {
+       "rule": "Adjetivos largos: more + adjetivo + than",
+       "examples": [
+        "more beautiful than",
+        "more expensive than"
+       ]
+      },
+      {
+       "rule": "Irregulares",
+       "examples": [
+        "good → better",
+        "bad → worse"
+       ]
+      },
+      {
+       "rule": "Hablar del clima: It is + adjetivo",
+       "examples": [
+        "It is sunny today.",
+        "What is the weather like?"
+       ]
+      }
+     ]
+    },
+    "vocabulary": [
+     {
+      "word": "Sunny",
+      "conjugations": null,
+      "examples": [
+       "It's sunny today.",
+       "I like sunny days."
+      ],
+      "tags": [],
+      "image": "https://res.cloudinary.com/ddowwkgy0/image/upload/v1777391613/sunny_r0iemm.png",
+      "translation": "Soleado",
+      "media": null,
+      "id": "weather_sunny"
+     },
+     {
+      "id": "weather_rainy",
+      "translation": "Lluvioso",
+      "media": null,
+      "tags": [],
+      "image": "https://res.cloudinary.com/ddowwkgy0/image/upload/v1777391760/cloudy_nrqrdn.png",
+      "word": "Rainy",
+      "examples": [
+       "Don't forget your umbrella, it's rainy.",
+       "Rainy days are good for reading."
+      ],
+      "conjugations": null
+     },
+     {
+      "id": "weather_cloudy",
+      "media": null,
+      "translation": "Nublado",
+      "tags": [],
+      "image": "https://res.cloudinary.com/ddowwkgy0/image/upload/v1777391924/Gemini_Generated_Image_au5sl8au5sl8au5s_v5izz5.png",
+      "conjugations": null,
+      "examples": [
+       "The sky is cloudy.",
+       "It might rain later."
+      ],
+      "word": "Cloudy"
+     },
+     {
+      "image": "https://res.cloudinary.com/ddowwkgy0/image/upload/v1777392108/windy_hmqaue.png",
+      "tags": [],
+      "conjugations": null,
+      "word": "Windy",
+      "examples": [
+       "It's very windy today.",
+       "Be careful with your hat!"
+      ],
+      "id": "weather_windy",
+      "media": null,
+      "translation": "Ventoso"
+     },
+     {
+      "tags": [],
+      "image": "https://res.cloudinary.com/ddowwkgy0/image/upload/v1777392149/snowy_venjhr.png",
+      "conjugations": null,
+      "word": "Snowy",
+      "examples": [
+       "We can make a snowman on snowy days.",
+       "It's snowy in December."
+      ],
+      "id": "weather_snowy",
+      "translation": "Nevado",
+      "media": null
+     },
+     {
+      "tags": [],
+      "word": "Spring",
+      "conjugations": null,
+      "examples": [
+       "Flowers bloom in spring.",
+       "Spring is my favorite season."
+      ],
+      "id": "season_spring",
+      "translation": "Primavera",
+      "media": null,
+      "emoji": "🌱"
+     },
+     {
+      "tags": [],
+      "examples": [
+       "I go to the beach in summer.",
+       "Summer is very hot."
+      ],
+      "word": "Summer",
+      "conjugations": null,
+      "id": "season_summer",
+      "translation": "Verano",
+      "media": null,
+      "emoji": "☀️"
+     },
+     {
+      "word": "Autumn / Fall",
+      "examples": [
+       "Leaves fall in autumn.",
+       "Autumn is cool and windy."
+      ],
+      "conjugations": null,
+      "tags": [],
+      "media": null,
+      "translation": "Otoño",
+      "id": "season_autumn",
+      "emoji": "🍂"
+     },
+     {
+      "conjugations": null,
+      "examples": [
+       "It's cold in winter.",
+       "I love winter sports."
+      ],
+      "word": "Winter",
+      "tags": [],
+      "translation": "Invierno",
+      "media": null,
+      "id": "season_winter",
+      "emoji": "❄️"
+     },
+     {
+      "tags": [],
+      "word": "Hot",
+      "examples": [
+       "The soup is hot.",
+       "It's very hot in summer."
+      ],
+      "conjugations": null,
+      "id": "temperature_hot",
+      "translation": "Caluroso / Caliente",
+      "media": null,
+      "emoji": "🔥"
+     },
+     {
+      "id": "temperature_cold",
+      "translation": "Frío",
+      "media": null,
+      "tags": [],
+      "word": "Cold",
+      "examples": [
+       "I need a jacket, it's cold.",
+       "Ice cream is cold."
+      ],
+      "conjugations": null,
+      "emoji": "🧊"
+     },
+     {
+      "tags": [],
+      "word": "Umbrella",
+      "conjugations": null,
+      "examples": [
+       "Take an umbrella, it's raining.",
+       "I lost my umbrella."
+      ],
+      "id": "weather_umbrella",
+      "media": null,
+      "translation": "Paraguas",
+      "emoji": "☔"
+     }
+    ]
+   }
+  }
+ },
+ "newLessons": {},
+ "units": {},
+ "level": "A1",
+ "moduleId": "basics",
+ "dumpPath": "D:\\Programación\\Bilingual Site\\bilingual-app\\contents\\backups\\firestore-dump-2026-10-19-154401.json"
+}

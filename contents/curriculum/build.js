@@ -8,7 +8,7 @@
 
 const fs = require("fs");
 const path = require("path");
-const { tokens, latestDump } = require("./helpers");
+const { tokens, latestDump, norm, buildable } = require("./helpers");
 
 const LEVEL = (process.argv[2] || "A1").toUpperCase();
 const MODULE_ID = { A1: "basics", A2: "basics_a2" }[LEVEL];
@@ -19,33 +19,6 @@ const dump = JSON.parse(fs.readFileSync(dumpPath, "utf8"));
 
 const MIN_EX = 10;
 const MIN_VOCAB = 8;
-
-const norm = (s) =>
-  String(s)
-    .toLowerCase()
-    .replace(/[’‘]/g, "'")
-    .replace(/[.,!?;:¿¡"]/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
-
-// ¿se puede armar la oración usando cada ficha del banco una sola vez?
-const buildable = (sentence, wordBank) => {
-  const bank = wordBank.map(norm);
-  const used = new Array(bank.length).fill(false);
-  const rec = (rest) => {
-    if (rest === "") return true;
-    for (let k = 0; k < bank.length; k++) {
-      if (used[k] || !bank[k]) continue;
-      if (rest === bank[k] || rest.startsWith(bank[k] + " ")) {
-        used[k] = true;
-        if (rec(rest.slice(bank[k].length).trim())) return true;
-        used[k] = false;
-      }
-    }
-    return false;
-  };
-  return rec(norm(sentence));
-};
 
 // agrega al banco las fichas que falten para poder armar la oración
 const completeBank = (sentence, wordBank) => {

@@ -144,6 +144,33 @@ const dialog = (title, scenario, steps, instr = "Elige la respuesta correcta par
     }),
   });
 
+const norm = (s) =>
+  String(s)
+    .toLowerCase()
+    .replace(/[’‘]/g, "'")
+    .replace(/[.,!?;:¿¡"]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+// ¿se puede armar la oración usando cada ficha del banco una sola vez?
+const buildable = (sentence, wordBank) => {
+  const bank = wordBank.map(norm);
+  const used = new Array(bank.length).fill(false);
+  const rec = (rest) => {
+    if (rest === "") return true;
+    for (let k = 0; k < bank.length; k++) {
+      if (used[k] || !bank[k]) continue;
+      if (rest === bank[k] || rest.startsWith(bank[k] + " ")) {
+        used[k] = true;
+        if (rec(rest.slice(bank[k].length).trim())) return true;
+        used[k] = false;
+      }
+    }
+    return false;
+  };
+  return rec(norm(sentence));
+};
+
 // volcado más reciente de Firestore (contents/backups/firestore-dump-AAAA-MM-DD[-HHMMSS].json), generado por dump.js
 const latestDump = () => {
   const fs = require("fs");
@@ -169,4 +196,4 @@ const stableStringify = (x) =>
           .join(",")}}`
       : JSON.stringify(x);
 
-module.exports = { v, g, match, memory, fill, build, drag, cat, conj, dialog, tokens, slug, latestDump, stableStringify };
+module.exports = { v, g, match, memory, fill, build, drag, cat, conj, dialog, tokens, slug, latestDump, stableStringify, norm, buildable };
