@@ -3,6 +3,7 @@
 //   node contents/curriculum/apply.js A1            -> simulación: muestra qué cambiaría, no escribe nada
 //   node contents/curriculum/apply.js A1 --write    -> escribe en Firestore (antes guarda un backup)
 //   node contents/curriculum/apply.js A2 --extend [--write] -> lo mismo con el resultado de extend.js
+//   node contents/curriculum/apply.js A1 --dedupe [--write] -> lo mismo con el resultado de dedupe.js
 //
 // Antes de escribir compara cada lección con el volcado usado por build.js:
 // si alguien la editó en Firestore después del volcado, se omite para no pisar ese cambio.
@@ -14,11 +15,12 @@ const path = require("path");
 const WRITE = process.argv.includes("--write");
 const LEVEL = (process.argv.find((a) => /^a\d$/i.test(a)) || "A1").toUpperCase();
 const { stableStringify } = require("./helpers");
-// --extend sube el resultado de extend.js (ejercicios agregados) en lugar del de build.js
-const SOURCE = process.argv.includes("--extend") ? "extend" : "lessons";
+// --extend sube el resultado de extend.js (ejercicios agregados), --dedupe el de dedupe.js
+// (duplicados quitados); sin ninguno de los dos, el de build.js
+const SOURCE = ["extend", "dedupe"].find((s) => process.argv.includes(`--${s}`)) || "lessons";
 const out = JSON.parse(fs.readFileSync(path.join(__dirname, `out/${LEVEL.toLowerCase()}-${SOURCE}.json`), "utf8"));
 if (!out.dumpPath)
-  throw new Error(`Volver a correr: node contents/curriculum/${SOURCE === "extend" ? "extend" : "build"}.js ${LEVEL}`);
+  throw new Error(`Volver a correr: node contents/curriculum/${SOURCE === "lessons" ? "build" : SOURCE}.js ${LEVEL}`);
 const dump = JSON.parse(fs.readFileSync(out.dumpPath, "utf8"));
 
 admin.initializeApp({ credential: admin.credential.cert(require("../../service-account-key.json")) });
@@ -88,11 +90,11 @@ const now = admin.firestore.FieldValue.serverTimestamp();
   if (skipped.length) console.log(`\nOmitidas (${skipped.length}):\n  ` + skipped.join("\n  "));
 
   if (!WRITE) {
-    console.log(`\nNo se escribió nada. Para aplicar: node contents/curriculum/apply.js ${LEVEL}${SOURCE === "extend" ? " --extend" : ""} --write`);
+    console.log(`\nNo se escribió nada. Para aplicar: node contents/curriculum/apply.js ${LEVEL}${SOURCE === "lessons" ? "" : ` --${SOURCE}`} --write`);
     process.exit(0);
   }
 
-  const backupPath = path.join(__dirname, `../backups/before-${LEVEL.toLowerCase()}-${SOURCE === "extend" ? "extend" : "apply"}-${Date.now()}.json`);
+  const backupPath = path.join(__dirname, `../backups/before-${LEVEL.toLowerCase()}-${SOURCE === "lessons" ? "apply" : SOURCE}-${Date.now()}.json`);
   fs.writeFileSync(backupPath, JSON.stringify(backup, null, 1));
   console.log(`\nBackup guardado en ${backupPath}`);
 

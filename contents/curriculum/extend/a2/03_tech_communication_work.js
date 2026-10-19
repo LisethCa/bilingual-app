@@ -22,7 +22,7 @@ module.exports = {
 
   A2_technology_social_media: [
     fill("Practica: hábitos digitales", [
-      "I ___ check my phone in the morning. (100%) | always | never, rarely",
+      "I ___ check my email before breakfast. (100%) | always | never, rarely",
       "She is ___ online. She loves social media. | always | never, rarely",
       "How ___ do you post photos? | often | much, many",
       "He posts a video ___ a week. | once | one, first",
@@ -40,7 +40,7 @@ module.exports = {
 
   A2_advanced_technology: [
     fill("Practica: had + participio", [
-      "When I arrived, the meeting ___ already started. | had | has, was",
+      "When I logged in, the update ___ already finished. | had | has, was",
       "She had ___ the app before the update. | used | use, using",
       "By the time we bought it, they ___ a new model. | had created | have created, create",
       "I ___ never seen a robot before that day. | had | have, was",
@@ -59,15 +59,15 @@ module.exports = {
   A2_communication_skills: [
     fill("Practica: can y could con idiomas", [
       "She ___ speak three languages. | can | cans, can to",
-      "When I was a child, I ___ speak French. | could | can, may",
-      "___ you repeat that, please? | Could | Must, Should",
+      "At five years old, my son ___ read. | could | can, may",
+      "___ you speak a little louder, please? | Could | Must, Should",
       "Sorry, I ___ understand you. The music was loud. | couldn't | can't to, can",
       "Can you speak more ___? | slowly | slow, slowness",
     ]),
     fill("Practica: aprender idiomas", [
       "He speaks English perfectly. He's ___. | fluent | accent, slowly",
       "Your ___ is very good. I understand every word. | pronunciation | fluent, translate",
-      "She has a British ___. | accent | fluent, repeat",
+      "He has a strong Scottish ___. | accent | fluent, repeat",
       "Can you ___ this text into Spanish? | translate | repeat, accent",
       "Sorry, can you ___ the question? | repeat | fluent, accent",
     ]),
@@ -89,7 +89,7 @@ module.exports = {
       "It's ___ to say 'please' and 'thank you'. | polite | rude, clarify",
       "Active ___ means paying attention to the other person. | listening | message, feedback",
     ]),
-    build("Practica: would you mind", "🙏 ¿Te molestaría repetir eso?", "Would you mind repeating that?", ["repeat", "to"]),
+    build("Practica: would you mind", "🙏 ¿Te molestaría hablar más despacio?", "Would you mind speaking more slowly?", ["speak", "to"]),
   ],
 
   A2_communication_styles: [
@@ -112,10 +112,10 @@ module.exports = {
 
   A2_education_studies: [
     fill("Practica: should y ought to", [
-      "You ___ study every day. | should | shouldn't, should to",
-      "You ought ___ practice more. | to | at, for",
-      "You ___ copy in the exam. | shouldn't | should, ought",
-      "___ I take notes in class? | Should | Ought, Do should",
+      "Your eyes are tired. You ___ take a break from the screen. | should | shouldn't, should to",
+      "You ought ___ read the instructions first. | to | at, for",
+      "You ___ use your phone during the exam. | shouldn't | should, ought",
+      "___ I ask the teacher for help? | Should | Ought, Do should",
       "Students ought to ___ their homework. | do | doing, to do",
     ]),
     fill("Practica: en la escuela", [

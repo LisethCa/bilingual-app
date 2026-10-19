@@ -17,12 +17,12 @@ module.exports = {
       "I ___ cold weather. I love summer! | hate | prefer, own",
       "Do you ___ a car or do you take the bus? | own | enjoy, believe",
     ]),
-    build("Practica: preferencias", "🎸 Prefiero leer antes que ver televisión", "I prefer reading to watching TV", ["than", "am"]),
+    build("Practica: preferencias", "🎸 Prefiero tocar la guitarra antes que jugar videojuegos", "I prefer playing the guitar to playing video games", ["than", "am"]),
   ],
 
   A2_fashion_style: [
     fill("Practica: comparar estilos", [
-      "This dress is ___ than that one. | prettier | prettyer, more pretty",
+      "Her hat is ___ than mine. | prettier | prettyer, more pretty",
       "She is the most ___ person in the office. | elegant | elegantest, more elegant",
       "These shoes are ___ than my old ones. | more comfortable | comfortabler, most comfortable",
       "This is the ___ outfit in the store. | best | better, goodest",
@@ -49,11 +49,11 @@ module.exports = {
     fill("Practica: frases de todos los días", [
       "Hi Tom! How's it ___? | going | doing, go",
       "___ me, where is the bathroom? | Excuse | Sorry, Never",
-      "I'm ___ I'm late. | sorry | excuse, mind",
-      "Bye! See you ___! | soon | mind, going",
+      "I'm ___ about your dog. I hope he gets better. | sorry | excuse, mind",
+      "It was nice talking to you. See you ___ week! | next | last, mind",
       "'I forgot the keys.' '___ mind, I have mine.' | Never | Excuse, Sorry",
     ]),
-    build("Practica: preguntar el trabajo", "💼 ¿A qué te dedicas?", "What do you do?", ["does", "are"]),
+    build("Practica: preguntar el trabajo", "💼 ¿Dónde trabajas?", "Where do you work?", ["does", "are"]),
   ],
 
   A2_travel_vacations: [
@@ -71,15 +71,15 @@ module.exports = {
       "We went ___ and visited the old town. | sightseeing | abroad, souvenir",
       "I want to live ___ for a year. | abroad | sightseeing, suitcase",
     ]),
-    build("Practica: ¿alguna vez?", "✈️ ¿Alguna vez has estado en Brasil?", "Have you ever been to Brazil?", ["did", "went"]),
+    build("Practica: ¿alguna vez?", "🗽 ¿Alguna vez has visitado Nueva York?", "Have you ever visited New York?", ["did", "went"]),
   ],
 
   A2_transportation: [
     fill("Practica: can y could", [
-      "When I was ten, I ___ ride a bike. | could | can, may",
+      "When she was five, she ___ swim. | could | can, may",
       "You ___ take the subway. It's faster. | could | couldn't, can't",
       "___ you drive me to the airport, please? | Could | Must, Should",
-      "I ___ drive. I don't have a license. | can't | could, can",
+      "I ___ ride a motorcycle. I never learned. | can't | could, can",
       "We ___ take the ferry because of the storm. | couldn't | could, can",
     ]),
     fill("Practica: medios de transporte", [
@@ -95,7 +95,7 @@ module.exports = {
   A2_public_transportation: [
     fill("Practica: horarios y verbos de estado", [
       "The train ___ at 8:15 every morning. | leaves | is leaving, leave",
-      "How much ___ a ticket cost? | does | do, is",
+      "How much ___ a monthly pass cost? | does | do, is",
       "This bag ___ to me. | belongs | is belonging, belong",
       "What time ___ the bus arrive? | does | do, is",
       "I ___ a ticket for the subway. | need | am needing, needs",
@@ -114,7 +114,7 @@ module.exports = {
     fill("Practica: should, must, mustn't", [
       "You ___ try the fish here. It's delicious. | should | shouldn't, mustn't",
       "You ___ smoke in the restaurant. It's not allowed. | mustn't | should, must",
-      "What ___ I order? | should | must to, shoulds",
+      "Which dessert ___ I choose? | should | must to, shoulds",
       "This cake is amazing. You ___ taste it! | must | mustn't, shouldn't",
       "You shouldn't ___ so much salt. | eat | to eat, eating",
     ]),
@@ -122,16 +122,16 @@ module.exports = {
       "I'd like to make a ___ for two people. | reservation | appetizer, main course",
       "For the ___, I'll have the steak. | main course | appetizer, reservation",
       "This soup is very ___. It has a lot of chili. | spicy | vegetarian, sweet",
-      "I don't eat meat. I'm ___. | vegetarian | spicy, appetizer",
+      "My sister only eats vegetables. She's ___. | vegetarian | spicy, appetizer",
       "What do you ___? The pasta or the fish? | recommend | reservation, spicy",
     ]),
-    build("Practica: pedir una recomendación", "🍽️ ¿Qué me recomienda?", "What do you recommend?", ["does", "recommends"]),
+    build("Practica: pedir una recomendación", "🍽️ ¿Qué plato nos recomienda?", "Which dish do you recommend?", ["does", "recommends"]),
   ],
 
   A2_culture_traditions: [
     fill("Practica: pasado simple y continuo", [
-      "We ___ dinner when the fireworks started. | were having | was having, are having",
-      "While they ___, it started to rain. | were dancing | was dancing, dancing",
+      "We ___ in the square when the parade began. | were waiting | was waiting, are waiting",
+      "While the band ___, the lights went out. | was playing | were playing, playing",
       "I ___ the festival three times last year. | visited | was visiting, visit",
       "The ceremony ___ at 7 p.m. and ended at 9. | started | was starting, starts",
       "What ___ you doing at midnight on New Year's Eve? | were | was, did",
@@ -148,7 +148,7 @@ module.exports = {
 
   A2_music_concerts: [
     fill("Practica: listen, hear, sound", [
-      "Shh! I ___ to the radio. | am listening | am hearing, listen",
+      "Shh! We ___ to the new album. | are listening | are hearing, listen",
       "Can you ___ that noise? | hear | listen, listening",
       "This song ___ great! | sounds | is sounding, sound",
       "I'm ___ a concert on TV. | watching | seeing, watch",

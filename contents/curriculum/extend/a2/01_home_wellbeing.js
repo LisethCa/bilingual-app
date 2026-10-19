@@ -22,7 +22,7 @@ module.exports = {
 
   A2_money_finances: [
     fill("Practica: must, have to, mustn't", [
-      "You ___ pay your bills on time. | must | mustn't, don't have to",
+      "You ___ show your ID to open a bank account. | must | mustn't, don't have to",
       "She ___ to pay the rent tomorrow. | has | have, must",
       "It's free. You ___ pay. | don't have to | must, has to",
       "You ___ spend all your savings. It's dangerous. | mustn't | must, have to",
@@ -63,7 +63,7 @@ module.exports = {
   A2_health_symptoms: [
     fill("Practica: should / shouldn't", [
       "You have a fever. You ___ stay in bed. | should | shouldn't, should to",
-      "You ___ eat so much sugar. | shouldn't | should, don't should",
+      "You ___ go to work with a fever. | shouldn't | should, don't should",
       "What ___ I do for a sore throat? | should | shouldn't, do should",
       "He should ___ more water. | drink | drinks, to drink",
       "___ I see a doctor? | Should | Do should, Shoulds",
@@ -80,7 +80,7 @@ module.exports = {
 
   A2_mental_health_wellbeing: [
     fill("Practica: can, could, may", [
-      "You look tired. You ___ take a break. | could | can't, mustn't",
+      "You seem stressed. You ___ go for a walk. | could | can't, mustn't",
       "Meditation ___ help you feel calm. | can | cans, can to",
       "I ___ feel nervous before the exam, I'm not sure. | may | must, mustn't",
       "___ I leave early today? (pedir permiso, formal) | May | Am, Does",
@@ -125,7 +125,7 @@ module.exports = {
 
   A2_time_planning: [
     fill("Practica: already, yet, still", [
-      "I have ___ finished my homework. | already | yet, still",
+      "We have ___ booked the hotel. | already | yet, still",
       "I haven't called the doctor ___. | yet | already, still",
       "She is ___ working. She hasn't stopped. | still | yet, already",
       "The train left at 9:00 exactly. It was ___ time. | on | at, by",
@@ -179,7 +179,7 @@ module.exports = {
     fill("Practica: la familia", [
       "I have two ___: a brother and a sister. | siblings | relatives, grandchildren",
       "I get along ___ my sister. We never fight. | with | to, at",
-      "My grandparents have five ___. | grandchildren | siblings, relatives",
+      "My parents are grandparents now. They have three ___. | grandchildren | siblings, relatives",
       "They were ___ in 2010, but now they are divorced. | married | relatives, siblings",
       "All my ___ come to the house at Christmas. | relatives | married, divorced",
     ]),
