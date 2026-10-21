@@ -2,9 +2,10 @@ import { CompletionMessage } from "@/components/ui/CompletionMessage";
 import { API_ENDPOINTS } from "@/constants/api";
 import { Ionicons } from "@expo/vector-icons";
 import { Audio } from "expo-av";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   ActivityIndicator,
+  Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -21,7 +22,75 @@ interface PronunciationGameProps {
   isCompleted: boolean;
 }
 
-export const PronunciationGame = ({
+const MAX_RECORDING_MS = 8000;
+const MIN_MATCH = 0.75;
+
+// expo-av graba en web con audio/webm, que Safari (iPhone/Mac) no soporta:
+// se elige el primer formato que el navegador sí pueda grabar.
+const recordingOptions = (): Audio.RecordingOptions => {
+  const preset = Audio.RecordingOptionsPresets.HIGH_QUALITY;
+  if (Platform.OS !== "web" || typeof MediaRecorder === "undefined") return preset;
+  const mimeType = ["audio/webm", "audio/mp4", "audio/ogg"].find((t) =>
+    MediaRecorder.isTypeSupported?.(t),
+  );
+  return { ...preset, web: mimeType ? { mimeType, bitsPerSecond: 128000 } : {} };
+};
+
+const extensionFor = (mimeType: string) =>
+  mimeType.includes("webm")
+    ? "webm"
+    : mimeType.includes("ogg")
+    ? "ogg"
+    : mimeType.includes("wav")
+    ? "wav"
+    : "m4a";
+
+const words = (text: string) =>
+  text
+    .toLowerCase()
+    .replace(/[’`]/g, "'")
+    .replace(/\bi'm\b/g, "i am")
+    .replace(/\b(he|she|it|that|what|there)'s\b/g, "$1 is")
+    .replace(/\b(you|we|they)'re\b/g, "$1 are")
+    .replace(/\b(i|you|we|they)'ve\b/g, "$1 have")
+    .replace(/\b(i|you|he|she|we|they)'ll\b/g, "$1 will")
+    .replace(/\b(i|you|he|she|we|they)'d\b/g, "$1 would")
+    .replace(/\bcan't\b/g, "cannot")
+    .replace(/\bwon't\b/g, "will not")
+    .replace(/n't\b/g, " not")
+    .replace(/\bcan not\b/g, "cannot")
+    .replace(/[^a-z0-9\s]/g, " ")
+    .replace(/\d+/g, (n) => numberToWords(Number(n)))
+    .split(/\s+/)
+    .filter(Boolean);
+
+// Whisper suele escribir los números con dígitos ("25") aunque la frase diga "twenty-five"
+const ONES = "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split(" ");
+const TENS = "  twenty thirty forty fifty sixty seventy eighty ninety".split(" ");
+const numberToWords = (n: number): string => {
+  if (n < 20) return ONES[n];
+  if (n < 100) return TENS[Math.floor(n / 10)] + (n % 10 ? ` ${ONES[n % 10]}` : "");
+  if (n < 1000)
+    return `${ONES[Math.floor(n / 100)]} hundred` + (n % 100 ? ` ${numberToWords(n % 100)}` : "");
+  return String(n);
+};
+
+// cantidad de palabras de `a` que aparecen en `b` en el mismo orden (LCS)
+const commonInOrder = (a: string[], b: string[]) => {
+  const row = new Array(b.length + 1).fill(0);
+  for (let i = 1; i <= a.length; i++) {
+    let prev = 0;
+    for (let j = 1; j <= b.length; j++) {
+      const tmp = row[j];
+      row[j] = a[i - 1] === b[j - 1] ? prev + 1 : Math.max(row[j], row[j - 1]);
+      prev = tmp;
+    }
+  }
+  return row[b.length];
+};
+
+export const PronunciationGame = (
+{
   config,
   onComplete,
   isCompleted,
@@ -79,100 +148,132 @@ export const PronunciationGame = ({
   }, [sound]);
 
   // --- LÓGICA DE GRABACIÓN ---
+  // Se toca una vez para empezar y otra para terminar (con mantener presionado,
+  // si el usuario soltaba antes de que el micrófono arrancara, o mientras salía
+  // el aviso de permiso, la grabación quedaba encendida para siempre).
+  // Se usan refs porque los handlers pueden correr antes del re-render.
+  const recordingRef = useRef<Audio.Recording | null>(null);
+  const startingRef = useRef(false);
+  const autoStopRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (autoStopRef.current) clearTimeout(autoStopRef.current);
+      recordingRef.current?.stopAndUnloadAsync().catch(() => {});
+      recordingRef.current = null;
+    };
+  }, []);
+
   async function startRecording() {
+    if (isCompleted || startingRef.current || recordingRef.current) return;
+    startingRef.current = true;
+    setError(null);
+    setLastTranscript("");
+    setShowSuccess(false);
+
     try {
-      if (isCompleted) return;
-      setError(null);
-      setLastTranscript("");
-      setShowSuccess(false);
+      if (sound) await sound.stopAsync().catch(() => {});
 
       const permission = await Audio.requestPermissionsAsync();
-      if (permission.status !== "granted") return;
+      if (!permission.granted) {
+        setError(
+          "Necesitamos permiso para usar el micrófono. Actívalo en la configuración del navegador o del teléfono y vuelve a intentar.",
+        );
+        return;
+      }
 
       await Audio.setAudioModeAsync({
         allowsRecordingIOS: true,
         playsInSilentModeIOS: true,
       });
 
-      const { recording } = await Audio.Recording.createAsync(
-        Audio.RecordingOptionsPresets.HIGH_QUALITY
+      const { recording: newRecording } = await Audio.Recording.createAsync(
+        recordingOptions(),
       );
-      setRecording(recording);
+      recordingRef.current = newRecording;
+      setRecording(newRecording);
+      autoStopRef.current = setTimeout(stopRecordingAndSend, MAX_RECORDING_MS);
     } catch (err) {
       console.error("Failed to start recording", err);
+      setError(
+        "No se pudo encender el micrófono. Revisa que ninguna otra app lo esté usando y que hayas dado permiso.",
+      );
+    } finally {
+      startingRef.current = false;
     }
   }
 
   async function stopRecordingAndSend() {
-    if (!recording) return;
+    const current = recordingRef.current;
+    if (!current) return;
+    recordingRef.current = null;
+    if (autoStopRef.current) {
+      clearTimeout(autoStopRef.current);
+      autoStopRef.current = null;
+    }
 
     try {
       setIsProcessing(true);
-      await recording.stopAndUnloadAsync();
-      const uri = recording.getURI();
       setRecording(null);
+      await current.stopAndUnloadAsync();
+      await Audio.setAudioModeAsync({ allowsRecordingIOS: false }).catch(
+        () => {},
+      );
+      const uri = current.getURI();
+      if (!uri) throw new Error("La grabación no tiene archivo");
 
-      if (uri) {
-        const responseAudio = await fetch(uri);
-        const audioBlob = await responseAudio.blob();
-        const mimeType = audioBlob.type || "audio/m4a";
-        const ext = mimeType.includes("webm")
-          ? "webm"
-          : mimeType.includes("ogg")
-          ? "ogg"
-          : "m4a";
-        const fileToUpload = new Blob([audioBlob], { type: mimeType });
-
-        const formData = new FormData();
-        formData.append("audio", fileToUpload, `pronunciation.${ext}`);
-
-        // LLAMADA A TU BACKEND
-        const response = await fetch(API_ENDPOINTS.TRANSCRIBE, {
-          method: "POST",
-          body: formData,
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-          setLastTranscript(data.text);
-          checkPronunciation(data.text);
-        } else {
-          throw new Error(data.details || "Error del servidor");
-        }
+      const formData = new FormData();
+      if (Platform.OS === "web") {
+        const audioBlob = await (await fetch(uri)).blob();
+        const mimeType = audioBlob.type || "audio/webm";
+        formData.append("audio", audioBlob, `pronunciation.${extensionFor(mimeType)}`);
+      } else {
+        const ext = uri.split(".").pop()?.toLowerCase() || "m4a";
+        formData.append("audio", {
+          uri,
+          name: `pronunciation.${ext}`,
+          type: ext === "3gp" ? "audio/3gpp" : `audio/${ext}`,
+        } as any);
       }
+
+      const response = await fetch(API_ENDPOINTS.TRANSCRIBE, {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.details || "Error del servidor");
+
+      const text = (data.text || "").trim();
+      if (!text) {
+        setError("No te escuché. Toca el micrófono y habla un poco más fuerte.");
+        return;
+      }
+      setLastTranscript(text);
+      checkPronunciation(text);
     } catch (err) {
-      setError("No se pudo procesar el audio.");
+      setError("No se pudo procesar el audio. Revisa tu conexión e intenta de nuevo.");
       console.error(err);
     } finally {
       setIsProcessing(false);
     }
   }
 
-  // --- LÓGICA DE COMPROBACIÓN (Tu normalización original) ---
+  const toggleRecording = () =>
+    recordingRef.current ? stopRecordingAndSend() : startRecording();
+
+  // --- LÓGICA DE COMPROBACIÓN ---
+  // Se acepta si el usuario dijo la mayoría de las palabras de la frase en orden
+  // (Whisper a veces cambia una palabra o la puntuación a quien recién aprende).
   const checkPronunciation = (transcript: string) => {
-    const normalize = (text: string) => {
-      return text
-        .toLowerCase()
-        .replace(/[?.,!]/g, "")
-        .replace(/\bshe's\b/g, "she is")
-        .replace(/\bhe's\b/g, "he is")
-        .replace(/\bi'm\b/g, "i am")
-        .replace(/\bit's\b/g, "it is")
-        .replace(/\byou're\b/g, "you are")
-        .replace(/\bthey're\b/g, "they are")
-        .trim()
-        .replace(/\s+/g, " ");
-    };
+    const target = words(config.phrase);
+    const spoken = words(transcript);
+    const matched = commonInOrder(target, spoken);
+    const ok =
+      target.length > 0 &&
+      matched / target.length >= MIN_MATCH &&
+      spoken.length <= target.length * 2 + 2;
 
-    const target = normalize(config.phrase);
-    const spoken = normalize(transcript);
-
-    if (
-      spoken === target ||
-      spoken.includes(target) ||
-      target.includes(spoken)
-    ) {
+    if (ok) {
       setShowSuccess(true);
       setShowCompletion(true);
       setTimeout(() => onComplete(), 1500);
@@ -207,8 +308,7 @@ export const PronunciationGame = ({
 
       <View style={styles.micSection}>
         <TouchableOpacity
-          onPressIn={startRecording}
-          onPressOut={stopRecordingAndSend}
+          onPress={toggleRecording}
           style={[
             styles.micButton,
             recording && styles.micActive,
@@ -237,10 +337,10 @@ export const PronunciationGame = ({
           {isProcessing
             ? "Analizando..."
             : recording
-            ? "Escuchando..."
+            ? "Escuchando... toca para terminar"
             : showSuccess
             ? "¡Perfecto!"
-            : "Mantén presionado para hablar"}
+            : "Toca el micrófono y di la frase"}
         </Text>
       </View>
 

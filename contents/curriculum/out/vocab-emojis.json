@@ -1,6 +1,6 @@
 {
- "generatedAt": "2026-10-14T15:39:45.224Z",
- "dumpPath": "D:\\Programación\\Bilingual Site\\bilingual-app\\contents\\backups\\firestore-dump-2026-10-14-153520.json",
+ "generatedAt": "2026-10-21T12:43:56.511Z",
+ "dumpPath": "D:\\Programación\\Bilingual Site\\bilingual-app\\contents\\backups\\firestore-dump-2026-10-21-124348.json",
  "model": "openai/gpt-oss-120b",
  "lessons": {
   "A1_greetings": {
@@ -39,14 +39,14 @@
      "id": "voc_bye",
      "word": "Bye",
      "translation": "Chau / Adiós",
-     "emoji": "👋"
+     "emoji": "✌️"
     },
     {
      "index": 7,
      "id": "voc_welcome",
      "word": "Welcome",
      "translation": "Bienvenido/a",
-     "emoji": "🚪"
+     "emoji": "🤗"
     },
     {
      "index": 8,
@@ -60,14 +60,14 @@
      "id": "voc_see_you_soon",
      "word": "See you soon",
      "translation": "Hasta pronto",
-     "emoji": "🕒"
+     "emoji": "🔜"
     },
     {
      "index": 10,
      "id": "voc_take_care",
      "word": "Take care",
      "translation": "Cuídate",
-     "emoji": "🤗"
+     "emoji": "🫂"
     },
     {
      "index": 11,
@@ -75,6 +75,27 @@
      "word": "Nice to meet you",
      "translation": "Encantado/a de conocerte",
      "emoji": "🤝"
+    },
+    {
+     "index": 12,
+     "id": "xv_hi",
+     "word": "Hi",
+     "translation": "Hola (informal)",
+     "emoji": "😊"
+    },
+    {
+     "index": 13,
+     "id": "xv_thank_you",
+     "word": "Thank you",
+     "translation": "Gracias",
+     "emoji": "🙏"
+    },
+    {
+     "index": 14,
+     "id": "xv_have_a_nice_day",
+     "word": "Have a nice day",
+     "translation": "Que tengas un buen día",
+     "emoji": "🌻"
     }
    ]
   },
@@ -334,7 +355,7 @@
      "id": "voc_spanish",
      "word": "Spanish",
      "translation": "Español/a",
-     "emoji": "📚"
+     "emoji": "🇪🇸"
     },
     {
      "index": 5,
@@ -348,7 +369,7 @@
      "id": "voc_where_are_you_from",
      "word": "Where are you from?",
      "translation": "¿De dónde eres?",
-     "emoji": "🌍"
+     "emoji": "🗺️"
     },
     {
      "index": 7,
@@ -359,38 +380,52 @@
     },
     {
      "index": 8,
-     "id": "voc_nice_to_meet_you",
-     "word": "Nice to meet you",
-     "translation": "Mucho gusto",
-     "emoji": "🤝"
+     "id": "xv_good_morning",
+     "word": "Good morning",
+     "translation": "Buenos días",
+     "emoji": "🌅"
     },
     {
      "index": 9,
-     "id": "voc_spanish",
-     "word": "Spanish",
-     "translation": "Español/a",
-     "emoji": "📚"
-    },
-    {
-     "index": 10,
-     "id": "voc_mexican",
-     "word": "Mexican",
-     "translation": "Mexicano/a",
-     "emoji": "🇲🇽"
-    },
-    {
-     "index": 11,
-     "id": "voc_where_are_you_from",
-     "word": "Where are you from?",
-     "translation": "¿De dónde eres?",
+     "id": "xv_country",
+     "word": "Country",
+     "translation": "País",
      "emoji": "🌍"
     },
     {
-     "index": 12,
-     "id": "voc_colombia",
-     "word": "Colombia",
-     "translation": "Colombia",
+     "index": 10,
+     "id": "xv_colombian",
+     "word": "Colombian",
+     "translation": "Colombiano / Colombiana",
      "emoji": "🇨🇴"
+    },
+    {
+     "index": 11,
+     "id": "xv_peru",
+     "word": "Peru",
+     "translation": "Perú",
+     "emoji": "🇵🇪"
+    },
+    {
+     "index": 12,
+     "id": "xv_chile",
+     "word": "Chile",
+     "translation": "Chile",
+     "emoji": "🇨🇱"
+    },
+    {
+     "index": 13,
+     "id": "xv_where_do_you_live",
+     "word": "Where do you live?",
+     "translation": "¿Dónde vives?",
+     "emoji": "🏠"
+    },
+    {
+     "index": 14,
+     "id": "xv_i_m_from",
+     "word": "I'm from",
+     "translation": "Soy de",
+     "emoji": "📍"
     }
    ]
   },
@@ -427,31 +462,52 @@
     },
     {
      "index": 8,
-     "id": "voc_banana",
-     "word": "Banana",
-     "translation": "Banana / Plátano",
-     "emoji": "🍌"
+     "id": "xv_orange",
+     "word": "Orange",
+     "translation": "Naranja",
+     "emoji": "🍊"
     },
     {
      "index": 9,
-     "id": "voc_milk",
-     "word": "Milk",
-     "translation": "Leche",
-     "emoji": "🥛"
+     "id": "xv_butter",
+     "word": "Butter",
+     "translation": "Mantequilla",
+     "emoji": "🧈"
     },
     {
      "index": 10,
-     "id": "voc_rice",
-     "word": "Rice",
-     "translation": "Arroz",
-     "emoji": "🍚"
+     "id": "xv_sugar",
+     "word": "Sugar",
+     "translation": "Azúcar",
+     "emoji": "🍬"
     },
     {
      "index": 11,
-     "id": "voc_cheese",
-     "word": "Cheese",
-     "translation": "Queso",
-     "emoji": "🧀"
+     "id": "xv_salt",
+     "word": "Salt",
+     "translation": "Sal",
+     "emoji": "🧂"
+    },
+    {
+     "index": 12,
+     "id": "xv_meat",
+     "word": "Meat",
+     "translation": "Carne",
+     "emoji": "🥩"
+    },
+    {
+     "index": 13,
+     "id": "xv_potato",
+     "word": "Potato",
+     "translation": "Papa",
+     "emoji": "🥔"
+    },
+    {
+     "index": 14,
+     "id": "xv_tomato",
+     "word": "Tomato",
+     "translation": "Tomate",
+     "emoji": "🍅"
     }
    ]
   },
@@ -477,7 +533,7 @@
      "id": "voc_hot_chocolate",
      "word": "Hot chocolate",
      "translation": "Chocolate caliente",
-     "emoji": "☕"
+     "emoji": "🍫"
     },
     {
      "index": 7,
@@ -488,31 +544,52 @@
     },
     {
      "index": 8,
-     "id": "voc_water",
-     "word": "Water",
-     "translation": "Agua",
-     "emoji": "💧"
+     "id": "xv_glass",
+     "word": "Glass",
+     "translation": "Vaso",
+     "emoji": "🥤"
     },
     {
      "index": 9,
-     "id": "voc_milk",
-     "word": "Milk",
-     "translation": "Leche",
-     "emoji": "🥛"
-    },
-    {
-     "index": 10,
-     "id": "voc_hot_chocolate",
-     "word": "Hot chocolate",
-     "translation": "Chocolate caliente",
+     "id": "xv_cup",
+     "word": "Cup",
+     "translation": "Taza",
      "emoji": "☕"
     },
     {
+     "index": 10,
+     "id": "xv_bottle",
+     "word": "Bottle",
+     "translation": "Botella",
+     "emoji": "🍾"
+    },
+    {
      "index": 11,
-     "id": "voc_lemonade",
-     "word": "Lemonade",
-     "translation": "Limonada",
-     "emoji": "🍋"
+     "id": "xv_ice",
+     "word": "Ice",
+     "translation": "Hielo",
+     "emoji": "🧊"
+    },
+    {
+     "index": 12,
+     "id": "xv_hot",
+     "word": "Hot",
+     "translation": "Caliente",
+     "emoji": "🔥"
+    },
+    {
+     "index": 13,
+     "id": "xv_cold",
+     "word": "Cold",
+     "translation": "Frío",
+     "emoji": "❄️"
+    },
+    {
+     "index": 14,
+     "id": "xv_smoothie",
+     "word": "Smoothie",
+     "translation": "Batido",
+     "emoji": "🍹"
     }
    ]
   },
@@ -531,7 +608,7 @@
      "id": "voc_waiter",
      "word": "Waiter",
      "translation": "Mesero/a",
-     "emoji": "🍽️"
+     "emoji": "🛎️"
     },
     {
      "index": 7,
@@ -542,24 +619,52 @@
     },
     {
      "index": 8,
-     "id": "voc_menu",
-     "word": "Menu",
-     "translation": "Menú / Carta",
-     "emoji": "📋"
+     "id": "xv_chef",
+     "word": "Chef",
+     "translation": "Chef / Cocinero",
+     "emoji": "👨‍🍳"
     },
     {
      "index": 9,
-     "id": "voc_waiter",
-     "word": "Waiter",
-     "translation": "Mesero/a",
-     "emoji": "🍽️"
+     "id": "xv_pizza",
+     "word": "Pizza",
+     "translation": "Pizza",
+     "emoji": "🍕"
     },
     {
      "index": 10,
-     "id": "voc_tip",
-     "word": "Tip",
-     "translation": "Propina",
-     "emoji": "💰"
+     "id": "xv_salad",
+     "word": "Salad",
+     "translation": "Ensalada",
+     "emoji": "🥗"
+    },
+    {
+     "index": 11,
+     "id": "xv_chicken",
+     "word": "Chicken",
+     "translation": "Pollo",
+     "emoji": "🐔"
+    },
+    {
+     "index": 12,
+     "id": "xv_fork",
+     "word": "Fork",
+     "translation": "Tenedor",
+     "emoji": "🍴"
+    },
+    {
+     "index": 13,
+     "id": "xv_knife",
+     "word": "Knife",
+     "translation": "Cuchillo",
+     "emoji": "🔪"
+    },
+    {
+     "index": 14,
+     "id": "xv_plate",
+     "word": "Plate",
+     "translation": "Plato",
+     "emoji": "🍽️"
     }
    ]
   },
@@ -620,7 +725,7 @@
      "id": "voc_finish_work",
      "word": "Finish work",
      "translation": "Terminar el trabajo",
-     "emoji": "🏁"
+     "emoji": "✅"
     },
     {
      "index": 8,
@@ -648,7 +753,28 @@
      "id": "voc_exercise",
      "word": "Exercise",
      "translation": "Hacer ejercicio",
-     "emoji": "🏃"
+     "emoji": "🏋️"
+    },
+    {
+     "index": 12,
+     "id": "xv_get_up",
+     "word": "Get up",
+     "translation": "Levantarse",
+     "emoji": "⬆️"
+    },
+    {
+     "index": 13,
+     "id": "xv_take_the_bus",
+     "word": "Take the bus",
+     "translation": "Tomar el bus",
+     "emoji": "🚌"
+    },
+    {
+     "index": 14,
+     "id": "xv_do_homework",
+     "word": "Do homework",
+     "translation": "Hacer la tarea",
+     "emoji": "📚"
     }
    ]
   },
@@ -681,7 +807,7 @@
      "id": "voc_eat",
      "word": "Eat",
      "translation": "Comer",
-     "emoji": "🍎"
+     "emoji": "🍽️"
     },
     {
      "index": 4,
@@ -713,59 +839,52 @@
     },
     {
      "index": 8,
-     "id": "voc_work",
-     "word": "Work",
-     "translation": "Trabajar",
-     "emoji": "🛠️"
+     "id": "xv_write",
+     "word": "Write",
+     "translation": "Escribir",
+     "emoji": "✍️"
     },
     {
      "index": 9,
-     "id": "voc_live",
-     "word": "Live",
-     "translation": "Vivir",
-     "emoji": "🏠"
+     "id": "xv_listen",
+     "word": "Listen",
+     "translation": "Escuchar",
+     "emoji": "👂"
     },
     {
      "index": 10,
-     "id": "voc_study",
-     "word": "Study",
-     "translation": "Estudiar",
-     "emoji": "📚"
+     "id": "xv_go",
+     "word": "Go",
+     "translation": "Ir",
+     "emoji": "🏃"
     },
     {
      "index": 11,
-     "id": "voc_eat",
-     "word": "Eat",
-     "translation": "Comer",
-     "emoji": "🍎"
+     "id": "xv_cook",
+     "word": "Cook",
+     "translation": "Cocinar",
+     "emoji": "🍳"
     },
     {
      "index": 12,
-     "id": "voc_drink",
-     "word": "Drink",
-     "translation": "Beber / Tomar",
-     "emoji": "🍹"
+     "id": "xv_sleep",
+     "word": "Sleep",
+     "translation": "Dormir",
+     "emoji": "😴"
     },
     {
      "index": 13,
-     "id": "voc_play",
-     "word": "Play",
-     "translation": "Jugar",
-     "emoji": "🎲"
+     "id": "xv_walk",
+     "word": "Walk",
+     "translation": "Caminar",
+     "emoji": "🚶"
     },
     {
      "index": 14,
-     "id": "voc_read",
-     "word": "Read",
-     "translation": "Leer",
-     "emoji": "📖"
-    },
-    {
-     "index": 15,
-     "id": "voc_speak",
-     "word": "Speak",
-     "translation": "Hablar",
-     "emoji": "🗣️"
+     "id": "xv_teach",
+     "word": "Teach",
+     "translation": "Enseñar",
+     "emoji": "🏫"
     }
    ]
   },
@@ -791,7 +910,7 @@
      "id": "voc_meet_my_friend",
      "word": "Meet my friend",
      "translation": "Conoce a mi amigo",
-     "emoji": "👥"
+     "emoji": "👫"
     },
     {
      "index": 3,
@@ -805,7 +924,7 @@
      "id": "voc_colleague",
      "word": "Colleague",
      "translation": "Colega / Compañero de trabajo",
-     "emoji": "💼"
+     "emoji": "👔"
     },
     {
      "index": 5,
@@ -819,7 +938,7 @@
      "id": "voc_classmate",
      "word": "Classmate",
      "translation": "Compañero/a de clase",
-     "emoji": "🎓"
+     "emoji": "🧑‍🎓"
     },
     {
      "index": 7,
@@ -830,31 +949,52 @@
     },
     {
      "index": 8,
-     "id": "voc_colleague",
-     "word": "Colleague",
-     "translation": "Colega / Compañero de trabajo",
-     "emoji": "💼"
+     "id": "xv_friend",
+     "word": "Friend",
+     "translation": "Amigo / Amiga",
+     "emoji": "👫"
     },
     {
      "index": 9,
-     "id": "voc_neighbor",
-     "word": "Neighbor",
-     "translation": "Vecino/a",
-     "emoji": "🏠"
+     "id": "xv_boss",
+     "word": "Boss",
+     "translation": "Jefe / Jefa",
+     "emoji": "🧑‍💼"
     },
     {
      "index": 10,
-     "id": "voc_classmate",
-     "word": "Classmate",
-     "translation": "Compañero/a de clase",
-     "emoji": "🎓"
+     "id": "xv_roommate",
+     "word": "Roommate",
+     "translation": "Compañero de cuarto",
+     "emoji": "🛏️"
     },
     {
      "index": 11,
-     "id": "voc_let_me_introduce",
-     "word": "Let me introduce",
-     "translation": "Permíteme presentar",
-     "emoji": "🙋"
+     "id": "xv_introduce",
+     "word": "Introduce",
+     "translation": "Presentar",
+     "emoji": "🤝"
+    },
+    {
+     "index": 12,
+     "id": "xv_how_are_you",
+     "word": "How are you?",
+     "translation": "¿Cómo estás?",
+     "emoji": "❓"
+    },
+    {
+     "index": 13,
+     "id": "xv_fine_thanks",
+     "word": "Fine, thanks",
+     "translation": "Bien, gracias",
+     "emoji": "👍"
+    },
+    {
+     "index": 14,
+     "id": "xv_nice_to_see_you",
+     "word": "Nice to see you",
+     "translation": "Qué gusto verte",
+     "emoji": "🤗"
     }
    ]
   },
@@ -873,14 +1013,14 @@
      "id": "voc_i_am",
      "word": "I am",
      "translation": "Yo soy",
-     "emoji": ""
+     "emoji": "🙋"
     },
     {
      "index": 2,
      "id": "voc_your_name",
      "word": "Your name",
      "translation": "Tu nombre",
-     "emoji": ""
+     "emoji": "📛"
     },
     {
      "index": 3,
@@ -894,56 +1034,77 @@
      "id": "voc_his_name",
      "word": "His name",
      "translation": "Su nombre (de él)",
-     "emoji": "👦"
+     "emoji": "👨"
     },
     {
      "index": 5,
      "id": "voc_her_name",
      "word": "Her name",
      "translation": "Su nombre (de ella)",
-     "emoji": "👧"
+     "emoji": "👩"
     },
     {
      "index": 6,
      "id": "voc_mr",
      "word": "Mr.",
      "translation": "Señor (Sr.)",
-     "emoji": "👨"
+     "emoji": "👔"
     },
     {
      "index": 7,
      "id": "voc_mrs",
      "word": "Mrs.",
      "translation": "Señora (Sra.)",
-     "emoji": "👩"
+     "emoji": "👗"
     },
     {
      "index": 8,
-     "id": "voc_his_name",
-     "word": "His name",
-     "translation": "Su nombre (de él)",
-     "emoji": "👦"
+     "id": "xv_name",
+     "word": "Name",
+     "translation": "Nombre",
+     "emoji": "🏷️"
     },
     {
      "index": 9,
-     "id": "voc_her_name",
-     "word": "Her name",
-     "translation": "Su nombre (de ella)",
-     "emoji": "👧"
+     "id": "xv_surname",
+     "word": "Surname",
+     "translation": "Apellido",
+     "emoji": "👪"
     },
     {
      "index": 10,
-     "id": "voc_mr",
-     "word": "Mr.",
-     "translation": "Señor (Sr.)",
-     "emoji": "👨"
+     "id": "xv_call_me",
+     "word": "Call me",
+     "translation": "Llámame",
+     "emoji": "🤙"
     },
     {
      "index": 11,
-     "id": "voc_mrs",
-     "word": "Mrs.",
-     "translation": "Señora (Sra.)",
+     "id": "xv_ms",
+     "word": "Ms.",
+     "translation": "Sra. / Srta.",
      "emoji": "👩"
+    },
+    {
+     "index": 12,
+     "id": "xv_what_s_your_name",
+     "word": "What's your name?",
+     "translation": "¿Cómo te llamas?",
+     "emoji": "❓"
+    },
+    {
+     "index": 13,
+     "id": "xv_who_is_this",
+     "word": "Who is this?",
+     "translation": "¿Quién es?",
+     "emoji": "🤷"
+    },
+    {
+     "index": 14,
+     "id": "xv_meet",
+     "word": "Meet",
+     "translation": "Conocer",
+     "emoji": "👥"
     }
    ]
   },
@@ -955,84 +1116,105 @@
      "id": "voc_good_afternoon",
      "word": "Good afternoon",
      "translation": "Buenas tardes",
-     "emoji": "🌞"
+     "emoji": ""
     },
     {
      "index": 1,
      "id": "voc_pleased_to_meet",
      "word": "Pleased to meet you",
      "translation": "Encantado de conocerle",
-     "emoji": "🤝"
+     "emoji": ""
     },
     {
      "index": 2,
      "id": "voc_how_do_you_do",
      "word": "How do you do?",
      "translation": "¿Cómo está usted?",
-     "emoji": "👋"
+     "emoji": ""
     },
     {
      "index": 3,
      "id": "voc_this_is",
      "word": "This is",
      "translation": "Este/Esta es",
-     "emoji": "👉"
+     "emoji": ""
     },
     {
      "index": 4,
      "id": "voc_sir",
      "word": "Sir",
      "translation": "Señor (sin apellido)",
-     "emoji": "👨"
+     "emoji": ""
     },
     {
      "index": 5,
      "id": "voc_madam",
      "word": "Madam",
      "translation": "Señora (sin apellido)",
-     "emoji": "👩"
+     "emoji": ""
     },
     {
      "index": 6,
      "id": "voc_excuse_me",
      "word": "Excuse me",
      "translation": "Disculpe",
-     "emoji": "🙇"
+     "emoji": ""
     },
     {
      "index": 7,
      "id": "voc_good_evening",
      "word": "Good evening",
      "translation": "Buenas noches (al llegar)",
-     "emoji": "🌙"
+     "emoji": ""
     },
     {
      "index": 8,
-     "id": "voc_sir",
-     "word": "Sir",
-     "translation": "Señor (sin apellido)",
-     "emoji": "👨"
+     "id": "xv_good_morning",
+     "word": "Good morning",
+     "translation": "Buenos días",
+     "emoji": ""
     },
     {
      "index": 9,
-     "id": "voc_madam",
-     "word": "Madam",
-     "translation": "Señora (sin apellido)",
-     "emoji": "👩"
+     "id": "xv_manager",
+     "word": "Manager",
+     "translation": "Gerente",
+     "emoji": ""
     },
     {
      "index": 10,
-     "id": "voc_excuse_me",
-     "word": "Excuse me",
-     "translation": "Disculpe",
-     "emoji": "🙇"
+     "id": "xv_welcome",
+     "word": "Welcome",
+     "translation": "Bienvenido",
+     "emoji": ""
     },
     {
      "index": 11,
-     "id": "voc_good_evening",
-     "word": "Good evening",
-     "translation": "Buenas noches (al llegar)",
-     "emoji": "🌙"
+     "id": "xv_thank_you_very_much",
+     "word": "Thank you very much",
+     "translation": "Muchas gracias",
+     "emoji": ""
+    },
+    {
+     "index": 12,
+     "id": "xv_have_a_seat",
+     "word": "Have a seat",
+     "translation": "Tome asiento",
+     "emoji": ""
+    },
+    {
+     "index": 13,
+     "id": "xv_it_s_a_pleasure",
+     "word": "It's a pleasure",
+     "translation": "Es un placer",
+     "emoji": ""
+    },
+    {
+     "index": 14,
+     "id": "xv_business_card",
+     "word": "Business card",
+     "translation": "Tarjeta de presentación",
+     "emoji": ""
     }
    ]
   },
@@ -1101,6 +1283,41 @@
      "word": "Clean the house",
      "translation": "Limpiar la casa",
      "emoji": "🧹"
+    },
+    {
+     "index": 10,
+     "id": "xv_go_shopping",
+     "word": "Go shopping",
+     "translation": "Ir de compras",
+     "emoji": "🛍️"
+    },
+    {
+     "index": 11,
+     "id": "xv_take_a_trip",
+     "word": "Take a trip",
+     "translation": "Hacer un viaje",
+     "emoji": "✈️"
+    },
+    {
+     "index": 12,
+     "id": "xv_cook_dinner",
+     "word": "Cook dinner",
+     "translation": "Preparar la cena",
+     "emoji": "🍳"
+    },
+    {
+     "index": 13,
+     "id": "xv_tonight",
+     "word": "Tonight",
+     "translation": "Esta noche",
+     "emoji": "🌙"
+    },
+    {
+     "index": 14,
+     "id": "xv_this_weekend",
+     "word": "This weekend",
+     "translation": "Este fin de semana",
+     "emoji": "📅"
     }
    ]
   },
@@ -1112,77 +1329,98 @@
      "id": "voc_will_study",
      "word": "Will study",
      "translation": "Estudiaré",
-     "emoji": "🌅"
+     "emoji": "📚"
     },
     {
      "index": 2,
      "id": "voc_tomorrow",
      "word": "Tomorrow",
      "translation": "Mañana",
-     "emoji": "📆"
+     "emoji": "🌅"
     },
     {
      "index": 3,
      "id": "voc_next_week",
      "word": "Next week",
      "translation": "La próxima semana",
-     "emoji": "📅"
+     "emoji": "🗓️"
     },
     {
      "index": 4,
      "id": "voc_next_year",
      "word": "Next year",
      "translation": "El próximo año",
-     "emoji": "⏰"
+     "emoji": "📆"
     },
     {
      "index": 5,
      "id": "voc_soon",
      "word": "Soon",
      "translation": "Pronto",
-     "emoji": "🤔"
+     "emoji": "⏰"
     },
     {
      "index": 6,
      "id": "voc_maybe",
      "word": "Maybe",
      "translation": "Quizás",
-     "emoji": "🤝"
+     "emoji": ""
     },
     {
      "index": 7,
      "id": "voc_promise",
      "word": "Promise",
      "translation": "Prometer / Promesa",
-     "emoji": "📅"
-    },
-    {
-     "index": 8,
-     "id": "voc_next_year",
-     "word": "Next year",
-     "translation": "El próximo año",
-     "emoji": "⏰"
-    },
-    {
-     "index": 9,
-     "id": "voc_soon",
-     "word": "Soon",
-     "translation": "Pronto",
-     "emoji": "🤔"
-    },
-    {
-     "index": 10,
-     "id": "voc_maybe",
-     "word": "Maybe",
-     "translation": "Quizás",
      "emoji": "🤝"
     },
     {
-     "index": 11,
-     "id": "voc_promise",
-     "word": "Promise",
-     "translation": "Prometer / Promesa",
+     "index": 8,
+     "id": "xv_will_visit",
+     "word": "Will visit",
+     "translation": "Visitará / Visitaré",
+     "emoji": "🏠"
+    },
+    {
+     "index": 9,
+     "id": "xv_will_buy",
+     "word": "Will buy",
+     "translation": "Comprará / Compraré",
+     "emoji": "🛒"
+    },
+    {
+     "index": 10,
+     "id": "xv_will_be",
+     "word": "Will be",
+     "translation": "Será / Estará",
      "emoji": ""
+    },
+    {
+     "index": 11,
+     "id": "xv_later",
+     "word": "Later",
+     "translation": "Más tarde",
+     "emoji": "⏱️"
+    },
+    {
+     "index": 12,
+     "id": "xv_probably",
+     "word": "Probably",
+     "translation": "Probablemente",
+     "emoji": ""
+    },
+    {
+     "index": 13,
+     "id": "xv_future",
+     "word": "Future",
+     "translation": "Futuro",
+     "emoji": "🔮"
+    },
+    {
+     "index": 14,
+     "id": "xv_next_month",
+     "word": "Next month",
+     "translation": "El próximo mes",
+     "emoji": "📅"
     }
    ]
   },
@@ -1222,7 +1460,7 @@
      "id": "voc_become",
      "word": "Become",
      "translation": "Llegar a ser / Convertirse en",
-     "emoji": "🦋"
+     "emoji": ""
     },
     {
      "index": 7,
@@ -1233,45 +1471,52 @@
     },
     {
      "index": 8,
-     "id": "voc_goal",
-     "word": "Goal",
-     "translation": "Meta",
-     "emoji": "🎯"
+     "id": "xv_achieve",
+     "word": "Achieve",
+     "translation": "Lograr",
+     "emoji": "🏆"
     },
     {
      "index": 9,
-     "id": "voc_dream",
-     "word": "Dream",
-     "translation": "Sueño",
-     "emoji": "🌙"
+     "id": "xv_hope",
+     "word": "Hope",
+     "translation": "Esperar / Esperanza",
+     "emoji": "🌟"
     },
     {
      "index": 10,
-     "id": "voc_learn",
-     "word": "Learn",
-     "translation": "Aprender",
-     "emoji": "📚"
+     "id": "xv_want_to",
+     "word": "Want to",
+     "translation": "Querer",
+     "emoji": ""
     },
     {
      "index": 11,
-     "id": "voc_save_money",
-     "word": "Save money",
-     "translation": "Ahorrar dinero",
-     "emoji": "🏦"
+     "id": "xv_work_hard",
+     "word": "Work hard",
+     "translation": "Trabajar duro",
+     "emoji": "💪"
     },
     {
      "index": 12,
-     "id": "voc_become",
-     "word": "Become",
-     "translation": "Llegar a ser / Convertirse en",
-     "emoji": "🦋"
+     "id": "xv_success",
+     "word": "Success",
+     "translation": "Éxito",
+     "emoji": "🎉"
     },
     {
      "index": 13,
-     "id": "voc_career",
-     "word": "Career",
-     "translation": "Carrera",
-     "emoji": "👔"
+     "id": "xv_future",
+     "word": "Future",
+     "translation": "Futuro",
+     "emoji": "🔮"
+    },
+    {
+     "index": 14,
+     "id": "xv_improve",
+     "word": "Improve",
+     "translation": "Mejorar",
+     "emoji": "📈"
     }
    ]
   },
@@ -1297,7 +1542,7 @@
      "id": "voc_decision",
      "word": "Decision",
      "translation": "Decisión",
-     "emoji": "⚖️"
+     "emoji": "✅"
     },
     {
      "index": 3,
@@ -1311,7 +1556,7 @@
      "id": "voc_decide",
      "word": "Decide",
      "translation": "Decidir",
-     "emoji": "✅"
+     "emoji": "🗳️"
     },
     {
      "index": 5,
@@ -1325,7 +1570,7 @@
      "id": "voc_help",
      "word": "Help",
      "translation": "Ayudar",
-     "emoji": "🆘"
+     "emoji": "🙏"
     },
     {
      "index": 7,
@@ -1336,31 +1581,52 @@
     },
     {
      "index": 8,
-     "id": "voc_decide",
-     "word": "Decide",
-     "translation": "Decidir",
-     "emoji": "✅"
+     "id": "xv_choose",
+     "word": "Choose",
+     "translation": "Elegir",
+     "emoji": "👉"
     },
     {
      "index": 9,
-     "id": "voc_plan",
-     "word": "Plan",
-     "translation": "Plan / Planear",
-     "emoji": "📅"
+     "id": "xv_idea",
+     "word": "Idea",
+     "translation": "Idea",
+     "emoji": "💡"
     },
     {
      "index": 10,
-     "id": "voc_help",
-     "word": "Help",
-     "translation": "Ayudar",
-     "emoji": "🆘"
+     "id": "xv_maybe",
+     "word": "Maybe",
+     "translation": "Tal vez",
+     "emoji": "🤷"
     },
     {
      "index": 11,
-     "id": "voc_offer",
-     "word": "Offer",
-     "translation": "Ofrecer",
-     "emoji": "🎁"
+     "id": "xv_sure",
+     "word": "Sure",
+     "translation": "Seguro / Claro",
+     "emoji": "👍"
+    },
+    {
+     "index": 12,
+     "id": "xv_change_my_mind",
+     "word": "Change my mind",
+     "translation": "Cambiar de opinión",
+     "emoji": "🔄"
+    },
+    {
+     "index": 13,
+     "id": "xv_carry",
+     "word": "Carry",
+     "translation": "Cargar / Llevar",
+     "emoji": "🎒"
+    },
+    {
+     "index": 14,
+     "id": "xv_open",
+     "word": "Open",
+     "translation": "Abrir",
+     "emoji": "🔓"
     }
    ]
   },
@@ -1397,31 +1663,52 @@
     },
     {
      "index": 8,
-     "id": "voc_please",
-     "word": "Please",
-     "translation": "Por favor",
-     "emoji": "🙏"
+     "id": "xv_good_afternoon",
+     "word": "Good afternoon",
+     "translation": "Buenas tardes",
+     "emoji": "🌞"
     },
     {
      "index": 9,
-     "id": "voc_good_morning",
-     "word": "Good morning",
-     "translation": "Buenos días",
-     "emoji": "🌅"
+     "id": "xv_good_evening",
+     "word": "Good evening",
+     "translation": "Buenas noches (al llegar)",
+     "emoji": "🌇"
     },
     {
      "index": 10,
-     "id": "voc_good_night",
-     "word": "Good night",
-     "translation": "Buenas noches",
-     "emoji": "🌙"
+     "id": "xv_see_you_later",
+     "word": "See you later",
+     "translation": "Hasta luego",
+     "emoji": "👋"
     },
     {
      "index": 11,
-     "id": "voc_you_re_welcome",
-     "word": "You're welcome",
-     "translation": "De nada",
+     "id": "xv_sorry",
+     "word": "Sorry",
+     "translation": "Perdón / Lo siento",
+     "emoji": "🙇"
+    },
+    {
+     "index": 12,
+     "id": "xv_excuse_me",
+     "word": "Excuse me",
+     "translation": "Disculpe",
+     "emoji": "🤚"
+    },
+    {
+     "index": 13,
+     "id": "xv_yes",
+     "word": "Yes",
+     "translation": "Sí",
      "emoji": "👍"
+    },
+    {
+     "index": 14,
+     "id": "xv_no",
+     "word": "No",
+     "translation": "No",
+     "emoji": "❌"
     }
    ]
   },
@@ -1455,6 +1742,55 @@
      "word": "Friend",
      "translation": "Amigo/a",
      "emoji": "🤝"
+    },
+    {
+     "index": 8,
+     "id": "xv_age",
+     "word": "Age",
+     "translation": "Edad",
+     "emoji": "📅"
+    },
+    {
+     "index": 9,
+     "id": "xv_years_old",
+     "word": "Years old",
+     "translation": "Años (de edad)",
+     "emoji": "📅"
+    },
+    {
+     "index": 10,
+     "id": "xv_live",
+     "word": "Live",
+     "translation": "Vivir",
+     "emoji": "🏠"
+    },
+    {
+     "index": 11,
+     "id": "xv_work",
+     "word": "Work",
+     "translation": "Trabajar",
+     "emoji": "💼"
+    },
+    {
+     "index": 12,
+     "id": "xv_hobby",
+     "word": "Hobby",
+     "translation": "Pasatiempo",
+     "emoji": "🎨"
+    },
+    {
+     "index": 13,
+     "id": "xv_married",
+     "word": "Married",
+     "translation": "Casado / Casada",
+     "emoji": "💍"
+    },
+    {
+     "index": 14,
+     "id": "xv_single",
+     "word": "Single",
+     "translation": "Soltero / Soltera",
+     "emoji": "🧍"
     }
    ]
   },
@@ -1487,28 +1823,28 @@
      "id": "voc_first_name",
      "word": "First name",
      "translation": "Nombre",
-     "emoji": "🥇"
+     "emoji": "🅰️"
     },
     {
      "index": 4,
      "id": "voc_last_name",
      "word": "Last name",
      "translation": "Apellido",
-     "emoji": "🏁"
+     "emoji": "🔚"
     },
     {
      "index": 5,
      "id": "voc_full_name",
      "word": "Full name",
      "translation": "Nombre completo",
-     "emoji": "🪪"
+     "emoji": "📛"
     },
     {
      "index": 6,
      "id": "voc_nickname",
      "word": "Nickname",
      "translation": "Apodo",
-     "emoji": "🗣️"
+     "emoji": ""
     },
     {
      "index": 7,
@@ -1519,31 +1855,52 @@
     },
     {
      "index": 8,
-     "id": "voc_last_name",
-     "word": "Last name",
-     "translation": "Apellido",
-     "emoji": "🏁"
+     "id": "xv_middle_name",
+     "word": "Middle name",
+     "translation": "Segundo nombre",
+     "emoji": ""
     },
     {
      "index": 9,
-     "id": "voc_full_name",
-     "word": "Full name",
-     "translation": "Nombre completo",
-     "emoji": "🪪"
+     "id": "xv_spell",
+     "word": "Spell",
+     "translation": "Deletrear",
+     "emoji": "🔤"
     },
     {
      "index": 10,
-     "id": "voc_nickname",
-     "word": "Nickname",
-     "translation": "Apodo",
-     "emoji": "🗣️"
+     "id": "xv_letter",
+     "word": "Letter",
+     "translation": "Letra",
+     "emoji": "🔠"
     },
     {
      "index": 11,
-     "id": "voc_how_do_you_spell_it",
-     "word": "How do you spell it?",
-     "translation": "¿Cómo se deletrea?",
-     "emoji": "🔤"
+     "id": "xv_repeat",
+     "word": "Repeat",
+     "translation": "Repetir",
+     "emoji": "🔁"
+    },
+    {
+     "index": 12,
+     "id": "xv_name_tag",
+     "word": "Name tag",
+     "translation": "Etiqueta con el nombre",
+     "emoji": "🏷️"
+    },
+    {
+     "index": 13,
+     "id": "xv_who_are_you",
+     "word": "Who are you?",
+     "translation": "¿Quién eres?",
+     "emoji": "👤"
+    },
+    {
+     "index": 14,
+     "id": "xv_called",
+     "word": "Called",
+     "translation": "Llamado",
+     "emoji": "📛"
     }
    ]
   },
@@ -1573,23 +1930,51 @@
     },
     {
      "index": 8,
-     "id": "voc_we",
-     "word": "We",
-     "translation": "Nosotros/as",
+     "id": "xv_me",
+     "word": "Me",
+     "translation": "Me / Mí",
      "emoji": ""
     },
     {
      "index": 9,
-     "id": "voc_they",
-     "word": "They",
-     "translation": "Ellos/Ellas",
+     "id": "xv_him",
+     "word": "Him",
+     "translation": "Lo / Él",
      "emoji": ""
     },
     {
      "index": 10,
-     "id": "voc_you_plural",
-     "word": "You (plural)",
-     "translation": "Ustedes / Vosotros",
+     "id": "xv_her",
+     "word": "Her",
+     "translation": "La / Ella",
+     "emoji": ""
+    },
+    {
+     "index": 11,
+     "id": "xv_us",
+     "word": "Us",
+     "translation": "Nos / Nosotros",
+     "emoji": ""
+    },
+    {
+     "index": 12,
+     "id": "xv_them",
+     "word": "Them",
+     "translation": "Los / Ellos",
+     "emoji": ""
+    },
+    {
+     "index": 13,
+     "id": "xv_my",
+     "word": "My",
+     "translation": "Mi",
+     "emoji": ""
+    },
+    {
+     "index": 14,
+     "id": "xv_your",
+     "word": "Your",
+     "translation": "Tu / Su",
      "emoji": ""
     }
    ]
@@ -1609,7 +1994,7 @@
      "id": "voc_table",
      "word": "Table",
      "translation": "Mesa",
-     "emoji": "🍽️"
+     "emoji": "🪑"
     },
     {
      "index": 4,
@@ -1641,31 +2026,52 @@
     },
     {
      "index": 8,
-     "id": "voc_waiter",
-     "word": "Waiter",
-     "translation": "Mesero / Camarero",
-     "emoji": "🧑‍🍳"
+     "id": "xv_drink",
+     "word": "Drink",
+     "translation": "Bebida",
+     "emoji": "🥤"
     },
     {
      "index": 9,
-     "id": "voc_dessert",
-     "word": "Dessert",
-     "translation": "Postre",
-     "emoji": "🍰"
+     "id": "xv_water_please",
+     "word": "Water, please",
+     "translation": "Agua, por favor",
+     "emoji": "🚰"
     },
     {
      "index": 10,
-     "id": "voc_reservation",
-     "word": "Reservation",
-     "translation": "Reserva",
-     "emoji": "📅"
+     "id": "xv_check_please",
+     "word": "Check, please",
+     "translation": "La cuenta, por favor",
+     "emoji": "🧾"
     },
     {
      "index": 11,
-     "id": "voc_delicious",
-     "word": "Delicious",
-     "translation": "Delicioso",
-     "emoji": "😋"
+     "id": "xv_i_d_like",
+     "word": "I'd like",
+     "translation": "Me gustaría",
+     "emoji": "🙋"
+    },
+    {
+     "index": 12,
+     "id": "xv_napkin",
+     "word": "Napkin",
+     "translation": "Servilleta",
+     "emoji": "🧻"
+    },
+    {
+     "index": 13,
+     "id": "xv_spoon",
+     "word": "Spoon",
+     "translation": "Cuchara",
+     "emoji": "🥄"
+    },
+    {
+     "index": 14,
+     "id": "xv_breakfast",
+     "word": "Breakfast",
+     "translation": "Desayuno",
+     "emoji": "🍳"
     }
    ]
   },
@@ -1709,38 +2115,52 @@
     },
     {
      "index": 8,
-     "id": "voc_salad",
-     "word": "Salad",
-     "translation": "Ensalada",
-     "emoji": "🥗"
+     "id": "xv_steak",
+     "word": "Steak",
+     "translation": "Bistec / Carne asada",
+     "emoji": "🥩"
     },
     {
      "index": 9,
-     "id": "voc_soup",
-     "word": "Soup",
-     "translation": "Sopa",
-     "emoji": "🍲"
+     "id": "xv_sandwich",
+     "word": "Sandwich",
+     "translation": "Sándwich",
+     "emoji": "🥪"
     },
     {
      "index": 10,
-     "id": "voc_fries",
-     "word": "Fries",
-     "translation": "Papas fritas",
-     "emoji": "🍟"
+     "id": "xv_side_dish",
+     "word": "Side dish",
+     "translation": "Acompañamiento",
+     "emoji": "🍚"
     },
     {
      "index": 11,
-     "id": "voc_main_course",
-     "word": "Main course",
-     "translation": "Plato principal",
-     "emoji": "🍽️"
+     "id": "xv_sparkling_water",
+     "word": "Sparkling water",
+     "translation": "Agua con gas",
+     "emoji": "🥤"
     },
     {
      "index": 12,
-     "id": "voc_starter",
-     "word": "Starter",
-     "translation": "Entrada",
-     "emoji": "🥟"
+     "id": "xv_ice_cream",
+     "word": "Ice cream",
+     "translation": "Helado",
+     "emoji": "🍨"
+    },
+    {
+     "index": 13,
+     "id": "xv_to_go",
+     "word": "To go",
+     "translation": "Para llevar",
+     "emoji": "🥡"
+    },
+    {
+     "index": 14,
+     "id": "xv_ready_to_order",
+     "word": "Ready to order",
+     "translation": "Listo para ordenar",
+     "emoji": "✅"
     }
    ]
   },
@@ -1752,7 +2172,7 @@
      "id": "shop_price",
      "word": "How much?",
      "translation": "¿Cuánto cuesta?",
-     "emoji": ""
+     "emoji": "💲"
     },
     {
      "index": 1,
@@ -1773,7 +2193,7 @@
      "id": "shop_fit",
      "word": "Fit",
      "translation": "Quedar bien",
-     "emoji": "👍"
+     "emoji": "👗"
     },
     {
      "index": 4,
@@ -1787,42 +2207,70 @@
      "id": "voc_price",
      "word": "Price",
      "translation": "Precio",
-     "emoji": "💰"
+     "emoji": "🏷️"
     },
     {
      "index": 6,
      "id": "voc_cheap",
      "word": "Cheap",
      "translation": "Barato",
-     "emoji": "🪙"
+     "emoji": "📉"
     },
     {
      "index": 7,
      "id": "voc_expensive",
      "word": "Expensive",
      "translation": "Caro",
-     "emoji": "💎"
+     "emoji": "📈"
     },
     {
      "index": 8,
-     "id": "voc_price",
-     "word": "Price",
-     "translation": "Precio",
-     "emoji": "💰"
+     "id": "xv_shop",
+     "word": "Shop",
+     "translation": "Tienda",
+     "emoji": "🛍️"
     },
     {
      "index": 9,
-     "id": "voc_cheap",
-     "word": "Cheap",
-     "translation": "Barato",
-     "emoji": "🪙"
+     "id": "xv_buy",
+     "word": "Buy",
+     "translation": "Comprar",
+     "emoji": "🛒"
     },
     {
      "index": 10,
-     "id": "voc_expensive",
-     "word": "Expensive",
-     "translation": "Caro",
-     "emoji": "💎"
+     "id": "xv_sell",
+     "word": "Sell",
+     "translation": "Vender",
+     "emoji": "🤝"
+    },
+    {
+     "index": 11,
+     "id": "xv_money",
+     "word": "Money",
+     "translation": "Dinero",
+     "emoji": "💰"
+    },
+    {
+     "index": 12,
+     "id": "xv_sale",
+     "word": "Sale",
+     "translation": "Rebaja / Oferta",
+     "emoji": "🔖"
+    },
+    {
+     "index": 13,
+     "id": "xv_try_on",
+     "word": "Try on",
+     "translation": "Probarse",
+     "emoji": "👚"
+    },
+    {
+     "index": 14,
+     "id": "xv_cashier",
+     "word": "Cashier",
+     "translation": "Cajero / Cajera",
+     "emoji": "👨‍💼"
     }
    ]
   },
@@ -1834,7 +2282,7 @@
      "id": "voc_change",
      "word": "Change",
      "translation": "Cambio / Vuelto",
-     "emoji": "💸"
+     "emoji": "💱"
     },
     {
      "index": 5,
@@ -1859,31 +2307,52 @@
     },
     {
      "index": 8,
-     "id": "voc_change",
-     "word": "Change",
-     "translation": "Cambio / Vuelto",
-     "emoji": "💸"
+     "id": "xv_total",
+     "word": "Total",
+     "translation": "Total",
+     "emoji": "📊"
     },
     {
      "index": 9,
-     "id": "voc_receipt",
-     "word": "Receipt",
-     "translation": "Recibo",
-     "emoji": "🧾"
+     "id": "xv_debit_card",
+     "word": "Debit card",
+     "translation": "Tarjeta débito",
+     "emoji": "💳"
     },
     {
      "index": 10,
-     "id": "voc_price",
-     "word": "Price",
-     "translation": "Precio",
-     "emoji": "🏷️"
+     "id": "xv_coin",
+     "word": "Coin",
+     "translation": "Moneda",
+     "emoji": "🪙"
     },
     {
      "index": 11,
-     "id": "voc_pay",
-     "word": "Pay",
-     "translation": "Pagar",
-     "emoji": "💳"
+     "id": "xv_bill_money",
+     "word": "Bill (money)",
+     "translation": "Billete",
+     "emoji": "💵"
+    },
+    {
+     "index": 12,
+     "id": "xv_split_the_bill",
+     "word": "Split the bill",
+     "translation": "Dividir la cuenta",
+     "emoji": "➗"
+    },
+    {
+     "index": 13,
+     "id": "xv_expensive",
+     "word": "Expensive",
+     "translation": "Caro",
+     "emoji": "💸"
+    },
+    {
+     "index": 14,
+     "id": "xv_cheap",
+     "word": "Cheap",
+     "translation": "Barato",
+     "emoji": "📉"
     }
    ]
   },
@@ -1941,52 +2410,52 @@
     },
     {
      "index": 8,
-     "id": "voc_sing",
-     "word": "Sing",
-     "translation": "Cantar",
-     "emoji": "🎤"
+     "id": "xv_can",
+     "word": "Can",
+     "translation": "Poder / Saber",
+     "emoji": ""
     },
     {
      "index": 9,
-     "id": "voc_dance",
-     "word": "Dance",
-     "translation": "Bailar",
-     "emoji": "💃"
+     "id": "xv_can_t",
+     "word": "Can't",
+     "translation": "No poder / No saber",
+     "emoji": ""
     },
     {
      "index": 10,
-     "id": "voc_cook",
-     "word": "Cook",
-     "translation": "Cocinar",
-     "emoji": "🍳"
+     "id": "xv_paint",
+     "word": "Paint",
+     "translation": "Pintar",
+     "emoji": "🎨"
     },
     {
      "index": 11,
-     "id": "voc_drive",
-     "word": "Drive",
-     "translation": "Conducir / Manejar",
-     "emoji": "🚗"
+     "id": "xv_ride_a_bike",
+     "word": "Ride a bike",
+     "translation": "Montar en bicicleta",
+     "emoji": "🚲"
     },
     {
      "index": 12,
-     "id": "voc_draw",
-     "word": "Draw",
-     "translation": "Dibujar",
-     "emoji": "✏️"
+     "id": "xv_speak",
+     "word": "Speak",
+     "translation": "Hablar",
+     "emoji": "🗣️"
     },
     {
      "index": 13,
-     "id": "voc_run",
-     "word": "Run",
-     "translation": "Correr",
-     "emoji": "🏃"
+     "id": "xv_jump",
+     "word": "Jump",
+     "translation": "Saltar",
+     "emoji": "🦘"
     },
     {
      "index": 14,
-     "id": "voc_play_the_guitar",
-     "word": "Play the guitar",
-     "translation": "Tocar la guitarra",
-     "emoji": "🎸"
+     "id": "xv_play_the_piano",
+     "word": "Play the piano",
+     "translation": "Tocar el piano",
+     "emoji": "🎹"
     }
    ]
   },
@@ -2019,7 +2488,7 @@
      "id": "voc_tablet",
      "word": "Tablet",
      "translation": "Tableta",
-     "emoji": "📱"
+     "emoji": ""
     },
     {
      "index": 4,
@@ -2065,73 +2534,38 @@
     },
     {
      "index": 10,
-     "id": "voc_phone",
-     "word": "Phone",
-     "translation": "Teléfono / Celular",
-     "emoji": "📱"
+     "id": "xv_mouse",
+     "word": "Mouse",
+     "translation": "Ratón / Mouse",
+     "emoji": "🖱️"
     },
     {
      "index": 11,
-     "id": "voc_computer",
-     "word": "Computer",
-     "translation": "Computadora",
-     "emoji": "🖥️"
+     "id": "xv_charger",
+     "word": "Charger",
+     "translation": "Cargador",
+     "emoji": "🔌"
     },
     {
      "index": 12,
-     "id": "voc_laptop",
-     "word": "Laptop",
-     "translation": "Computadora portátil",
-     "emoji": "💻"
+     "id": "xv_headphones",
+     "word": "Headphones",
+     "translation": "Audífonos",
+     "emoji": "🎧"
     },
     {
      "index": 13,
-     "id": "voc_tablet",
-     "word": "Tablet",
-     "translation": "Tableta",
-     "emoji": "📱"
+     "id": "xv_website",
+     "word": "Website",
+     "translation": "Página web",
+     "emoji": "🕸️"
     },
     {
      "index": 14,
-     "id": "voc_internet",
-     "word": "Internet",
-     "translation": "Internet",
-     "emoji": "🌐"
-    },
-    {
-     "index": 15,
-     "id": "voc_email",
-     "word": "Email",
-     "translation": "Correo electrónico",
-     "emoji": "📧"
-    },
-    {
-     "index": 16,
-     "id": "voc_password",
-     "word": "Password",
-     "translation": "Contraseña",
-     "emoji": "🔑"
-    },
-    {
-     "index": 17,
-     "id": "voc_screen",
-     "word": "Screen",
-     "translation": "Pantalla",
-     "emoji": "📺"
-    },
-    {
-     "index": 18,
-     "id": "voc_keyboard",
-     "word": "Keyboard",
-     "translation": "Teclado",
-     "emoji": "⌨️"
-    },
-    {
-     "index": 19,
-     "id": "voc_app",
-     "word": "App",
-     "translation": "Aplicación",
-     "emoji": "📲"
+     "id": "xv_camera",
+     "word": "Camera",
+     "translation": "Cámara",
+     "emoji": "📷"
     }
    ]
   },
@@ -2157,7 +2591,7 @@
      "id": "voc_parents",
      "word": "Parents",
      "translation": "Padres (padre y madre)",
-     "emoji": "🧑‍🤝‍🧑"
+     "emoji": "👨‍👩‍👧‍👦"
     },
     {
      "index": 6,
@@ -2171,42 +2605,56 @@
      "id": "voc_pet",
      "word": "Pet",
      "translation": "Mascota",
-     "emoji": "🐶"
+     "emoji": "🐾"
     },
     {
      "index": 8,
-     "id": "voc_have",
-     "word": "Have",
-     "translation": "Tener",
-     "emoji": ""
+     "id": "xv_son",
+     "word": "Son",
+     "translation": "Hijo",
+     "emoji": "👦"
     },
     {
      "index": 9,
-     "id": "voc_family",
-     "word": "Family",
-     "translation": "Familia",
-     "emoji": "👪"
+     "id": "xv_daughter",
+     "word": "Daughter",
+     "translation": "Hija",
+     "emoji": "👧"
     },
     {
      "index": 10,
-     "id": "voc_parents",
-     "word": "Parents",
-     "translation": "Padres (padre y madre)",
-     "emoji": "🧑‍🤝‍🧑"
+     "id": "xv_only_child",
+     "word": "Only child",
+     "translation": "Hijo único / Hija única",
+     "emoji": ""
     },
     {
      "index": 11,
-     "id": "voc_children",
-     "word": "Children",
-     "translation": "Hijos / Niños",
-     "emoji": "🧒"
+     "id": "xv_birthday",
+     "word": "Birthday",
+     "translation": "Cumpleaños",
+     "emoji": "🎂"
     },
     {
      "index": 12,
-     "id": "voc_pet",
-     "word": "Pet",
-     "translation": "Mascota",
+     "id": "xv_dog",
+     "word": "Dog",
+     "translation": "Perro",
      "emoji": "🐶"
+    },
+    {
+     "index": 13,
+     "id": "xv_cat",
+     "word": "Cat",
+     "translation": "Gato",
+     "emoji": "🐱"
+    },
+    {
+     "index": 14,
+     "id": "xv_phone_number",
+     "word": "Phone number",
+     "translation": "Número de teléfono",
+     "emoji": "📞"
     }
    ]
   },
@@ -2275,6 +2723,48 @@
      "word": "Wife",
      "translation": "Esposa / Mujer",
      "emoji": "👰"
+    },
+    {
+     "index": 9,
+     "id": "xv_brother_in_law",
+     "word": "Brother-in-law",
+     "translation": "Cuñado",
+     "emoji": "👨"
+    },
+    {
+     "index": 10,
+     "id": "xv_sister_in_law",
+     "word": "Sister-in-law",
+     "translation": "Cuñada",
+     "emoji": "👩"
+    },
+    {
+     "index": 11,
+     "id": "xv_grandson",
+     "word": "Grandson",
+     "translation": "Nieto",
+     "emoji": "👦"
+    },
+    {
+     "index": 12,
+     "id": "xv_granddaughter",
+     "word": "Granddaughter",
+     "translation": "Nieta",
+     "emoji": "👧"
+    },
+    {
+     "index": 13,
+     "id": "xv_stepmother",
+     "word": "Stepmother",
+     "translation": "Madrastra",
+     "emoji": "👩"
+    },
+    {
+     "index": 14,
+     "id": "xv_stepfather",
+     "word": "Stepfather",
+     "translation": "Padrastro",
+     "emoji": "👨"
     }
    ]
   },
@@ -2286,7 +2776,7 @@
      "id": "voc_kind",
      "word": "Kind",
      "translation": "Amable",
-     "emoji": "❤️"
+     "emoji": "😊"
     },
     {
      "index": 5,
@@ -2300,7 +2790,7 @@
      "id": "voc_brunette",
      "word": "Brunette",
      "translation": "Moreno/a (de pelo castaño)",
-     "emoji": ""
+     "emoji": "🟤"
     },
     {
      "index": 7,
@@ -2308,6 +2798,55 @@
      "word": "Small",
      "translation": "Pequeño/a",
      "emoji": "🐜"
+    },
+    {
+     "index": 8,
+     "id": "xv_long_hair",
+     "word": "Long hair",
+     "translation": "Pelo largo",
+     "emoji": "👩‍🦱"
+    },
+    {
+     "index": 9,
+     "id": "xv_thin",
+     "word": "Thin",
+     "translation": "Delgado",
+     "emoji": "🪶"
+    },
+    {
+     "index": 10,
+     "id": "xv_young",
+     "word": "Young",
+     "translation": "Joven",
+     "emoji": "👶"
+    },
+    {
+     "index": 11,
+     "id": "xv_old",
+     "word": "Old",
+     "translation": "Viejo / Mayor",
+     "emoji": "👴"
+    },
+    {
+     "index": 12,
+     "id": "xv_beautiful",
+     "word": "Beautiful",
+     "translation": "Hermoso / Hermosa",
+     "emoji": "🌹"
+    },
+    {
+     "index": 13,
+     "id": "xv_blue_eyes",
+     "word": "Blue eyes",
+     "translation": "Ojos azules",
+     "emoji": "👀"
+    },
+    {
+     "index": 14,
+     "id": "xv_glasses",
+     "word": "Glasses",
+     "translation": "Gafas",
+     "emoji": "👓"
     }
    ]
   },
@@ -2375,7 +2914,7 @@
      "id": "voc_hat",
      "word": "Hat",
      "translation": "Sombrero / Gorro",
-     "emoji": "🧢"
+     "emoji": "🎩"
     },
     {
      "index": 9,
@@ -2386,73 +2925,38 @@
     },
     {
      "index": 10,
-     "id": "voc_shirt",
-     "word": "Shirt",
-     "translation": "Camisa",
-     "emoji": "👔"
+     "id": "xv_sweater",
+     "word": "Sweater",
+     "translation": "Suéter",
+     "emoji": "🧣"
     },
     {
      "index": 11,
-     "id": "voc_t_shirt",
-     "word": "T-shirt",
-     "translation": "Camiseta / Remera",
-     "emoji": "👕"
-    },
-    {
-     "index": 12,
-     "id": "voc_pants",
-     "word": "Pants",
-     "translation": "Pantalones",
-     "emoji": "👖"
-    },
-    {
-     "index": 13,
-     "id": "voc_jeans",
-     "word": "Jeans",
-     "translation": "Jeans / Vaqueros",
-     "emoji": "👖"
-    },
-    {
-     "index": 14,
-     "id": "voc_dress",
-     "word": "Dress",
-     "translation": "Vestido",
-     "emoji": "👗"
-    },
-    {
-     "index": 15,
-     "id": "voc_skirt",
-     "word": "Skirt",
-     "translation": "Falda / Pollera",
-     "emoji": "👚"
-    },
-    {
-     "index": 16,
-     "id": "voc_shoes",
-     "word": "Shoes",
-     "translation": "Zapatos",
-     "emoji": "👟"
-    },
-    {
-     "index": 17,
-     "id": "voc_jacket",
-     "word": "Jacket",
-     "translation": "Chaqueta / Campera",
+     "id": "xv_coat",
+     "word": "Coat",
+     "translation": "Abrigo",
      "emoji": "🧥"
     },
     {
-     "index": 18,
-     "id": "voc_hat",
-     "word": "Hat",
-     "translation": "Sombrero / Gorro",
-     "emoji": "🧢"
+     "index": 12,
+     "id": "xv_shorts",
+     "word": "Shorts",
+     "translation": "Pantalones cortos",
+     "emoji": "🩳"
     },
     {
-     "index": 19,
-     "id": "voc_socks",
-     "word": "Socks",
-     "translation": "Medias / Calcetines",
-     "emoji": "🧦"
+     "index": 13,
+     "id": "xv_boots",
+     "word": "Boots",
+     "translation": "Botas",
+     "emoji": "👢"
+    },
+    {
+     "index": 14,
+     "id": "xv_belt",
+     "word": "Belt",
+     "translation": "Cinturón",
+     "emoji": ""
     }
    ]
   },
@@ -2595,7 +3099,7 @@
      "id": "voc_game",
      "word": "Game",
      "translation": "Partido/Juego",
-     "emoji": "🎲"
+     "emoji": "🏟️"
     },
     {
      "index": 4,
@@ -2623,35 +3127,56 @@
      "id": "voc_lose",
      "word": "Lose",
      "translation": "Perder",
-     "emoji": "😞"
+     "emoji": "❌"
     },
     {
      "index": 8,
-     "id": "voc_player",
-     "word": "Player",
-     "translation": "Jugador/a",
-     "emoji": "🏃"
+     "id": "xv_ball",
+     "word": "Ball",
+     "translation": "Pelota / Balón",
+     "emoji": "🏀"
     },
     {
      "index": 9,
-     "id": "voc_coach",
-     "word": "Coach",
-     "translation": "Entrenador/a",
-     "emoji": "🧑‍🏫"
+     "id": "xv_goal",
+     "word": "Goal",
+     "translation": "Gol / Portería",
+     "emoji": "🥅"
     },
     {
      "index": 10,
-     "id": "voc_win",
-     "word": "Win",
-     "translation": "Ganar",
-     "emoji": "🏆"
+     "id": "xv_field",
+     "word": "Field",
+     "translation": "Cancha / Campo",
+     "emoji": "🏟️"
     },
     {
      "index": 11,
-     "id": "voc_lose",
-     "word": "Lose",
-     "translation": "Perder",
-     "emoji": "😞"
+     "id": "xv_fan",
+     "word": "Fan",
+     "translation": "Aficionado / Hincha",
+     "emoji": "🙋"
+    },
+    {
+     "index": 12,
+     "id": "xv_score",
+     "word": "Score",
+     "translation": "Marcador / Anotar",
+     "emoji": "📊"
+    },
+    {
+     "index": 13,
+     "id": "xv_match",
+     "word": "Match",
+     "translation": "Partido",
+     "emoji": "🏟️"
+    },
+    {
+     "index": 14,
+     "id": "xv_referee",
+     "word": "Referee",
+     "translation": "Árbitro",
+     "emoji": "🧑‍⚖️"
     }
    ]
   },
@@ -2663,42 +3188,42 @@
      "id": "voc_usually",
      "word": "Usually",
      "translation": "Normalmente",
-     "emoji": ""
+     "emoji": "📅"
     },
     {
      "index": 1,
      "id": "voc_every_day",
      "word": "Every day",
      "translation": "Todos los días",
-     "emoji": ""
+     "emoji": "📆"
     },
     {
      "index": 2,
      "id": "voc_on_weekends",
      "word": "On weekends",
      "translation": "Los fines de semana",
-     "emoji": ""
+     "emoji": "🏖️"
     },
     {
      "index": 3,
      "id": "voc_now",
      "word": "Now",
      "translation": "Ahora",
-     "emoji": ""
+     "emoji": "⏱️"
     },
     {
      "index": 4,
      "id": "voc_right_now",
      "word": "Right now",
      "translation": "Ahora mismo",
-     "emoji": ""
+     "emoji": "⏰"
     },
     {
      "index": 5,
      "id": "voc_at_the_moment",
      "word": "At the moment",
      "translation": "En este momento",
-     "emoji": ""
+     "emoji": "⏳"
     },
     {
      "index": 6,
@@ -2730,73 +3255,38 @@
     },
     {
      "index": 10,
-     "id": "voc_usually",
-     "word": "Usually",
-     "translation": "Normalmente",
+     "id": "xv_sometimes",
+     "word": "Sometimes",
+     "translation": "A veces",
      "emoji": ""
     },
     {
      "index": 11,
-     "id": "voc_every_day",
-     "word": "Every day",
-     "translation": "Todos los días",
-     "emoji": ""
+     "id": "xv_never",
+     "word": "Never",
+     "translation": "Nunca",
+     "emoji": "🚫"
     },
     {
      "index": 12,
-     "id": "voc_on_weekends",
-     "word": "On weekends",
-     "translation": "Los fines de semana",
-     "emoji": ""
+     "id": "xv_always",
+     "word": "Always",
+     "translation": "Siempre",
+     "emoji": "🔁"
     },
     {
      "index": 13,
-     "id": "voc_now",
-     "word": "Now",
-     "translation": "Ahora",
-     "emoji": ""
+     "id": "xv_today",
+     "word": "Today",
+     "translation": "Hoy",
+     "emoji": "🗓️"
     },
     {
      "index": 14,
-     "id": "voc_right_now",
-     "word": "Right now",
-     "translation": "Ahora mismo",
-     "emoji": ""
-    },
-    {
-     "index": 15,
-     "id": "voc_at_the_moment",
-     "word": "At the moment",
-     "translation": "En este momento",
-     "emoji": ""
-    },
-    {
-     "index": 16,
-     "id": "voc_go_for_a_walk",
-     "word": "Go for a walk",
-     "translation": "Salir a caminar",
-     "emoji": "🚶"
-    },
-    {
-     "index": 17,
-     "id": "voc_play_video_games",
-     "word": "Play video games",
-     "translation": "Jugar videojuegos",
-     "emoji": "🎮"
-    },
-    {
-     "index": 18,
-     "id": "voc_listen_to_music",
-     "word": "Listen to music",
-     "translation": "Escuchar música",
-     "emoji": "🎧"
-    },
-    {
-     "index": 19,
-     "id": "voc_take_photos",
-     "word": "Take photos",
-     "translation": "Sacar fotos",
-     "emoji": "📸"
+     "id": "xv_this_week",
+     "word": "This week",
+     "translation": "Esta semana",
+     "emoji": "📆"
     }
    ]
   },
@@ -2822,7 +3312,7 @@
      "id": "voc_cough",
      "word": "Cough",
      "translation": "Tos",
-     "emoji": "🤧"
+     "emoji": "🫁"
     },
     {
      "index": 5,
@@ -2843,35 +3333,56 @@
      "id": "voc_sore_throat",
      "word": "Sore throat",
      "translation": "Dolor de garganta",
-     "emoji": "🗣️"
+     "emoji": "😷"
     },
     {
      "index": 8,
-     "id": "voc_cough",
-     "word": "Cough",
-     "translation": "Tos",
-     "emoji": "🤧"
+     "id": "xv_toothache",
+     "word": "Toothache",
+     "translation": "Dolor de muelas",
+     "emoji": "🦷"
     },
     {
      "index": 9,
-     "id": "voc_cold",
-     "word": "Cold",
-     "translation": "Resfriado",
-     "emoji": "🥶"
+     "id": "xv_backache",
+     "word": "Backache",
+     "translation": "Dolor de espalda",
+     "emoji": "🦴"
     },
     {
      "index": 10,
-     "id": "voc_stomachache",
-     "word": "Stomachache",
-     "translation": "Dolor de estómago",
-     "emoji": "🤢"
+     "id": "xv_runny_nose",
+     "word": "Runny nose",
+     "translation": "Nariz que gotea / Moqueo",
+     "emoji": "👃"
     },
     {
      "index": 11,
-     "id": "voc_sore_throat",
-     "word": "Sore throat",
-     "translation": "Dolor de garganta",
-     "emoji": "🗣️"
+     "id": "xv_sneeze",
+     "word": "Sneeze",
+     "translation": "Estornudar",
+     "emoji": "🤧"
+    },
+    {
+     "index": 12,
+     "id": "xv_hurt",
+     "word": "Hurt",
+     "translation": "Doler",
+     "emoji": "🤕"
+    },
+    {
+     "index": 13,
+     "id": "xv_flu",
+     "word": "Flu",
+     "translation": "Gripa / Gripe",
+     "emoji": "🦠"
+    },
+    {
+     "index": 14,
+     "id": "xv_temperature",
+     "word": "Temperature",
+     "translation": "Temperatura / Fiebre",
+     "emoji": "🌡️"
     }
    ]
   },
@@ -2883,84 +3394,105 @@
      "id": "voc_hospital",
      "word": "Hospital",
      "translation": "Hospital",
-     "emoji": "🏥"
+     "emoji": ""
     },
     {
      "index": 1,
      "id": "voc_pain",
      "word": "Pain",
      "translation": "Dolor",
-     "emoji": "😖"
+     "emoji": ""
     },
     {
      "index": 2,
      "id": "voc_rest",
      "word": "Rest",
      "translation": "Descanso",
-     "emoji": "🛏️"
+     "emoji": ""
     },
     {
      "index": 3,
      "id": "voc_better",
      "word": "Better",
      "translation": "Mejor",
-     "emoji": "👍"
+     "emoji": ""
     },
     {
      "index": 4,
      "id": "voc_nurse",
      "word": "Nurse",
      "translation": "Enfermero/a",
-     "emoji": "👩‍⚕️"
+     "emoji": ""
     },
     {
      "index": 5,
      "id": "voc_pharmacy",
      "word": "Pharmacy",
      "translation": "Farmacia",
-     "emoji": "🏪"
+     "emoji": ""
     },
     {
      "index": 6,
      "id": "voc_pill",
      "word": "Pill",
      "translation": "Pastilla",
-     "emoji": "💊"
+     "emoji": ""
     },
     {
      "index": 7,
      "id": "voc_appointment",
      "word": "Appointment",
      "translation": "Cita / Turno",
-     "emoji": "📅"
+     "emoji": ""
     },
     {
      "index": 8,
-     "id": "voc_nurse",
-     "word": "Nurse",
-     "translation": "Enfermero/a",
-     "emoji": "👩‍⚕️"
+     "id": "xv_doctor",
+     "word": "Doctor",
+     "translation": "Médico",
+     "emoji": ""
     },
     {
      "index": 9,
-     "id": "voc_pharmacy",
-     "word": "Pharmacy",
-     "translation": "Farmacia",
-     "emoji": "🏪"
+     "id": "xv_patient",
+     "word": "Patient",
+     "translation": "Paciente",
+     "emoji": ""
     },
     {
      "index": 10,
-     "id": "voc_pill",
-     "word": "Pill",
-     "translation": "Pastilla",
-     "emoji": "💊"
+     "id": "xv_ambulance",
+     "word": "Ambulance",
+     "translation": "Ambulancia",
+     "emoji": ""
     },
     {
      "index": 11,
-     "id": "voc_appointment",
-     "word": "Appointment",
-     "translation": "Cita / Turno",
-     "emoji": "📅"
+     "id": "xv_prescription",
+     "word": "Prescription",
+     "translation": "Receta médica",
+     "emoji": ""
+    },
+    {
+     "index": 12,
+     "id": "xv_emergency",
+     "word": "Emergency",
+     "translation": "Emergencia",
+     "emoji": ""
+    },
+    {
+     "index": 13,
+     "id": "xv_health",
+     "word": "Health",
+     "translation": "Salud",
+     "emoji": ""
+    },
+    {
+     "index": 14,
+     "id": "xv_injection",
+     "word": "Injection",
+     "translation": "Inyección",
+     "emoji": ""
     }
    ]
   },
@@ -3011,31 +3543,52 @@
     },
     {
      "index": 8,
-     "id": "voc_dizzy",
-     "word": "Dizzy",
-     "translation": "Mareado/a",
-     "emoji": "😵"
+     "id": "xv_pain",
+     "word": "Pain",
+     "translation": "Dolor",
+     "emoji": "🤕"
     },
     {
      "index": 9,
-     "id": "voc_weak",
-     "word": "Weak",
-     "translation": "Débil",
-     "emoji": "🪶"
+     "id": "xv_cold",
+     "word": "Cold",
+     "translation": "Resfriado",
+     "emoji": "🥶"
     },
     {
      "index": 10,
-     "id": "voc_hungry",
-     "word": "Hungry",
-     "translation": "Con hambre",
-     "emoji": "🍽️"
+     "id": "xv_stay_in_bed",
+     "word": "Stay in bed",
+     "translation": "Quedarse en cama",
+     "emoji": "🛏️"
     },
     {
      "index": 11,
-     "id": "voc_thirsty",
-     "word": "Thirsty",
-     "translation": "Con sed",
-     "emoji": "🥤"
+     "id": "xv_feel_better",
+     "word": "Feel better",
+     "translation": "Sentirse mejor",
+     "emoji": "😊"
+    },
+    {
+     "index": 12,
+     "id": "xv_sleepy",
+     "word": "Sleepy",
+     "translation": "Con sueño / Somnoliento",
+     "emoji": "😴"
+    },
+    {
+     "index": 13,
+     "id": "xv_sore",
+     "word": "Sore",
+     "translation": "Adolorido",
+     "emoji": "😖"
+    },
+    {
+     "index": 14,
+     "id": "xv_get_well_soon",
+     "word": "Get well soon",
+     "translation": "Que te mejores pronto",
+     "emoji": "🌱"
     }
    ]
   },
@@ -3047,7 +3600,7 @@
      "id": "voc_happy",
      "word": "Happy",
      "translation": "Feliz",
-     "emoji": "😊"
+     "emoji": "😄"
     },
     {
      "index": 1,
@@ -3068,7 +3621,7 @@
      "id": "voc_scared",
      "word": "Scared",
      "translation": "Asustado/a",
-     "emoji": "😱"
+     "emoji": "😨"
     },
     {
      "index": 4,
@@ -3110,77 +3663,42 @@
      "id": "voc_proud",
      "word": "Proud",
      "translation": "Orgulloso/a",
-     "emoji": "🏆"
+     "emoji": "🦚"
     },
     {
      "index": 10,
-     "id": "voc_happy",
-     "word": "Happy",
-     "translation": "Feliz",
-     "emoji": "😊"
+     "id": "xv_tired",
+     "word": "Tired",
+     "translation": "Cansado",
+     "emoji": "😴"
     },
     {
      "index": 11,
-     "id": "voc_sad",
-     "word": "Sad",
-     "translation": "Triste",
-     "emoji": "😢"
+     "id": "xv_calm",
+     "word": "Calm",
+     "translation": "Tranquilo / Calmado",
+     "emoji": "🧘"
     },
     {
      "index": 12,
-     "id": "voc_angry",
-     "word": "Angry",
-     "translation": "Enojado/a",
-     "emoji": "😠"
+     "id": "xv_lonely",
+     "word": "Lonely",
+     "translation": "Solo / Solitario",
+     "emoji": "😔"
     },
     {
      "index": 13,
-     "id": "voc_scared",
-     "word": "Scared",
-     "translation": "Asustado/a",
-     "emoji": "😱"
+     "id": "xv_shy",
+     "word": "Shy",
+     "translation": "Tímido",
+     "emoji": "🙈"
     },
     {
      "index": 14,
-     "id": "voc_excited",
-     "word": "Excited",
-     "translation": "Emocionado/a",
-     "emoji": "🤩"
-    },
-    {
-     "index": 15,
-     "id": "voc_nervous",
-     "word": "Nervous",
-     "translation": "Nervioso/a",
-     "emoji": "😬"
-    },
-    {
-     "index": 16,
-     "id": "voc_bored",
-     "word": "Bored",
-     "translation": "Aburrido/a",
-     "emoji": "😐"
-    },
-    {
-     "index": 17,
-     "id": "voc_surprised",
-     "word": "Surprised",
-     "translation": "Sorprendido/a",
-     "emoji": "😲"
-    },
-    {
-     "index": 18,
-     "id": "voc_worried",
-     "word": "Worried",
-     "translation": "Preocupado/a",
-     "emoji": "😟"
-    },
-    {
-     "index": 19,
-     "id": "voc_proud",
-     "word": "Proud",
-     "translation": "Orgulloso/a",
-     "emoji": "🏆"
+     "id": "xv_glad",
+     "word": "Glad",
+     "translation": "Contento",
+     "emoji": "😊"
     }
    ]
   },
@@ -3228,6 +3746,41 @@
      "word": "Suitcase",
      "translation": "Maleta",
      "emoji": "🧳"
+    },
+    {
+     "index": 10,
+     "id": "xv_car",
+     "word": "Car",
+     "translation": "Carro / Auto",
+     "emoji": "🚗"
+    },
+    {
+     "index": 11,
+     "id": "xv_bus",
+     "word": "Bus",
+     "translation": "Bus",
+     "emoji": "🚌"
+    },
+    {
+     "index": 12,
+     "id": "xv_boat",
+     "word": "Boat",
+     "translation": "Barco / Bote",
+     "emoji": "⛵"
+    },
+    {
+     "index": 13,
+     "id": "xv_map",
+     "word": "Map",
+     "translation": "Mapa",
+     "emoji": "🗺️"
+    },
+    {
+     "index": 14,
+     "id": "xv_hotel",
+     "word": "Hotel",
+     "translation": "Hotel",
+     "emoji": "🏨"
     }
    ]
   },
@@ -3239,7 +3792,7 @@
      "id": "prep_between",
      "word": "Between",
      "translation": "Entre",
-     "emoji": ""
+     "emoji": "↔️"
     },
     {
      "index": 2,
@@ -3274,7 +3827,7 @@
      "id": "voc_behind",
      "word": "Behind",
      "translation": "Detrás de",
-     "emoji": ""
+     "emoji": "🔙"
     },
     {
      "index": 7,
@@ -3292,52 +3845,45 @@
     },
     {
      "index": 9,
-     "id": "voc_supermarket",
-     "word": "Supermarket",
-     "translation": "Supermercado",
-     "emoji": "🛒"
+     "id": "xv_turn_right",
+     "word": "Turn right",
+     "translation": "Gira a la derecha",
+     "emoji": "➡️"
     },
     {
      "index": 10,
-     "id": "voc_pharmacy",
-     "word": "Pharmacy",
-     "translation": "Farmacia",
-     "emoji": "💊"
+     "id": "xv_go_straight",
+     "word": "Go straight",
+     "translation": "Sigue derecho",
+     "emoji": "⬆️"
     },
     {
      "index": 11,
-     "id": "voc_park",
-     "word": "Park",
-     "translation": "Parque",
-     "emoji": "🌳"
-    },
-    {
-     "index": 12,
-     "id": "voc_next_to",
-     "word": "Next to",
-     "translation": "Al lado de",
+     "id": "xv_corner",
+     "word": "Corner",
+     "translation": "Esquina",
      "emoji": ""
     },
     {
+     "index": 12,
+     "id": "xv_street",
+     "word": "Street",
+     "translation": "Calle",
+     "emoji": "🛣️"
+    },
+    {
      "index": 13,
-     "id": "voc_behind",
-     "word": "Behind",
-     "translation": "Detrás de",
+     "id": "xv_near",
+     "word": "Near",
+     "translation": "Cerca",
      "emoji": ""
     },
     {
      "index": 14,
-     "id": "voc_in_front_of",
-     "word": "In front of",
-     "translation": "Delante de",
+     "id": "xv_far",
+     "word": "Far",
+     "translation": "Lejos",
      "emoji": ""
-    },
-    {
-     "index": 15,
-     "id": "voc_turn_left",
-     "word": "Turn left",
-     "translation": "Girar a la izquierda",
-     "emoji": "⬅️"
     }
    ]
   },
@@ -3392,6 +3938,27 @@
      "word": "Umbrella",
      "translation": "Paraguas",
      "emoji": "☔"
+    },
+    {
+     "index": 12,
+     "id": "xv_rain",
+     "word": "Rain",
+     "translation": "Lluvia / Llover",
+     "emoji": "🌧️"
+    },
+    {
+     "index": 13,
+     "id": "xv_warm",
+     "word": "Warm",
+     "translation": "Cálido / Templado",
+     "emoji": "☕"
+    },
+    {
+     "index": 14,
+     "id": "xv_weather",
+     "word": "Weather",
+     "translation": "Clima / Tiempo",
+     "emoji": "🌤️"
     }
    ]
   },
@@ -3470,73 +4037,38 @@
     },
     {
      "index": 10,
-     "id": "voc_tree",
-     "word": "Tree",
-     "translation": "Árbol",
-     "emoji": "🌳"
+     "id": "xv_grass",
+     "word": "Grass",
+     "translation": "Pasto / Césped",
+     "emoji": "🌿"
     },
     {
      "index": 11,
-     "id": "voc_flower",
-     "word": "Flower",
-     "translation": "Flor",
-     "emoji": "🌸"
+     "id": "xv_sun",
+     "word": "Sun",
+     "translation": "Sol",
+     "emoji": "☀️"
     },
     {
      "index": 12,
-     "id": "voc_river",
-     "word": "River",
-     "translation": "Río",
-     "emoji": "🚣"
+     "id": "xv_island",
+     "word": "Island",
+     "translation": "Isla",
+     "emoji": "🏝️"
     },
     {
      "index": 13,
-     "id": "voc_mountain",
-     "word": "Mountain",
-     "translation": "Montaña",
-     "emoji": "⛰️"
+     "id": "xv_desert",
+     "word": "Desert",
+     "translation": "Desierto",
+     "emoji": "🏜️"
     },
     {
      "index": 14,
-     "id": "voc_forest",
-     "word": "Forest",
-     "translation": "Bosque",
-     "emoji": "🌲"
-    },
-    {
-     "index": 15,
-     "id": "voc_beach",
-     "word": "Beach",
-     "translation": "Playa",
-     "emoji": "🏖️"
-    },
-    {
-     "index": 16,
-     "id": "voc_sea",
-     "word": "Sea",
-     "translation": "Mar",
-     "emoji": "🌊"
-    },
-    {
-     "index": 17,
-     "id": "voc_lake",
-     "word": "Lake",
-     "translation": "Lago",
-     "emoji": "🏞️"
-    },
-    {
-     "index": 18,
-     "id": "voc_sky",
-     "word": "Sky",
-     "translation": "Cielo",
-     "emoji": "🌤️"
-    },
-    {
-     "index": 19,
-     "id": "voc_recycle",
-     "word": "Recycle",
-     "translation": "Reciclar",
-     "emoji": "♻️"
+     "id": "xv_plant",
+     "word": "Plant",
+     "translation": "Planta",
+     "emoji": "🌱"
     }
    ]
   },
@@ -3562,14 +4094,14 @@
      "id": "voc_played",
      "word": "Played",
      "translation": "Jugué",
-     "emoji": "🎮"
+     "emoji": "🎲"
     },
     {
      "index": 4,
      "id": "voc_visited",
      "word": "Visited",
      "translation": "Visité",
-     "emoji": "🏛️"
+     "emoji": "🏠"
     },
     {
      "index": 5,
@@ -3590,56 +4122,56 @@
      "id": "voc_yesterday",
      "word": "Yesterday",
      "translation": "Ayer",
-     "emoji": "📅"
+     "emoji": ""
     },
     {
      "index": 8,
-     "id": "voc_walked",
-     "word": "Walked",
-     "translation": "Caminé",
-     "emoji": "🚶"
+     "id": "xv_last_night",
+     "word": "Last night",
+     "translation": "Anoche",
+     "emoji": "🌙"
     },
     {
      "index": 9,
-     "id": "voc_watched",
-     "word": "Watched",
-     "translation": "Miré / Vi",
-     "emoji": "👀"
+     "id": "xv_last_weekend",
+     "word": "Last weekend",
+     "translation": "El fin de semana pasado",
+     "emoji": ""
     },
     {
      "index": 10,
-     "id": "voc_played",
-     "word": "Played",
-     "translation": "Jugué",
-     "emoji": "🎮"
+     "id": "xv_ago",
+     "word": "Ago",
+     "translation": "Hace (tiempo)",
+     "emoji": ""
     },
     {
      "index": 11,
-     "id": "voc_visited",
-     "word": "Visited",
-     "translation": "Visité",
-     "emoji": "🏛️"
+     "id": "xv_danced",
+     "word": "Danced",
+     "translation": "Bailé / Bailó",
+     "emoji": "💃"
     },
     {
      "index": 12,
-     "id": "voc_cooked",
-     "word": "Cooked",
-     "translation": "Cociné",
-     "emoji": "🍳"
+     "id": "xv_listened",
+     "word": "Listened",
+     "translation": "Escuché / Escuchó",
+     "emoji": "👂"
     },
     {
      "index": 13,
-     "id": "voc_studied",
-     "word": "Studied",
-     "translation": "Estudié",
-     "emoji": "📚"
+     "id": "xv_worked",
+     "word": "Worked",
+     "translation": "Trabajé / Trabajó",
+     "emoji": "💼"
     },
     {
      "index": 14,
-     "id": "voc_yesterday",
-     "word": "Yesterday",
-     "translation": "Ayer",
-     "emoji": "📅"
+     "id": "xv_stayed",
+     "word": "Stayed",
+     "translation": "Me quedé / Se quedó",
+     "emoji": "🏨"
     }
    ]
   },
@@ -3658,7 +4190,7 @@
      "id": "voc_had",
      "word": "Had",
      "translation": "Tuve",
-     "emoji": "👐"
+     "emoji": ""
     },
     {
      "index": 4,
@@ -3679,56 +4211,63 @@
      "id": "voc_took",
      "word": "Took",
      "translation": "Tomé / Saqué",
-     "emoji": "✋"
+     "emoji": "📦"
     },
     {
      "index": 7,
      "id": "voc_was_were",
      "word": "Was / Were",
      "translation": "Fui / Estuve",
-     "emoji": "🧍"
+     "emoji": ""
     },
     {
      "index": 8,
-     "id": "voc_saw",
-     "word": "Saw",
-     "translation": "Vi",
-     "emoji": "👀"
+     "id": "xv_came",
+     "word": "Came",
+     "translation": "Vine / Vino",
+     "emoji": "🚶"
     },
     {
      "index": 9,
-     "id": "voc_had",
-     "word": "Had",
-     "translation": "Tuve",
-     "emoji": "👐"
+     "id": "xv_drank",
+     "word": "Drank",
+     "translation": "Bebí / Bebió",
+     "emoji": "🍹"
     },
     {
      "index": 10,
-     "id": "voc_bought",
-     "word": "Bought",
-     "translation": "Compré",
-     "emoji": "🛒"
+     "id": "xv_wrote",
+     "word": "Wrote",
+     "translation": "Escribí / Escribió",
+     "emoji": "✍️"
     },
     {
      "index": 11,
-     "id": "voc_made",
-     "word": "Made",
-     "translation": "Hice / Preparé",
-     "emoji": "🛠️"
+     "id": "xv_met",
+     "word": "Met",
+     "translation": "Conocí / Conoció",
+     "emoji": "🤝"
     },
     {
      "index": 12,
-     "id": "voc_took",
-     "word": "Took",
-     "translation": "Tomé / Saqué",
-     "emoji": "✋"
+     "id": "xv_gave",
+     "word": "Gave",
+     "translation": "Di / Dio",
+     "emoji": "🎁"
     },
     {
      "index": 13,
-     "id": "voc_was_were",
-     "word": "Was / Were",
-     "translation": "Fui / Estuve",
-     "emoji": "🧍"
+     "id": "xv_slept",
+     "word": "Slept",
+     "translation": "Dormí / Durmió",
+     "emoji": "😴"
+    },
+    {
+     "index": 14,
+     "id": "xv_found",
+     "word": "Found",
+     "translation": "Encontré / Encontró",
+     "emoji": "🔍"
     }
    ]
   },
@@ -3754,7 +4293,7 @@
      "id": "voc_wedding",
      "word": "Wedding",
      "translation": "Boda / Casamiento",
-     "emoji": "💍"
+     "emoji": "💒"
     },
     {
      "index": 3,
@@ -3789,7 +4328,7 @@
      "id": "voc_holiday",
      "word": "Holiday",
      "translation": "Feriado / Día festivo",
-     "emoji": "🌴"
+     "emoji": "🏖️"
     },
     {
      "index": 8,
@@ -3803,82 +4342,47 @@
      "id": "voc_guest",
      "word": "Guest",
      "translation": "Invitado/a",
-     "emoji": "👤"
+     "emoji": ""
     },
     {
      "index": 10,
-     "id": "voc_birthday",
-     "word": "Birthday",
-     "translation": "Cumpleaños",
-     "emoji": "🎂"
+     "id": "xv_candles",
+     "word": "Candles",
+     "translation": "Velas",
+     "emoji": "🕯️"
     },
     {
      "index": 11,
-     "id": "voc_party",
-     "word": "Party",
-     "translation": "Fiesta",
-     "emoji": "🎉"
+     "id": "xv_invitation",
+     "word": "Invitation",
+     "translation": "Invitación",
+     "emoji": "✉️"
     },
     {
      "index": 12,
-     "id": "voc_wedding",
-     "word": "Wedding",
-     "translation": "Boda / Casamiento",
-     "emoji": "💍"
+     "id": "xv_decorations",
+     "word": "Decorations",
+     "translation": "Decoraciones",
+     "emoji": "🎈"
     },
     {
      "index": 13,
-     "id": "voc_christmas",
-     "word": "Christmas",
-     "translation": "Navidad",
-     "emoji": "🎄"
+     "id": "xv_fireworks",
+     "word": "Fireworks",
+     "translation": "Fuegos artificiales",
+     "emoji": "🎇"
     },
     {
      "index": 14,
-     "id": "voc_new_year",
-     "word": "New Year",
-     "translation": "Año Nuevo",
-     "emoji": "🎆"
-    },
-    {
-     "index": 15,
-     "id": "voc_gift",
-     "word": "Gift",
-     "translation": "Regalo",
-     "emoji": "🎁"
-    },
-    {
-     "index": 16,
-     "id": "voc_cake",
-     "word": "Cake",
-     "translation": "Torta / Pastel",
-     "emoji": "🍰"
-    },
-    {
-     "index": 17,
-     "id": "voc_holiday",
-     "word": "Holiday",
-     "translation": "Feriado / Día festivo",
-     "emoji": "🌴"
-    },
-    {
-     "index": 18,
-     "id": "voc_celebrate",
-     "word": "Celebrate",
-     "translation": "Celebrar",
-     "emoji": "🎊"
-    },
-    {
-     "index": 19,
-     "id": "voc_guest",
-     "word": "Guest",
-     "translation": "Invitado/a",
-     "emoji": "👤"
+     "id": "xv_happy_birthday",
+     "word": "Happy birthday!",
+     "translation": "¡Feliz cumpleaños!",
+     "emoji": "🎂"
     }
    ]
   },
   "A1_MEGA_FINAL_EXAM": {
-   "title": "A1 Certification Exam",
+   "title": "Examen final A1",
    "items": [
     {
      "index": 0,
@@ -3892,7 +4396,7 @@
      "id": "v_goal",
      "word": "Achievement",
      "translation": "Logro",
-     "emoji": "🏅"
+     "emoji": "🥇"
     },
     {
      "index": 2,
@@ -3906,14 +4410,14 @@
      "id": "voc_exam",
      "word": "Exam",
      "translation": "Examen",
-     "emoji": "📝"
+     "emoji": "📚"
     },
     {
      "index": 4,
      "id": "voc_level",
      "word": "Level",
      "translation": "Nivel",
-     "emoji": "🎚️"
+     "emoji": "📊"
     },
     {
      "index": 5,
@@ -3927,7 +4431,7 @@
      "id": "voc_practice",
      "word": "Practice",
      "translation": "Práctica",
-     "emoji": "🔁"
+     "emoji": "🎯"
     },
     {
      "index": 7,
@@ -3938,99 +4442,155 @@
     },
     {
      "index": 8,
-     "id": "voc_review",
-     "word": "Review",
-     "translation": "Repaso",
-     "emoji": "📖"
+     "id": "xv_test",
+     "word": "Test",
+     "translation": "Prueba / Examen",
+     "emoji": "🧪"
     },
     {
      "index": 9,
-     "id": "voc_exam",
-     "word": "Exam",
-     "translation": "Examen",
-     "emoji": "📝"
+     "id": "xv_question",
+     "word": "Question",
+     "translation": "Pregunta",
+     "emoji": "❓"
     },
     {
      "index": 10,
-     "id": "voc_level",
-     "word": "Level",
-     "translation": "Nivel",
-     "emoji": "🎚️"
+     "id": "xv_answer",
+     "word": "Answer",
+     "translation": "Respuesta",
+     "emoji": "💡"
     },
     {
      "index": 11,
-     "id": "voc_certificate",
-     "word": "Certificate",
-     "translation": "Certificado",
-     "emoji": "📜"
+     "id": "xv_correct",
+     "word": "Correct",
+     "translation": "Correcto",
+     "emoji": "✅"
     },
     {
      "index": 12,
-     "id": "voc_practice",
-     "word": "Practice",
-     "translation": "Práctica",
-     "emoji": "🔁"
+     "id": "xv_mistake",
+     "word": "Mistake",
+     "translation": "Error",
+     "emoji": "❌"
     },
     {
      "index": 13,
-     "id": "voc_congratulations",
-     "word": "Congratulations",
-     "translation": "Felicitaciones",
-     "emoji": "🎉"
+     "id": "xv_score",
+     "word": "Score",
+     "translation": "Puntaje",
+     "emoji": "📈"
+    },
+    {
+     "index": 14,
+     "id": "xv_pass",
+     "word": "Pass",
+     "translation": "Aprobar",
+     "emoji": "✔️"
     }
    ]
   },
   "A2_general_review": {
-   "title": "General Review A2",
+   "title": "Examen final A2",
    "items": [
     {
      "index": 1,
      "id": "voc_practice",
      "word": "Practice",
      "translation": "Práctica",
-     "emoji": "💬"
+     "emoji": "📝"
     },
     {
      "index": 2,
      "id": "voc_communication",
      "word": "Communication",
      "translation": "Comunicación",
-     "emoji": "📈"
+     "emoji": "🗣️"
     },
     {
      "index": 3,
      "id": "voc_progress",
      "word": "Progress",
      "translation": "Progreso",
-     "emoji": "🎓"
+     "emoji": "📈"
     },
     {
      "index": 4,
      "id": "voc_experience",
      "word": "Experience",
      "translation": "Experiencia",
-     "emoji": "🚪"
+     "emoji": "👣"
     },
     {
      "index": 5,
      "id": "voc_opportunity",
      "word": "Opportunity",
      "translation": "Oportunidad",
-     "emoji": "🏔️"
+     "emoji": "🚪"
     },
     {
      "index": 6,
      "id": "voc_challenge",
      "word": "Challenge",
      "translation": "Desafío",
-     "emoji": "⬆️"
+     "emoji": "🏔️"
     },
     {
      "index": 7,
      "id": "voc_improve",
      "word": "Improve",
      "translation": "Mejorar",
-     "emoji": ""
+     "emoji": "⬆️"
+    },
+    {
+     "index": 8,
+     "id": "xv_confidence",
+     "word": "Confidence",
+     "translation": "Confianza",
+     "emoji": "💪"
+    },
+    {
+     "index": 9,
+     "id": "xv_fluency",
+     "word": "Fluency",
+     "translation": "Fluidez",
+     "emoji": "🎤"
+    },
+    {
+     "index": 10,
+     "id": "xv_goal",
+     "word": "Goal",
+     "translation": "Meta",
+     "emoji": "🎯"
+    },
+    {
+     "index": 11,
+     "id": "xv_mistake",
+     "word": "Mistake",
+     "translation": "Error",
+     "emoji": "❌"
+    },
+    {
+     "index": 12,
+     "id": "xv_effort",
+     "word": "Effort",
+     "translation": "Esfuerzo",
+     "emoji": "🏋️"
+    },
+    {
+     "index": 13,
+     "id": "xv_achievement",
+     "word": "Achievement",
+     "translation": "Logro",
+     "emoji": "🏆"
+    },
+    {
+     "index": 14,
+     "id": "xv_keep_going",
+     "word": "Keep going",
+     "translation": "Seguir adelante",
+     "emoji": "🏃"
     }
    ]
   },
@@ -4077,14 +4637,14 @@
      "id": "voc_rent",
      "word": "Rent",
      "translation": "Alquiler / Alquilar",
-     "emoji": "💸"
+     "emoji": "💰"
     },
     {
      "index": 6,
      "id": "voc_landlord",
      "word": "Landlord",
      "translation": "Dueño / Propietario",
-     "emoji": "🧑‍💼"
+     "emoji": "🔑"
     },
     {
      "index": 7,
@@ -4092,6 +4652,55 @@
      "word": "Furniture",
      "translation": "Muebles",
      "emoji": "🛋️"
+    },
+    {
+     "index": 8,
+     "id": "xv_tenant",
+     "word": "Tenant",
+     "translation": "Inquilino",
+     "emoji": ""
+    },
+    {
+     "index": 9,
+     "id": "xv_lease",
+     "word": "Lease",
+     "translation": "Contrato de arriendo",
+     "emoji": "📄"
+    },
+    {
+     "index": 10,
+     "id": "xv_deposit",
+     "word": "Deposit",
+     "translation": "Depósito",
+     "emoji": "🏦"
+    },
+    {
+     "index": 11,
+     "id": "xv_furnished",
+     "word": "Furnished",
+     "translation": "Amoblado",
+     "emoji": "🛏️"
+    },
+    {
+     "index": 12,
+     "id": "xv_elevator",
+     "word": "Elevator",
+     "translation": "Ascensor",
+     "emoji": "🛗"
+    },
+    {
+     "index": 13,
+     "id": "xv_neighbor",
+     "word": "Neighbor",
+     "translation": "Vecino",
+     "emoji": ""
+    },
+    {
+     "index": 14,
+     "id": "xv_move_in",
+     "word": "Move in",
+     "translation": "Mudarse (a un lugar)",
+     "emoji": "🚚"
     }
    ]
   },
@@ -4103,7 +4712,7 @@
      "id": "voc_savings",
      "word": "Savings",
      "translation": "Ahorros",
-     "emoji": "🏦"
+     "emoji": "🐖"
     },
     {
      "index": 3,
@@ -4131,7 +4740,7 @@
      "id": "voc_spend",
      "word": "Spend",
      "translation": "Gastar",
-     "emoji": "💸"
+     "emoji": "🛍️"
     },
     {
      "index": 7,
@@ -4139,6 +4748,55 @@
      "word": "Earn",
      "translation": "Ganar (dinero)",
      "emoji": "💰"
+    },
+    {
+     "index": 8,
+     "id": "xv_bank_account",
+     "word": "Bank account",
+     "translation": "Cuenta bancaria",
+     "emoji": "🏦"
+    },
+    {
+     "index": 9,
+     "id": "xv_interest",
+     "word": "Interest",
+     "translation": "Interés",
+     "emoji": "📈"
+    },
+    {
+     "index": 10,
+     "id": "xv_debt",
+     "word": "Debt",
+     "translation": "Deuda",
+     "emoji": "📉"
+    },
+    {
+     "index": 11,
+     "id": "xv_afford",
+     "word": "Afford",
+     "translation": "Permitirse (pagar)",
+     "emoji": ""
+    },
+    {
+     "index": 12,
+     "id": "xv_withdraw",
+     "word": "Withdraw",
+     "translation": "Retirar (dinero)",
+     "emoji": "🏧"
+    },
+    {
+     "index": 13,
+     "id": "xv_income",
+     "word": "Income",
+     "translation": "Ingresos",
+     "emoji": "💵"
+    },
+    {
+     "index": 14,
+     "id": "xv_expenses",
+     "word": "Expenses",
+     "translation": "Gastos",
+     "emoji": "💸"
     }
    ]
   },
@@ -4150,7 +4808,7 @@
      "id": "sh_1",
      "word": "Fitting room",
      "translation": "Probador",
-     "emoji": "👚"
+     "emoji": "🚪"
     },
     {
      "index": 1,
@@ -4206,14 +4864,14 @@
      "id": "sh_9",
      "word": "Customer",
      "translation": "Cliente",
-     "emoji": "🧑‍💼"
+     "emoji": "🧑"
     },
     {
      "index": 9,
      "id": "sh_10",
      "word": "Discount",
      "translation": "Descuento",
-     "emoji": "📉"
+     "emoji": "🔖"
     },
     {
      "index": 10,
@@ -4228,6 +4886,27 @@
      "word": "Could I try?",
      "translation": "¿Podría probar?",
      "emoji": "👗"
+    },
+    {
+     "index": 12,
+     "id": "xv_bargain",
+     "word": "Bargain",
+     "translation": "Ganga",
+     "emoji": "🤝"
+    },
+    {
+     "index": 13,
+     "id": "xv_exchange",
+     "word": "Exchange",
+     "translation": "Cambiar (un producto)",
+     "emoji": "🔁"
+    },
+    {
+     "index": 14,
+     "id": "xv_shopping_cart",
+     "word": "Shopping cart",
+     "translation": "Carrito de compras",
+     "emoji": "🛒"
     }
    ]
   },
@@ -4260,7 +4939,7 @@
      "id": "voc_fever",
      "word": "Fever",
      "translation": "Fiebre",
-     "emoji": "🤒"
+     "emoji": "🌡️"
     },
     {
      "index": 4,
@@ -4288,7 +4967,56 @@
      "id": "voc_allergy",
      "word": "Allergy",
      "translation": "Alergia",
-     "emoji": "🌸"
+     "emoji": "🌿"
+    },
+    {
+     "index": 8,
+     "id": "xv_rash",
+     "word": "Rash",
+     "translation": "Sarpullido / Erupción",
+     "emoji": "🩹"
+    },
+    {
+     "index": 9,
+     "id": "xv_sprain",
+     "word": "Sprain",
+     "translation": "Esguince / Torcerse",
+     "emoji": "🦶"
+    },
+    {
+     "index": 10,
+     "id": "xv_painkiller",
+     "word": "Painkiller",
+     "translation": "Analgésico",
+     "emoji": "💊"
+    },
+    {
+     "index": 11,
+     "id": "xv_check_up",
+     "word": "Check-up",
+     "translation": "Chequeo médico",
+     "emoji": "🩺"
+    },
+    {
+     "index": 12,
+     "id": "xv_recover",
+     "word": "Recover",
+     "translation": "Recuperarse",
+     "emoji": "💪"
+    },
+    {
+     "index": 13,
+     "id": "xv_swollen",
+     "word": "Swollen",
+     "translation": "Hinchado",
+     "emoji": ""
+    },
+    {
+     "index": 14,
+     "id": "xv_symptom",
+     "word": "Symptom",
+     "translation": "Síntoma",
+     "emoji": ""
     }
    ]
   },
@@ -4307,21 +5035,21 @@
      "id": "voc_could_relax",
      "word": "Could relax",
      "translation": "Podría relajarme",
-     "emoji": "🌴"
+     "emoji": "🛀"
     },
     {
      "index": 2,
      "id": "voc_may_feel",
      "word": "May feel",
      "translation": "Podría sentir",
-     "emoji": "🤔"
+     "emoji": ""
     },
     {
      "index": 3,
      "id": "voc_wellbeing",
      "word": "Wellbeing",
      "translation": "Bienestar",
-     "emoji": "😊"
+     "emoji": "🌱"
     },
     {
      "index": 4,
@@ -4342,14 +5070,63 @@
      "id": "voc_calm",
      "word": "Calm",
      "translation": "Tranquilo/a",
-     "emoji": "🌿"
+     "emoji": "😌"
     },
     {
      "index": 7,
      "id": "voc_break",
      "word": "Break",
      "translation": "Descanso / Pausa",
-     "emoji": "☕"
+     "emoji": "⏸️"
+    },
+    {
+     "index": 8,
+     "id": "xv_mood",
+     "word": "Mood",
+     "translation": "Estado de ánimo",
+     "emoji": "🎭"
+    },
+    {
+     "index": 9,
+     "id": "xv_self_care",
+     "word": "Self-care",
+     "translation": "Autocuidado",
+     "emoji": "💆"
+    },
+    {
+     "index": 10,
+     "id": "xv_overwhelmed",
+     "word": "Overwhelmed",
+     "translation": "Abrumado",
+     "emoji": "🤯"
+    },
+    {
+     "index": 11,
+     "id": "xv_breathe",
+     "word": "Breathe",
+     "translation": "Respirar",
+     "emoji": "🌬️"
+    },
+    {
+     "index": 12,
+     "id": "xv_therapy",
+     "word": "Therapy",
+     "translation": "Terapia",
+     "emoji": "🛋️"
+    },
+    {
+     "index": 13,
+     "id": "xv_positive",
+     "word": "Positive",
+     "translation": "Positivo",
+     "emoji": "👍"
+    },
+    {
+     "index": 14,
+     "id": "xv_rest",
+     "word": "Rest",
+     "translation": "Descansar",
+     "emoji": "🛏️"
     }
    ]
   },
@@ -4368,14 +5145,14 @@
      "id": "voc_have_to_fix",
      "word": "Have to fix",
      "translation": "Tengo que arreglar",
-     "emoji": "🔧"
+     "emoji": "🛠️"
     },
     {
      "index": 2,
      "id": "voc_problem",
      "word": "Problem",
      "translation": "Problema",
-     "emoji": "⚠️"
+     "emoji": "❓"
     },
     {
      "index": 3,
@@ -4396,7 +5173,7 @@
      "id": "voc_fix",
      "word": "Fix",
      "translation": "Arreglar",
-     "emoji": "🛠️"
+     "emoji": "🔧"
     },
     {
      "index": 6,
@@ -4411,6 +5188,55 @@
      "word": "Mistake",
      "translation": "Error",
      "emoji": "❌"
+    },
+    {
+     "index": 8,
+     "id": "xv_repair",
+     "word": "Repair",
+     "translation": "Reparar",
+     "emoji": "🪛"
+    },
+    {
+     "index": 9,
+     "id": "xv_issue",
+     "word": "Issue",
+     "translation": "Problema / Asunto",
+     "emoji": "⚠️"
+    },
+    {
+     "index": 10,
+     "id": "xv_complain",
+     "word": "Complain",
+     "translation": "Quejarse",
+     "emoji": "📢"
+    },
+    {
+     "index": 11,
+     "id": "xv_figure_out",
+     "word": "Figure out",
+     "translation": "Averiguar / Resolver",
+     "emoji": "🤔"
+    },
+    {
+     "index": 12,
+     "id": "xv_damaged",
+     "word": "Damaged",
+     "translation": "Dañado",
+     "emoji": "🩹"
+    },
+    {
+     "index": 13,
+     "id": "xv_replace",
+     "word": "Replace",
+     "translation": "Reemplazar",
+     "emoji": "🔄"
+    },
+    {
+     "index": 14,
+     "id": "xv_work_out",
+     "word": "Work out",
+     "translation": "Resolver / Funcionar",
+     "emoji": "🏋️"
     }
    ]
   },
@@ -4450,28 +5276,77 @@
      "id": "voc_deadline",
      "word": "Deadline",
      "translation": "Fecha límite",
-     "emoji": "⏳"
+     "emoji": "⏰"
     },
     {
      "index": 5,
      "id": "voc_calendar",
      "word": "Calendar",
      "translation": "Calendario",
-     "emoji": "📆"
+     "emoji": "🗓️"
     },
     {
      "index": 6,
      "id": "voc_postpone",
      "word": "Postpone",
      "translation": "Posponer",
-     "emoji": "⏸️"
+     "emoji": "⏭️"
     },
     {
      "index": 7,
      "id": "voc_on_time",
      "word": "On time",
      "translation": "A tiempo / Puntual",
-     "emoji": "⏰"
+     "emoji": "🕰️"
+    },
+    {
+     "index": 8,
+     "id": "xv_reminder",
+     "word": "Reminder",
+     "translation": "Recordatorio",
+     "emoji": "🔔"
+    },
+    {
+     "index": 9,
+     "id": "xv_organize",
+     "word": "Organize",
+     "translation": "Organizar",
+     "emoji": "📂"
+    },
+    {
+     "index": 10,
+     "id": "xv_priority",
+     "word": "Priority",
+     "translation": "Prioridad",
+     "emoji": "🔝"
+    },
+    {
+     "index": 11,
+     "id": "xv_busy",
+     "word": "Busy",
+     "translation": "Ocupado",
+     "emoji": "🏃"
+    },
+    {
+     "index": 12,
+     "id": "xv_free_time",
+     "word": "Free time",
+     "translation": "Tiempo libre",
+     "emoji": "🏖️"
+    },
+    {
+     "index": 13,
+     "id": "xv_late",
+     "word": "Late",
+     "translation": "Tarde / Atrasado",
+     "emoji": "🐢"
+    },
+    {
+     "index": 14,
+     "id": "xv_to_do_list",
+     "word": "To-do list",
+     "translation": "Lista de pendientes",
+     "emoji": "📋"
     }
    ]
   },
@@ -4497,7 +5372,7 @@
      "id": "voc_curly_hair",
      "word": "Curly hair",
      "translation": "Pelo rizado",
-     "emoji": "👩‍🦱"
+     "emoji": "🌀"
     },
     {
      "index": 3,
@@ -4511,7 +5386,7 @@
      "id": "voc_outgoing",
      "word": "Outgoing",
      "translation": "Extrovertido/a",
-     "emoji": "🗣️"
+     "emoji": "🎉"
     },
     {
      "index": 5,
@@ -4525,7 +5400,7 @@
      "id": "voc_lazy",
      "word": "Lazy",
      "translation": "Perezoso/a",
-     "emoji": "🦥"
+     "emoji": "🛌"
     },
     {
      "index": 7,
@@ -4533,6 +5408,55 @@
      "word": "Hardworking",
      "translation": "Trabajador/a",
      "emoji": "💪"
+    },
+    {
+     "index": 8,
+     "id": "xv_straight_hair",
+     "word": "Straight hair",
+     "translation": "Pelo liso",
+     "emoji": "➖"
+    },
+    {
+     "index": 9,
+     "id": "xv_beard",
+     "word": "Beard",
+     "translation": "Barba",
+     "emoji": "🧔"
+    },
+    {
+     "index": 10,
+     "id": "xv_patient",
+     "word": "Patient",
+     "translation": "Paciente",
+     "emoji": "⏳"
+    },
+    {
+     "index": 11,
+     "id": "xv_selfish",
+     "word": "Selfish",
+     "translation": "Egoísta",
+     "emoji": ""
+    },
+    {
+     "index": 12,
+     "id": "xv_honest",
+     "word": "Honest",
+     "translation": "Honesto",
+     "emoji": "🤝"
+    },
+    {
+     "index": 13,
+     "id": "xv_medium_height",
+     "word": "Medium height",
+     "translation": "Estatura media",
+     "emoji": ""
+    },
+    {
+     "index": 14,
+     "id": "xv_good_looking",
+     "word": "Good-looking",
+     "translation": "Guapo / Atractivo",
+     "emoji": "😍"
     }
    ]
   },
@@ -4544,7 +5468,7 @@
      "id": "voc_always_visit",
      "word": "Always visit",
      "translation": "Siempre visito",
-     "emoji": ""
+     "emoji": "🏠"
     },
     {
      "index": 1,
@@ -4558,7 +5482,7 @@
      "id": "voc_siblings",
      "word": "Siblings",
      "translation": "Hermanos",
-     "emoji": "👭"
+     "emoji": "👨‍👩‍👧‍👦"
     },
     {
      "index": 3,
@@ -4594,6 +5518,55 @@
      "word": "Divorced",
      "translation": "Divorciado/a",
      "emoji": "💔"
+    },
+    {
+     "index": 8,
+     "id": "xv_engaged",
+     "word": "Engaged",
+     "translation": "Comprometido",
+     "emoji": "🥂"
+    },
+    {
+     "index": 9,
+     "id": "xv_boyfriend",
+     "word": "Boyfriend",
+     "translation": "Novio",
+     "emoji": "💑"
+    },
+    {
+     "index": 10,
+     "id": "xv_girlfriend",
+     "word": "Girlfriend",
+     "translation": "Novia",
+     "emoji": "💑"
+    },
+    {
+     "index": 11,
+     "id": "xv_close",
+     "word": "Close",
+     "translation": "Cercano / Unido",
+     "emoji": "🤗"
+    },
+    {
+     "index": 12,
+     "id": "xv_argue",
+     "word": "Argue",
+     "translation": "Discutir",
+     "emoji": "🤬"
+    },
+    {
+     "index": 13,
+     "id": "xv_raise",
+     "word": "Raise",
+     "translation": "Criar",
+     "emoji": "🍼"
+    },
+    {
+     "index": 14,
+     "id": "xv_only_child",
+     "word": "Only child",
+     "translation": "Hijo único",
+     "emoji": "👶"
     }
    ]
   },
@@ -4626,7 +5599,7 @@
      "id": "voc_photography",
      "word": "Photography",
      "translation": "Fotografía",
-     "emoji": "📷"
+     "emoji": "📸"
     },
     {
      "index": 6,
@@ -4641,6 +5614,55 @@
      "word": "Playing chess",
      "translation": "Jugar al ajedrez",
      "emoji": "♟️"
+    },
+    {
+     "index": 8,
+     "id": "xv_camping",
+     "word": "Camping",
+     "translation": "Acampar",
+     "emoji": "⛺"
+    },
+    {
+     "index": 9,
+     "id": "xv_fishing",
+     "word": "Fishing",
+     "translation": "Pescar / Pesca",
+     "emoji": "🎣"
+    },
+    {
+     "index": 10,
+     "id": "xv_baking",
+     "word": "Baking",
+     "translation": "Hornear (repostería)",
+     "emoji": "🍞"
+    },
+    {
+     "index": 11,
+     "id": "xv_board_games",
+     "word": "Board games",
+     "translation": "Juegos de mesa",
+     "emoji": "🎲"
+    },
+    {
+     "index": 12,
+     "id": "xv_collecting",
+     "word": "Collecting",
+     "translation": "Coleccionar",
+     "emoji": "📦"
+    },
+    {
+     "index": 13,
+     "id": "xv_drawing",
+     "word": "Drawing",
+     "translation": "Dibujar / Dibujo",
+     "emoji": "✏️"
+    },
+    {
+     "index": 14,
+     "id": "xv_join_a_club",
+     "word": "Join a club",
+     "translation": "Unirse a un club",
+     "emoji": "🤝"
     }
    ]
   },
@@ -4673,7 +5695,7 @@
      "id": "voc_believe",
      "word": "Believe",
      "translation": "Creer",
-     "emoji": ""
+     "emoji": "🙏"
     },
     {
      "index": 7,
@@ -4681,6 +5703,55 @@
      "word": "Own",
      "translation": "Poseer / Ser dueño de",
      "emoji": ""
+    },
+    {
+     "index": 8,
+     "id": "xv_spare_time",
+     "word": "Spare time",
+     "translation": "Tiempo libre",
+     "emoji": ""
+    },
+    {
+     "index": 9,
+     "id": "xv_be_into",
+     "word": "Be into",
+     "translation": "Gustarle / Ser fan de",
+     "emoji": "🤩"
+    },
+    {
+     "index": 10,
+     "id": "xv_take_up",
+     "word": "Take up",
+     "translation": "Empezar (una actividad)",
+     "emoji": "🏃"
+    },
+    {
+     "index": 11,
+     "id": "xv_can_t_stand",
+     "word": "Can't stand",
+     "translation": "No soportar",
+     "emoji": "🙅"
+    },
+    {
+     "index": 12,
+     "id": "xv_keen_on",
+     "word": "Keen on",
+     "translation": "Entusiasmado con",
+     "emoji": "😃"
+    },
+    {
+     "index": 13,
+     "id": "xv_relaxing",
+     "word": "Relaxing",
+     "translation": "Relajante",
+     "emoji": "🛀"
+    },
+    {
+     "index": 14,
+     "id": "xv_boring",
+     "word": "Boring",
+     "translation": "Aburrido",
+     "emoji": "😴"
     }
    ]
   },
@@ -4720,7 +5791,7 @@
      "id": "voc_trendy",
      "word": "Trendy",
      "translation": "A la moda",
-     "emoji": "👟"
+     "emoji": "🔥"
     },
     {
      "index": 5,
@@ -4742,6 +5813,55 @@
      "word": "Casual",
      "translation": "Informal",
      "emoji": "👕"
+    },
+    {
+     "index": 8,
+     "id": "xv_brand",
+     "word": "Brand",
+     "translation": "Marca",
+     "emoji": "🏷️"
+    },
+    {
+     "index": 9,
+     "id": "xv_wear",
+     "word": "Wear",
+     "translation": "Llevar puesto / Usar",
+     "emoji": "👟"
+    },
+    {
+     "index": 10,
+     "id": "xv_match",
+     "word": "Match",
+     "translation": "Combinar",
+     "emoji": "🔗"
+    },
+    {
+     "index": 11,
+     "id": "xv_style",
+     "word": "Style",
+     "translation": "Estilo",
+     "emoji": "🎨"
+    },
+    {
+     "index": 12,
+     "id": "xv_comfortable",
+     "word": "Comfortable",
+     "translation": "Cómodo",
+     "emoji": "🛋️"
+    },
+    {
+     "index": 13,
+     "id": "xv_tight",
+     "word": "Tight",
+     "translation": "Ajustado / Apretado",
+     "emoji": "👖"
+    },
+    {
+     "index": 14,
+     "id": "xv_loose",
+     "word": "Loose",
+     "translation": "Suelto / Holgado",
+     "emoji": "🩳"
     }
    ]
   },
@@ -4760,21 +5880,21 @@
      "id": "voc_introduce",
      "word": "Introduce yourself",
      "translation": "Presentarse",
-     "emoji": "🙋"
+     "emoji": "🤝"
     },
     {
      "index": 2,
      "id": "voc_how_s_it_going",
      "word": "How's it going?",
      "translation": "¿Cómo va?",
-     "emoji": "😊"
+     "emoji": "🙂"
     },
     {
      "index": 3,
      "id": "voc_see_you_soon",
      "word": "See you soon",
      "translation": "Nos vemos pronto",
-     "emoji": "👋"
+     "emoji": "🕒"
     },
     {
      "index": 4,
@@ -4788,14 +5908,14 @@
      "id": "voc_i_m_sorry",
      "word": "I'm sorry",
      "translation": "Lo siento",
-     "emoji": "🙏"
+     "emoji": "😔"
     },
     {
      "index": 6,
      "id": "voc_excuse_me",
      "word": "Excuse me",
      "translation": "Disculpa / Disculpe",
-     "emoji": "🤚"
+     "emoji": "🙇"
     },
     {
      "index": 7,
@@ -4803,6 +5923,55 @@
      "word": "Never mind",
      "translation": "No importa",
      "emoji": "🤷"
+    },
+    {
+     "index": 8,
+     "id": "xv_what_s_up",
+     "word": "What's up?",
+     "translation": "¿Qué hay? / ¿Qué tal?",
+     "emoji": "🙋"
+    },
+    {
+     "index": 9,
+     "id": "xv_not_bad",
+     "word": "Not bad",
+     "translation": "Nada mal",
+     "emoji": "👍"
+    },
+    {
+     "index": 10,
+     "id": "xv_take_care",
+     "word": "Take care",
+     "translation": "Cuídate",
+     "emoji": "🤗"
+    },
+    {
+     "index": 11,
+     "id": "xv_no_problem",
+     "word": "No problem",
+     "translation": "No hay problema",
+     "emoji": "👌"
+    },
+    {
+     "index": 12,
+     "id": "xv_pardon",
+     "word": "Pardon?",
+     "translation": "¿Perdón? / ¿Cómo dijo?",
+     "emoji": "👂"
+    },
+    {
+     "index": 13,
+     "id": "xv_of_course",
+     "word": "Of course",
+     "translation": "Por supuesto",
+     "emoji": "✅"
+    },
+    {
+     "index": 14,
+     "id": "xv_have_a_good_one",
+     "word": "Have a good one",
+     "translation": "Que te vaya bien",
+     "emoji": "🌞"
     }
    ]
   },
@@ -4849,14 +6018,14 @@
      "id": "voc_sightseeing",
      "word": "Sightseeing",
      "translation": "Hacer turismo / Recorrer lugares",
-     "emoji": "📸"
+     "emoji": "🗺️"
     },
     {
      "index": 6,
      "id": "voc_book",
      "word": "Book",
      "translation": "Reservar",
-     "emoji": "📅"
+     "emoji": "📖"
     },
     {
      "index": 7,
@@ -4864,6 +6033,55 @@
      "word": "Souvenir",
      "translation": "Recuerdo (de viaje)",
      "emoji": "🎁"
+    },
+    {
+     "index": 8,
+     "id": "xv_itinerary",
+     "word": "Itinerary",
+     "translation": "Itinerario",
+     "emoji": "📋"
+    },
+    {
+     "index": 9,
+     "id": "xv_check_in",
+     "word": "Check in",
+     "translation": "Registrarse",
+     "emoji": "🏨"
+    },
+    {
+     "index": 10,
+     "id": "xv_check_out",
+     "word": "Check out",
+     "translation": "Salir del hotel",
+     "emoji": "🚪"
+    },
+    {
+     "index": 11,
+     "id": "xv_luggage",
+     "word": "Luggage",
+     "translation": "Equipaje",
+     "emoji": "🧳"
+    },
+    {
+     "index": 12,
+     "id": "xv_tourist",
+     "word": "Tourist",
+     "translation": "Turista",
+     "emoji": "🧭"
+    },
+    {
+     "index": 13,
+     "id": "xv_guide",
+     "word": "Guide",
+     "translation": "Guía",
+     "emoji": "👨‍🏫"
+    },
+    {
+     "index": 14,
+     "id": "xv_round_trip",
+     "word": "Round trip",
+     "translation": "Ida y vuelta",
+     "emoji": "🔁"
     }
    ]
   },
@@ -4925,6 +6143,55 @@
      "word": "Ride",
      "translation": "Andar / Montar (en bici, moto, caballo)",
      "emoji": "🚲"
+    },
+    {
+     "index": 8,
+     "id": "xv_helicopter",
+     "word": "Helicopter",
+     "translation": "Helicóptero",
+     "emoji": "🚁"
+    },
+    {
+     "index": 9,
+     "id": "xv_truck",
+     "word": "Truck",
+     "translation": "Camión",
+     "emoji": "🚚"
+    },
+    {
+     "index": 10,
+     "id": "xv_scooter",
+     "word": "Scooter",
+     "translation": "Patineta eléctrica / Scooter",
+     "emoji": "🛴"
+    },
+    {
+     "index": 11,
+     "id": "xv_traffic_jam",
+     "word": "Traffic jam",
+     "translation": "Trancón / Atasco",
+     "emoji": ""
+    },
+    {
+     "index": 12,
+     "id": "xv_fuel",
+     "word": "Fuel",
+     "translation": "Combustible",
+     "emoji": "⛽"
+    },
+    {
+     "index": 13,
+     "id": "xv_driver_s_license",
+     "word": "Driver's license",
+     "translation": "Licencia de conducción",
+     "emoji": "🪪"
+    },
+    {
+     "index": 14,
+     "id": "xv_on_foot",
+     "word": "On foot",
+     "translation": "A pie",
+     "emoji": "🚶"
     }
    ]
   },
@@ -4964,7 +6231,7 @@
      "id": "voc_departure",
      "word": "Departure",
      "translation": "Salida",
-     "emoji": "🛫"
+     "emoji": "🏁"
     },
     {
      "index": 7,
@@ -4972,6 +6239,55 @@
      "word": "Arrival",
      "translation": "Llegada",
      "emoji": "🛬"
+    },
+    {
+     "index": 8,
+     "id": "xv_passenger",
+     "word": "Passenger",
+     "translation": "Pasajero",
+     "emoji": "👤"
+    },
+    {
+     "index": 9,
+     "id": "xv_delay",
+     "word": "Delay",
+     "translation": "Retraso",
+     "emoji": "🕒"
+    },
+    {
+     "index": 10,
+     "id": "xv_transfer",
+     "word": "Transfer",
+     "translation": "Transbordo / Cambiar de línea",
+     "emoji": "🔁"
+    },
+    {
+     "index": 11,
+     "id": "xv_route",
+     "word": "Route",
+     "translation": "Ruta",
+     "emoji": "🗺️"
+    },
+    {
+     "index": 12,
+     "id": "xv_get_off",
+     "word": "Get off",
+     "translation": "Bajarse",
+     "emoji": "⬇️"
+    },
+    {
+     "index": 13,
+     "id": "xv_get_on",
+     "word": "Get on",
+     "translation": "Subirse",
+     "emoji": "⬆️"
+    },
+    {
+     "index": 14,
+     "id": "xv_rush_hour",
+     "word": "Rush hour",
+     "translation": "Hora pico",
+     "emoji": "🚇"
     }
    ]
   },
@@ -4983,14 +6299,14 @@
      "id": "voc_should_try",
      "word": "Should try",
      "translation": "Deberías probar",
-     "emoji": ""
+     "emoji": "🍴"
     },
     {
      "index": 1,
      "id": "voc_must_taste",
      "word": "Must taste",
      "translation": "Debe probar",
-     "emoji": ""
+     "emoji": "😋"
     },
     {
      "index": 2,
@@ -5033,6 +6349,55 @@
      "word": "Vegetarian",
      "translation": "Vegetariano/a",
      "emoji": "🥦"
+    },
+    {
+     "index": 8,
+     "id": "xv_dessert",
+     "word": "Dessert",
+     "translation": "Postre",
+     "emoji": "🍰"
+    },
+    {
+     "index": 9,
+     "id": "xv_side_dish",
+     "word": "Side dish",
+     "translation": "Acompañamiento",
+     "emoji": "🍚"
+    },
+    {
+     "index": 10,
+     "id": "xv_tasty",
+     "word": "Tasty",
+     "translation": "Sabroso",
+     "emoji": "🤤"
+    },
+    {
+     "index": 11,
+     "id": "xv_bitter",
+     "word": "Bitter",
+     "translation": "Amargo",
+     "emoji": ""
+    },
+    {
+     "index": 12,
+     "id": "xv_sour",
+     "word": "Sour",
+     "translation": "Agrio / Ácido",
+     "emoji": "🍋"
+    },
+    {
+     "index": 13,
+     "id": "xv_grilled",
+     "word": "Grilled",
+     "translation": "A la parrilla",
+     "emoji": "🍖"
+    },
+    {
+     "index": 14,
+     "id": "xv_tip",
+     "word": "Tip",
+     "translation": "Propina",
+     "emoji": "💰"
     }
    ]
   },
@@ -5058,7 +6423,7 @@
      "id": "voc_festival",
      "word": "Festival",
      "translation": "Festival",
-     "emoji": "🎪"
+     "emoji": "🎉"
     },
     {
      "index": 3,
@@ -5094,6 +6459,55 @@
      "word": "Parade",
      "translation": "Desfile",
      "emoji": "🎺"
+    },
+    {
+     "index": 8,
+     "id": "xv_heritage",
+     "word": "Heritage",
+     "translation": "Patrimonio / Herencia",
+     "emoji": ""
+    },
+    {
+     "index": 9,
+     "id": "xv_belief",
+     "word": "Belief",
+     "translation": "Creencia",
+     "emoji": ""
+    },
+    {
+     "index": 10,
+     "id": "xv_ancestor",
+     "word": "Ancestor",
+     "translation": "Antepasado",
+     "emoji": "🪦"
+    },
+    {
+     "index": 11,
+     "id": "xv_traditional",
+     "word": "Traditional",
+     "translation": "Tradicional",
+     "emoji": ""
+    },
+    {
+     "index": 12,
+     "id": "xv_dance",
+     "word": "Dance",
+     "translation": "Baile / Bailar",
+     "emoji": "💃"
+    },
+    {
+     "index": 13,
+     "id": "xv_carnival",
+     "word": "Carnival",
+     "translation": "Carnaval",
+     "emoji": "🎡"
+    },
+    {
+     "index": 14,
+     "id": "xv_honor",
+     "word": "Honor",
+     "translation": "Honrar",
+     "emoji": "🏅"
     }
    ]
   },
@@ -5147,7 +6561,7 @@
      "id": "voc_stage",
      "word": "Stage",
      "translation": "Escenario",
-     "emoji": "🎭"
+     "emoji": ""
     },
     {
      "index": 7,
@@ -5155,6 +6569,55 @@
      "word": "Ticket",
      "translation": "Entrada",
      "emoji": "🎟️"
+    },
+    {
+     "index": 8,
+     "id": "xv_lyrics",
+     "word": "Lyrics",
+     "translation": "Letra (de canción)",
+     "emoji": "📜"
+    },
+    {
+     "index": 9,
+     "id": "xv_album",
+     "word": "Album",
+     "translation": "Álbum",
+     "emoji": "💿"
+    },
+    {
+     "index": 10,
+     "id": "xv_drums",
+     "word": "Drums",
+     "translation": "Batería / Tambores",
+     "emoji": "🥁"
+    },
+    {
+     "index": 11,
+     "id": "xv_audience",
+     "word": "Audience",
+     "translation": "Público",
+     "emoji": "👥"
+    },
+    {
+     "index": 12,
+     "id": "xv_tour",
+     "word": "Tour",
+     "translation": "Gira",
+     "emoji": "🚌"
+    },
+    {
+     "index": 13,
+     "id": "xv_live_music",
+     "word": "Live music",
+     "translation": "Música en vivo",
+     "emoji": "🎶"
+    },
+    {
+     "index": 14,
+     "id": "xv_encore",
+     "word": "Encore",
+     "translation": "Bis / Otra",
+     "emoji": "🔁"
     }
    ]
   },
@@ -5173,14 +6636,14 @@
      "id": "voc_painted",
      "word": "Painted",
      "translation": "Pinté",
-     "emoji": "🎨"
+     "emoji": "🖌️"
     },
     {
      "index": 2,
      "id": "voc_creativity",
      "word": "Creativity",
      "translation": "Creatividad",
-     "emoji": "💡"
+     "emoji": "🎨"
     },
     {
      "index": 3,
@@ -5216,6 +6679,55 @@
      "word": "Exhibition",
      "translation": "Exposición",
      "emoji": "🎟️"
+    },
+    {
+     "index": 8,
+     "id": "xv_canvas",
+     "word": "Canvas",
+     "translation": "Lienzo",
+     "emoji": "🖼️"
+    },
+    {
+     "index": 9,
+     "id": "xv_brush",
+     "word": "Brush",
+     "translation": "Pincel",
+     "emoji": "🖌️"
+    },
+    {
+     "index": 10,
+     "id": "xv_sculpture",
+     "word": "Sculpture",
+     "translation": "Escultura",
+     "emoji": "🗿"
+    },
+    {
+     "index": 11,
+     "id": "xv_portrait",
+     "word": "Portrait",
+     "translation": "Retrato",
+     "emoji": "🖼️"
+    },
+    {
+     "index": 12,
+     "id": "xv_gallery",
+     "word": "Gallery",
+     "translation": "Galería",
+     "emoji": "🏛️"
+    },
+    {
+     "index": 13,
+     "id": "xv_inspiration",
+     "word": "Inspiration",
+     "translation": "Inspiración",
+     "emoji": "💡"
+    },
+    {
+     "index": 14,
+     "id": "xv_imagination",
+     "word": "Imagination",
+     "translation": "Imaginación",
+     "emoji": "🧠"
     }
    ]
   },
@@ -5248,14 +6760,14 @@
      "id": "voc_wedding",
      "word": "Wedding",
      "translation": "Boda",
-     "emoji": "💍"
+     "emoji": "💒"
     },
     {
      "index": 4,
      "id": "voc_anniversary",
      "word": "Anniversary",
      "translation": "Aniversario",
-     "emoji": "💑"
+     "emoji": "🎊"
     },
     {
      "index": 5,
@@ -5277,6 +6789,55 @@
      "word": "Surprise party",
      "translation": "Fiesta sorpresa",
      "emoji": "🎈"
+    },
+    {
+     "index": 8,
+     "id": "xv_host",
+     "word": "Host",
+     "translation": "Anfitrión",
+     "emoji": "🏠"
+    },
+    {
+     "index": 9,
+     "id": "xv_toast",
+     "word": "Toast",
+     "translation": "Brindis",
+     "emoji": "🥂"
+    },
+    {
+     "index": 10,
+     "id": "xv_venue",
+     "word": "Venue",
+     "translation": "Lugar (del evento)",
+     "emoji": "📍"
+    },
+    {
+     "index": 11,
+     "id": "xv_bride",
+     "word": "Bride",
+     "translation": "Novia (en la boda)",
+     "emoji": "👰"
+    },
+    {
+     "index": 12,
+     "id": "xv_groom",
+     "word": "Groom",
+     "translation": "Novio (en la boda)",
+     "emoji": "🤵"
+    },
+    {
+     "index": 13,
+     "id": "xv_rsvp",
+     "word": "RSVP",
+     "translation": "Confirmar asistencia",
+     "emoji": "📅"
+    },
+    {
+     "index": 14,
+     "id": "xv_celebration",
+     "word": "Celebration",
+     "translation": "Celebración",
+     "emoji": "🎉"
     }
    ]
   },
@@ -5295,21 +6856,21 @@
      "id": "voc_often_post",
      "word": "Often post",
      "translation": "A menudo publico",
-     "emoji": "📝"
+     "emoji": "📤"
     },
     {
      "index": 4,
      "id": "voc_post",
      "word": "Post",
      "translation": "Publicar / Publicación",
-     "emoji": "📤"
+     "emoji": "📮"
     },
     {
      "index": 5,
      "id": "voc_share",
      "word": "Share",
      "translation": "Compartir",
-     "emoji": "🤝"
+     "emoji": "🔗"
     },
     {
      "index": 6,
@@ -5324,6 +6885,55 @@
      "word": "Notification",
      "translation": "Notificación",
      "emoji": "🔔"
+    },
+    {
+     "index": 8,
+     "id": "xv_profile",
+     "word": "Profile",
+     "translation": "Perfil",
+     "emoji": "👤"
+    },
+    {
+     "index": 9,
+     "id": "xv_like",
+     "word": "Like",
+     "translation": "Me gusta / Dar me gusta",
+     "emoji": "👍"
+    },
+    {
+     "index": 10,
+     "id": "xv_comment",
+     "word": "Comment",
+     "translation": "Comentario / Comentar",
+     "emoji": "💬"
+    },
+    {
+     "index": 11,
+     "id": "xv_download",
+     "word": "Download",
+     "translation": "Descargar",
+     "emoji": "📥"
+    },
+    {
+     "index": 12,
+     "id": "xv_upload",
+     "word": "Upload",
+     "translation": "Subir (un archivo)",
+     "emoji": "📤"
+    },
+    {
+     "index": 13,
+     "id": "xv_hashtag",
+     "word": "Hashtag",
+     "translation": "Hashtag / Etiqueta",
+     "emoji": "#️⃣"
+    },
+    {
+     "index": 14,
+     "id": "xv_log_in",
+     "word": "Log in",
+     "translation": "Iniciar sesión",
+     "emoji": "🔑"
     }
    ]
   },
@@ -5385,6 +6995,55 @@
      "word": "Update",
      "translation": "Actualización / Actualizar",
      "emoji": "🔄"
+    },
+    {
+     "index": 8,
+     "id": "xv_artificial_intelligence",
+     "word": "Artificial intelligence",
+     "translation": "Inteligencia artificial",
+     "emoji": "🧠"
+    },
+    {
+     "index": 9,
+     "id": "xv_software",
+     "word": "Software",
+     "translation": "Software / Programa",
+     "emoji": "💻"
+    },
+    {
+     "index": 10,
+     "id": "xv_virtual_reality",
+     "word": "Virtual reality",
+     "translation": "Realidad virtual",
+     "emoji": "🥽"
+    },
+    {
+     "index": 11,
+     "id": "xv_data",
+     "word": "Data",
+     "translation": "Datos",
+     "emoji": "📊"
+    },
+    {
+     "index": 12,
+     "id": "xv_cloud",
+     "word": "Cloud",
+     "translation": "Nube",
+     "emoji": "☁️"
+    },
+    {
+     "index": 13,
+     "id": "xv_drone",
+     "word": "Drone",
+     "translation": "Dron",
+     "emoji": "🚁"
+    },
+    {
+     "index": 14,
+     "id": "xv_engineer",
+     "word": "Engineer",
+     "translation": "Ingeniero",
+     "emoji": "👷"
     }
    ]
   },
@@ -5403,7 +7062,7 @@
      "id": "voc_could_understand",
      "word": "Could understand",
      "translation": "Podría entender",
-     "emoji": "👂"
+     "emoji": "💡"
     },
     {
      "index": 2,
@@ -5417,21 +7076,21 @@
      "id": "voc_pronunciation",
      "word": "Pronunciation",
      "translation": "Pronunciación",
-     "emoji": "👅"
+     "emoji": "🔊"
     },
     {
      "index": 4,
      "id": "voc_accent",
      "word": "Accent",
      "translation": "Acento",
-     "emoji": ""
+     "emoji": "🎶"
     },
     {
      "index": 5,
      "id": "voc_translate",
      "word": "Translate",
      "translation": "Traducir",
-     "emoji": "🌐"
+     "emoji": "🔄"
     },
     {
      "index": 6,
@@ -5446,6 +7105,55 @@
      "word": "Slowly",
      "translation": "Despacio",
      "emoji": "🐢"
+    },
+    {
+     "index": 8,
+     "id": "xv_vocabulary",
+     "word": "Vocabulary",
+     "translation": "Vocabulario",
+     "emoji": "📚"
+    },
+    {
+     "index": 9,
+     "id": "xv_conversation",
+     "word": "Conversation",
+     "translation": "Conversación",
+     "emoji": "🗨️"
+    },
+    {
+     "index": 10,
+     "id": "xv_listen_carefully",
+     "word": "Listen carefully",
+     "translation": "Escuchar con atención",
+     "emoji": "👂"
+    },
+    {
+     "index": 11,
+     "id": "xv_native_speaker",
+     "word": "Native speaker",
+     "translation": "Hablante nativo",
+     "emoji": "🗣️"
+    },
+    {
+     "index": 12,
+     "id": "xv_mean",
+     "word": "Mean",
+     "translation": "Significar",
+     "emoji": "ℹ️"
+    },
+    {
+     "index": 13,
+     "id": "xv_louder",
+     "word": "Louder",
+     "translation": "Más fuerte (volumen)",
+     "emoji": "🔊"
+    },
+    {
+     "index": 14,
+     "id": "xv_bilingual",
+     "word": "Bilingual",
+     "translation": "Bilingüe",
+     "emoji": "🌍"
     }
    ]
   },
@@ -5478,7 +7186,7 @@
      "id": "voc_misunderstanding",
      "word": "Misunderstanding",
      "translation": "Malentendido",
-     "emoji": "❓"
+     "emoji": "😕"
     },
     {
      "index": 4,
@@ -5492,14 +7200,14 @@
      "id": "voc_explain",
      "word": "Explain",
      "translation": "Explicar",
-     "emoji": "📖"
+     "emoji": "🗣️"
     },
     {
      "index": 6,
      "id": "voc_polite",
      "word": "Polite",
      "translation": "Educado/a / Cortés",
-     "emoji": "🙏"
+     "emoji": "🙇"
     },
     {
      "index": 7,
@@ -5507,6 +7215,55 @@
      "word": "Interrupt",
      "translation": "Interrumpir",
      "emoji": "✋"
+    },
+    {
+     "index": 8,
+     "id": "xv_body_language",
+     "word": "Body language",
+     "translation": "Lenguaje corporal",
+     "emoji": "🕺"
+    },
+    {
+     "index": 9,
+     "id": "xv_eye_contact",
+     "word": "Eye contact",
+     "translation": "Contacto visual",
+     "emoji": "👀"
+    },
+    {
+     "index": 10,
+     "id": "xv_point_of_view",
+     "word": "Point of view",
+     "translation": "Punto de vista",
+     "emoji": "👓"
+    },
+    {
+     "index": 11,
+     "id": "xv_summarize",
+     "word": "Summarize",
+     "translation": "Resumir",
+     "emoji": "📋"
+    },
+    {
+     "index": 12,
+     "id": "xv_respect",
+     "word": "Respect",
+     "translation": "Respeto / Respetar",
+     "emoji": "🤝"
+    },
+    {
+     "index": 13,
+     "id": "xv_respond",
+     "word": "Respond",
+     "translation": "Responder",
+     "emoji": "↩️"
+    },
+    {
+     "index": 14,
+     "id": "xv_confident",
+     "word": "Confident",
+     "translation": "Seguro de sí mismo",
+     "emoji": "💪"
     }
    ]
   },
@@ -5518,7 +7275,7 @@
      "id": "voc_formal_tone",
      "word": "Formal tone",
      "translation": "Tono formal",
-     "emoji": "👔"
+     "emoji": "🎩"
     },
     {
      "index": 1,
@@ -5539,7 +7296,7 @@
      "id": "voc_indirect_approach",
      "word": "Indirect approach",
      "translation": "Enfoque indirecto",
-     "emoji": "↩️"
+     "emoji": "🔄"
     },
     {
      "index": 4,
@@ -5568,6 +7325,55 @@
      "word": "Suggestion",
      "translation": "Sugerencia",
      "emoji": "💡"
+    },
+    {
+     "index": 8,
+     "id": "xv_assertive",
+     "word": "Assertive",
+     "translation": "Asertivo",
+     "emoji": "💪"
+    },
+    {
+     "index": 9,
+     "id": "xv_tone_of_voice",
+     "word": "Tone of voice",
+     "translation": "Tono de voz",
+     "emoji": "🔊"
+    },
+    {
+     "index": 10,
+     "id": "xv_slang",
+     "word": "Slang",
+     "translation": "Jerga",
+     "emoji": "😎"
+    },
+    {
+     "index": 11,
+     "id": "xv_sarcastic",
+     "word": "Sarcastic",
+     "translation": "Sarcástico",
+     "emoji": "😏"
+    },
+    {
+     "index": 12,
+     "id": "xv_honest",
+     "word": "Honest",
+     "translation": "Sincero",
+     "emoji": "📖"
+    },
+    {
+     "index": 13,
+     "id": "xv_tactful",
+     "word": "Tactful",
+     "translation": "Diplomático / Con tacto",
+     "emoji": "🤝"
+    },
+    {
+     "index": 14,
+     "id": "xv_small_talk",
+     "word": "Small talk",
+     "translation": "Charla trivial",
+     "emoji": "☕"
     }
    ]
   },
@@ -5579,21 +7385,21 @@
      "id": "voc_should_study",
      "word": "Should study",
      "translation": "Debería estudiar",
-     "emoji": "📖"
+     "emoji": "📚"
     },
     {
      "index": 1,
      "id": "voc_ought_to_practice",
      "word": "Ought to practice",
      "translation": "Debería practicar",
-     "emoji": "🏋️"
+     "emoji": "🎯"
     },
     {
      "index": 2,
      "id": "voc_homework",
      "word": "Homework",
      "translation": "Tarea",
-     "emoji": "📚"
+     "emoji": "📄"
     },
     {
      "index": 3,
@@ -5614,7 +7420,7 @@
      "id": "voc_grade",
      "word": "Grade",
      "translation": "Nota / Calificación",
-     "emoji": "📊"
+     "emoji": "🅰️"
     },
     {
      "index": 6,
@@ -5629,6 +7435,55 @@
      "word": "Fail",
      "translation": "Reprobar / Desaprobar",
      "emoji": "❌"
+    },
+    {
+     "index": 8,
+     "id": "xv_classroom",
+     "word": "Classroom",
+     "translation": "Salón de clase",
+     "emoji": "🏫"
+    },
+    {
+     "index": 9,
+     "id": "xv_notebook",
+     "word": "Notebook",
+     "translation": "Cuaderno",
+     "emoji": "📓"
+    },
+    {
+     "index": 10,
+     "id": "xv_degree",
+     "word": "Degree",
+     "translation": "Título (universitario)",
+     "emoji": "🎓"
+    },
+    {
+     "index": 11,
+     "id": "xv_scholarship",
+     "word": "Scholarship",
+     "translation": "Beca",
+     "emoji": "💰"
+    },
+    {
+     "index": 12,
+     "id": "xv_revise",
+     "word": "Revise",
+     "translation": "Repasar",
+     "emoji": "🔄"
+    },
+    {
+     "index": 13,
+     "id": "xv_semester",
+     "word": "Semester",
+     "translation": "Semestre",
+     "emoji": "📅"
+    },
+    {
+     "index": 14,
+     "id": "xv_take_notes",
+     "word": "Take notes",
+     "translation": "Tomar apuntes",
+     "emoji": "🖊️"
     }
    ]
   },
@@ -5640,7 +7495,7 @@
      "id": "voc_working",
      "word": "Working",
      "translation": "Trabajando",
-     "emoji": "👷"
+     "emoji": "🛠️"
     },
     {
      "index": 1,
@@ -5654,14 +7509,14 @@
      "id": "voc_teacher",
      "word": "Teacher",
      "translation": "Maestro/Profesor",
-     "emoji": "👩‍🏫"
+     "emoji": "📚"
     },
     {
      "index": 3,
      "id": "voc_engineer",
      "word": "Engineer",
      "translation": "Ingeniero/Ingeniera",
-     "emoji": "🛠️"
+     "emoji": "⚙️"
     },
     {
      "index": 4,
@@ -5682,14 +7537,63 @@
      "id": "voc_manager",
      "word": "Manager",
      "translation": "Gerente",
-     "emoji": "🧑‍💼"
+     "emoji": "👔"
     },
     {
      "index": 7,
      "id": "voc_full_time",
      "word": "Full-time",
      "translation": "Tiempo completo",
-     "emoji": "📆"
+     "emoji": "🕰️"
+    },
+    {
+     "index": 8,
+     "id": "xv_part_time",
+     "word": "Part-time",
+     "translation": "Medio tiempo",
+     "emoji": "⏰"
+    },
+    {
+     "index": 9,
+     "id": "xv_employee",
+     "word": "Employee",
+     "translation": "Empleado",
+     "emoji": "🧑‍💼"
+    },
+    {
+     "index": 10,
+     "id": "xv_boss",
+     "word": "Boss",
+     "translation": "Jefe",
+     "emoji": "👑"
+    },
+    {
+     "index": 11,
+     "id": "xv_job_interview",
+     "word": "Job interview",
+     "translation": "Entrevista de trabajo",
+     "emoji": "🤝"
+    },
+    {
+     "index": 12,
+     "id": "xv_hire",
+     "word": "Hire",
+     "translation": "Contratar",
+     "emoji": "📄"
+    },
+    {
+     "index": 13,
+     "id": "xv_retire",
+     "word": "Retire",
+     "translation": "Jubilarse / Pensionarse",
+     "emoji": "🏖️"
+    },
+    {
+     "index": 14,
+     "id": "xv_shift",
+     "word": "Shift",
+     "translation": "Turno",
+     "emoji": "🔄"
     }
    ]
   },
@@ -5750,7 +7654,56 @@
      "id": "voc_team",
      "word": "Team",
      "translation": "Equipo",
-     "emoji": "👥"
+     "emoji": "🤝"
+    },
+    {
+     "index": 8,
+     "id": "xv_report",
+     "word": "Report",
+     "translation": "Informe",
+     "emoji": "📄"
+    },
+    {
+     "index": 9,
+     "id": "xv_update",
+     "word": "Update",
+     "translation": "Actualización / Novedad",
+     "emoji": "🔄"
+    },
+    {
+     "index": 10,
+     "id": "xv_reply",
+     "word": "Reply",
+     "translation": "Responder",
+     "emoji": "↩️"
+    },
+    {
+     "index": 11,
+     "id": "xv_attachment",
+     "word": "Attachment",
+     "translation": "Archivo adjunto",
+     "emoji": "📎"
+    },
+    {
+     "index": 12,
+     "id": "xv_coworker",
+     "word": "Coworker",
+     "translation": "Compañero de trabajo",
+     "emoji": "🧑‍💼"
+    },
+    {
+     "index": 13,
+     "id": "xv_leave_a_message",
+     "word": "Leave a message",
+     "translation": "Dejar un mensaje",
+     "emoji": "🗨️"
+    },
+    {
+     "index": 14,
+     "id": "xv_follow_up",
+     "word": "Follow up",
+     "translation": "Hacer seguimiento",
+     "emoji": "🔁"
     }
    ]
   },
@@ -5790,14 +7743,14 @@
      "id": "voc_trust",
      "word": "Trust",
      "translation": "Confiar / Confianza",
-     "emoji": "🔐"
+     "emoji": "🛡️"
     },
     {
      "index": 5,
      "id": "voc_support",
      "word": "Support",
      "translation": "Apoyar / Apoyo",
-     "emoji": "🤗"
+     "emoji": "🙌"
     },
     {
      "index": 6,
@@ -5812,6 +7765,55 @@
      "word": "Partner",
      "translation": "Socio/a",
      "emoji": "👫"
+    },
+    {
+     "index": 8,
+     "id": "xv_respect",
+     "word": "Respect",
+     "translation": "Respeto",
+     "emoji": "🙇"
+    },
+    {
+     "index": 9,
+     "id": "xv_contact",
+     "word": "Contact",
+     "translation": "Contacto",
+     "emoji": "📞"
+    },
+    {
+     "index": 10,
+     "id": "xv_reliable",
+     "word": "Reliable",
+     "translation": "Confiable",
+     "emoji": "✅"
+    },
+    {
+     "index": 11,
+     "id": "xv_cooperate",
+     "word": "Cooperate",
+     "translation": "Cooperar",
+     "emoji": "🛠️"
+    },
+    {
+     "index": 12,
+     "id": "xv_conflict",
+     "word": "Conflict",
+     "translation": "Conflicto",
+     "emoji": "⚔️"
+    },
+    {
+     "index": 13,
+     "id": "xv_recommendation",
+     "word": "Recommendation",
+     "translation": "Recomendación",
+     "emoji": "👍"
+    },
+    {
+     "index": 14,
+     "id": "xv_get_to_know",
+     "word": "Get to know",
+     "translation": "Llegar a conocer",
+     "emoji": "👋"
     }
    ]
   },
@@ -5851,7 +7853,7 @@
      "id": "voc_suggest",
      "word": "Suggest",
      "translation": "Sugerir",
-     "emoji": "🗣️"
+     "emoji": "💭"
     },
     {
      "index": 5,
@@ -5873,6 +7875,55 @@
      "word": "Decision",
      "translation": "Decisión",
      "emoji": "✅"
+    },
+    {
+     "index": 8,
+     "id": "xv_chairperson",
+     "word": "Chairperson",
+     "translation": "Presidente (de la reunión)",
+     "emoji": "🪑"
+    },
+    {
+     "index": 9,
+     "id": "xv_attend",
+     "word": "Attend",
+     "translation": "Asistir",
+     "emoji": "👥"
+    },
+    {
+     "index": 10,
+     "id": "xv_point",
+     "word": "Point",
+     "translation": "Punto",
+     "emoji": "👉"
+    },
+    {
+     "index": 11,
+     "id": "xv_vote",
+     "word": "Vote",
+     "translation": "Votar",
+     "emoji": "🗳️"
+    },
+    {
+     "index": 12,
+     "id": "xv_summary",
+     "word": "Summary",
+     "translation": "Resumen",
+     "emoji": "📄"
+    },
+    {
+     "index": 13,
+     "id": "xv_action_item",
+     "word": "Action item",
+     "translation": "Tarea pendiente",
+     "emoji": "📌"
+    },
+    {
+     "index": 14,
+     "id": "xv_postpone",
+     "word": "Postpone",
+     "translation": "Aplazar",
+     "emoji": "⏳"
     }
    ]
   },
@@ -5884,14 +7935,14 @@
      "id": "voc_negotiating",
      "word": "Negotiating",
      "translation": "Negociando",
-     "emoji": "🤝"
+     "emoji": "🗣️"
     },
     {
      "index": 1,
      "id": "voc_consulting",
      "word": "Consulting",
      "translation": "Consultando",
-     "emoji": "💼"
+     "emoji": "👔"
     },
     {
      "index": 2,
@@ -5919,7 +7970,7 @@
      "id": "voc_deal",
      "word": "Deal",
      "translation": "Trato / Acuerdo",
-     "emoji": "🪙"
+     "emoji": "🤝"
     },
     {
      "index": 6,
@@ -5934,6 +7985,55 @@
      "word": "Customer service",
      "translation": "Atención al cliente",
      "emoji": "📞"
+    },
+    {
+     "index": 8,
+     "id": "xv_complaint",
+     "word": "Complaint",
+     "translation": "Queja / Reclamo",
+     "emoji": "😠"
+    },
+    {
+     "index": 9,
+     "id": "xv_satisfied",
+     "word": "Satisfied",
+     "translation": "Satisfecho",
+     "emoji": "😊"
+    },
+    {
+     "index": 10,
+     "id": "xv_price_list",
+     "word": "Price list",
+     "translation": "Lista de precios",
+     "emoji": "📃"
+    },
+    {
+     "index": 11,
+     "id": "xv_invoice",
+     "word": "Invoice",
+     "translation": "Factura",
+     "emoji": "📑"
+    },
+    {
+     "index": 12,
+     "id": "xv_delivery",
+     "word": "Delivery",
+     "translation": "Entrega",
+     "emoji": "🚚"
+    },
+    {
+     "index": 13,
+     "id": "xv_discount",
+     "word": "Discount",
+     "translation": "Descuento",
+     "emoji": "🏷️"
+    },
+    {
+     "index": 14,
+     "id": "xv_sign",
+     "word": "Sign",
+     "translation": "Firmar",
+     "emoji": "✍️"
     }
    ]
   },
@@ -5945,7 +8045,7 @@
      "id": "voc_preparing_presentation",
      "word": "Preparing a presentation",
      "translation": "Preparando una presentación",
-     "emoji": "📊"
+     "emoji": "📄"
     },
     {
      "index": 1,
@@ -5959,7 +8059,7 @@
      "id": "voc_presentation",
      "word": "Presentation",
      "translation": "Presentación",
-     "emoji": "📽️"
+     "emoji": "📊"
     },
     {
      "index": 3,
@@ -5973,21 +8073,21 @@
      "id": "voc_introduction",
      "word": "Introduction",
      "translation": "Introducción",
-     "emoji": "🚪"
+     "emoji": "👋"
     },
     {
      "index": 5,
      "id": "voc_conclusion",
      "word": "Conclusion",
      "translation": "Conclusión",
-     "emoji": "🔚"
+     "emoji": "🏁"
     },
     {
      "index": 6,
      "id": "voc_chart",
      "word": "Chart",
      "translation": "Gráfico",
-     "emoji": "📊"
+     "emoji": "📈"
     },
     {
      "index": 7,
@@ -5995,6 +8095,55 @@
      "word": "Question",
      "translation": "Pregunta",
      "emoji": "❓"
+    },
+    {
+     "index": 8,
+     "id": "xv_slide",
+     "word": "Slide",
+     "translation": "Diapositiva",
+     "emoji": "📽️"
+    },
+    {
+     "index": 9,
+     "id": "xv_graph",
+     "word": "Graph",
+     "translation": "Gráfica",
+     "emoji": "📊"
+    },
+    {
+     "index": 10,
+     "id": "xv_main_point",
+     "word": "Main point",
+     "translation": "Punto principal",
+     "emoji": "🔑"
+    },
+    {
+     "index": 11,
+     "id": "xv_topic",
+     "word": "Topic",
+     "translation": "Tema",
+     "emoji": "🗂️"
+    },
+    {
+     "index": 12,
+     "id": "xv_rehearse",
+     "word": "Rehearse",
+     "translation": "Ensayar",
+     "emoji": "🎭"
+    },
+    {
+     "index": 13,
+     "id": "xv_handout",
+     "word": "Handout",
+     "translation": "Material impreso",
+     "emoji": "📃"
+    },
+    {
+     "index": 14,
+     "id": "xv_nervous",
+     "word": "Nervous",
+     "translation": "Nervioso",
+     "emoji": "😰"
     }
    ]
   },
@@ -6006,49 +8155,98 @@
      "id": "voc_hosting_zoom",
      "word": "Hosting a Zoom meeting",
      "translation": "Organizando una reunión de Zoom",
-     "emoji": "🏠"
+     "emoji": "📹"
     },
     {
      "index": 2,
      "id": "voc_remote_work",
      "word": "Remote work",
      "translation": "Trabajo remoto",
-     "emoji": "👥"
+     "emoji": "🏡"
     },
     {
      "index": 3,
      "id": "voc_virtual_team",
      "word": "Virtual team",
      "translation": "Equipo virtual",
-     "emoji": "📹"
+     "emoji": "👥"
     },
     {
      "index": 4,
      "id": "voc_video_call",
      "word": "Video call",
      "translation": "Videollamada",
-     "emoji": "🔗"
+     "emoji": "🎥"
     },
     {
      "index": 5,
      "id": "voc_connection",
      "word": "Connection",
      "translation": "Conexión",
-     "emoji": "🔇"
+     "emoji": "🔗"
     },
     {
      "index": 6,
      "id": "voc_mute",
      "word": "Mute",
      "translation": "Silenciar",
-     "emoji": "🖥️"
+     "emoji": "🔇"
     },
     {
      "index": 7,
      "id": "voc_share_screen",
      "word": "Share screen",
      "translation": "Compartir pantalla",
-     "emoji": ""
+     "emoji": "🖥️"
+    },
+    {
+     "index": 8,
+     "id": "xv_laptop",
+     "word": "Laptop",
+     "translation": "Portátil",
+     "emoji": "💻"
+    },
+    {
+     "index": 9,
+     "id": "xv_headset",
+     "word": "Headset",
+     "translation": "Diadema / Audífonos con micrófono",
+     "emoji": "🎧"
+    },
+    {
+     "index": 10,
+     "id": "xv_time_zone",
+     "word": "Time zone",
+     "translation": "Zona horaria",
+     "emoji": "🌐"
+    },
+    {
+     "index": 11,
+     "id": "xv_home_office",
+     "word": "Home office",
+     "translation": "Oficina en casa",
+     "emoji": "🏠"
+    },
+    {
+     "index": 12,
+     "id": "xv_unmute",
+     "word": "Unmute",
+     "translation": "Activar el micrófono",
+     "emoji": "🔊"
+    },
+    {
+     "index": 13,
+     "id": "xv_link",
+     "word": "Link",
+     "translation": "Enlace",
+     "emoji": "🔗"
+    },
+    {
+     "index": 14,
+     "id": "xv_flexible_hours",
+     "word": "Flexible hours",
+     "translation": "Horario flexible",
+     "emoji": "⏰"
     }
    ]
   },
@@ -6060,14 +8258,14 @@
      "id": "voc_balancing",
      "word": "Balancing",
      "translation": "Equilibrando",
-     "emoji": "⚖️"
+     "emoji": "🤹"
     },
     {
      "index": 1,
      "id": "voc_relaxing",
      "word": "Relaxing",
      "translation": "Relajándose",
-     "emoji": "🧘"
+     "emoji": "😌"
     },
     {
      "index": 2,
@@ -6110,6 +8308,55 @@
      "word": "Burnout",
      "translation": "Agotamiento (laboral)",
      "emoji": "🔥"
+    },
+    {
+     "index": 8,
+     "id": "xv_vacation",
+     "word": "Vacation",
+     "translation": "Vacaciones",
+     "emoji": "🌴"
+    },
+    {
+     "index": 9,
+     "id": "xv_healthy_habits",
+     "word": "Healthy habits",
+     "translation": "Hábitos saludables",
+     "emoji": "🥗"
+    },
+    {
+     "index": 10,
+     "id": "xv_exhausted",
+     "word": "Exhausted",
+     "translation": "Agotado",
+     "emoji": "😩"
+    },
+    {
+     "index": 11,
+     "id": "xv_disconnect",
+     "word": "Disconnect",
+     "translation": "Desconectarse",
+     "emoji": "📴"
+    },
+    {
+     "index": 12,
+     "id": "xv_quality_time",
+     "word": "Quality time",
+     "translation": "Tiempo de calidad",
+     "emoji": "👨‍👩‍👧‍👦"
+    },
+    {
+     "index": 13,
+     "id": "xv_routine",
+     "word": "Routine",
+     "translation": "Rutina",
+     "emoji": "🔁"
+    },
+    {
+     "index": 14,
+     "id": "xv_set_limits",
+     "word": "Set limits",
+     "translation": "Poner límites",
+     "emoji": "🚧"
     }
    ]
   },
@@ -6135,7 +8382,7 @@
      "id": "voc_start_business",
      "word": "Will start a business",
      "translation": "Empezaré un negocio",
-     "emoji": "💼"
+     "emoji": "🏢"
     },
     {
      "index": 3,
@@ -6163,7 +8410,7 @@
      "id": "voc_probably",
      "word": "Probably",
      "translation": "Probablemente",
-     "emoji": ""
+     "emoji": "🤔"
     },
     {
      "index": 7,
@@ -6171,6 +8418,55 @@
      "word": "Decide",
      "translation": "Decidir",
      "emoji": "✅"
+    },
+    {
+     "index": 8,
+     "id": "xv_hope",
+     "word": "Hope",
+     "translation": "Esperar (desear)",
+     "emoji": "🌈"
+    },
+    {
+     "index": 9,
+     "id": "xv_dream",
+     "word": "Dream",
+     "translation": "Sueño",
+     "emoji": "🌙"
+    },
+    {
+     "index": 10,
+     "id": "xv_goal",
+     "word": "Goal",
+     "translation": "Meta",
+     "emoji": "🏆"
+    },
+    {
+     "index": 11,
+     "id": "xv_move_abroad",
+     "word": "Move abroad",
+     "translation": "Irse a vivir al exterior",
+     "emoji": "🌍"
+    },
+    {
+     "index": 12,
+     "id": "xv_save_up",
+     "word": "Save up",
+     "translation": "Ahorrar (para algo)",
+     "emoji": "💰"
+    },
+    {
+     "index": 13,
+     "id": "xv_someday",
+     "word": "Someday",
+     "translation": "Algún día",
+     "emoji": "📅"
+    },
+    {
+     "index": 14,
+     "id": "xv_definitely",
+     "word": "Definitely",
+     "translation": "Definitivamente",
+     "emoji": "💯"
     }
    ]
   },
@@ -6189,7 +8485,7 @@
      "id": "voc_had_already_left",
      "word": "Had already left",
      "translation": "Ya se había ido",
-     "emoji": "🚪"
+     "emoji": "🏃"
     },
     {
      "index": 2,
@@ -6232,6 +8528,55 @@
      "word": "Realize",
      "translation": "Darse cuenta",
      "emoji": "💡"
+    },
+    {
+     "index": 8,
+     "id": "xv_earlier",
+     "word": "Earlier",
+     "translation": "Antes / Más temprano",
+     "emoji": ""
+    },
+    {
+     "index": 9,
+     "id": "xv_previous",
+     "word": "Previous",
+     "translation": "Anterior",
+     "emoji": ""
+    },
+    {
+     "index": 10,
+     "id": "xv_arrive",
+     "word": "Arrive",
+     "translation": "Llegar",
+     "emoji": "🛬"
+    },
+    {
+     "index": 11,
+     "id": "xv_forget",
+     "word": "Forget",
+     "translation": "Olvidar",
+     "emoji": ""
+    },
+    {
+     "index": 12,
+     "id": "xv_happen",
+     "word": "Happen",
+     "translation": "Suceder / Pasar",
+     "emoji": ""
+    },
+    {
+     "index": 13,
+     "id": "xv_then",
+     "word": "Then",
+     "translation": "Entonces / Luego",
+     "emoji": ""
+    },
+    {
+     "index": 14,
+     "id": "xv_finally",
+     "word": "Finally",
+     "translation": "Finalmente",
+     "emoji": "🏁"
     }
    ]
   },
@@ -6250,7 +8595,7 @@
      "id": "voc_visited",
      "word": "Visited",
      "translation": "Visité",
-     "emoji": "🏛️"
+     "emoji": "📍"
     },
     {
      "index": 2,
@@ -6271,7 +8616,7 @@
      "id": "voc_enjoyed",
      "word": "Enjoyed",
      "translation": "Disfruté / Disfrutó",
-     "emoji": "🎉"
+     "emoji": "😄"
     },
     {
      "index": 5,
@@ -6285,7 +8630,7 @@
      "id": "voc_tried",
      "word": "Tried",
      "translation": "Probé / Intenté",
-     "emoji": ""
+     "emoji": "🧪"
     },
     {
      "index": 7,
@@ -6293,6 +8638,55 @@
      "word": "Planned",
      "translation": "Planeé / Planeó",
      "emoji": "📅"
+    },
+    {
+     "index": 8,
+     "id": "xv_explored",
+     "word": "Explored",
+     "translation": "Exploré / Exploró",
+     "emoji": "🧭"
+    },
+    {
+     "index": 9,
+     "id": "xv_learned",
+     "word": "Learned",
+     "translation": "Aprendí / Aprendió",
+     "emoji": "📚"
+    },
+    {
+     "index": 10,
+     "id": "xv_experienced",
+     "word": "Experienced",
+     "translation": "Viví / Experimenté",
+     "emoji": "🎢"
+    },
+    {
+     "index": 11,
+     "id": "xv_memory",
+     "word": "Memory",
+     "translation": "Recuerdo",
+     "emoji": "🧠"
+    },
+    {
+     "index": 12,
+     "id": "xv_once",
+     "word": "Once",
+     "translation": "Una vez",
+     "emoji": "1️⃣"
+    },
+    {
+     "index": 13,
+     "id": "xv_unforgettable",
+     "word": "Unforgettable",
+     "translation": "Inolvidable",
+     "emoji": "🌟"
+    },
+    {
+     "index": 14,
+     "id": "xv_adventure",
+     "word": "Adventure",
+     "translation": "Aventura",
+     "emoji": "🏕️"
     }
    ]
   },
@@ -6304,28 +8698,28 @@
      "id": "voc_just_finished",
      "word": "Just finished",
      "translation": "Acabo de terminar",
-     "emoji": "✅"
+     "emoji": ""
     },
     {
      "index": 1,
      "id": "voc_already_seen",
      "word": "Already seen",
      "translation": "Ya he visto",
-     "emoji": "👀"
+     "emoji": ""
     },
     {
      "index": 2,
      "id": "voc_yesterday_went",
      "word": "Went yesterday",
      "translation": "Fui ayer",
-     "emoji": "🚶"
+     "emoji": ""
     },
     {
      "index": 3,
      "id": "voc_last_week",
      "word": "Last week",
      "translation": "La semana pasada",
-     "emoji": "📅"
+     "emoji": ""
     },
     {
      "index": 4,
@@ -6354,6 +8748,55 @@
      "word": "For",
      "translation": "Durante / Hace (con duración)",
      "emoji": ""
+    },
+    {
+     "index": 8,
+     "id": "xv_just",
+     "word": "Just",
+     "translation": "Acabar de",
+     "emoji": ""
+    },
+    {
+     "index": 9,
+     "id": "xv_yet",
+     "word": "Yet",
+     "translation": "Todavía / Ya (en preguntas)",
+     "emoji": ""
+    },
+    {
+     "index": 10,
+     "id": "xv_lately",
+     "word": "Lately",
+     "translation": "Últimamente",
+     "emoji": ""
+    },
+    {
+     "index": 11,
+     "id": "xv_so_far",
+     "word": "So far",
+     "translation": "Hasta ahora",
+     "emoji": ""
+    },
+    {
+     "index": 12,
+     "id": "xv_this_morning",
+     "word": "This morning",
+     "translation": "Esta mañana",
+     "emoji": ""
+    },
+    {
+     "index": 13,
+     "id": "xv_never",
+     "word": "Never",
+     "translation": "Nunca",
+     "emoji": ""
+    },
+    {
+     "index": 14,
+     "id": "xv_already_done",
+     "word": "Already done",
+     "translation": "Ya hecho",
+     "emoji": ""
     }
    ]
   },
@@ -6372,7 +8815,7 @@
      "id": "voc_play_instrument",
      "word": "Could play",
      "translation": "Podía tocar",
-     "emoji": "🎮"
+     "emoji": ""
     },
     {
      "index": 2,
@@ -6415,6 +8858,55 @@
      "word": "Improve",
      "translation": "Mejorar",
      "emoji": "📈"
+    },
+    {
+     "index": 8,
+     "id": "xv_ability",
+     "word": "Ability",
+     "translation": "Habilidad / Capacidad",
+     "emoji": "🧠"
+    },
+    {
+     "index": 9,
+     "id": "xv_practice",
+     "word": "Practice",
+     "translation": "Practicar",
+     "emoji": "🎯"
+    },
+    {
+     "index": 10,
+     "id": "xv_good_at",
+     "word": "Good at",
+     "translation": "Bueno para",
+     "emoji": "👍"
+    },
+    {
+     "index": 11,
+     "id": "xv_bad_at",
+     "word": "Bad at",
+     "translation": "Malo para",
+     "emoji": "👎"
+    },
+    {
+     "index": 12,
+     "id": "xv_manage_to",
+     "word": "Manage to",
+     "translation": "Lograr",
+     "emoji": "✅"
+    },
+    {
+     "index": 13,
+     "id": "xv_beginner",
+     "word": "Beginner",
+     "translation": "Principiante",
+     "emoji": "🌱"
+    },
+    {
+     "index": 14,
+     "id": "xv_expert",
+     "word": "Expert",
+     "translation": "Experto",
+     "emoji": "🏆"
     }
    ]
   },
@@ -6426,7 +8918,7 @@
      "id": "voc_may_learn",
      "word": "May learn",
      "translation": "Podría aprender",
-     "emoji": ""
+     "emoji": "📖"
     },
     {
      "index": 3,
@@ -6440,7 +8932,7 @@
      "id": "voc_gifted",
      "word": "Gifted",
      "translation": "Talentoso/a",
-     "emoji": ""
+     "emoji": "🎁"
     },
     {
      "index": 5,
@@ -6462,6 +8954,55 @@
      "word": "Achieve",
      "translation": "Lograr",
      "emoji": "🏆"
+    },
+    {
+     "index": 8,
+     "id": "xv_natural_talent",
+     "word": "Natural talent",
+     "translation": "Talento natural",
+     "emoji": "🌱"
+    },
+    {
+     "index": 9,
+     "id": "xv_practice_makes_perfect",
+     "word": "Practice makes perfect",
+     "translation": "La práctica hace al maestro",
+     "emoji": "📈"
+    },
+    {
+     "index": 10,
+     "id": "xv_audition",
+     "word": "Audition",
+     "translation": "Audición",
+     "emoji": "🎤"
+    },
+    {
+     "index": 11,
+     "id": "xv_skilled",
+     "word": "Skilled",
+     "translation": "Hábil",
+     "emoji": "🛠️"
+    },
+    {
+     "index": 12,
+     "id": "xv_develop",
+     "word": "Develop",
+     "translation": "Desarrollar",
+     "emoji": "🏗️"
+    },
+    {
+     "index": 13,
+     "id": "xv_show",
+     "word": "Show",
+     "translation": "Espectáculo / Mostrar",
+     "emoji": "🎬"
+    },
+    {
+     "index": 14,
+     "id": "xv_potential",
+     "word": "Potential",
+     "translation": "Potencial",
+     "emoji": "🔮"
     }
    ]
   },
@@ -6480,7 +9021,7 @@
      "id": "voc_improve",
      "word": "Improve",
      "translation": "Mejorar",
-     "emoji": "📈"
+     "emoji": "🛠️"
     },
     {
      "index": 2,
@@ -6494,7 +9035,7 @@
      "id": "voc_transform",
      "word": "Transform",
      "translation": "Transformar",
-     "emoji": "🪄"
+     "emoji": "🔁"
     },
     {
      "index": 4,
@@ -6508,14 +9049,14 @@
      "id": "voc_become",
      "word": "Become",
      "translation": "Volverse / Llegar a ser",
-     "emoji": ""
+     "emoji": "➡️"
     },
     {
      "index": 6,
      "id": "voc_get_better",
      "word": "Get better",
      "translation": "Mejorar",
-     "emoji": "🩹"
+     "emoji": "📈"
     },
     {
      "index": 7,
@@ -6523,6 +9064,55 @@
      "word": "Different",
      "translation": "Diferente",
      "emoji": "🆚"
+    },
+    {
+     "index": 8,
+     "id": "xv_used_to",
+     "word": "Used to",
+     "translation": "Solía",
+     "emoji": "⏳"
+    },
+    {
+     "index": 9,
+     "id": "xv_turn_into",
+     "word": "Turn into",
+     "translation": "Convertirse en",
+     "emoji": "🪄"
+    },
+    {
+     "index": 10,
+     "id": "xv_progress",
+     "word": "Progress",
+     "translation": "Progreso",
+     "emoji": "🚀"
+    },
+    {
+     "index": 11,
+     "id": "xv_decrease",
+     "word": "Decrease",
+     "translation": "Disminuir",
+     "emoji": "📉"
+    },
+    {
+     "index": 12,
+     "id": "xv_increase",
+     "word": "Increase",
+     "translation": "Aumentar",
+     "emoji": "🔺"
+    },
+    {
+     "index": 13,
+     "id": "xv_modern",
+     "word": "Modern",
+     "translation": "Moderno",
+     "emoji": "📱"
+    },
+    {
+     "index": 14,
+     "id": "xv_adapt",
+     "word": "Adapt",
+     "translation": "Adaptarse",
+     "emoji": "🔧"
     }
    ]
   },
@@ -6534,7 +9124,7 @@
      "id": "voc_taller",
      "word": "Taller",
      "translation": "Más alto",
-     "emoji": "🪜"
+     "emoji": "📏"
     },
     {
      "index": 1,
@@ -6576,7 +9166,7 @@
      "id": "voc_most_expensive",
      "word": "Most expensive",
      "translation": "El / la más caro/a",
-     "emoji": "💎"
+     "emoji": "💰"
     },
     {
      "index": 7,
@@ -6584,6 +9174,55 @@
      "word": "Option",
      "translation": "Opción",
      "emoji": "🔘"
+    },
+    {
+     "index": 8,
+     "id": "xv_cheaper",
+     "word": "Cheaper",
+     "translation": "Más barato",
+     "emoji": "🏷️"
+    },
+    {
+     "index": 9,
+     "id": "xv_worst",
+     "word": "Worst",
+     "translation": "El peor",
+     "emoji": "💀"
+    },
+    {
+     "index": 10,
+     "id": "xv_biggest",
+     "word": "Biggest",
+     "translation": "El más grande",
+     "emoji": "🐘"
+    },
+    {
+     "index": 11,
+     "id": "xv_faster",
+     "word": "Faster",
+     "translation": "Más rápido",
+     "emoji": "🏎️"
+    },
+    {
+     "index": 12,
+     "id": "xv_as_as",
+     "word": "As ... as",
+     "translation": "Tan ... como",
+     "emoji": ""
+    },
+    {
+     "index": 13,
+     "id": "xv_less",
+     "word": "Less",
+     "translation": "Menos",
+     "emoji": "➖"
+    },
+    {
+     "index": 14,
+     "id": "xv_choose",
+     "word": "Choose",
+     "translation": "Elegir",
+     "emoji": "👉"
     }
    ]
   },
@@ -6616,7 +9255,7 @@
      "id": "verb_visit",
      "word": "Visit",
      "translation": "Visitar",
-     "emoji": "🏠"
+     "emoji": "✈️"
     },
     {
      "index": 4,
@@ -6637,7 +9276,7 @@
      "id": "verb_try",
      "word": "Try",
      "translation": "Intentar / Probar",
-     "emoji": "🎯"
+     "emoji": "🤞"
     },
     {
      "index": 7,
@@ -6645,6 +9284,55 @@
      "word": "Clean",
      "translation": "Limpiar",
      "emoji": "🧹"
+    },
+    {
+     "index": 8,
+     "id": "xv_wanted",
+     "word": "Wanted",
+     "translation": "Quise / Quiso",
+     "emoji": ""
+    },
+    {
+     "index": 9,
+     "id": "xv_needed",
+     "word": "Needed",
+     "translation": "Necesité / Necesitó",
+     "emoji": ""
+    },
+    {
+     "index": 10,
+     "id": "xv_asked",
+     "word": "Asked",
+     "translation": "Pregunté / Preguntó",
+     "emoji": "❓"
+    },
+    {
+     "index": 11,
+     "id": "xv_started",
+     "word": "Started",
+     "translation": "Empecé / Empezó",
+     "emoji": "🏁"
+    },
+    {
+     "index": 12,
+     "id": "xv_helped",
+     "word": "Helped",
+     "translation": "Ayudé / Ayudó",
+     "emoji": "🤝"
+    },
+    {
+     "index": 13,
+     "id": "xv_lived",
+     "word": "Lived",
+     "translation": "Viví / Vivió",
+     "emoji": "🏠"
+    },
+    {
+     "index": 14,
+     "id": "xv_called",
+     "word": "Called",
+     "translation": "Llamé / Llamó",
+     "emoji": "📞"
     }
    ]
   },
@@ -6663,7 +9351,7 @@
      "id": "verb_eat_ate",
      "word": "Eat → Ate",
      "translation": "Comer → Comí",
-     "emoji": "🍎"
+     "emoji": "🍽️"
     },
     {
      "index": 2,
@@ -6677,14 +9365,14 @@
      "id": "verb_have_had",
      "word": "Have → Had",
      "translation": "Tener → Tuve",
-     "emoji": "👐"
+     "emoji": ""
     },
     {
      "index": 4,
      "id": "verb_do_did",
      "word": "Do → Did",
      "translation": "Hacer → Hice",
-     "emoji": "🛠️"
+     "emoji": ""
     },
     {
      "index": 5,
@@ -6698,14 +9386,63 @@
      "id": "verb_get_got",
      "word": "Get → Got",
      "translation": "Obtener → Obtuve",
-     "emoji": "🎁"
+     "emoji": "📦"
     },
     {
      "index": 7,
      "id": "verb_make_made",
      "word": "Make → Made",
      "translation": "Hacer/Fabricar → Hice",
-     "emoji": "🏭"
+     "emoji": "🛠️"
+    },
+    {
+     "index": 8,
+     "id": "xv_come_came",
+     "word": "Come → Came",
+     "translation": "Venir → Vine / Vino",
+     "emoji": ""
+    },
+    {
+     "index": 9,
+     "id": "xv_take_took",
+     "word": "Take → Took",
+     "translation": "Tomar → Tomé / Tomó",
+     "emoji": ""
+    },
+    {
+     "index": 10,
+     "id": "xv_buy_bought",
+     "word": "Buy → Bought",
+     "translation": "Comprar → Compré / Compró",
+     "emoji": "🛒"
+    },
+    {
+     "index": 11,
+     "id": "xv_think_thought",
+     "word": "Think → Thought",
+     "translation": "Pensar → Pensé / Pensó",
+     "emoji": "🤔"
+    },
+    {
+     "index": 12,
+     "id": "xv_know_knew",
+     "word": "Know → Knew",
+     "translation": "Saber → Supe / Sabía",
+     "emoji": "🧠"
+    },
+    {
+     "index": 13,
+     "id": "xv_write_wrote",
+     "word": "Write → Wrote",
+     "translation": "Escribir → Escribí / Escribió",
+     "emoji": "✍️"
+    },
+    {
+     "index": 14,
+     "id": "xv_leave_left",
+     "word": "Leave → Left",
+     "translation": "Irse → Me fui / Se fue",
+     "emoji": "🚪"
     }
    ]
   },
@@ -6731,14 +9468,14 @@
      "id": "voc_next_to",
      "word": "Next to",
      "translation": "Al lado de",
-     "emoji": ""
+     "emoji": "👥"
     },
     {
      "index": 3,
      "id": "voc_opposite",
      "word": "Opposite",
      "translation": "Enfrente de",
-     "emoji": "↔️"
+     "emoji": ""
     },
     {
      "index": 4,
@@ -6766,7 +9503,56 @@
      "id": "voc_crossroads",
      "word": "Crossroads",
      "translation": "Cruce / Intersección",
+     "emoji": "✖️"
+    },
+    {
+     "index": 8,
+     "id": "xv_roundabout",
+     "word": "Roundabout",
+     "translation": "Glorieta",
+     "emoji": "🔄"
+    },
+    {
+     "index": 9,
+     "id": "xv_traffic_light",
+     "word": "Traffic light",
+     "translation": "Semáforo",
+     "emoji": "🚦"
+    },
+    {
+     "index": 10,
+     "id": "xv_across_from",
+     "word": "Across from",
+     "translation": "Frente a",
+     "emoji": "↔️"
+    },
+    {
+     "index": 11,
+     "id": "xv_address",
+     "word": "Address",
+     "translation": "Dirección",
+     "emoji": "📍"
+    },
+    {
+     "index": 12,
+     "id": "xv_avenue",
+     "word": "Avenue",
+     "translation": "Avenida",
      "emoji": "🛣️"
+    },
+    {
+     "index": 13,
+     "id": "xv_get_lost",
+     "word": "Get lost",
+     "translation": "Perderse",
+     "emoji": "❓"
+    },
+    {
+     "index": 14,
+     "id": "xv_landmark",
+     "word": "Landmark",
+     "translation": "Punto de referencia",
+     "emoji": "🏛️"
     }
    ]
   },
@@ -6806,14 +9592,14 @@
      "id": "voc_storm",
      "word": "Storm",
      "translation": "Tormenta",
-     "emoji": "⛈️"
+     "emoji": "🌪️"
     },
     {
      "index": 5,
      "id": "voc_freezing",
      "word": "Freezing",
      "translation": "Helado / Muy frío",
-     "emoji": "🧊"
+     "emoji": "🥶"
     },
     {
      "index": 6,
@@ -6827,7 +9613,56 @@
      "id": "voc_forecast",
      "word": "Forecast",
      "translation": "Pronóstico",
-     "emoji": "📅"
+     "emoji": "📈"
+    },
+    {
+     "index": 8,
+     "id": "xv_lightning",
+     "word": "Lightning",
+     "translation": "Rayo / Relámpago",
+     "emoji": "⚡"
+    },
+    {
+     "index": 9,
+     "id": "xv_thunder",
+     "word": "Thunder",
+     "translation": "Trueno",
+     "emoji": "🌩️"
+    },
+    {
+     "index": 10,
+     "id": "xv_breeze",
+     "word": "Breeze",
+     "translation": "Brisa",
+     "emoji": "🌬️"
+    },
+    {
+     "index": 11,
+     "id": "xv_degrees",
+     "word": "Degrees",
+     "translation": "Grados",
+     "emoji": "🌡️"
+    },
+    {
+     "index": 12,
+     "id": "xv_dry_season",
+     "word": "Dry season",
+     "translation": "Temporada seca",
+     "emoji": "🌵"
+    },
+    {
+     "index": 13,
+     "id": "xv_rainy_season",
+     "word": "Rainy season",
+     "translation": "Temporada de lluvias",
+     "emoji": "🌂"
+    },
+    {
+     "index": 14,
+     "id": "xv_mild",
+     "word": "Mild",
+     "translation": "Templado / Suave",
+     "emoji": "🌤️"
     }
    ]
   },
@@ -6867,7 +9702,7 @@
      "id": "voc_plastic",
      "word": "Plastic",
      "translation": "Plástico",
-     "emoji": "🧴"
+     "emoji": "🛍️"
     },
     {
      "index": 7,
@@ -6875,6 +9710,55 @@
      "word": "Planet",
      "translation": "Planeta",
      "emoji": "🌍"
+    },
+    {
+     "index": 8,
+     "id": "xv_climate_change",
+     "word": "Climate change",
+     "translation": "Cambio climático",
+     "emoji": "🌡️"
+    },
+    {
+     "index": 9,
+     "id": "xv_wildlife",
+     "word": "Wildlife",
+     "translation": "Fauna silvestre",
+     "emoji": "🐾"
+    },
+    {
+     "index": 10,
+     "id": "xv_endangered",
+     "word": "Endangered",
+     "translation": "En peligro de extinción",
+     "emoji": "🐼"
+    },
+    {
+     "index": 11,
+     "id": "xv_trash",
+     "word": "Trash",
+     "translation": "Basura",
+     "emoji": "🚮"
+    },
+    {
+     "index": 12,
+     "id": "xv_natural_resources",
+     "word": "Natural resources",
+     "translation": "Recursos naturales",
+     "emoji": "🌲"
+    },
+    {
+     "index": 13,
+     "id": "xv_deforestation",
+     "word": "Deforestation",
+     "translation": "Deforestación",
+     "emoji": "🪓"
+    },
+    {
+     "index": 14,
+     "id": "xv_clean_up",
+     "word": "Clean up",
+     "translation": "Limpiar",
+     "emoji": "🧹"
     }
    ]
   },
@@ -6886,14 +9770,14 @@
      "id": "voc_should_move",
      "word": "Should move",
      "translation": "Debería mudarse",
-     "emoji": "🚚"
+     "emoji": ""
     },
     {
      "index": 1,
      "id": "voc_ought_to_live",
      "word": "Ought to live",
      "translation": "Debería vivir",
-     "emoji": "🏠"
+     "emoji": ""
     },
     {
      "index": 2,
@@ -6907,7 +9791,7 @@
      "id": "voc_countryside",
      "word": "Countryside",
      "translation": "Campo",
-     "emoji": "🏞️"
+     "emoji": "🌾"
     },
     {
      "index": 4,
@@ -6928,7 +9812,7 @@
      "id": "voc_peaceful",
      "word": "Peaceful",
      "translation": "Tranquilo/a / Apacible",
-     "emoji": "🕊️"
+     "emoji": "🌿"
     },
     {
      "index": 7,
@@ -6936,6 +9820,55 @@
      "word": "Farm",
      "translation": "Granja",
      "emoji": "🚜"
+    },
+    {
+     "index": 8,
+     "id": "xv_village",
+     "word": "Village",
+     "translation": "Pueblo / Vereda",
+     "emoji": "🏘️"
+    },
+    {
+     "index": 9,
+     "id": "xv_crowded",
+     "word": "Crowded",
+     "translation": "Lleno de gente / Concurrido",
+     "emoji": "👥"
+    },
+    {
+     "index": 10,
+     "id": "xv_fresh_air",
+     "word": "Fresh air",
+     "translation": "Aire puro",
+     "emoji": "🌬️"
+    },
+    {
+     "index": 11,
+     "id": "xv_skyscraper",
+     "word": "Skyscraper",
+     "translation": "Rascacielos",
+     "emoji": "🏢"
+    },
+    {
+     "index": 12,
+     "id": "xv_public_services",
+     "word": "Public services",
+     "translation": "Servicios públicos",
+     "emoji": ""
+    },
+    {
+     "index": 13,
+     "id": "xv_quiet",
+     "word": "Quiet",
+     "translation": "Tranquilo / Silencioso",
+     "emoji": "🤫"
+    },
+    {
+     "index": 14,
+     "id": "xv_commute",
+     "word": "Commute",
+     "translation": "Trayecto al trabajo / Desplazarse",
+     "emoji": "🚆"
     }
    ]
   },
@@ -6954,21 +9887,21 @@
      "id": "voc_ought_to_conserve",
      "word": "Ought to conserve",
      "translation": "Debería conservar",
-     "emoji": "🌳"
+     "emoji": "🌱"
     },
     {
      "index": 2,
      "id": "voc_sustainability",
      "word": "Sustainability",
      "translation": "Sostenibilidad",
-     "emoji": "🌍"
+     "emoji": ""
     },
     {
      "index": 3,
      "id": "voc_renewable_energy",
      "word": "Renewable energy",
      "translation": "Energía renovable",
-     "emoji": "⚡"
+     "emoji": "☀️"
     },
     {
      "index": 4,
@@ -6997,13 +9930,394 @@
      "word": "Eco-friendly",
      "translation": "Ecológico",
      "emoji": "🌿"
+    },
+    {
+     "index": 8,
+     "id": "xv_carbon_footprint",
+     "word": "Carbon footprint",
+     "translation": "Huella de carbono",
+     "emoji": "👣"
+    },
+    {
+     "index": 9,
+     "id": "xv_compost",
+     "word": "Compost",
+     "translation": "Compost / Abono orgánico",
+     "emoji": "🪱"
+    },
+    {
+     "index": 10,
+     "id": "xv_save_energy",
+     "word": "Save energy",
+     "translation": "Ahorrar energía",
+     "emoji": "💡"
+    },
+    {
+     "index": 11,
+     "id": "xv_reusable_bag",
+     "word": "Reusable bag",
+     "translation": "Bolsa reutilizable",
+     "emoji": "🛍️"
+    },
+    {
+     "index": 12,
+     "id": "xv_wind_power",
+     "word": "Wind power",
+     "translation": "Energía eólica",
+     "emoji": "🌬️"
+    },
+    {
+     "index": 13,
+     "id": "xv_biodegradable",
+     "word": "Biodegradable",
+     "translation": "Biodegradable",
+     "emoji": "🍃"
+    },
+    {
+     "index": 14,
+     "id": "xv_climate",
+     "word": "Climate",
+     "translation": "Clima",
+     "emoji": "🌍"
+    }
+   ]
+  },
+  "A1_colors": {
+   "title": "Basic Colors",
+   "items": [
+    {
+     "index": 10,
+     "id": "xv_gray",
+     "word": "Gray",
+     "translation": "Gris",
+     "emoji": "🐭"
+    },
+    {
+     "index": 11,
+     "id": "xv_gold",
+     "word": "Gold",
+     "translation": "Dorado",
+     "emoji": "🏅"
+    },
+    {
+     "index": 12,
+     "id": "xv_silver",
+     "word": "Silver",
+     "translation": "Plateado",
+     "emoji": "🥈"
+    },
+    {
+     "index": 13,
+     "id": "xv_light_blue",
+     "word": "Light blue",
+     "translation": "Azul claro",
+     "emoji": "🪁"
+    },
+    {
+     "index": 14,
+     "id": "xv_dark_green",
+     "word": "Dark green",
+     "translation": "Verde oscuro",
+     "emoji": "🌲"
+    }
+   ]
+  },
+  "A1_food": {
+   "title": "Healthy Eating & Classification",
+   "items": [
+    {
+     "index": 10,
+     "id": "xv_vegetables",
+     "word": "Vegetables",
+     "translation": "Verduras",
+     "emoji": "🥦"
+    },
+    {
+     "index": 11,
+     "id": "xv_fruit",
+     "word": "Fruit",
+     "translation": "Fruta",
+     "emoji": "🍎"
+    },
+    {
+     "index": 12,
+     "id": "xv_healthy",
+     "word": "Healthy",
+     "translation": "Saludable",
+     "emoji": "🥗"
+    },
+    {
+     "index": 13,
+     "id": "xv_lettuce",
+     "word": "Lettuce",
+     "translation": "Lechuga",
+     "emoji": "🥬"
+    },
+    {
+     "index": 14,
+     "id": "xv_yogurt",
+     "word": "Yogurt",
+     "translation": "Yogur",
+     "emoji": "🥛"
+    }
+   ]
+  },
+  "A1_time_expressions": {
+   "title": "Time and Daily Routines",
+   "items": [
+    {
+     "index": 11,
+     "id": "xv_today",
+     "word": "Today",
+     "translation": "Hoy",
+     "emoji": "📅"
+    },
+    {
+     "index": 12,
+     "id": "xv_tomorrow",
+     "word": "Tomorrow",
+     "translation": "Mañana",
+     "emoji": "🌅"
+    },
+    {
+     "index": 13,
+     "id": "xv_o_clock",
+     "word": "O'clock",
+     "translation": "En punto",
+     "emoji": "🕰️"
+    },
+    {
+     "index": 14,
+     "id": "xv_half_past",
+     "word": "Half past",
+     "translation": "Y media",
+     "emoji": "🕧"
+    }
+   ]
+  },
+  "A1_likes_dislikes": {
+   "title": "Likes and Dislikes",
+   "items": [
+    {
+     "index": 11,
+     "id": "xv_prefer",
+     "word": "Prefer",
+     "translation": "Preferir",
+     "emoji": "👍"
+    },
+    {
+     "index": 12,
+     "id": "xv_favorite",
+     "word": "Favorite",
+     "translation": "Favorito",
+     "emoji": "⭐"
+    },
+    {
+     "index": 13,
+     "id": "xv_shopping",
+     "word": "Shopping",
+     "translation": "Ir de compras",
+     "emoji": "🛍️"
+    },
+    {
+     "index": 14,
+     "id": "xv_swimming",
+     "word": "Swimming",
+     "translation": "Nadar / Natación",
+     "emoji": "🏊"
+    }
+   ]
+  },
+  "A1_personal_info": {
+   "title": "Personal Information",
+   "items": [
+    {
+     "index": 14,
+     "id": "xv_address",
+     "word": "Address",
+     "translation": "Dirección",
+     "emoji": "📍"
+    }
+   ]
+  },
+  "A1_jobs_and_professions": {
+   "title": "Jobs and Professions",
+   "items": [
+    {
+     "index": 10,
+     "id": "xv_police_officer",
+     "word": "Police officer",
+     "translation": "Policía",
+     "emoji": "👮"
+    },
+    {
+     "index": 11,
+     "id": "xv_lawyer",
+     "word": "Lawyer",
+     "translation": "Abogado / Abogada",
+     "emoji": "⚖️"
+    },
+    {
+     "index": 12,
+     "id": "xv_mechanic",
+     "word": "Mechanic",
+     "translation": "Mecánico",
+     "emoji": "🛠️"
+    },
+    {
+     "index": 13,
+     "id": "xv_farmer",
+     "word": "Farmer",
+     "translation": "Granjero / Campesino",
+     "emoji": "🚜"
+    },
+    {
+     "index": 14,
+     "id": "xv_dentist",
+     "word": "Dentist",
+     "translation": "Dentista",
+     "emoji": "🦷"
+    }
+   ]
+  },
+  "A1_family": {
+   "title": "Family Members",
+   "items": [
+    {
+     "index": 8,
+     "id": "xv_cousin",
+     "word": "Cousin",
+     "translation": "Primo / Prima",
+     "emoji": "🧑"
+    },
+    {
+     "index": 9,
+     "id": "xv_son",
+     "word": "Son",
+     "translation": "Hijo",
+     "emoji": "👦"
+    },
+    {
+     "index": 10,
+     "id": "xv_daughter",
+     "word": "Daughter",
+     "translation": "Hija",
+     "emoji": "👧"
+    },
+    {
+     "index": 11,
+     "id": "xv_parents",
+     "word": "Parents",
+     "translation": "Padres",
+     "emoji": "👪"
+    },
+    {
+     "index": 12,
+     "id": "xv_grandparents",
+     "word": "Grandparents",
+     "translation": "Abuelos",
+     "emoji": "🧓"
+    },
+    {
+     "index": 13,
+     "id": "xv_baby",
+     "word": "Baby",
+     "translation": "Bebé",
+     "emoji": "👶"
+    },
+    {
+     "index": 14,
+     "id": "xv_husband",
+     "word": "Husband",
+     "translation": "Esposo",
+     "emoji": "👨"
+    }
+   ]
+  },
+  "A1_housing": {
+   "title": "Housing and Places",
+   "items": [
+    {
+     "index": 10,
+     "id": "xv_door",
+     "word": "Door",
+     "translation": "Puerta",
+     "emoji": "🚪"
+    },
+    {
+     "index": 11,
+     "id": "xv_stairs",
+     "word": "Stairs",
+     "translation": "Escaleras",
+     "emoji": "🪜"
+    },
+    {
+     "index": 12,
+     "id": "xv_floor",
+     "word": "Floor",
+     "translation": "Piso / Suelo",
+     "emoji": "🟫"
+    },
+    {
+     "index": 13,
+     "id": "xv_apartment",
+     "word": "Apartment",
+     "translation": "Apartamento",
+     "emoji": "🏢"
+    },
+    {
+     "index": 14,
+     "id": "xv_wall",
+     "word": "Wall",
+     "translation": "Pared",
+     "emoji": "🧱"
+    }
+   ]
+  },
+  "A1_animals": {
+   "title": "Common Animals",
+   "items": [
+    {
+     "index": 10,
+     "id": "xv_bird",
+     "word": "Bird",
+     "translation": "Pájaro",
+     "emoji": "🐦"
+    },
+    {
+     "index": 11,
+     "id": "xv_fish",
+     "word": "Fish",
+     "translation": "Pez",
+     "emoji": "🐟"
+    },
+    {
+     "index": 12,
+     "id": "xv_monkey",
+     "word": "Monkey",
+     "translation": "Mono",
+     "emoji": "🐒"
+    },
+    {
+     "index": 13,
+     "id": "xv_chicken",
+     "word": "Chicken",
+     "translation": "Gallina",
+     "emoji": "🐔"
+    },
+    {
+     "index": 14,
+     "id": "xv_snake",
+     "word": "Snake",
+     "translation": "Serpiente",
+     "emoji": "🐍"
     }
    ]
   }
  },
  "stats": {
-  "lessons": 96,
-  "withEmoji": 853,
-  "withoutEmoji": 78
+  "lessons": 105,
+  "withEmoji": 1256,
+  "withoutEmoji": 142
  }
 }
