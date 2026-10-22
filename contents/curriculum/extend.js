@@ -9,10 +9,14 @@
 // (si se corrigió en extend/, se reemplaza). También aplica las correcciones de fixes/<nivel>.js
 // a ejercicios que ya existían. Da error si una oración se repite dentro de una lección
 // o entre los ejercicios nuevos del nivel.
+//
+// También agrega vocabulario de contents/curriculum/vocab/<nivel>/*.js
+// ({ idLección: [[palabra, traducción, ejemplo], ...] }) con id fijo xv_<palabra>.
+// Las palabras nuevas no tienen emoji: después de aplicar, correr emojis.js y emojis-apply.js.
 
 const fs = require("fs");
 const path = require("path");
-const { latestDump, buildable, norm, stableStringify } = require("./helpers");
+const { latestDump, buildable, norm, slug, stableStringify } = require("./helpers");
 
 const LEVEL = (process.argv[2] || "A1").toUpperCase();
 const MODULE_ID = { A1: "basics", A2: "basics_a2" }[LEVEL];
@@ -22,18 +26,25 @@ const dumpPath = process.argv[3] ? path.resolve(process.argv[3]) : latestDump();
 const dump = JSON.parse(fs.readFileSync(dumpPath, "utf8"));
 
 const MIN_EX = 13;
+const MIN_VOCAB = 15;
 
-const extensions = {};
-const dir = path.join(__dirname, "extend", LEVEL.toLowerCase());
-fs.readdirSync(dir)
-  .filter((f) => f.endsWith(".js"))
-  .sort()
-  .forEach((f) => {
-    for (const [id, list] of Object.entries(require(path.join(dir, f)))) {
-      if (extensions[id]) throw new Error(`${id} aparece en más de un archivo de extend/`);
-      extensions[id] = list;
-    }
-  });
+const loadDir = (name) => {
+  const all = {};
+  const dir = path.join(__dirname, name, LEVEL.toLowerCase());
+  if (!fs.existsSync(dir)) return all;
+  fs.readdirSync(dir)
+    .filter((f) => f.endsWith(".js"))
+    .sort()
+    .forEach((f) => {
+      for (const [id, list] of Object.entries(require(path.join(dir, f)))) {
+        if (all[id]) throw new Error(`${id} aparece en más de un archivo de ${name}/`);
+        all[id] = list;
+      }
+    });
+  return all;
+};
+const extensions = loadDir("extend");
+const vocab = loadDir("vocab");
 
 // lecciones que muestra la app (según modules/<módulo>)
 const visible = [];
@@ -123,7 +134,7 @@ const phrasesOf = (e) => {
 };
 const levelPhrases = new Map();
 
-for (const id of new Set([...Object.keys(extensions), ...Object.keys(fixes)])) {
+for (const id of new Set([...Object.keys(extensions), ...Object.keys(fixes), ...Object.keys(vocab)])) {
   const existing = dump.lessons[id];
   if (!existing) {
     errors.push(`${id}: no existe en Firestore`);
@@ -174,8 +185,34 @@ for (const id of new Set([...Object.keys(extensions), ...Object.keys(fixes)])) {
     }
   });
 
-  const changes = [added && `+${added}`, updated && `${updated} corregidos`].filter(Boolean).join(", ");
-  report.push(`${id.padEnd(36)} ej ${String(before).padStart(2)} -> ${String(exercises.length).padStart(2)}   ${changes || "(sin cambios)"}`);
+  const words = (lesson.content.vocabulary = lesson.content.vocabulary || []);
+  const vocabBefore = words.length;
+  const known = new Map(words.filter((w) => !/^xv_/.test(w.id)).map((w) => [norm(w.word), w.id]));
+  let vocabAdded = 0;
+  for (const [word, translation, example] of vocab[id] || []) {
+    const vId = `xv_${slug(word)}`;
+    const where = `${id} ${vId}`;
+    if (!word || !translation || !example) errors.push(`${where}: falta palabra, traducción o ejemplo`);
+    if (known.has(norm(word))) errors.push(`${where}: "${word}" ya está en la lección (${known.get(norm(word))})`);
+    known.set(norm(word), vId);
+    const at = words.findIndex((w) => w.id === vId);
+    if (at === -1) {
+      words.push({ id: vId, word, translation, examples: [example], conjugations: null, tags: [] });
+      vocabAdded++;
+    } else if (words[at].translation !== translation || words[at].examples?.[0] !== example) {
+      // ya aplicada, pero se corrigió en vocab/ (se conserva el emoji que tenga)
+      words[at] = { ...words[at], translation, examples: [example] };
+      updated++;
+    }
+  }
+
+  const changes = [added && `+${added}`, vocabAdded && `+${vocabAdded} palabras`, updated && `${updated} corregidos`]
+    .filter(Boolean)
+    .join(", ");
+  report.push(
+    `${id.padEnd(36)} ej ${String(before).padStart(2)} -> ${String(exercises.length).padStart(2)}   ` +
+      `voc ${String(vocabBefore).padStart(2)} -> ${String(words.length).padStart(2)}   ${changes || "(sin cambios)"}`,
+  );
   if (changes) out.lessons[id] = { title: lesson.title, metadata: lesson.metadata, objectives: lesson.objectives || [], content: lesson.content };
 }
 
@@ -201,5 +238,10 @@ fs.writeFileSync(path.join(__dirname, "out", `${LEVEL.toLowerCase()}-extend.json
 console.log(report.join("\n"));
 console.log(`\nLecciones a actualizar: ${Object.keys(out.lessons).length}`);
 if (short.length) console.log(`Visibles con menos de ${MIN_EX} ejercicios (${short.length}): ${short.join(", ")}`);
+const fewWords = visible.filter((id) => {
+  const words = (out.lessons[id] || dump.lessons[id])?.content?.vocabulary || [];
+  return new Set(words.map((w) => norm(w.word))).size < MIN_VOCAB;
+});
+if (fewWords.length) console.log(`Visibles con menos de ${MIN_VOCAB} palabras (${fewWords.length}): ${fewWords.join(", ")}`);
 console.log(errors.length ? `\nERRORES (${errors.length}):\n` + errors.join("\n") : "\nSin errores de validación.");
 process.exit(errors.length ? 1 : 0);
