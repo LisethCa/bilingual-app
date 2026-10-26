@@ -2,7 +2,14 @@ import { API_ENDPOINTS } from "@/constants/api";
 import { useAuth } from "@/contexts/AuthContext";
 import * as WebBrowser from "expo-web-browser";
 import React, { useEffect, useState } from "react";
-import { Alert, Button, Platform, Text, View } from "react-native";
+import {
+  Alert,
+  Button,
+  Platform,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import PurchaseResultModal, { PurchaseResult } from "./PurchaseResultModal";
 
 type LevelId = "A1" | "A2" | "B1";
@@ -30,9 +37,8 @@ export default function PurchaseLevel({
 }: PurchaseLevelProps) {
   const [loading, setLoading] = useState(false);
   const [price, setPrice] = useState<LevelPrice | null>(null);
-  // El backend decide si se muestra el pago simulado (ENABLE_SIMULATED_PAYMENTS)
-  const [canSimulate, setCanSimulate] = useState(false);
-  const [simulateResult, setSimulateResult] = useState<PurchaseResult | null>(
+  const [couponCode, setCouponCode] = useState("");
+  const [couponResult, setCouponResult] = useState<PurchaseResult | null>(
     null,
   );
   const { user } = useAuth();
@@ -44,12 +50,10 @@ export default function PurchaseLevel({
         const response = await fetch(API_ENDPOINTS.LEVEL_PRICES);
         if (!response.ok) return;
         // prices en USD (lo que se muestra), chargePrices en COP (lo que cobra MP)
-        const { prices, chargePrices, simulatedPaymentsEnabled } =
-          await response.json();
+        const { prices, chargePrices } = await response.json();
         if (prices?.[levelId]) {
           setPrice({ usd: prices[levelId], cop: chargePrices?.[levelId] ?? null });
         }
-        setCanSimulate(simulatedPaymentsEnabled === true);
       } catch (error) {
         console.log("⚠️ No se pudo cargar el precio:", error);
       }
@@ -121,36 +125,36 @@ export default function PurchaseLevel({
     }
   };
 
-  const handleSimulate = async () => {
-    if (!user) return;
+  const handleRedeemCoupon = async () => {
+    if (!user || !couponCode.trim()) return;
 
     setLoading(true);
 
     try {
       const idToken = await user.getIdToken();
 
-      const response = await fetch(API_ENDPOINTS.SIMULATE_PURCHASE, {
+      const response = await fetch(API_ENDPOINTS.REDEEM_COUPON, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${idToken}`,
         },
-        body: JSON.stringify({ levelId }),
+        body: JSON.stringify({ code: couponCode.trim(), levelId }),
         signal: AbortSignal.timeout(30000),
       });
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || "No se pudo simular el pago");
+        throw new Error(errorData.error || "No se pudo aplicar el cupón");
       }
 
-      setSimulateResult({ type: "success", levelId });
+      setCouponResult({ type: "success", levelId });
     } catch (error: any) {
-      setSimulateResult({
+      setCouponResult({
         type: "error",
-        message: error.message || "No se pudo simular el pago.",
+        message: error.message || "No se pudo aplicar el cupón.",
       });
-      console.error("Simulated payment error:", error);
+      console.error("Coupon error:", error);
     } finally {
       setLoading(false);
     }
@@ -158,8 +162,8 @@ export default function PurchaseLevel({
 
   // El nivel se marca comprado al cerrar el modal, para que se vea la animación
   const handleResultDismiss = () => {
-    const succeeded = simulateResult?.type === "success";
-    setSimulateResult(null);
+    const succeeded = couponResult?.type === "success";
+    setCouponResult(null);
     if (succeeded) {
       onPurchased?.(levelId);
       onClose();
@@ -200,23 +204,40 @@ export default function PurchaseLevel({
         disabled={loading || !user}
       />
 
-      {canSimulate ? (
-        <View style={{ marginTop: 10 }}>
-          <Button
-            title="Simular pago (testeo)"
-            onPress={handleSimulate}
-            disabled={loading || !user}
-            color="#6b7280"
-          />
-        </View>
-      ) : null}
+      <Text style={{ marginTop: 20, marginBottom: 6, color: "#666" }}>
+        ¿Tienes un cupón?
+      </Text>
+      <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
+        <TextInput
+          value={couponCode}
+          onChangeText={setCouponCode}
+          placeholder="Código del cupón"
+          autoCapitalize="characters"
+          autoCorrect={false}
+          editable={!loading}
+          onSubmitEditing={handleRedeemCoupon}
+          style={{
+            flex: 1,
+            borderWidth: 1,
+            borderColor: "#ccc",
+            borderRadius: 6,
+            paddingHorizontal: 10,
+            paddingVertical: 8,
+          }}
+        />
+        <Button
+          title="Aplicar"
+          onPress={handleRedeemCoupon}
+          disabled={loading || !user || !couponCode.trim()}
+        />
+      </View>
 
       <View style={{ marginTop: 10 }}>
         <Button title="Cancelar" onPress={onClose} color="red" />
       </View>
 
       <PurchaseResultModal
-        result={simulateResult}
+        result={couponResult}
         onDismiss={handleResultDismiss}
       />
     </View>

@@ -11,7 +11,7 @@ export const API_ENDPOINTS = {
   WAKE_UP: `${API_BASE_URL}/wake-up`,
   LEVEL_PRICES: `${API_BASE_URL}/level-prices`,
   CREATE_PREFERENCE: `${API_BASE_URL}/create-preference`,
-  SIMULATE_PURCHASE: `${API_BASE_URL}/simulate-purchase`,
+  REDEEM_COUPON: `${API_BASE_URL}/redeem-coupon`,
   VERIFY_PAYMENT: (paymentId: string) =>
     `${API_BASE_URL}/verify-payment/${paymentId}`,
   TRANSCRIBE: `${API_BASE_URL}/transcribe`,
