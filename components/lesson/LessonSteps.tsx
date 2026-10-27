@@ -9,6 +9,7 @@ const RULES_PER_STEP = 3;
 
 export type LessonStep =
   | { kind: "intro" }
+  | { kind: "video" }
   | { kind: "vocabulary"; items: any[] }
   | {
       kind: "grammar";
@@ -26,12 +27,14 @@ const chunk = <T,>(list: T[], size: number): T[][] => {
   return out;
 };
 
-/** Intro → vocabulario (flashcards) → gramática → un ejercicio por paso → final. */
+/** Intro → video (si hay) → vocabulario (flashcards) → gramática → un ejercicio por paso → final. */
 export const buildLessonSteps = (
   lesson: any,
   exerciseCount: number,
 ): LessonStep[] => {
   const steps: LessonStep[] = [{ kind: "intro" }];
+
+  if (lesson?.content?.video?.url) steps.push({ kind: "video" });
 
   // todo el vocabulario en un paso: se recorre como mazo de flashcards
   const vocabulary = lesson?.content?.vocabulary || [];

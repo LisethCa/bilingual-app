@@ -25,7 +25,6 @@ import {
 import React, { useEffect, useMemo, useState } from "react";
 import {
   ActivityIndicator,
-  Button,
   Image,
   Linking,
   ScrollView,
@@ -629,7 +628,7 @@ export default function Dashboard() {
 
               {/* MANTENER las barras de progreso */}
               <View style={styles.progressContainer}>
-                <Text>
+                <Text style={styles.progressText}>
                   Completadas: {stats.lessonsDone}/{stats.lessonsTotal}{" "}
                   lecciones
                   {stats.readingsTotal > 0 &&
@@ -643,7 +642,9 @@ export default function Dashboard() {
                     ]}
                   />
                 </View>
-                <Text>{Math.round(progressPercentage)}% completado</Text>
+                <Text style={styles.progressText}>
+                  {Math.round(progressPercentage)}% completado
+                </Text>
 
                 {/* Mostrar XP ganado en este nivel */}
                 {stats.xp > 0 && (
@@ -669,12 +670,16 @@ export default function Dashboard() {
                       🎉 ¡Ya casi terminás {previous.id}! Seguí con {level.id}.
                     </Text>
                   )}
-                  <TouchableOpacity
-                    onPress={() => handleBuyLevel(level.id)}
-                    style={[styles.levelButton, styles.buyButton]}
-                  >
-                    <Text style={styles.buttonText}>Comprar Nivel</Text>
-                  </TouchableOpacity>
+                  {selectedLevel !== level.id && (
+                    <TouchableOpacity
+                      onPress={() => handleBuyLevel(level.id)}
+                      style={[styles.levelButton, styles.buyButton]}
+                    >
+                      <Text style={styles.buttonText}>
+                        🔓 Desbloquear nivel {level.id}
+                      </Text>
+                    </TouchableOpacity>
+                  )}
                 </>
               )}
 
@@ -682,6 +687,8 @@ export default function Dashboard() {
               {selectedLevel === level.id && (
                 <PurchaseLevel
                   levelId={selectedLevel}
+                  lessonsTotal={stats.lessonsTotal}
+                  readingsTotal={stats.readingsTotal}
                   onClose={() => setSelectedLevel(null)}
                   onPurchased={(purchasedId) =>
                     setProgress((prev) => ({
@@ -715,11 +722,9 @@ export default function Dashboard() {
         )}
 
         {user && (
-          <Button
-            title="Cerrar sesión"
-            onPress={handleLogout}
-            color="#FF5A5F"
-          />
+          <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
+            <Text style={styles.logoutText}>Cerrar sesión</Text>
+          </TouchableOpacity>
         )}
         <View style={styles.footer}>
           <Text style={styles.footerText}>Síguenos en redes sociales</Text>
@@ -971,8 +976,20 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins",
   },
   locked: {
-    color: "#FF9500",
+    color: "#C26A00",
+    fontSize: 12,
+    fontWeight: "600",
+    fontFamily: "Poppins",
+    backgroundColor: "#FFF3E0",
+    paddingVertical: 4,
+    paddingHorizontal: 10,
+    borderRadius: 20,
+    overflow: "hidden",
+  },
+  progressText: {
+    fontFamily: "Poppins",
     fontSize: 13,
+    color: "#444",
   },
   progressContainer: {
     marginBottom: 10,
@@ -992,8 +1009,8 @@ const styles = StyleSheet.create({
   },
   levelButton: {
     backgroundColor: "#D82989",
-    paddingVertical: 10,
-    borderRadius: 8,
+    paddingVertical: 13,
+    borderRadius: 12,
     alignItems: "center",
     marginTop: 15,
     shadowColor: "#000",
@@ -1008,6 +1025,8 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#FFFFFF",
     fontWeight: "600",
+    fontSize: 15,
+    fontFamily: "Poppins",
   },
   instagramButton: {
     flexDirection: "row",
@@ -1204,34 +1223,57 @@ const styles = StyleSheet.create({
     backgroundColor: "#6c757d",
   },
   purchasedBadge: {
-    color: "#4CAF50",
-    fontWeight: "bold",
+    color: "#2E7D32",
+    fontWeight: "600",
     fontSize: 12,
+    fontFamily: "Poppins",
     backgroundColor: "#E8F5E9",
-    padding: 4,
-    borderRadius: 4,
+    paddingVertical: 4,
+    paddingHorizontal: 10,
+    borderRadius: 20,
+    overflow: "hidden",
   },
   buyButton: {
     backgroundColor: "#FF9500", // Color naranja para comprar
   },
+  logoutButton: {
+    alignSelf: "center",
+    marginTop: 8,
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 12,
+    borderWidth: 1.5,
+    borderColor: "rgba(255, 255, 255, 0.7)",
+    backgroundColor: "rgba(255, 255, 255, 0.12)",
+  },
+  logoutText: {
+    color: "#FFFFFF",
+    fontWeight: "600",
+    fontSize: 15,
+    fontFamily: "Poppins",
+  },
   feedbackText: {
     color: "#666",
     marginTop: 6,
+    fontFamily: "Poppins",
   },
   comingSoonCard: {
     opacity: 0.85,
   },
   comingSoonBadge: {
     color: "#777",
-    fontWeight: "bold",
+    fontWeight: "600",
     fontSize: 12,
+    fontFamily: "Poppins",
     backgroundColor: "#EEEEEE",
     paddingVertical: 4,
-    paddingHorizontal: 8,
-    borderRadius: 4,
+    paddingHorizontal: 10,
+    borderRadius: 20,
+    overflow: "hidden",
   },
   comingSoonText: {
     color: "#666",
+    fontFamily: "Poppins",
   },
   comingSoonButton: {
     backgroundColor: "#BDBDBD",
@@ -1241,10 +1283,13 @@ const styles = StyleSheet.create({
   comingSoonButtonText: {
     color: "#FFFFFF",
     fontWeight: "600",
+    fontSize: 15,
+    fontFamily: "Poppins",
   },
   nextLevelHint: {
     color: "#D82989",
     fontWeight: "600",
+    fontFamily: "Poppins",
     textAlign: "center",
     marginBottom: 8,
   },
@@ -1252,7 +1297,7 @@ const styles = StyleSheet.create({
     color: "#666",
     fontSize: 12,
     marginTop: 4,
-    fontStyle: "italic",
+    fontFamily: "Poppins",
   },
 
   loadingContainer: {
