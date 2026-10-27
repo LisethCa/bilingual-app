@@ -1,11 +1,14 @@
 import { API_ENDPOINTS } from "@/constants/api";
 import { useAuth } from "@/contexts/AuthContext";
+import { Ionicons } from "@expo/vector-icons";
 import * as WebBrowser from "expo-web-browser";
 import React, { useEffect, useState } from "react";
 import {
+  ActivityIndicator,
   Alert,
-  Button,
   Platform,
+  Pressable,
+  StyleSheet,
   Text,
   TextInput,
   View,
@@ -18,6 +21,8 @@ interface PurchaseLevelProps {
   levelId: LevelId;
   onClose: () => void;
   onPurchased?: (levelId: LevelId) => void;
+  lessonsTotal?: number;
+  readingsTotal?: number;
 }
 
 const formatUsd = (amount: number) => `USD ${amount}`;
@@ -34,6 +39,8 @@ export default function PurchaseLevel({
   levelId,
   onClose,
   onPurchased,
+  lessonsTotal,
+  readingsTotal,
 }: PurchaseLevelProps) {
   const [loading, setLoading] = useState(false);
   const [price, setPrice] = useState<LevelPrice | null>(null);
@@ -171,69 +178,105 @@ export default function PurchaseLevel({
   };
 
   const priceLabel = price ? formatUsd(price.usd) : null;
+  const canPay = !loading && !!user;
+  const canRedeem = canPay && !!couponCode.trim();
+
+  const benefits = [
+    lessonsTotal ? `${lessonsTotal} lecciones con ejercicios` : "Todas las lecciones y ejercicios",
+    readingsTotal ? `${readingsTotal} lecturas cortas` : null,
+    "Avanza a tu ritmo y suma XP",
+  ].filter(Boolean) as string[];
 
   return (
-    <View style={{ padding: 20, backgroundColor: "white", borderRadius: 10 }}>
-      <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 20 }}>
-        Comprar Nivel {levelId}
-      </Text>
+    <View style={styles.panel}>
+      <View style={styles.header}>
+        <Text style={styles.title}>Desbloquear nivel {levelId}</Text>
+        <Pressable
+          onPress={onClose}
+          hitSlop={10}
+          accessibilityLabel="Cerrar"
+          style={({ hovered }: any) => [styles.closeButton, hovered && styles.closeButtonHover]}
+        >
+          <Ionicons name="close" size={18} color="#6B5B95" />
+        </Pressable>
+      </View>
 
-      <Text style={{ marginBottom: price?.cop ? 4 : 15 }}>
-        Precio: {priceLabel ?? "cargando..."}
-      </Text>
+      <View style={styles.priceBox}>
+        {priceLabel ? (
+          <Text style={styles.price}>{priceLabel}</Text>
+        ) : (
+          <ActivityIndicator color="#9365FF" style={styles.priceLoader} />
+        )}
+        {price?.cop ? (
+          <Text style={styles.priceNote}>
+            Se cobra en pesos colombianos: {formatCop(price.cop)} (TRM del día)
+          </Text>
+        ) : null}
+      </View>
 
-      {price?.cop ? (
-        <Text style={{ marginBottom: 15, color: "#666", fontSize: 12 }}>
-          Se cobra en pesos colombianos: {formatCop(price.cop)} (TRM del día)
-        </Text>
-      ) : null}
+      <View style={styles.benefits}>
+        {benefits.map((benefit) => (
+          <View key={benefit} style={styles.benefitRow}>
+            <Ionicons name="checkmark-circle" size={18} color="#4CAF50" />
+            <Text style={styles.benefitText}>{benefit}</Text>
+          </View>
+        ))}
+      </View>
 
-      <Text style={{ marginBottom: 20, color: "#666" }}>
-        Acceso completo a todas las lecciones y ejercicios del nivel {levelId}
-      </Text>
-
-      <Button
-        title={
-          loading
-            ? "Procesando..."
-            : priceLabel
-              ? `Pagar ${priceLabel} con Mercado Pago`
-              : "Pagar con Mercado Pago"
-        }
+      <Pressable
         onPress={handleSubmit}
-        disabled={loading || !user}
-      />
+        disabled={!canPay}
+        style={({ pressed, hovered }: any) => [
+          styles.payButton,
+          hovered && canPay && styles.payButtonHover,
+          pressed && styles.pressed,
+          !canPay && styles.disabled,
+        ]}
+      >
+        {loading ? (
+          <ActivityIndicator color="#FFFFFF" />
+        ) : (
+          <Text style={styles.payText}>
+            {priceLabel ? `Pagar ${priceLabel} con Mercado Pago` : "Pagar con Mercado Pago"}
+          </Text>
+        )}
+      </Pressable>
+      <View style={styles.secureRow}>
+        <Ionicons name="lock-closed" size={12} color="#8B8B9E" />
+        <Text style={styles.secureText}>Pago seguro con Mercado Pago</Text>
+      </View>
 
-      <Text style={{ marginTop: 20, marginBottom: 6, color: "#666" }}>
-        ¿Tienes un cupón?
-      </Text>
-      <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
+      <View style={styles.divider}>
+        <View style={styles.dividerLine} />
+        <Text style={styles.dividerText}>¿Tienes un cupón?</Text>
+        <View style={styles.dividerLine} />
+      </View>
+
+      <View style={styles.couponRow}>
         <TextInput
           value={couponCode}
           onChangeText={setCouponCode}
           placeholder="Código del cupón"
+          placeholderTextColor="#A39DB8"
           autoCapitalize="characters"
           autoCorrect={false}
           editable={!loading}
           onSubmitEditing={handleRedeemCoupon}
-          style={{
-            flex: 1,
-            borderWidth: 1,
-            borderColor: "#ccc",
-            borderRadius: 6,
-            paddingHorizontal: 10,
-            paddingVertical: 8,
-          }}
+          style={styles.couponInput}
         />
-        <Button
-          title="Aplicar"
+        <Pressable
           onPress={handleRedeemCoupon}
-          disabled={loading || !user || !couponCode.trim()}
-        />
-      </View>
-
-      <View style={{ marginTop: 10 }}>
-        <Button title="Cancelar" onPress={onClose} color="red" />
+          disabled={!canRedeem}
+          style={({ pressed }) => [
+            styles.couponButton,
+            pressed && styles.pressed,
+            !canRedeem && styles.couponButtonDisabled,
+          ]}
+        >
+          <Text style={[styles.couponButtonText, !canRedeem && styles.couponButtonTextDisabled]}>
+            Aplicar
+          </Text>
+        </Pressable>
       </View>
 
       <PurchaseResultModal
@@ -243,3 +286,175 @@ export default function PurchaseLevel({
     </View>
   );
 }
+
+const FONT = "Poppins";
+
+const styles = StyleSheet.create({
+  panel: {
+    marginTop: 14,
+    padding: 18,
+    backgroundColor: "#FAF7FF",
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: "#E9E0FF",
+  },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 12,
+  },
+  title: {
+    fontFamily: FONT,
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#4C1D95",
+  },
+  closeButton: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#EFE8FF",
+  },
+  closeButtonHover: {
+    backgroundColor: "#E2D6FF",
+  },
+  priceBox: {
+    backgroundColor: "#FFFFFF",
+    borderRadius: 12,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    alignItems: "center",
+    marginBottom: 14,
+  },
+  price: {
+    fontFamily: FONT,
+    fontSize: 30,
+    fontWeight: "800",
+    color: "#D82989",
+  },
+  priceLoader: {
+    marginVertical: 8,
+  },
+  priceNote: {
+    fontFamily: FONT,
+    fontSize: 12,
+    color: "#7A7490",
+    textAlign: "center",
+    marginTop: 2,
+  },
+  benefits: {
+    gap: 8,
+    marginBottom: 16,
+  },
+  benefitRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  benefitText: {
+    fontFamily: FONT,
+    fontSize: 14,
+    color: "#444",
+  },
+  payButton: {
+    backgroundColor: "#009EE3",
+    borderRadius: 12,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    alignItems: "center",
+    justifyContent: "center",
+    minHeight: 50,
+    shadowColor: "#009EE3",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  payButtonHover: {
+    backgroundColor: "#0089C7",
+  },
+  payText: {
+    fontFamily: FONT,
+    color: "#FFFFFF",
+    fontWeight: "700",
+    fontSize: 15,
+    textAlign: "center",
+  },
+  pressed: {
+    opacity: 0.85,
+    transform: [{ scale: 0.98 }],
+  },
+  disabled: {
+    opacity: 0.5,
+    shadowOpacity: 0,
+    elevation: 0,
+  },
+  secureRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 4,
+    marginTop: 8,
+  },
+  secureText: {
+    fontFamily: FONT,
+    fontSize: 12,
+    color: "#8B8B9E",
+  },
+  divider: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+    marginTop: 18,
+    marginBottom: 12,
+  },
+  dividerLine: {
+    flex: 1,
+    height: 1,
+    backgroundColor: "#E4DCF7",
+  },
+  dividerText: {
+    fontFamily: FONT,
+    fontSize: 13,
+    color: "#7A7490",
+  },
+  couponRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  couponInput: {
+    flex: 1,
+    minWidth: 0,
+    fontFamily: FONT,
+    fontSize: 14,
+    color: "#333",
+    backgroundColor: "#FFFFFF",
+    borderWidth: 1,
+    borderColor: "#DDD3F5",
+    borderRadius: 12,
+    paddingHorizontal: 14,
+    paddingVertical: 11,
+  },
+  couponButton: {
+    borderRadius: 12,
+    paddingVertical: 11,
+    paddingHorizontal: 18,
+    backgroundColor: "#9365FF",
+  },
+  couponButtonDisabled: {
+    backgroundColor: "#ECE6FA",
+  },
+  couponButtonText: {
+    fontFamily: FONT,
+    color: "#FFFFFF",
+    fontWeight: "600",
+    fontSize: 14,
+  },
+  couponButtonTextDisabled: {
+    color: "#A39DB8",
+  },
+});

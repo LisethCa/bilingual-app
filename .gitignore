@@ -43,3 +43,5 @@ service-account-key.json
 CLAUDE.md
 
 contents/backups
+# videos originales y comprimidos (pesados, se suben al hosting, no al repo)
+videos/

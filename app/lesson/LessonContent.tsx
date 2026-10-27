@@ -21,6 +21,7 @@ import {
 } from "@/lib/answerFeedback";
 import { ExamIntro, ExamResultCard } from "@/components/lesson/ExamPanels";
 import Flashcards from "@/components/lesson/Flashcards";
+import LessonVideo from "@/components/lesson/LessonVideo";
 import {
   buildLessonSteps,
   GrammarCard,
@@ -190,6 +191,8 @@ const LessonContent = ({
     switch (step.kind) {
       case "intro":
         return exam ? "Examen final" : "Introducción";
+      case "video":
+        return "Video";
       case "vocabulary":
         return `Vocabulario · ${step.items.length} palabras`;
       case "grammar":
@@ -281,6 +284,17 @@ const LessonContent = ({
             <Text style={styles.introHint}>
               {steps.length - 2} pasos · toca «Continuar» para empezar
             </Text>
+          </>
+        );
+
+      case "video":
+        return (
+          <>
+            <Text style={styles.stepTitle}>🎬 Video</Text>
+            <Text style={styles.stepHint}>
+              Mira el video antes de empezar con el vocabulario.
+            </Text>
+            <LessonVideo video={lesson.content.video} />
           </>
         );
 
