@@ -1,7 +1,7 @@
 // API endpoints configuration
 const API_BASE_URL =
   process.env.EXPO_PUBLIC_BACKEND_URL ||
-  "https://billingual-app-back.onrender.com";
+  "https://billingual-app-back-9q1m.onrender.com";
 
 export const API_ENDPOINTS = {
   CHECK_LEVEL_ACCESS: (userId: string) =>
