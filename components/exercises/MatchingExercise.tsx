@@ -124,8 +124,10 @@ const MatchingExercise: React.FC<MatchingExerciseProps> = ({
     if (!selected) {
       setSelected(id);
     } else {
-      const [selectedType, selectedBaseId] = selected.split("-");
-      const [currentType, currentBaseId] = id.split("-");
+      // "left-<id>" / "right-<id>" (el id del par puede tener guiones)
+      const split = (s: string) => [s.slice(0, s.indexOf("-")), s.slice(s.indexOf("-") + 1)];
+      const [selectedType, selectedBaseId] = split(selected);
+      const [currentType, currentBaseId] = split(id);
 
       // Evitar seleccionar dos del mismo lado
       if (selectedType === currentType) {
@@ -133,8 +135,14 @@ const MatchingExercise: React.FC<MatchingExerciseProps> = ({
         return;
       }
 
-      // Verificar si el ID base (p0, p1, etc) coincide
-      if (selectedBaseId !== currentBaseId) {
+      // Se compara el contenido de la derecha y no solo el ID base (p0, p1, etc):
+      // varios de la izquierda pueden ir con el mismo (He / She / It -> "is")
+      const rightOf = (baseId: string) =>
+        normalizedPairs.find((p) => p.id === baseId)?.right;
+      if (
+        selectedBaseId !== currentBaseId &&
+        rightOf(selectedBaseId) !== rightOf(currentBaseId)
+      ) {
         feedbackWrong();
       } else {
         feedbackCorrect();

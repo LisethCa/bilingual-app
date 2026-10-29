@@ -80,7 +80,9 @@ const validate = (where, e) => {
       if (prs.length < 3) errors.push(`${where}: menos de 3 pares`);
       const froms = new Set(prs.map((x) => x.from));
       const tos = new Set(prs.map((x) => x.to));
-      if (froms.size !== prs.length || tos.size !== prs.length) errors.push(`${where}: pares repetidos`);
+      // en matching varios de la izquierda pueden ir con el mismo de la derecha (He / She -> is)
+      if (froms.size !== prs.length || (e.type === "drag_drop" && tos.size !== prs.length))
+        errors.push(`${where}: pares repetidos`);
       break;
     }
     case "dialogue_simulation":

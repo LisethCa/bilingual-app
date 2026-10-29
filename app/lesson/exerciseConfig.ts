@@ -110,6 +110,7 @@ export const normalizeExerciseConfig = (
                 pair.id || `drag-${Math.random().toString(36).substr(2, 9)}`,
             })) || [],
           instructions:
+            exercise.instructions ||
             exercise.config?.question ||
             exercise.question ||
             "Arrastra cada elemento a su posición correcta",

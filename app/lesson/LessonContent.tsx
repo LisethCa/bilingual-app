@@ -1,5 +1,6 @@
 import { useAuth } from "@/contexts/AuthContext";
 import { useLocalSearchParams } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 import Lottie from "lottie-react-native";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
@@ -215,8 +216,19 @@ const LessonContent = ({
       lesson?.content,
     );
 
+    // La consigna viene en exercise.instructions; drag_drop la muestra él mismo
+    const instructions =
+      exercise.type !== "drag_drop" &&
+      (exercise.instructions || exercise.config?.instructions);
+
     return (
       <View style={styles.exerciseContainer}>
+        {instructions ? (
+          <View style={styles.instructionsBox}>
+            <Ionicons name="information-circle" size={20} color="#4C1D95" />
+            <Text style={styles.instructionsText}>{instructions}</Text>
+          </View>
+        ) : null}
         <ExerciseAttemptContext.Provider
           value={{ onMistake: exam ? mistakeHandlers[index] : undefined }}
         >
@@ -593,6 +605,22 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     borderWidth: 1,
     borderColor: "#EEE8FF",
+  },
+  instructionsBox: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    gap: 8,
+    padding: 12,
+    marginBottom: 12,
+    backgroundColor: "#F1EBFF",
+    borderRadius: 10,
+  },
+  instructionsText: {
+    flex: 1,
+    fontSize: 15,
+    lineHeight: 21,
+    color: "#4C1D95",
+    fontWeight: "600",
   },
   finishEmoji: {
     fontSize: 56,

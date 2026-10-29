@@ -75,6 +75,51 @@ const numberToWords = (n: number): string => {
   return String(n);
 };
 
+// Con audio en silencio Whisper inventa frases típicas de subtítulos ("you",
+// "thank you"...). Si devuelve solo eso, se trata como que no se escuchó nada.
+const SILENCE_HALLUCINATIONS = new Set([
+  "you",
+  "thank you",
+  "thanks",
+  "thank you for watching",
+  "thanks for watching",
+  "bye",
+  "so",
+  "uh",
+  "um",
+]);
+
+const NO_SOUND_MESSAGE =
+  "No llegó sonido desde tu micrófono. Revisa que no esté silenciado y que el navegador use el micrófono correcto (toca el ícono junto a la dirección de la página). Luego habla cerca del micrófono.";
+
+// Pico de la grabación entre 0 y 1, o null si el navegador no puede decodificarla.
+const peakLevel = async (blob: Blob): Promise<number | null> => {
+  try {
+    const Ctx = window.AudioContext || (window as any).webkitAudioContext;
+    if (!Ctx) return null;
+    const ctx = new Ctx();
+    try {
+      const buffer = await ctx.decodeAudioData(await blob.arrayBuffer());
+      let peak = 0;
+      for (let c = 0; c < buffer.numberOfChannels; c++) {
+        const data = buffer.getChannelData(c);
+        for (let i = 0; i < data.length; i++) {
+          const v = Math.abs(data[i]);
+          if (v > peak) peak = v;
+        }
+      }
+      return peak;
+    } finally {
+      ctx.close().catch(() => {});
+    }
+  } catch {
+    return null;
+  }
+};
+
+// Por debajo de este pico (≈ -36 dB) la grabación es prácticamente silencio
+const MIN_PEAK = 0.016;
+
 // cantidad de palabras de `a` que aparecen en `b` en el mismo orden (LCS)
 const commonInOrder = (a: string[], b: string[]) => {
   const row = new Array(b.length + 1).fill(0);
@@ -225,6 +270,11 @@ export const PronunciationGame = (
       const formData = new FormData();
       if (Platform.OS === "web") {
         const audioBlob = await (await fetch(uri)).blob();
+        const peak = await peakLevel(audioBlob);
+        if (peak !== null && peak < MIN_PEAK) {
+          setError(NO_SOUND_MESSAGE);
+          return;
+        }
         const mimeType = audioBlob.type || "audio/webm";
         formData.append("audio", audioBlob, `pronunciation.${extensionFor(mimeType)}`);
       } else {
@@ -244,8 +294,12 @@ export const PronunciationGame = (
       if (!response.ok) throw new Error(data.details || "Error del servidor");
 
       const text = (data.text || "").trim();
-      if (!text) {
-        setError("No te escuché. Toca el micrófono y habla un poco más fuerte.");
+      const said = words(text).join(" ");
+      if (
+        !said ||
+        (SILENCE_HALLUCINATIONS.has(said) && said !== words(config.phrase).join(" "))
+      ) {
+        setError(NO_SOUND_MESSAGE);
         return;
       }
       setLastTranscript(text);
