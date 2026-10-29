@@ -75,7 +75,7 @@ module.exports = {
       "Ben and I play soccer. ___ play on Saturdays. | We | They, I",
       "Is ___ your brother? | he | she, it",
       "Lucas and Sara are cousins. ___ live in Quito. | They | We, He",
-    ]),
+    ], "Completa la oración con el pronombre personal que reemplaza al nombre o sustantivo."),
     build("Practica: ellas", "👭 Ellas son mis hermanas", "They are my sisters", ["She", "is"]),
     dialog("Practica: Una foto", "Tu amiga Ana mira una foto de tu familia.", [
       ["Ana", "Who is that boy?", "He is my cousin.", "She is my cousin.", "Para un chico se usa 'he'."],
@@ -177,14 +177,14 @@ module.exports = {
       "This is my brother. ___ name is Leo. | His | Her, He",
       "My grandparents ___ in a small town. | live | lives, living",
       "I have one sister and two ___. | brothers | brother, brother's",
-    ]),
+    ], "Elige de las tres (3) palabras la que corresponde en la oración."),
     fill("Practica: preguntas sobre la familia", [
       "How many brothers ___ you have? | do | does, are",
       "___ is your aunt's name? | What | Who, How",
       "Is Tom ___ cousin? | your | you, you're",
       "My aunt ___ two children. | has | have, is",
       "___ is that woman? She's my grandmother. | Who | What, How",
-    ]),
+    ], "Elige de las tres (3) palabras la que corresponde en la oración."),
     build("Practica: el auto de mi padre", "🚗 Este es el auto de mi padre", "This is my father's car", ["fathers", "are"]),
   ],
 
@@ -212,7 +212,7 @@ module.exports = {
       "He isn't tall. He is ___. | short | blonde, kind",
       "Your sister is ___. She tells great jokes. | funny | small, tall",
       "Paula has ___ hair. (rubio) | blonde | blondes, brown",
-    ]),
+    ], "Elige una de las tres (3) formas verbales y completa la oración de forma correcta."),
     build("Practica: ojos y pelo", "👩 Mi madre tiene ojos verdes y pelo corto", "My mother has green eyes and short hair", ["is", "greens"]),
     drag(
       "Practica: ¿cómo es?",
@@ -338,7 +338,7 @@ module.exports = {
       "Does she ___ in a bank? | work | works, working",
       "Where ___ they study? | do | does, are",
       "What ___ your sister drink in the morning? | does | do, is",
-    ]),
+    ], "Ubica sobre la línea la forma verbal correcta para hacer la pregunta."),
     build("Practica: una pregunta", "📖 ¿Tu hermano lee mucho?", "Does your brother read a lot?", ["reads", "Do"]),
     dialog("Practica: Un compañero nuevo", "Conoces a Tom, un compañero nuevo.", [
       ["Tom", "Hi! Where do you live?", "I live near the school.", "I lives near the school.", "Con 'I' el verbo va sin -s."],
@@ -507,7 +507,7 @@ module.exports = {
       "He is wearing ___ hat today. | a | an, some",
       "Are these your ___? | jeans | jean, a jeans",
       "Her skirt ___ blue. | is | are, am",
-    ]),
+    ], "Elige la prenda adecuada de las tres (3) para completar la oración."),
     build("Practica: hoy llevo", "👖 Hoy llevo jeans y una camiseta blanca", "Today I am wearing jeans and a white T-shirt", ["wear", "whites"]),
   ],
 
@@ -519,7 +519,7 @@ module.exports = {
       "Look at ___ birds on the roof over there! | those | these, this",
       "Can you open the ___? It's hot. | window | roof, garage",
       "My bedroom has a small ___. I can see the street. | balcony | kitchen, garage",
-    ]),
+    ], "Completa la oración con el lugar de la casa que corresponda, de los tres (3) planteados."),
     build("Practica: esa casa", "🏡 Esa casa tiene un jardín grande", "That house has a big garden", ["This", "have"]),
     cat("Practica: ¿dentro o fuera?", [
       ["Dentro de la casa", ["Kitchen", "Bedroom", "Bathroom", "Dining room"]],

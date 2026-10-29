@@ -10,14 +10,14 @@ module.exports = {
       "We ___ breakfast at eight. | have | has, having",
       "He ___ to bed at eleven. | goes | go, going",
       "They ___ work at five. | finish | finishes, finishing",
-    ]),
+    ], "Ubica sobre la línea la forma del verbo correcta para completar la oración."),
     fill("Practica: preguntas y negativos", [
       "___ you watch TV at night? | Do | Does, Are",
       "___ she have lunch at home? | Does | Do, Is",
       "What time ___ they go to work? | do | does, are",
       "He ___ exercise on Sundays. | doesn't | don't, isn't",
       "I ___ have breakfast on weekdays. | don't | doesn't, am not",
-    ]),
+    ], "Ubica sobre la línea la forma del verbo correcta para completar la pregunta."),
     build("Practica: frecuencia", "🛏️ Ella nunca se va a dormir tarde", "She never goes to bed late", ["go", "always"]),
   ],
 
@@ -44,7 +44,7 @@ module.exports = {
       "My cousins taught ___ English. | themselves | ourselves, himself",
       "Be careful! Don't burn ___. | yourself | himself, itself",
       "The cat is cleaning ___. | itself | himself, herself",
-    ]),
+    ], "Elige uno de los tres (3) pronombres para completar la oración de forma correcta."),
     drag(
       "Practica: ¿quién es?",
       [

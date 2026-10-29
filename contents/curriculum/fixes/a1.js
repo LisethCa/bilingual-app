@@ -145,3 +145,96 @@ module.exports = {
     add4_fill_in_blank: [["We ___ a party last Saturday.", "We ___ a barbecue in the garden."]],
   },
 };
+
+// Octubre 2026: consignas que pidió la clienta para ejercicios que no se entendían
+// (varias estaban en inglés). { idLección: { idEjercicio: [consignaVieja, consignaNueva] } }
+const INSTRUCTIONS = {
+  A1_personal_info: {
+    ex4_verb_to_be_conjugation_1: [
+      "Match the subject with the correct form of 'to be'.",
+      "Une cada pronombre personal con la forma correspondiente del verbo to be en presente.",
+    ],
+  },
+  A1_greetings: {
+    add5_fill_in_blank: [
+      "Elige la opción correcta para completar cada oración.",
+      "Elige una de las tres (3) formas de saludo para completar la oración.",
+    ],
+  },
+  A1_family_2: {
+    ex1_in_laws_matching: [
+      "Match each family member with the correct translation.",
+      "Une cada miembro de la familia con su traducción.",
+    ],
+    ex2_step_family_matching: [
+      "Match each family member with the correct translation.",
+      "Une cada miembro de la familia con su traducción.",
+    ],
+    ex3_extended_family: [
+      "Match each family member with the correct translation.",
+      "Une cada miembro de la familia con su traducción.",
+    ],
+    ex4_reflexive_pronouns: [
+      "Select the correct reflexive pronoun for each subject.",
+      "Elige el pronombre reflexivo que corresponde a cada sujeto.",
+    ],
+    ex7_fill_blank_reflexives: [
+      "Select the correct reflexive pronoun for each sentence.",
+      "Elige uno de los tres (3) pronombres reflexivos y completa la oración.",
+    ],
+    ex8_possessive_vs_reflexive: [
+      "Match each sentence with the correct pronoun type.",
+      "Toca una oración de la columna izquierda y elige en la columna derecha si tiene un pronombre posesivo o un pronombre reflexivo.",
+    ],
+  },
+  A1_descriptions: {
+    add1_fill_in_blank: [
+      "Elige la opción correcta para completar cada oración.",
+      "Elige una de las tres (3) formas verbales y completa la oración de forma correcta.",
+    ],
+  },
+  A1_clothes: {
+    add4_fill_in_blank: [
+      "Elige la opción correcta para completar cada oración.",
+      "Elige uno de los tres (3) pronombres posesivos y completa la oración de forma correcta.",
+    ],
+    add5_fill_in_blank: [
+      "Elige la opción correcta para completar cada oración.",
+      "Elige la forma verbal que corresponda para completar la oración.",
+    ],
+  },
+  A1_housing: {
+    add1_fill_in_blank: [
+      "Elige la opción correcta para completar cada oración.",
+      "Elige de los tres (3) pronombres demostrativos el que corresponda en la oración.",
+    ],
+  },
+  A1_daily_routine: {
+    ex1_daily_actions: [
+      "Select the correct verb phrase to complete each sentence.",
+      "Elige una de las rutinas para completar la oración de forma correcta.",
+    ],
+    ex5_frequency_adverbs: [
+      "Select the correct frequency adverb (always, usually, sometimes, never).",
+      "Ubica sobre la línea la frecuencia que corresponde en la oración (always, usually, sometimes, never).",
+    ],
+  },
+  A1_simple_present: {
+    add2_fill_in_blank: [
+      "Elige la opción correcta para completar cada oración.",
+      "Ubica sobre la línea la forma verbal que corresponde en la oración.",
+    ],
+    add3_fill_in_blank: [
+      "Elige la opción correcta para completar cada oración.",
+      "Ubica sobre la línea la forma de negación que corresponde en la oración.",
+    ],
+  },
+};
+
+for (const [lessonId, byExercise] of Object.entries(INSTRUCTIONS)) {
+  const lesson = (module.exports[lessonId] ??= {});
+  for (const [exId, pair] of Object.entries(byExercise)) {
+    if (typeof lesson[exId] === "function") throw new Error(`${lessonId} ${exId}: ya tiene una corrección con función`);
+    lesson[exId] = [...(lesson[exId] || []), pair];
+  }
+}
