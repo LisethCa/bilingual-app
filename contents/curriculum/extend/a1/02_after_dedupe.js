@@ -233,9 +233,9 @@ module.exports = {
       "There is ___ cheese in the fridge. | some | a, an",
       "I'd like ___ orange, please. | an | a, some",
       "He has ___ sandwich for lunch. | a | an, some",
-      "Bananas ___ yellow. | are | is, am",
+      "We have ___ bread for dinner. | some | a, an",
       "Do you want ___ eggs? | some | a, an",
-    ]),
+    ], "Elige y ubica en la línea el cuantificador de cantidad que corresponde."),
     build("Practica: el almuerzo", "🥪 Como un sándwich y una manzana", "I eat a sandwich and an apple", ["some", "eats"]),
     cat("Practica: ¿a, an o some?", [
       ["a", ["banana", "sandwich", "cookie"]],

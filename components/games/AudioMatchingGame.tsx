@@ -77,6 +77,13 @@ const AudioMatchingGame: React.FC<AudioMatchingGameProps> = ({
   const options = React.useMemo(() => {
     if (!currentItems || currentItem >= currentItems.length) return [];
 
+    // Con pares (audio + texto) las opciones son los textos de todos los pares
+    if (usePairsStructure) {
+      return (currentItems as Array<{ text: string }>)
+        .map((pair) => pair.text)
+        .sort(() => Math.random() - 0.5);
+    }
+
     // 1. Obtener la respuesta correcta actual
     const currentItemData = currentItems[currentItem] as {
       audio: string;
@@ -107,7 +114,7 @@ const AudioMatchingGame: React.FC<AudioMatchingGameProps> = ({
     return [correctVocabularyItem, ...selectedDistractors].sort(
       () => Math.random() - 0.5,
     );
-  }, [vocabulary, currentItems, currentItem]);
+  }, [vocabulary, currentItems, currentItem, usePairsStructure]);
 
   useEffect(() => {
     return () => {

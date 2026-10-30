@@ -52,10 +52,11 @@ const AudioToImageMatching: React.FC<AudioToImageMatchingProps> = ({
     );
   }
 
-  // Separar los pares en audios e imágenes con validación
-  const validPairs = config.pairs.filter(
-    (pair) => pair && typeof pair === "object" && pair.id,
-  );
+  // Separar los pares en audios e imágenes con validación.
+  // Un par puede traer audio e imagen juntos, sin id ni matchId: el id sale de su posición.
+  const validPairs = config.pairs
+    .filter((pair) => pair && typeof pair === "object")
+    .map((pair, i) => ({ ...pair, id: pair.id || `pair-${i}` }));
 
   if (validPairs.length === 0) {
     return (
@@ -117,7 +118,7 @@ const AudioToImageMatching: React.FC<AudioToImageMatchingProps> = ({
   const handleImageSelect = (imageId: string) => {
     if (!hasPlayed) return;
 
-    const isCorrect = currentAudio.matchId === imageId;
+    const isCorrect = (currentAudio.matchId || currentAudio.id) === imageId;
 
     setSelectedImage(imageId);
 
