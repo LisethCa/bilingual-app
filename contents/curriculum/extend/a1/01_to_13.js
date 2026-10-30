@@ -28,7 +28,7 @@ module.exports = {
       "___ you like dancing? | Do | Does, Are",
       "My dad enjoys ___ the newspaper. | reading | read, reads",
       "They hate ___ early. | getting up | get up, gets up",
-    ]),
+    ], "Ubica la forma del verbo que completa la oración."),
     build("Practica: gustos", "🎵 A mi hermana le encanta escuchar música", "My sister loves listening to music", ["love", "likes"]),
     drag(
       "Practica: ¿cuánto te gusta?",

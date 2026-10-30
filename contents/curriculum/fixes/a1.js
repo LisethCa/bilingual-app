@@ -229,6 +229,18 @@ const INSTRUCTIONS = {
       "Ubica sobre la línea la forma de negación que corresponde en la oración.",
     ],
   },
+  A1_likes_dislikes: {
+    add1_fill_in_blank: [
+      "Elige la opción correcta para completar cada oración.",
+      "Ubica la forma del verbo que completa la oración.",
+    ],
+  },
+  A1_food_basics: {
+    add1_fill_in_blank: [
+      "Elige la opción correcta para completar cada oración.",
+      "Elige y ubica en la línea el cuantificador de cantidad que corresponde.",
+    ],
+  },
 };
 
 for (const [lessonId, byExercise] of Object.entries(INSTRUCTIONS)) {
