@@ -1,4 +1,5 @@
 import { Audio } from "expo-av";
+import { showCharacterCorrect, showCharacterWrong } from "@/lib/characters";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   ActivityIndicator,
@@ -222,6 +223,7 @@ const NumbersGame: React.FC<NumbersGameProps> = ({
       }
 
       if (isCorrect) {
+        showCharacterCorrect();
         setScore((prev) => prev + 1);
         setFeedback("¡Correcto!");
         setTimeout(() => {
@@ -232,6 +234,7 @@ const NumbersGame: React.FC<NumbersGameProps> = ({
           }
         }, 1000);
       } else {
+        showCharacterWrong({ answer: currentNumber.word });
         setFeedback("Intenta de nuevo");
       }
     },
@@ -505,7 +508,7 @@ const styles = StyleSheet.create({
     color: "green",
   },
   incorrectFeedback: {
-    color: "red",
+    color: "#9C2F5B",
   },
   score: {
     marginTop: 10,

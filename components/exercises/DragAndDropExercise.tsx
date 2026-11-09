@@ -208,7 +208,12 @@ const DragDropExercise: React.FC<DragDropExerciseProps> = ({
       dragItemId;
 
     if (!isCorrect) {
-      feedbackWrong();
+      const item = dragItems.find((i) => i.id === dragItemId);
+      const rightZone = dropZones.find((z) => z.correctMatch === dragItemId);
+      feedbackWrong({
+        answer:
+          item && rightZone ? `${item.content} → ${rightZone.content}` : undefined,
+      });
       showFeedback("Incorrecto, intenta de nuevo");
       return;
     }
@@ -283,7 +288,14 @@ const DragDropExercise: React.FC<DragDropExerciseProps> = ({
               : styles.feedbackIncorrect,
           ]}
         >
-          <Text style={styles.feedbackText}>{feedback}</Text>
+          <Text
+            style={[
+              styles.feedbackText,
+              !feedback.includes("Correcto") && { color: "#9C2F5B" },
+            ]}
+          >
+            {feedback}
+          </Text>
         </View>
       )}
 
@@ -395,8 +407,8 @@ const styles = StyleSheet.create({
     borderColor: "#d6e9c6",
   },
   feedbackIncorrect: {
-    backgroundColor: "#f2dede",
-    borderColor: "#ebccd1",
+    backgroundColor: "#FCEAF1",
+    borderColor: "#D16587",
   },
   feedbackText: {
     textAlign: "center",

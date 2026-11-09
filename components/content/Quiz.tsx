@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#a5d6a7",
   },
   wrong: {
-    backgroundColor: "#ef9a9a",
+    backgroundColor: "#FCEAF1",
   },
   submitButton: {
     backgroundColor: "#2196f3",

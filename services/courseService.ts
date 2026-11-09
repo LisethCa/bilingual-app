@@ -187,10 +187,12 @@ export const completeLesson = async (
     console.log(
       `Lección ${lessonId} completada. Unidad completa: ${allLessonsCompleted}`
     );
-    return true;
+    // unitCompleted: esta lección fue la última de la unidad (vale para
+    // cualquier nivel, se calcula con las lecciones de la unidad)
+    return { ok: true, unitCompleted: !!allLessonsCompleted };
   } catch (error) {
     console.error("Error completing lesson:", error);
-    return false;
+    return { ok: false, unitCompleted: false };
   }
 };
 

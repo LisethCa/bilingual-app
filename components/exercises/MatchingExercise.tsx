@@ -143,7 +143,17 @@ const MatchingExercise: React.FC<MatchingExerciseProps> = ({
         selectedBaseId !== currentBaseId &&
         rightOf(selectedBaseId) !== rightOf(currentBaseId)
       ) {
-        feedbackWrong();
+        // Billy: con qué va el elemento de la izquierda elegido
+        const leftPair = normalizedPairs.find(
+          (p) =>
+            p.id === (selectedType === "left" ? selectedBaseId : currentBaseId),
+        );
+        feedbackWrong({
+          answer:
+            leftPair && leftPair.leftType !== "image"
+              ? `${leftPair.left} → ${leftPair.right}`
+              : undefined,
+        });
       } else {
         feedbackCorrect();
         setMatchedPairs((prev) => [...prev, id, selected]);

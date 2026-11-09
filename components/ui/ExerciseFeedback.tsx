@@ -48,7 +48,9 @@ const ExerciseFeedback: React.FC<ExerciseFeedbackProps> = ({
         },
       ]}
     >
-      <Text style={styles.text}>{message}</Text>
+      <Text style={[styles.text, type === "error" && styles.errorText]}>
+        {message}
+      </Text>
     </Animated.View>
   );
 };
@@ -72,8 +74,14 @@ const styles = StyleSheet.create({
   success: {
     backgroundColor: "#4CAF50",
   },
+  // error: fucsia suave de la marca (sin rojo); texto oscuro para contraste
   error: {
-    backgroundColor: "#F44336",
+    backgroundColor: "#FCEAF1",
+    borderWidth: 2,
+    borderColor: "#D16587",
+  },
+  errorText: {
+    color: "#9C2F5B",
   },
   text: {
     color: "white",

@@ -2,6 +2,7 @@ import { CompletionMessage } from "@/components/ui/CompletionMessage";
 import { API_ENDPOINTS } from "@/constants/api";
 import { Ionicons } from "@expo/vector-icons";
 import { Audio } from "expo-av";
+import { showCharacterCorrect, showCharacterWrong } from "@/lib/characters";
 import React, { useEffect, useRef, useState } from "react";
 import {
   ActivityIndicator,
@@ -328,11 +329,13 @@ export const PronunciationGame = (
       spoken.length <= target.length * 2 + 2;
 
     if (ok) {
+      showCharacterCorrect();
       setShowSuccess(true);
       setShowCompletion(true);
       setTimeout(() => onComplete(), 1500);
     } else {
       setError(`Dijiste "${transcript}". Intenta de nuevo.`);
+      showCharacterWrong({ answer: config.phrase });
     }
   };
 

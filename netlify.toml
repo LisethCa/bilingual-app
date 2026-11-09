@@ -7,6 +7,9 @@
   NODE_VERSION = "22"
   # Las EXPO_PUBLIC_* se cargan en Netlify > Site configuration > Environment variables
   # (EXPO_PUBLIC_BACKEND_URL, EXPO_PUBLIC_WEB_CLIENT_ID, EXPO_PUBLIC_ANDROID_CLIENT_ID, EXPO_PUBLIC_PLATFORM)
+  # Pixel de Meta (opcional; sin estas variables no se carga nada):
+  #   EXPO_PUBLIC_FB_PIXEL_ID            -> ID numérico del pixel (Administrador de eventos)
+  #   EXPO_PUBLIC_FB_DOMAIN_VERIFICATION -> solo el código del meta-tag de verificación de dominio
 
 # Bundles con hash: cache largo
 [[headers]]

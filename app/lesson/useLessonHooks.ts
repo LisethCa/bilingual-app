@@ -3,7 +3,13 @@ import { db } from "@/lib/firebaseConfig";
 import { completeLesson } from "@/services/courseService";
 import { useRouter } from "expo-router";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+// Tiempo que se ve la celebración de Billa antes de volver a la unidad
+const LESSON_CELEBRATION_MS = 3000;
+const UNIT_CELEBRATION_MS = 6000;
+
+export type Celebration = { kind: "lesson" | "unit"; xp: number } | null;
 
 /**
  * Hook para manejar el estado de completitud de ejercicios
@@ -64,6 +70,24 @@ export const useLessonCompletion = (
   const [completionMessage, setCompletionMessage] = useState("");
   const [isAnimating, setIsAnimating] = useState(false);
   const [showXpReward, setShowXpReward] = useState(false);
+  const [celebration, setCelebration] = useState<Celebration>(null);
+  const redirectTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const exitRef = useRef<(() => void) | null>(null);
+
+  useEffect(
+    () => () => {
+      if (redirectTimer.current) clearTimeout(redirectTimer.current);
+    },
+    [],
+  );
+
+  /** Sale de la celebración hacia la unidad (botón «Continuar» o automático). */
+  const continueAfterCelebration = () => {
+    if (redirectTimer.current) clearTimeout(redirectTimer.current);
+    const exit = exitRef.current;
+    exitRef.current = null;
+    exit?.();
+  };
 
   // Verificar si la lección ya fue completada
   useEffect(() => {
@@ -123,16 +147,24 @@ export const useLessonCompletion = (
       });
 
       // Completar la lección
-      await completeLesson(
+      const result = await completeLesson(
         user.uid,
         lesson.id,
         xpReward,
         unitInfo || { id: "" },
       );
+      if (!result.ok) throw new Error("No se pudo guardar el progreso");
       onComplete?.(xpReward);
 
-      // Redirigir después de 1 segundo
-      setTimeout(() => {
+      // Billa celebra: lección completada, o la celebración mayor si con
+      // esta lección se terminó la unidad (funciona igual en cualquier nivel)
+      setShowXpReward(false);
+      setCelebration({
+        kind: result.unitCompleted ? "unit" : "lesson",
+        xp: xpReward,
+      });
+
+      exitRef.current = () => {
         if (unitId) {
           router.replace({
             pathname: "/unit/[id]",
@@ -141,7 +173,11 @@ export const useLessonCompletion = (
         } else {
           router.replace("/");
         }
-      }, 1000);
+      };
+      redirectTimer.current = setTimeout(
+        continueAfterCelebration,
+        result.unitCompleted ? UNIT_CELEBRATION_MS : LESSON_CELEBRATION_MS,
+      );
 
       return true;
     } catch (error) {
@@ -150,6 +186,7 @@ export const useLessonCompletion = (
       setCompletionMessage("Error al completar la lección");
       setShowXpReward(false);
       setIsAnimating(false);
+      setCelebration(null);
       return false;
     }
   };
@@ -162,5 +199,7 @@ export const useLessonCompletion = (
     handleCompleteLesson,
     setShowXpReward,
     setIsAnimating,
+    celebration,
+    continueAfterCelebration,
   };
 };
