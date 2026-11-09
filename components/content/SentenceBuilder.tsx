@@ -192,8 +192,14 @@ const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
       // Esto es importante para mantener el estado completado cuando el componente se re-renderiza
       onComplete();
     } else {
-      feedbackWrong();
-      setHint(getHint(userSentence, safeConfig.correctAnswers));
+      const hint = getHint(userSentence, safeConfig.correctAnswers);
+      // Billy: primero el tip; cuando ya se revela la respuesta, la respuesta
+      feedbackWrong(
+        failedAttempts + 1 >= ATTEMPTS_BEFORE_REVEAL
+          ? { answer: safeConfig.correctAnswers[0] }
+          : { tip: hint },
+      );
+      setHint(hint);
       setFailedAttempts((n) => n + 1);
       // Animación de error
       Animated.sequence([

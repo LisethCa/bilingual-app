@@ -76,8 +76,8 @@ export default function ListeningExercise({
         onComplete();
       }, 1500);
     } else {
-      feedbackWrong();
-      alert("Inténtalo de nuevo");
+      // Billy muestra la frase correcta en la pizarra
+      feedbackWrong({ answer: config.correctSentence });
     }
   };
 

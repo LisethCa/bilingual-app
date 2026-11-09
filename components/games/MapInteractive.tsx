@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { showCharacterCorrect, showCharacterWrong } from "@/lib/characters";
 import {
   Image,
   ScrollView,
@@ -68,6 +69,7 @@ const MapInteractive: React.FC<MapInteractiveProps> = ({
     if (direction === currentCorrectPath[currentStep]) {
       if (currentStep === currentCorrectPath.length - 1) {
         setFeedback("¡Correcto! 🎉 Llegaste al destino.");
+        showCharacterCorrect();
         setShowSuccess(true);
 
         setTimeout(() => {
@@ -87,6 +89,9 @@ const MapInteractive: React.FC<MapInteractiveProps> = ({
       }
     } else {
       setFeedback(`✗ Incorrecto. Intenta nuevamente.`);
+      showCharacterWrong({
+        tip: `El paso ${currentStep + 1} era: ${currentCorrectPath[currentStep]}`,
+      });
       setTimeout(() => {
         setUserPath([]);
         setCurrentStep(0);
@@ -358,9 +363,9 @@ const styles = StyleSheet.create({
     borderLeftColor: "#28a745",
   },
   feedbackError: {
-    backgroundColor: "#f8d7da",
+    backgroundColor: "#FCEAF1",
     borderLeftWidth: 4,
-    borderLeftColor: "#dc3545",
+    borderLeftColor: "#D16587",
   },
   feedbackText: {
     fontSize: 16,

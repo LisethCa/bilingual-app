@@ -1,13 +1,30 @@
 import { AuthProvider } from "@/contexts/AuthContext";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Stack, usePathname } from "expo-router";
 import * as WebBrowser from "expo-web-browser";
 import { Platform, StyleSheet, useColorScheme, useWindowDimensions, View } from "react-native";
 import "react-native-reanimated";
+import { useEffect, useRef } from "react";
+import { trackPixel } from "@/lib/pixel";
 
 WebBrowser.maybeCompleteAuthSession();
 
+// La web no recarga la página al navegar: el pixel de Meta solo ve la primera
+// visita (enviada en +html.tsx). Cada cambio de pantalla posterior se envía acá.
+function usePixelPageViews() {
+  const pathname = usePathname();
+  const first = useRef(true);
+  useEffect(() => {
+    if (first.current) {
+      first.current = false;
+      return;
+    }
+    trackPixel("PageView");
+  }, [pathname]);
+}
+
 export default function RootLayout() {
+  usePixelPageViews();
   const colorScheme = useColorScheme();
   const { width } = useWindowDimensions();
   const isDesktop = Platform.OS === "web" && width >= 768;

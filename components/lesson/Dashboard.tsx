@@ -36,6 +36,7 @@ import {
 import Toast from "react-native-toast-message";
 import "../../assets/css/globalStyles.css";
 import GuestSection from "../auth/GuestSection";
+import { Character } from "../characters/Characters";
 import PurchaseLevel from "../payment/PurchaseLevel";
 import { FacebookIcon, FlameIcon, InstagramIcon } from "../ui/SvgIcons";
 import { toastConfig } from "../ui/ToastConfig";
@@ -567,6 +568,32 @@ export default function Dashboard() {
             </View>
           )}
 
+        {/* Bienvenida: Billa y Billy flanquean el botón principal */}
+        {user && (
+          <View style={styles.welcomeCard}>
+            <Character name="billaCorrect" height={118} />
+            <View style={styles.welcomeCenter}>
+              <Text style={styles.welcomeTitle}>
+                ¡Hola, {capitalizeName(user.displayName)?.split(" ")[0] || "de nuevo"}!
+              </Text>
+              <Text style={styles.welcomeText}>¿Seguimos aprendiendo?</Text>
+              <TouchableOpacity
+                onPress={() => navigateToLevel(studying)}
+                style={styles.welcomeButton}
+              >
+                <Text style={styles.buttonText}>
+                  {xp.byLevel[studying].lessonsDone +
+                    xp.byLevel[studying].readingsDone >
+                  0
+                    ? `Continuar ${studying}`
+                    : `Iniciar Nivel ${studying}`}
+                </Text>
+              </TouchableOpacity>
+            </View>
+            <Character name="billyWelcome" height={108} />
+          </View>
+        )}
+
         <Text style={styles.sectionTitle}>Tu Progreso</Text>
 
         {/* Barra de progreso global */}
@@ -1006,6 +1033,44 @@ const styles = StyleSheet.create({
   progressFill: {
     height: 10,
     backgroundColor: "#4CAF50",
+  },
+  welcomeCard: {
+    flexDirection: "row",
+    alignItems: "flex-end",
+    justifyContent: "space-between",
+    backgroundColor: "#FFFFFF",
+    borderRadius: 18,
+    paddingHorizontal: 8,
+    paddingTop: 12,
+    marginBottom: 16,
+    overflow: "hidden",
+  },
+  welcomeCenter: {
+    flex: 1,
+    alignItems: "center",
+    paddingBottom: 14,
+    paddingHorizontal: 4,
+  },
+  welcomeTitle: {
+    fontSize: 17,
+    fontWeight: "800",
+    color: "#4C1D95",
+    textAlign: "center",
+  },
+  welcomeText: {
+    fontSize: 13,
+    color: "#666",
+    textAlign: "center",
+    marginTop: 2,
+  },
+  welcomeButton: {
+    backgroundColor: "#D82989",
+    paddingVertical: 11,
+    paddingHorizontal: 14,
+    borderRadius: 12,
+    alignItems: "center",
+    marginTop: 10,
+    alignSelf: "stretch",
   },
   levelButton: {
     backgroundColor: "#D82989",

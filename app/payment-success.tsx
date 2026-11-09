@@ -9,10 +9,14 @@ import {
 } from "react-native";
 
 import { API_ENDPOINTS } from "@/constants/api";
+import { firstTimeOnly, levelContent, trackPixel } from "@/lib/pixel";
 
 export default function PaymentSuccess() {
   // Mercado Pago agrega payment_id, status, external_reference, etc. a la back_url
-  const { payment_id } = useLocalSearchParams<{ payment_id?: string }>();
+  const { payment_id, external_reference } = useLocalSearchParams<{
+    payment_id?: string;
+    external_reference?: string;
+  }>();
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("Verificando pago...");
@@ -35,6 +39,16 @@ export default function PaymentSuccess() {
 
         if (status === "approved") {
           setMessage(`¡Pago exitoso! Nivel ${levelId} desbloqueado.`);
+          // Pixel de Meta: compra. external_reference = "uid:nivel:montoCOP"
+          // (solo se usa el monto). Una sola vez por pago aunque se recargue.
+          if (firstTimeOnly(`purchase:${payment_id}`)) {
+            const cop = Number(String(external_reference || "").split(":")[2]);
+            trackPixel(
+              "Purchase",
+              levelContent(levelId, Number.isFinite(cop) && cop > 0 ? cop : null),
+              `purchase-${payment_id}`,
+            );
+          }
         } else if (status === "pending" || status === "in_process") {
           setMessage(
             "Tu pago está pendiente de acreditación. El nivel se desbloqueará automáticamente cuando se confirme.",

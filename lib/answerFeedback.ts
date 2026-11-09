@@ -9,6 +9,11 @@ import { Audio } from "expo-av";
 import * as Haptics from "expo-haptics";
 import { createContext, useContext, useMemo } from "react";
 import { Platform } from "react-native";
+import {
+  showCharacterCorrect,
+  showCharacterWrong,
+  WrongInfo,
+} from "./characters";
 
 const SOURCES = {
   correct: require("../assets/audio/correct.wav"),
@@ -56,11 +61,14 @@ const vibrate = (type: Haptics.NotificationFeedbackType) => {
 export const feedbackCorrect = () => {
   vibrate(Haptics.NotificationFeedbackType.Success);
   play("correct");
+  showCharacterCorrect();
 };
 
-export const feedbackWrong = () => {
+/** info: respuesta correcta / tip que Billy muestra en la pizarra. */
+export const feedbackWrong = (info?: WrongInfo) => {
   vibrate(Haptics.NotificationFeedbackType.Error);
   play("wrong");
+  showCharacterWrong(info);
 };
 
 // ===== Registro de errores por ejercicio (para la nota de los exámenes) =====
@@ -76,8 +84,8 @@ export const useAnswerFeedback = () => {
   return useMemo(
     () => ({
       feedbackCorrect,
-      feedbackWrong: () => {
-        feedbackWrong();
+      feedbackWrong: (info?: WrongInfo) => {
+        feedbackWrong(info);
         onMistake?.();
       },
     }),

@@ -24,6 +24,7 @@ import {
 } from "react-native";
 import { auth, db } from "../lib/firebaseConfig";
 import { registerDailyConnection } from "../services/streakService";
+import { trackPixel } from "../lib/pixel";
 
 export default function Login() {
   const router = useRouter();
@@ -56,6 +57,7 @@ export default function Login() {
     const additionalInfo = getAdditionalUserInfo(userCredential);
 
     if (additionalInfo?.isNewUser) {
+      trackPixel("CompleteRegistration", { content_name: "registro" });
       await createNewUserProgress(userId);
     } else {
       await updateStreak(userId);
@@ -169,6 +171,7 @@ export default function Login() {
           const additionalInfo = getAdditionalUserInfo(userCredential);
 
           if (additionalInfo?.isNewUser) {
+            trackPixel("CompleteRegistration", { content_name: "registro" });
             await createNewUserProgress(userCredential.user.uid);
           } else {
             await updateStreak(userCredential.user.uid);

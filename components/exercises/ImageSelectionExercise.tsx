@@ -55,7 +55,7 @@ export default function ImageSelectionExercise({
     setSelected(index);
 
     if (!safeOptions[index]?.correct) {
-      feedbackWrong();
+      feedbackWrong({ tip: safeOptions[index]?.feedback });
     } else {
       feedbackCorrect();
       setCompleted(true);
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
   },
   incorrect: {
     borderWidth: 3,
-    borderColor: "#F44336",
+    borderColor: "#D16587",
   },
   successText: {
     color: "#4CAF50",

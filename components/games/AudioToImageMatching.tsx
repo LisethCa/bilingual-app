@@ -1,4 +1,5 @@
 import { Audio } from "expo-av";
+import { showCharacterCorrect, showCharacterWrong } from "@/lib/characters";
 import React, { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import ExerciseFeedback from "../ui/ExerciseFeedback";
@@ -123,6 +124,7 @@ const AudioToImageMatching: React.FC<AudioToImageMatchingProps> = ({
     setSelectedImage(imageId);
 
     if (isCorrect) {
+      showCharacterCorrect();
       setShowSuccess(true);
       setTimeout(() => {
         if (safeCurrentIndex < audioItems.length - 1) {
@@ -135,6 +137,9 @@ const AudioToImageMatching: React.FC<AudioToImageMatchingProps> = ({
         }
       }, 1000);
     } else {
+      showCharacterWrong({
+        answer: currentAudio?.text,
+      });
       setShowError(true);
       setTimeout(() => {
         setShowError(false);
@@ -275,8 +280,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#d4edda",
   },
   incorrectImage: {
-    borderColor: "#dc3545",
-    backgroundColor: "#f8d7da",
+    borderColor: "#D16587",
+    backgroundColor: "#FCEAF1",
   },
   image: {
     width: 120,

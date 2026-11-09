@@ -107,7 +107,13 @@ const DialogueSimulation: React.FC<DialogueSimulationProps> = ({
         (o) => typeof o !== "string" && o.correct,
       );
       if (hasCorrectOption && (typeof option === "string" || !option.correct)) {
-        feedbackWrong();
+        const right = userOptions.find(
+          (o) => typeof o !== "string" && o.correct,
+        );
+        feedbackWrong({
+          tip: typeof option !== "string" ? option.feedback : undefined,
+          answer: right ? getOptionText(right) : undefined,
+        });
         setWrongFeedback(
           (typeof option !== "string" && option.feedback) ||
             "Esa respuesta no encaja. Intenta de nuevo.",
@@ -378,8 +384,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   wrongFeedbackText: {
-    color: "#C62828",
-    backgroundColor: "#FFEBEE",
+    color: "#9C2F5B",
+    backgroundColor: "#FCEAF1",
     padding: 10,
     borderRadius: 8,
     marginBottom: 12,

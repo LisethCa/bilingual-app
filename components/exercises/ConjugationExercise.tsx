@@ -1,5 +1,6 @@
 import { CompletionMessage } from "@/components/ui/CompletionMessage";
 import { useAnswerFeedback } from "@/lib/answerFeedback";
+import { tipOf } from "@/lib/characters";
 import React, { useEffect, useState } from "react";
 import {
   Modal,
@@ -113,7 +114,23 @@ const ConjugationExercise: React.FC<ConjugationExerciseProps> = ({
     setShowFeedback(true);
     setIsCorrect(allCorrect);
     if (allCorrect) feedbackCorrect();
-    else feedbackWrong();
+    else {
+      // Billy muestra las formas correctas de las casillas equivocadas
+      const wrong: string[] = [];
+      tenses.forEach((tense) =>
+        config.pronouns.forEach((pronoun) => {
+          const correct = getCorrectAnswer(tense, pronoun);
+          const user = currentAnswers[tense]?.[pronoun]?.toLowerCase().trim();
+          if (correct.toLowerCase().trim() !== user) {
+            wrong.push(`${pronoun} ${correct}`);
+          }
+        }),
+      );
+      feedbackWrong({
+        answer: wrong.slice(0, 3).join(" · ") + (wrong.length > 3 ? " …" : ""),
+        tip: tipOf(config),
+      });
+    }
 
     if (allCorrect) {
       setShowCompletion(true);
@@ -307,8 +324,8 @@ const styles = StyleSheet.create({
     borderColor: "#a5d6a7",
   },
   incorrectInput: {
-    backgroundColor: "#ffebee",
-    borderColor: "#ef9a9a",
+    backgroundColor: "#FCEAF1",
+    borderColor: "#D16587",
   },
   hint: {
     fontStyle: "italic",
@@ -361,7 +378,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#e8f5e9",
   },
   incorrectFeedback: {
-    backgroundColor: "#ffebee",
+    backgroundColor: "#FCEAF1",
   },
   feedbackText: {
     textAlign: "center",

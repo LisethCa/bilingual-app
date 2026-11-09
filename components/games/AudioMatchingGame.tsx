@@ -1,5 +1,6 @@
 import { CompletionMessage } from "@/components/ui/CompletionMessage";
 import { Audio } from "expo-av";
+import { showCharacterCorrect, showCharacterWrong } from "@/lib/characters";
 import React, { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import ExerciseFeedback from "@/components/ui/ExerciseFeedback";
@@ -181,6 +182,7 @@ const AudioMatchingGame: React.FC<AudioMatchingGameProps> = ({
     }
 
     if (isCorrect) {
+      showCharacterCorrect();
       setShowSuccess(true);
       setShowError(false);
 
@@ -205,6 +207,10 @@ const AudioMatchingGame: React.FC<AudioMatchingGameProps> = ({
         }, 1500);
       }
     } else {
+      const current = currentItems[currentItem] as any;
+      showCharacterWrong({
+        answer: usePairsStructure ? current?.text : current?.correctMatch,
+      });
       setShowError(true);
       setShowSuccess(false);
 
@@ -449,8 +455,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#D4EDDA",
   },
   incorrectOption: {
-    borderColor: "#DC3545",
-    backgroundColor: "#F8D7DA",
+    borderColor: "#D16587",
+    backgroundColor: "#FCEAF1",
   },
   optionImage: {
     width: 80,

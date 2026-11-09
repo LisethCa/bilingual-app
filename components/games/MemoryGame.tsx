@@ -170,7 +170,8 @@ export default function MemoryGame({
     // bloquea el sonido si se reproduce después, desde un efecto)
     if (flippedCards.length === 1) {
       if (cards[flippedCards[0]].pairId === cards[index].pairId) feedbackCorrect();
-      else feedbackWrong();
+      // un par que no coincide es parte del juego: sin pizarra de Billy
+      else feedbackWrong({ quiet: true });
     }
 
     const newCards = [...cards];

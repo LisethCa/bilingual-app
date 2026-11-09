@@ -14,6 +14,7 @@ import {
   View,
 } from "react-native";
 import PurchaseResultModal, { PurchaseResult } from "./PurchaseResultModal";
+import { levelContent, trackPixel } from "@/lib/pixel";
 
 type LevelId = "A1" | "A2" | "B1";
 
@@ -60,6 +61,8 @@ export default function PurchaseLevel({
         const { prices, chargePrices } = await response.json();
         if (prices?.[levelId]) {
           setPrice({ usd: prices[levelId], cop: chargePrices?.[levelId] ?? null });
+          // Pixel de Meta: vio la oferta del nivel
+          trackPixel("ViewContent", levelContent(levelId, chargePrices?.[levelId]));
         }
       } catch (error) {
         console.log("⚠️ No se pudo cargar el precio:", error);
@@ -111,6 +114,9 @@ export default function PurchaseLevel({
       }
 
       const { init_point } = await response.json();
+
+      // Pixel de Meta: el usuario va a pagar
+      trackPixel("InitiateCheckout", levelContent(levelId, price?.cop));
 
       if (Platform.OS === "web") {
         // Mercado Pago redirige de vuelta a /payment-success o /payment-cancel

@@ -75,7 +75,13 @@ const CategorizationGame = ({
 
     const item = items.find((it) => it.id === itemId);
     if (item && item.category !== categoryId) {
-      feedbackWrong();
+      const rightCategory = categories.find((c) => c.id === item.category);
+      feedbackWrong({
+        answer:
+          item.text && rightCategory
+            ? `${item.text} → ${rightCategory.name}`
+            : rightCategory?.name,
+      });
       setWrongPick({ itemId, categoryId });
       setTimeout(() => setWrongPick(null), 700);
       return;
@@ -309,8 +315,8 @@ const styles = StyleSheet.create({
     transform: [{ scale: 0.95 }],
   },
   wrongButton: {
-    backgroundColor: "#FFEBEE",
-    borderColor: "#F44336",
+    backgroundColor: "#FCEAF1",
+    borderColor: "#D16587",
   },
   successBadge: {
     flexDirection: "row",

@@ -14,13 +14,20 @@ import {
 import { ExerciseComponentRenderer } from "./ExerciseComponentRenderer";
 import { normalizeExerciseConfig } from "./exerciseConfig";
 import { useExerciseCompletion, useLessonCompletion } from "./useLessonHooks";
-import { lessonXp } from "@/services/xpService";
+import { lessonXp, XP } from "@/services/xpService";
 import { stopSpeaking } from "@/lib/speech";
 import {
   ExerciseAttemptContext,
   preloadAnswerSounds,
 } from "@/lib/answerFeedback";
 import { ExamIntro, ExamResultCard } from "@/components/lesson/ExamPanels";
+import {
+  AVATAR_SAFE_SPACE,
+  BillaAvatar,
+  CelebrationOverlay,
+  Character,
+  CharacterReactions,
+} from "@/components/characters/Characters";
 import Flashcards from "@/components/lesson/Flashcards";
 import LessonVideo from "@/components/lesson/LessonVideo";
 import {
@@ -78,6 +85,8 @@ const LessonContent = ({
     showXpReward,
     handleCompleteLesson: executeCompleteLesson,
     setShowXpReward,
+    celebration,
+    continueAfterCelebration,
   } = useLessonCompletion(lesson, onComplete);
 
   // ===== Pasos =====
@@ -374,7 +383,13 @@ const LessonContent = ({
         }
         return (
           <>
-            <Text style={styles.finishEmoji}>{allCompleted ? "🎉" : "💪"}</Text>
+            {allCompleted ? (
+              <View style={styles.finishCharacter}>
+                <Character name="billaLesson" height={190} />
+              </View>
+            ) : (
+              <Text style={styles.finishEmoji}>💪</Text>
+            )}
             <Text style={styles.finishTitle}>
               {allCompleted ? "¡Terminaste la lección!" : "¡Casi terminas!"}
             </Text>
@@ -487,12 +502,19 @@ const LessonContent = ({
         label={stepLabel}
       />
 
-      <ScrollView
-        key={`step-${stepIndex}-${attempt}`}
-        contentContainerStyle={styles.container}
-      >
-        {renderStep()}
-      </ScrollView>
+      <View style={styles.body}>
+        <ScrollView
+          key={`step-${stepIndex}-${attempt}`}
+          contentContainerStyle={styles.container}
+        >
+          {renderStep()}
+        </ScrollView>
+
+        {/* Billa fija abajo a la derecha (no captura toques) */}
+        <BillaAvatar />
+        {/* Billa / Billy reaccionan a aciertos y errores */}
+        <CharacterReactions />
+      </View>
 
       <View style={styles.navBar}>
         {stepIndex > 0 && (
@@ -522,6 +544,16 @@ const LessonContent = ({
           <Text style={styles.xpText}>+{xpReward} XP</Text>
         </View>
       )}
+
+      {/* Billa celebra la lección o la unidad completa */}
+      {celebration && (
+        <CelebrationOverlay
+          kind={celebration.kind}
+          xp={celebration.xp}
+          bonusXp={celebration.kind === "unit" ? XP.unitBonus : undefined}
+          onContinue={continueAfterCelebration}
+        />
+      )}
     </View>
   );
 };
@@ -531,9 +563,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#FAF8FF",
   },
+  body: {
+    flex: 1,
+  },
   container: {
     padding: 16,
-    paddingBottom: 32,
+    // espacio para que Billa (avatar fijo) no tape el final del contenido
+    paddingBottom: AVATAR_SAFE_SPACE,
+  },
+  finishCharacter: {
+    alignItems: "center",
+    marginTop: 12,
   },
   loader: {
     marginTop: 20,

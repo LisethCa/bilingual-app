@@ -1,5 +1,6 @@
 import { CompletionMessage } from "@/components/ui/CompletionMessage";
 import { useAnswerFeedback } from "@/lib/answerFeedback";
+import { tipOf } from "@/lib/characters";
 import { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
@@ -42,7 +43,7 @@ export default function FillBlankExercise({
 
     const isCorrect = option === correctAnswer;
     if (isCorrect) feedbackCorrect();
-    else feedbackWrong();
+    else feedbackWrong({ answer: correctAnswer, tip: tipOf(q) });
 
     setTimeout(() => {
       const newCorrectCount = isCorrect ? correctCount + 1 : correctCount;
@@ -216,9 +217,9 @@ const styles = StyleSheet.create({
     borderColor: "#4CAF50",
   },
   feedbackWrong: {
-    backgroundColor: "#FFEBEE",
+    backgroundColor: "#FCEAF1",
     borderWidth: 1,
-    borderColor: "#e74c3c",
+    borderColor: "#D16587",
   },
   feedbackText: {
     fontSize: 14,
@@ -250,8 +251,8 @@ const styles = StyleSheet.create({
     borderColor: "#4CAF50",
   },
   optionWrong: {
-    backgroundColor: "#FFEBEE",
-    borderColor: "#e74c3c",
+    backgroundColor: "#FCEAF1",
+    borderColor: "#D16587",
   },
   optionDisabled: {
     opacity: 0.4,

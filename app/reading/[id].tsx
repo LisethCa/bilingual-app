@@ -7,6 +7,11 @@ import {
   ReadingResult,
 } from "@/services/readingService";
 import { XP } from "@/services/xpService";
+import {
+  AVATAR_SAFE_SPACE,
+  BillaAvatar,
+  Character,
+} from "@/components/characters/Characters";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import * as Speech from "expo-speech";
 import { useEffect, useRef, useState } from "react";
@@ -121,6 +126,7 @@ export default function ReadingScreen() {
   };
 
   return (
+    <View style={{ flex: 1 }}>
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.unit}>
         {reading.level} · {reading.unitTitle}
@@ -200,6 +206,8 @@ export default function ReadingScreen() {
         </TouchableOpacity>
       ) : (
         <View style={styles.resultCard}>
+          {/* Billy aprueba la lectura completada */}
+          <Character name="billyApproval" height={140} style={{ alignSelf: "center" }} />
           <Text style={styles.resultScore}>
             {score}/{reading.questions.length} correctas
           </Text>
@@ -215,11 +223,13 @@ export default function ReadingScreen() {
         </View>
       )}
     </ScrollView>
+    <BillaAvatar />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { padding: 16, paddingBottom: 40, backgroundColor: "#fff", flexGrow: 1 },
+  container: { padding: 16, paddingBottom: AVATAR_SAFE_SPACE, backgroundColor: "#fff", flexGrow: 1 },
   unit: { color: "#9365FF", fontWeight: "600", marginBottom: 4 },
   title: { fontSize: 24, fontWeight: "bold", color: "#1E1B4B" },
   subtitle: { fontSize: 15, color: "#666", marginBottom: 8, fontStyle: "italic" },
@@ -266,7 +276,7 @@ const styles = StyleSheet.create({
   },
   optionSelected: { borderColor: "#9365FF", backgroundColor: "#F3EFFF" },
   optionCorrect: { borderColor: "#4CAF50", backgroundColor: "#E8F5E9" },
-  optionWrong: { borderColor: "#E53935", backgroundColor: "#FFEBEE" },
+  optionWrong: { borderColor: "#D16587", backgroundColor: "#FCEAF1" },
   optionText: { fontSize: 15, color: "#333" },
   explanation: { color: "#555", fontStyle: "italic", marginTop: 4 },
   button: {
