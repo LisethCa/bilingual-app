@@ -11,6 +11,7 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
+import { router } from "expo-router";
 import { doc, setDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import {
@@ -425,6 +426,18 @@ export default function Login() {
             </TouchableOpacity>
           </>
         )}
+
+        <Text style={styles.legalText}>
+          {isRegistering
+            ? "Al crear tu cuenta aceptas nuestra "
+            : "Al continuar aceptas nuestra "}
+          <Text
+            style={styles.legalLink}
+            onPress={() => router.push("/privacy")}
+          >
+            Política de privacidad
+          </Text>
+        </Text>
       </View>
     </ScrollView>
   );
@@ -524,6 +537,14 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   buttonText: { color: "#FFF", fontSize: 16, fontWeight: "bold" },
+  legalText: {
+    marginTop: 20,
+    fontSize: 12,
+    lineHeight: 18,
+    color: "#6B7280",
+    textAlign: "center",
+  },
+  legalLink: { color: "#6C63FF", fontWeight: "600", textDecorationLine: "underline" },
   forgotButton: { alignSelf: "flex-end", marginTop: -6, marginBottom: 6 },
   forgotText: {
     color: "#4285F4",

@@ -851,6 +851,12 @@ export default function Dashboard() {
           <Text style={styles.copyright}>
             © {new Date().getFullYear()} Bilingual Site
           </Text>
+          <Text
+            style={styles.privacyLink}
+            onPress={() => router.push("/privacy")}
+          >
+            Política de privacidad
+          </Text>
         </View>
       </ScrollView>
       <Toast config={toastConfig} />
@@ -1276,6 +1282,12 @@ const styles = StyleSheet.create({
   copyright: {
     fontSize: 12,
     color: "#eeeeeeff",
+  },
+  privacyLink: {
+    marginTop: 6,
+    fontSize: 12,
+    color: "#FFFFFF",
+    textDecorationLine: "underline",
   },
   subscribeButton: {
     backgroundColor: "#6C63FF",

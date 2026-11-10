@@ -58,12 +58,12 @@ export const Character = ({
  */
 export const BillaAvatar = ({ style }: { style?: ViewStyle }) => (
   <View pointerEvents="none" style={[styles.avatar, style]}>
-    <Character name="billaAvatar" height={44} />
+    <Character name="billaAvatar" height={84} style={{ marginBottom: -14 }} />
   </View>
 );
 
 /** Espacio que conviene dejar al final de un ScrollView con BillaAvatar. */
-export const AVATAR_SAFE_SPACE = 76;
+export const AVATAR_SAFE_SPACE = 96;
 
 // ===================== Pizarra de Billy =====================
 
@@ -346,9 +346,9 @@ const styles = StyleSheet.create({
     bottom: 10,
     right: 10,
     zIndex: 900,
-    width: 56,
-    height: 56,
-    borderRadius: 28,
+    width: 72,
+    height: 72,
+    borderRadius: 36,
     backgroundColor: "#FFFFFF",
     borderWidth: 2,
     borderColor: BRAND_FUCHSIA,
