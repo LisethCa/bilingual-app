@@ -49,6 +49,10 @@ export default function RootLayout() {
           <Stack.Screen name="feedback" options={{ title: "Tu opinión" }} />
           <Stack.Screen name="account" options={{ title: "Mi cuenta" }} />
           <Stack.Screen
+            name="privacy"
+            options={{ title: "Política de privacidad" }}
+          />
+          <Stack.Screen
             name="payment-success"
             options={{
               title: "Pago Exitoso",
