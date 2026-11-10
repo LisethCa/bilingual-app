@@ -1,14 +1,15 @@
 import { Ionicons } from "@expo/vector-icons";
 import * as AuthSession from "expo-auth-session";
 import * as Google from "expo-auth-session/providers/google";
-import { useRouter } from "expo-router";
 import {
   createUserWithEmailAndPassword,
   fetchSignInMethodsForEmail,
   getAdditionalUserInfo,
   GoogleAuthProvider,
+  sendPasswordResetEmail,
   signInWithCredential,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
@@ -22,12 +23,16 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { useAuth } from "../contexts/AuthContext";
 import { auth, db } from "../lib/firebaseConfig";
 import { registerDailyConnection } from "../services/streakService";
 import { trackPixel } from "../lib/pixel";
 
 export default function Login() {
-  const router = useRouter();
+  const { refreshUser } = useAuth();
+  const [name, setName] = useState("");
+  const [infoMessage, setInfoMessage] = useState<string | null>(null);
+  const [sendingReset, setSendingReset] = useState(false);
   const [isRegistering, setIsRegistering] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,6 +44,47 @@ export default function Login() {
     useState<any>(null);
 
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [showCreateAccountCta, setShowCreateAccountCta] = useState(false);
+
+  const clearError = () => {
+    setErrorMessage(null);
+    setShowCreateAccountCta(false);
+    setInfoMessage(null);
+  };
+
+  const handleForgotPassword = async () => {
+    const trimmed = email.trim();
+    if (!trimmed) {
+      setErrorMessage(
+        "Escribe tu email arriba y luego toca \"¿Olvidaste tu contraseña?\".",
+      );
+      return;
+    }
+    clearError();
+    setSendingReset(true);
+    try {
+      auth.languageCode = "es";
+      await sendPasswordResetEmail(auth, trimmed);
+      setInfoMessage(
+        `Si ${trimmed} tiene una cuenta, te enviamos un enlace para crear una nueva contraseña. Revisa tu bandeja de entrada y también la carpeta de spam o correo no deseado.`,
+      );
+    } catch (error: any) {
+      setErrorMessage(
+        error?.code === "auth/invalid-email"
+          ? "El formato del correo no es válido."
+          : error?.code === "auth/user-not-found"
+            ? "No existe una cuenta con este email."
+            : "No se pudo enviar el email. Intenta más tarde.",
+      );
+    } finally {
+      setSendingReset(false);
+    }
+  };
+
+  const switchMode = (registering: boolean) => {
+    setIsRegistering(registering);
+    clearError();
+  };
 
   const redirectUri = AuthSession.makeRedirectUri({
     scheme: "bilingualapp",
@@ -62,18 +108,17 @@ export default function Login() {
     } else {
       await updateStreak(userId);
     }
-    setTimeout(() => {
-      router.replace("/");
-    }, 500);
+    // No navegar aquí: AuthContext ya redirige a "/" al detectar el login.
+    // Un segundo replace remontaba el Dashboard (doble carga / parpadeo).
   };
 
   const handleEmailAuth = async () => {
-    if (!email || !password) {
+    if (!email || !password || (isRegistering && !name.trim())) {
       setErrorMessage("Por favor, completa todos los campos");
       return;
     }
 
-    setErrorMessage(null);
+    clearError();
     setLoading(true);
 
     try {
@@ -98,6 +143,15 @@ export default function Login() {
           email,
           password,
         );
+        try {
+          await updateProfile(userCredential.user, {
+            displayName: name.trim(),
+          });
+          await refreshUser();
+        } catch (e) {
+          // el nombre se puede poner luego en "Mi cuenta"
+          console.error("Error guardando nombre:", e);
+        }
         await handleAuthSuccess(userCredential);
       } else {
         // Si está ingresando, intentar login normal
@@ -109,24 +163,35 @@ export default function Login() {
           );
           await handleAuthSuccess(userCredential);
         } catch (error: any) {
-          // Si falla, verificar si el email existe en otra forma de autenticación
-          if (
-            error.code === "auth/user-not-found" ||
-            error.code === "auth/invalid-credential"
-          ) {
-            const signInMethods = await fetchSignInMethodsForEmail(auth, email);
+          if (error.code === "auth/user-not-found") {
+            // Sin protección contra enumeración: Firebase dice explícitamente que no existe
+            setErrorMessage(
+              "No existe una cuenta con este email. Crea una cuenta nueva para empezar.",
+            );
+            setShowCreateAccountCta(true);
+          } else if (error.code === "auth/wrong-password") {
+            setErrorMessage("Contraseña incorrecta. Inténtalo de nuevo.");
+          } else if (error.code === "auth/invalid-credential") {
+            // Con protección contra enumeración Firebase no distingue
+            // "no existe" de "contraseña incorrecta"
+            const signInMethods = await fetchSignInMethodsForEmail(
+              auth,
+              email,
+            ).catch(() => [] as string[]);
 
-            if (signInMethods.length > 0) {
-              // El email existe pero con otro método de autenticación
+            if (signInMethods.length > 0 && !signInMethods.includes("password")) {
               setErrorMessage(
                 `Este correo está registrado con: ${signInMethods.join(
                   ", ",
                 )}. Por favor, usa ese método para iniciar sesión.`,
               );
+            } else if (signInMethods.includes("password")) {
+              setErrorMessage("Contraseña incorrecta. Inténtalo de nuevo.");
             } else {
               setErrorMessage(
-                "Credenciales incorrectas. Verifica tu email y contraseña.",
+                "Email o contraseña incorrectos. Si todavía no tienes cuenta, créala con este email.",
               );
+              setShowCreateAccountCta(true);
             }
           } else {
             throw error;
@@ -161,7 +226,6 @@ export default function Login() {
   };
 
   useEffect(() => {
-    let timeoutId: ReturnType<typeof setTimeout>;
     if (gResponse?.type === "success") {
       const { id_token } = gResponse.params;
       const credential = GoogleAuthProvider.credential(id_token);
@@ -176,17 +240,13 @@ export default function Login() {
           } else {
             await updateStreak(userCredential.user.uid);
           }
-
-          timeoutId = setTimeout(() => {
-            router.replace("/");
-          }, 500);
+          // La redirección la hace AuthContext (ver handleAuthSuccess)
         })
         .catch((error) => {
           console.error("Error Google Auth:", error);
           setErrorMessage("Error en autenticación con Google");
         });
     }
-    return () => clearTimeout(timeoutId);
   }, [gResponse]);
 
   const createNewUserProgress = async (userId: string) => {
@@ -222,6 +282,17 @@ export default function Login() {
         {errorMessage && (
           <View style={styles.errorBanner}>
             <Text style={styles.errorText}>{errorMessage}</Text>
+            {showCreateAccountCta && !isRegistering && (
+              <TouchableOpacity
+                style={styles.errorCtaButton}
+                onPress={() => switchMode(true)}
+              >
+                <Ionicons name="person-add" size={16} color="#FFF" />
+                <Text style={styles.errorCtaText}>
+                  Crear cuenta con este email
+                </Text>
+              </TouchableOpacity>
+            )}
           </View>
         )}
 
@@ -255,13 +326,23 @@ export default function Login() {
         ) : (
           <>
             {/* FORMULARIO DE EMAIL (colapsable) */}
+            {isRegistering && (
+              <TextInput
+                placeholder="Tu nombre"
+                style={styles.input}
+                value={name}
+                onChangeText={setName}
+                autoCapitalize="words"
+                maxLength={40}
+              />
+            )}
             <TextInput
               placeholder="Email"
               style={[styles.input, errorMessage && styles.inputError]}
               value={email}
               onChangeText={(text) => {
                 setEmail(text);
-                if (errorMessage) setErrorMessage(null);
+                if (errorMessage) clearError();
               }}
               autoCapitalize="none"
             />
@@ -285,6 +366,24 @@ export default function Login() {
               </TouchableOpacity>
             </View>
 
+            {!isRegistering && (
+              <TouchableOpacity
+                style={styles.forgotButton}
+                onPress={handleForgotPassword}
+                disabled={sendingReset}
+              >
+                <Text style={styles.forgotText}>
+                  {sendingReset ? "Enviando..." : "¿Olvidaste tu contraseña?"}
+                </Text>
+              </TouchableOpacity>
+            )}
+
+            {infoMessage && (
+              <View style={styles.infoBanner}>
+                <Text style={styles.infoText}>{infoMessage}</Text>
+              </View>
+            )}
+
             <TouchableOpacity
               style={styles.mainButton}
               onPress={handleEmailAuth}
@@ -299,13 +398,19 @@ export default function Login() {
               )}
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => setIsRegistering(!isRegistering)}>
-              <Text style={styles.switchText}>
-                {isRegistering
-                  ? "¿Ya tienes cuenta? Loguéate"
-                  : "¿No tienes cuenta? Regístrate"}
+            <View style={styles.switchBox}>
+              <Text style={styles.switchLabel}>
+                {isRegistering ? "¿Ya tienes cuenta?" : "¿No tienes cuenta?"}
               </Text>
-            </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.switchButton}
+                onPress={() => switchMode(!isRegistering)}
+              >
+                <Text style={styles.switchButtonText}>
+                  {isRegistering ? "Iniciar sesión" : "Crear cuenta gratis"}
+                </Text>
+              </TouchableOpacity>
+            </View>
 
             <TouchableOpacity
               style={styles.backToGoogleButton}
@@ -313,7 +418,7 @@ export default function Login() {
                 setShowEmailForm(false);
                 setEmail("");
                 setPassword("");
-                setErrorMessage(null);
+                clearError();
               }}
             >
               <Text style={styles.backToGoogleText}>Volver a Google</Text>
@@ -419,7 +524,62 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   buttonText: { color: "#FFF", fontSize: 16, fontWeight: "bold" },
-  switchText: { marginTop: 20, color: "#666", textAlign: "center" },
+  forgotButton: { alignSelf: "flex-end", marginTop: -6, marginBottom: 6 },
+  forgotText: {
+    color: "#4285F4",
+    fontSize: 14,
+    fontWeight: "600",
+    textDecorationLine: "underline",
+  },
+  infoBanner: {
+    backgroundColor: "#E8F5E9",
+    padding: 12,
+    borderRadius: 8,
+    width: "100%",
+    marginTop: 6,
+    borderLeftWidth: 4,
+    borderLeftColor: "#4CAF50",
+  },
+  infoText: { color: "#2E7D32", fontSize: 14 },
+  switchBox: {
+    width: "100%",
+    marginTop: 24,
+    padding: 16,
+    borderRadius: 12,
+    backgroundColor: "#F1F8E9",
+    borderWidth: 1,
+    borderColor: "#C5E1A5",
+    alignItems: "center",
+  },
+  switchLabel: {
+    fontSize: 15,
+    color: "#33691E",
+    fontWeight: "600",
+    marginBottom: 10,
+  },
+  switchButton: {
+    width: "100%",
+    height: 46,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: "#4CAF50",
+    backgroundColor: "#FFF",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  switchButtonText: { color: "#2E7D32", fontSize: 16, fontWeight: "bold" },
+  errorCtaButton: {
+    marginTop: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    backgroundColor: "#4CAF50",
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+  },
+  errorCtaText: { color: "#FFF", fontSize: 14, fontWeight: "bold" },
   backToGoogleButton: {
     marginTop: 20,
     paddingVertical: 10,

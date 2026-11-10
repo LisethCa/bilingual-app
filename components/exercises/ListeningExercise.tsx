@@ -24,7 +24,8 @@ export default function ListeningExercise({
     return () => {
       if (sound) sound.unloadAsync();
     };
-  }, [config]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(config.wordBank)]); // por contenido: no re-barajar en cada re-render
 
   // Sin audio grabado se usa la voz del dispositivo con la oración correcta
   const useVoice = !config.audioUrl;

@@ -1,17 +1,19 @@
 import { API_ENDPOINTS } from "@/constants/api";
 import { useAuth } from "@/contexts/AuthContext";
 import { auth, checkAuthState, db } from "@/lib/firebaseConfig";
+import { recordLevelCompletions } from "@/services/levelHistoryService";
+import { getAllReadings } from "@/services/readingService";
 import {
   computeStreak,
   registerDailyConnection,
 } from "@/services/streakService";
-import { getAllReadings } from "@/services/readingService";
 import {
   currentLevel,
   NEXT_LEVEL_HINT_AT,
   summarizeXp,
   XP,
 } from "@/services/xpService";
+import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { signOut } from "firebase/auth";
 import {
@@ -59,6 +61,7 @@ interface ProgressData {
   level?: string;
   unlockedLevels?: string[];
   purchasedLevels: { [key: string]: boolean };
+  levelCompletedAt?: Record<string, unknown>;
   completedMissions?: Record<string, string[]>;
   completedLessons?: Record<string, boolean>;
   completedReadings?: Record<string, unknown>;
@@ -127,6 +130,26 @@ export default function Dashboard() {
     ],
   );
   const studying = currentLevel(xp, progress.purchasedLevels);
+
+  // Fecha en que cada nivel comprado llega al 100 % (se muestra en "Mi cuenta")
+  useEffect(() => {
+    if (!user || loading || modulesData.length === 0) return;
+    recordLevelCompletions(
+      user.uid,
+      xp,
+      progress.purchasedLevels,
+      progress.levelCompletedAt,
+    ).then((marked) => {
+      if (marked.length === 0) return;
+      setProgress((prev) => ({
+        ...prev,
+        levelCompletedAt: {
+          ...prev.levelCompletedAt,
+          ...Object.fromEntries(marked.map((l) => [l, new Date()])),
+        },
+      }));
+    });
+  }, [user, loading, xp, progress.purchasedLevels, progress.levelCompletedAt]);
 
   const syncUnlockedLevels = async () => {
     if (!user) return;
@@ -243,6 +266,7 @@ export default function Dashboard() {
         completedLessons: userProgress.completedLessons || {},
         completedReadings: userProgress.completedReadings || {},
         purchasedLevels: userProgress.purchasedLevels || {},
+        levelCompletedAt: userProgress.levelCompletedAt || {},
         earnedBadges: userProgress.earnedBadges || {},
         // antes no se copiaba: la pantalla mostraba siempre "1 días de racha"
         stats: streak,
@@ -476,7 +500,8 @@ export default function Dashboard() {
         <View style={styles.userSection}>
           {user ? (
             <>
-              <View style={styles.avatarContainer}>
+              {/* Cabecera: avatar + nombre/email + acceso a Mi cuenta */}
+              <View style={styles.profileHeader}>
                 {user.photoURL ? (
                   <Image
                     source={{ uri: user.photoURL }}
@@ -485,58 +510,93 @@ export default function Dashboard() {
                 ) : (
                   <View style={[styles.userAvatar, styles.placeholderAvatar]}>
                     <Text style={styles.avatarText}>
-                      {user.displayName?.charAt(0).toUpperCase() || "U"}
+                      {(user.displayName || user.email || "U")
+                        .charAt(0)
+                        .toUpperCase()}
                     </Text>
                   </View>
                 )}
-              </View>
 
-              <View style={styles.userInfo}>
-                <Text style={styles.userName}>
-                  {capitalizeName(user.displayName) || "Usuario"}
-                </Text>
-                <Text style={styles.userEmail}>{user.email}</Text>
+                <View style={styles.userInfo}>
+                  <Text style={styles.userName} numberOfLines={1}>
+                    {capitalizeName(user.displayName) || "Usuario"}
+                  </Text>
+                  <Text style={styles.userEmail} numberOfLines={1}>
+                    {user.email}
+                  </Text>
+                  {!user.displayName && (
+                    <TouchableOpacity onPress={() => router.push("/account")}>
+                      <Text style={styles.addNameLink}>
+                        ✏️ Agrega tu nombre
+                      </Text>
+                    </TouchableOpacity>
+                  )}
+                </View>
 
                 <TouchableOpacity
-                  style={styles.instagramButton}
+                  style={styles.settingsButton}
+                  onPress={() => router.push("/account")}
+                  accessibilityLabel="Mi cuenta"
+                >
+                  <Ionicons name="settings-outline" size={22} color="#FFFFFF" />
+                </TouchableOpacity>
+              </View>
+
+              {/* Estadísticas en una fila */}
+              <View style={styles.statsRow}>
+                <View style={styles.statTile}>
+                  <View style={styles.statValueRow}>
+                    <FlameIcon size={18} color="#FF9500" />
+                    <Text style={styles.statValue}>
+                      {progress.stats?.daysStreak ?? 1}
+                    </Text>
+                  </View>
+                  <Text style={styles.statLabel}>
+                    {(progress.stats?.daysStreak ?? 1) === 1
+                      ? "día de racha"
+                      : "días de racha"}
+                  </Text>
+                </View>
+                <View style={styles.statTile}>
+                  <Text style={styles.statValue}>{studying}</Text>
+                  <Text style={styles.statLabel}>Cursando</Text>
+                </View>
+                <View style={styles.statTile}>
+                  <Text style={[styles.statValue, styles.statValueXp]}>
+                    ⭐ {xp.total.toLocaleString("es")}
+                  </Text>
+                  <Text style={styles.statLabel}>XP</Text>
+                </View>
+              </View>
+
+              {/* Redes sociales, lado a lado */}
+              <View style={styles.socialRow}>
+                <TouchableOpacity
+                  style={[styles.socialPill, styles.instagramPill]}
                   onPress={() =>
                     Linking.openURL(
                       "https://www.instagram.com/bilingualsite01/",
                     )
                   }
                 >
-                  {/* <Ionicons name="logo-instagram" size={24} color="#E1306C" /> */}
                   <InstagramIcon />
-                  <Text style={styles.instagramText}>
-                    Síguenos en Instagram
+                  <Text style={[styles.socialPillText, styles.instagramText]}>
+                    Instagram
                   </Text>
                 </TouchableOpacity>
-
                 <TouchableOpacity
-                  style={styles.facebookButton}
+                  style={[styles.socialPill, styles.facebookPill]}
                   onPress={() =>
                     Linking.openURL(
-                      "https://web.facebook.com/siteBilingualsite",
+                      "https://web.facebook.com/tablerobil/?_rdc=1&_rdr#",
                     )
                   }
                 >
                   <FacebookIcon />
-                  <Text style={styles.facebookText}>Síguenos en Facebook</Text>
-                </TouchableOpacity>
-
-                <View style={styles.streakContainer}>
-                  <FlameIcon size={20} color="#FF9500" />
-                  <Text style={styles.streakText}>
-                    {progress.stats?.daysStreak ?? 1}{" "}
-                    {(progress.stats?.daysStreak ?? 1) === 1 ? "día" : "días"}{" "}
-                    de racha
+                  <Text style={[styles.socialPillText, styles.facebookText]}>
+                    Facebook
                   </Text>
-                </View>
-
-                <Text style={styles.userLevel}>Cursando: {studying}</Text>
-                <Text style={styles.userXP}>
-                  ⭐ {xp.total.toLocaleString("es")} XP
-                </Text>
+                </TouchableOpacity>
               </View>
             </>
           ) : (
@@ -574,7 +634,8 @@ export default function Dashboard() {
             <Character name="billaCorrect" height={118} />
             <View style={styles.welcomeCenter}>
               <Text style={styles.welcomeTitle}>
-                ¡Hola, {capitalizeName(user.displayName)?.split(" ")[0] || "de nuevo"}!
+                ¡Hola,{" "}
+                {capitalizeName(user.displayName)?.split(" ")[0] || "de nuevo"}!
               </Text>
               <Text style={styles.welcomeText}>¿Seguimos aprendiendo?</Text>
               <TouchableOpacity
@@ -748,6 +809,15 @@ export default function Dashboard() {
           </View>
         )}
 
+        {/*      {user && (
+          <TouchableOpacity
+            onPress={() => router.push("/account")}
+            style={styles.logoutButton}
+          >
+            <Text style={styles.logoutText}>Mi cuenta</Text>
+          </TouchableOpacity>
+        )} */}
+
         {user && (
           <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
             <Text style={styles.logoutText}>Cerrar sesión</Text>
@@ -768,7 +838,9 @@ export default function Dashboard() {
 
             <TouchableOpacity
               onPress={() =>
-                Linking.openURL("https://web.facebook.com/siteBilingualsite")
+                Linking.openURL(
+                  "https://web.facebook.com/tablerobil/?_rdc=1&_rdr#",
+                )
               }
               style={styles.facebookSocialButton}
             >
@@ -807,16 +879,15 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   userSection: {
-    alignItems: "center",
     marginBottom: 20,
-    padding: 15,
+    padding: 16,
     backgroundColor: "rgba(255, 255, 255, 0.1)",
     borderRadius: 15,
   },
   userAvatar: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
+    width: 64,
+    height: 64,
+    borderRadius: 32,
     borderWidth: 3,
     borderColor: "#FFFFFF",
     backgroundColor: "#EDE9FE",
@@ -833,65 +904,87 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins", // Tipografía destacada
   },
   userInfo: {
+    flex: 1,
+    marginLeft: 14,
+    minWidth: 0,
+  },
+  profileHeader: {
+    flexDirection: "row",
     alignItems: "center",
   },
-  avatarContainer: {
-    marginBottom: 15,
+  settingsButton: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.18)",
+    marginLeft: 8,
   },
-  userName: {
-    fontSize: 22,
+  addNameLink: {
+    color: "#FFFFFF",
+    fontSize: 13,
+    fontWeight: "600",
+    textDecorationLine: "underline",
+    fontFamily: "Poppins",
+  },
+  statsRow: {
+    flexDirection: "row",
+    gap: 8,
+    marginTop: 16,
+  },
+  statTile: {
+    flex: 1,
+    alignItems: "center",
+    paddingVertical: 10,
+    paddingHorizontal: 4,
+    borderRadius: 12,
+    backgroundColor: "rgba(255, 255, 255, 0.16)",
+  },
+  statValueRow: { flexDirection: "row", alignItems: "center", gap: 4 },
+  statValue: {
+    fontSize: 18,
     fontWeight: "bold",
     color: "#FFFFFF",
-    marginBottom: 5,
+    fontFamily: "Poppins",
+  },
+  statValueXp: { color: "#FFD700" },
+  statLabel: {
+    fontSize: 12,
+    color: "#F3EEFF",
+    marginTop: 2,
+    textAlign: "center",
+    fontFamily: "Poppins",
+  },
+  socialRow: {
+    flexDirection: "row",
+    gap: 8,
+    marginTop: 12,
+  },
+  socialPill: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 9,
+    borderRadius: 10,
+    backgroundColor: "#FFFFFF",
+    borderWidth: 2,
+  },
+  instagramPill: { borderColor: "#E1306C" },
+  facebookPill: { borderColor: "#1877F2" },
+  socialPillText: { fontSize: 14 },
+  userName: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#FFFFFF",
+    marginBottom: 2,
     fontFamily: "Poppins",
   },
   userEmail: {
-    fontSize: 14,
+    fontSize: 13,
     color: "#E0E0E0",
-    marginBottom: 5,
-    fontFamily: "Poppins",
-  },
-  userLevel: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "#FFFFFF",
-    marginBottom: 3,
-    fontFamily: "Poppins",
-  },
-  userXP: {
-    fontSize: 16,
-    color: "#FFD700",
-    fontWeight: "bold",
-    fontFamily: "Poppins",
-    textShadowColor: "rgba(0, 0, 0, 0.4)",
-    textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 3,
-  },
-  streakContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginVertical: 5,
-    backgroundColor: "#FFF3E0",
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 20,
-
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 2,
-  },
-  streakText: {
-    marginLeft: 5,
-    fontWeight: "bold",
-    color: "#E65100",
-    fontFamily: "Poppins",
-  },
-  longestStreak: {
-    marginLeft: 5,
-    color: "#666",
-    fontSize: 12,
+    marginBottom: 2,
     fontFamily: "Poppins",
   },
   badgesSection: {
@@ -1093,48 +1186,12 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontFamily: "Poppins",
   },
-  instagramButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 12,
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    backgroundColor: "#FFFFFF",
-    borderRadius: 10,
-    borderWidth: 2,
-    borderColor: "#E1306C",
-    marginHorizontal: 0,
-    shadowColor: "#E1306C",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
-    elevation: 5,
-  },
   instagramText: {
     marginLeft: 10,
     color: "#E1306C",
     fontWeight: "700",
     fontSize: 14,
     fontFamily: "Poppins",
-  },
-  facebookButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 12,
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    backgroundColor: "#FFFFFF",
-    borderRadius: 10,
-    borderWidth: 2,
-    borderColor: "#1877F2",
-    marginHorizontal: 0,
-    shadowColor: "#1877F2",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
-    elevation: 5,
   },
   facebookText: {
     marginLeft: 10,

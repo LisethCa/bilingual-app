@@ -55,6 +55,8 @@ const ConjugationExercise: React.FC<ConjugationExerciseProps> = ({
   const [showCompletion, setShowCompletion] = useState(false);
   const [isCorrect, setIsCorrect] = useState(isCompleted);
 
+  const configKey = JSON.stringify([config.tenses, config.pronouns, config.correct]);
+
   useEffect(() => {
     const initialAnswers: Record<string, Record<string, string>> = {};
 
@@ -73,7 +75,8 @@ const ConjugationExercise: React.FC<ConjugationExerciseProps> = ({
       setIsCorrect(true);
       setShowFeedback(true);
     }
-  }, [config, isCompleted]); // Reacciona si cambia la config o el estado de completado
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [configKey, isCompleted]); // por contenido, no por referencia: un re-render del padre no debe borrar respuestas
 
   const handleConjugate = (tense: string, pronoun: string, answer: string) => {
     if (isCompleted) return; // Bloqueo de seguridad
