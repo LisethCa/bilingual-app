@@ -70,6 +70,18 @@ const LessonContent = ({
     [lesson],
   );
 
+  // Normalizar una sola vez por lección: si se normaliza en cada render, la
+  // config llega como objeto nuevo y los ejercicios con useEffect([config])
+  // se reinician (p. ej. al cerrar el teclado en Chrome móvil se borraba la
+  // respuesta del ejercicio de conjugación).
+  const normalizedExercises = useMemo(
+    () =>
+      allExercises.map((exercise) =>
+        normalizeExerciseConfig(exercise, lesson?.content),
+      ),
+    [allExercises, lesson],
+  );
+
   const {
     completedExercises,
     exerciseData,
@@ -220,10 +232,7 @@ const LessonContent = ({
   const renderExercise = (index: number) => {
     const exercise = allExercises[index];
     if (!exercise) return null;
-    const normalizedExercise = normalizeExerciseConfig(
-      exercise,
-      lesson?.content,
-    );
+    const normalizedExercise = normalizedExercises[index];
 
     // La consigna viene en exercise.instructions; drag_drop la muestra él mismo
     const instructions =

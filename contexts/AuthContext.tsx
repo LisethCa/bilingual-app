@@ -10,6 +10,8 @@ interface AuthContextType {
   loading: boolean;
   lastActive: Date | null;
   checkSession: () => Promise<boolean>;
+  /** Fuerza re-render tras updateProfile (que no dispara onAuthStateChanged). */
+  refreshUser: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType>({
@@ -17,12 +19,14 @@ const AuthContext = createContext<AuthContextType>({
   loading: true,
   lastActive: null,
   checkSession: async () => false,
+  refreshUser: async () => {},
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [lastActive, setLastActive] = useState<Date | null>(null);
+  const [, setUserVersion] = useState(0);
   const pathname = usePathname();
 
   // Tiempo de caducidad de sesión (1 hora en milisegundos)
@@ -98,6 +102,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     return () => clearInterval(interval);
   }, [user]);
 
+  const refreshUser = async () => {
+    try {
+      await auth.currentUser?.reload();
+    } catch (error) {
+      console.error("Error reloading user:", error);
+    }
+    setUser(auth.currentUser);
+    setUserVersion((v) => v + 1);
+  };
+
   if (loading) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -107,7 +121,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, loading, lastActive, checkSession }}>
+    <AuthContext.Provider value={{ user, loading, lastActive, checkSession, refreshUser }}>
       {children}
     </AuthContext.Provider>
   );
